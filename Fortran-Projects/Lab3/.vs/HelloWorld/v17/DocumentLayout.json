@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{94C8C2DC-A98C-4987-83A1-2F9299EC168B}|MPITest.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\lab3\\test.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{94C8C2DC-A98C-4987-83A1-2F9299EC168B}|MPITest.vfproj|solutionrelative:test.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94C8C2DC-A98C-4987-83A1-2F9299EC168B}|MPITest.vfproj|C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\mpi_head.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{94C8C2DC-A98C-4987-83A1-2F9299EC168B}|MPITest.vfproj|solutionrelative:mpi_head.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "test.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\test.f90",
+              "RelativeDocumentMoniker": "test.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\test.f90",
+              "RelativeToolTip": "test.f90",
+              "ViewState": "AQIAACoBAAAAAAAAAAAkwGEBAAASAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-22T16:21:52.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MPI_head.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\MPI_head.f90",
+              "RelativeDocumentMoniker": "MPI_head.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Lab3\\MPI_head.f90",
+              "RelativeToolTip": "MPI_head.f90",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAbAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-22T15:41:54.703Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

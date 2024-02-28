@@ -1,0 +1,136 @@
+giuditta
+-----------------------------------------------------------------------------------------------------
+MATLAB Version: 23.2.0.2365128 (R2023b)
+MATLAB License Number: 1080014
+Operating System: Microsoft Windows 11 Home Version 10.0 (Build 22621)
+Java Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+-----------------------------------------------------------------------------------------------------
+MATLAB                                                Version 23.2        (R2023b)
+
+
+Messaggio molto luuuuuuuuuuuuuuuuungoif system_dependent('IsDebugMode')==1, dbquit; end
+giuditta
+if system_dependent('IsDebugMode')==1, dbcont; end
+-----------------------------------------------------------------------------------------------------
+MATLAB Version: 23.2.0.2365128 (R2023b)
+MATLAB License Number: 1080014
+Operating System: Microsoft Windows 11 Home Version 10.0 (Build 22621)
+Java Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+-----------------------------------------------------------------------------------------------------
+MATLAB                                                Version 23.2        (R2023b)
+
+
+Messaggio molto luuuuuuuuuuuuuuuuungo
+
+
+help interoDaBase10aBaseB
+  interoDa10aBaseB - Conversione di un intero da base 10 a base beta > 1 qualunque
+    Conversione mediante il metodo delle divisioni successive del numero x
+    da base 10 a base beta.....
+ 
+  SINOPSYS
+    [convertito] = <strong>interoDaBase10aBaseB</strong>(x, Base)
+  INPUT
+  x    (double)  - Numero INTERO in base 10 da convertire
+  beta (integer) - Nuova base a cui convertiree il numero: 
+                   intero > 1
+  OUTPUT 
+  convertito (string) - Stringa contenente la rappresentazione del numero x
+                        in base beta
+
+addpath('C:\Users\nicol\OneDrive\Documenti\MATLAB\esercizi2023')
+TestSintassiVettoriale
+Tempo medio con la sintassi Matlab: 0.001157 secs
+Tempo medio usando un ciclo for: 0.001136 secs
+TestSintassiVettoriale
+Tempo medio con la sintassi Matlab: 0.008252 secs
+Tempo medio usando un ciclo for: 0.156157 secs
+min(t_for)
+
+ans =
+
+    0.1468
+
+min(t_mat)
+
+ans =
+
+    0.0071
+
+testFind
+testFind
+
+ans =
+
+  0×1 empty <a href="matlab:helpPopup double" style="font-weight:bold">double</a> column vector
+
+testFind
+
+ans =
+
+     1
+     3
+     5
+    11
+    13
+    15
+    18
+    21
+    22
+    24
+    25
+
+A
+
+A =
+
+     0    -5    -2    -6     0
+     7     3    -3     8    -2
+     0    -6     0     0     3
+    -6     8     4     8     0
+    -2     7     0    -7    -1
+
+testFind
+ idxi
+
+idxi =
+
+     2
+     1
+     3
+     2
+     5
+     5
+
+idxj
+
+idxj =
+
+     1
+     2
+     3
+     4
+     4
+     5
+
+testFind
+idxj
+
+idxj =
+
+     1
+     2
+     3
+     5
+     5
+
+[idxi, idxj]
+
+ans =
+
+     3     1
+     4     2
+     3     3
+     2     5
+     3     5
+

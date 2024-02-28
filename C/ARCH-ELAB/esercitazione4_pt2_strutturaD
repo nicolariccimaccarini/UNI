@@ -1,0 +1,18 @@
+#include <stdio.h>
+#pragma pack(push, 1)
+
+int main()
+{
+    //structure D
+
+    typedef struct 
+    {
+        double d;
+        int s;
+        char c;
+    } structd_t;
+
+    structa_t istanza = {0, -1, 'c'};
+    printf ("%lu", sizeof(istanza));
+    return 0;
+}

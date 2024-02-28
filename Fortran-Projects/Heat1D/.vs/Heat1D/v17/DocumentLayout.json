@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Heat1D\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A9F2D346-573E-44DA-B3EC-8290E2F096A3}|Heat1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\heat1d\\parallel_heat1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A9F2D346-573E-44DA-B3EC-8290E2F096A3}|Heat1D.vfproj|solutionrelative:parallel_heat1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9F2D346-573E-44DA-B3EC-8290E2F096A3}|Heat1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\heat1d\\heat1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A9F2D346-573E-44DA-B3EC-8290E2F096A3}|Heat1D.vfproj|solutionrelative:heat1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Parallel_Heat1D.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Heat1D\\Parallel_Heat1D.f90",
+              "RelativeDocumentMoniker": "Parallel_Heat1D.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Heat1D\\Parallel_Heat1D.f90",
+              "RelativeToolTip": "Parallel_Heat1D.f90",
+              "ViewState": "AQIAAA0BAAAAAAAAAAAswCUBAAAJAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-24T09:16:51.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Heat1D.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Heat1D\\Heat1D.f90",
+              "RelativeDocumentMoniker": "Heat1D.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\Heat1D\\Heat1D.f90",
+              "RelativeToolTip": "Heat1D.f90",
+              "ViewState": "AQIAAPQAAAAAAAAAAAAIwDMBAAAZAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-23T13:35:44.639Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

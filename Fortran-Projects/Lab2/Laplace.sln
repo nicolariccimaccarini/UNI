@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "Laplace", "Laplace.vfproj", "{DD625014-27F9-4951-A3C5-64F65EE4A3DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Debug|x64.ActiveCfg = Debug|x64
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Debug|x64.Build.0 = Debug|x64
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Debug|x86.ActiveCfg = Debug|Win32
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Debug|x86.Build.0 = Debug|Win32
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Release|x64.ActiveCfg = Release|x64
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Release|x64.Build.0 = Release|x64
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Release|x86.ActiveCfg = Release|Win32
+		{DD625014-27F9-4951-A3C5-64F65EE4A3DB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {412B00E7-D913-4205-8AF8-7BF00FB6F02F}
+	EndGlobalSection
+EndGlobal

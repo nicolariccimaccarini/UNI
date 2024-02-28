@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\fs1d\\fs1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|solutionrelative:fs1d.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\fs1d\\linsystem.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|solutionrelative:linsystem.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\fs1d\\io.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|solutionrelative:io.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|c:\\users\\nicol\\onedrive\\documenti\\github\\fortran-projects\\fs1d\\variables.f90||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A451BA0C-1F23-49E4-8E65-C6787FB76D44}|FS1D.vfproj|solutionrelative:variables.f90||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FS1D.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\FS1D.f90",
+              "RelativeDocumentMoniker": "FS1D.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\FS1D.f90",
+              "RelativeToolTip": "FS1D.f90",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAIwH8AAAAXAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-26T09:21:45.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LinSystem.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\LinSystem.f90",
+              "RelativeDocumentMoniker": "LinSystem.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\LinSystem.f90",
+              "RelativeToolTip": "LinSystem.f90",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAATAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-26T09:37:41.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IO.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\IO.f90",
+              "RelativeDocumentMoniker": "IO.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\IO.f90",
+              "RelativeToolTip": "IO.f90",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAAbAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-26T09:37:11.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Variables.f90",
+              "DocumentMoniker": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\Variables.f90",
+              "RelativeDocumentMoniker": "Variables.f90",
+              "ToolTip": "C:\\Users\\nicol\\OneDrive\\Documenti\\GitHub\\Fortran-Projects\\FS1D\\Variables.f90",
+              "RelativeToolTip": "Variables.f90",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAVAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPvZPBDcAgCAClPxmtcYoO1ilMR8OnDQlEpT6kTXofNcETRKHWGhQAkNkIEbWgDowxDIJSyjSQufCUWWOn4ylIKcmqkXP2CXiDRQW8qWeTcRkWqQwRwS2wuAVcQl/G6ww4fR6XBfZkxZ2BbfP/l2j5LFh6yhZ\u002BqdqF5c9kmQr8hHADIeBJHT9TZrUAAAAASUVORK5CYIIAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-02-26T09:07:18.192Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

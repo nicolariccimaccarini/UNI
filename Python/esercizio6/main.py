@@ -1,0 +1,38 @@
+from Car import car
+from Bicycle import bicycle
+
+def main():
+    c = car('ABC',False,10,11)
+    b = bicycle('10.1', '0')
+    car.print_n_wheels()
+    b.print_n_wheels()
+    b.set_speed(5)
+    c.set_acceleration(1)
+    print(" - Car c ----------")
+    c.print_speed()
+    c.print_acceleration()
+    print("\n\n - Bicycle b ------")
+    b.print_speed()
+    b.print_acceleration()
+    print(" ------------------")
+    c.start()
+    c.accelerate(10.1,2)
+    b.pedal(2,5)
+    print(" - Car c ----------")
+    c.print_speed()
+    c.print_acceleration()
+    print("\n\n - Bicycle b ------")
+    b.print_speed()
+    b.print_acceleration()
+    print(" ------------------")
+    c.stop()
+    print(" - Car c ----------")
+    c.print_speed()
+    c.print_acceleration()
+    print("\n\n - Bicycle b ------\n")
+    b.print_speed()
+    b.print_acceleration()
+    print(" ------------------\n")
+
+if __name__ == "__main__":
+    main()

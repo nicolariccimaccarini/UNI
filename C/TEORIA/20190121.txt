@@ -1,0 +1,11 @@
+esercizio 1:
+passaggio per valore e' quando si passa da una variabile all'altra il valore della variabile da passare, 
+passaggio per riferimento e' quando si passa l'indirizzo della variaibile che si vuole passare, mentre passaggio per riferimento
+si intende il passaggio dell'indirizzo della variabile. 
+in C e' possibile fare il passaggio per valore ma non e' possibile un vero e proprio passaggio per riferimento, 
+infatti per passare l'indirizzo di una variabile
+in C si usano i puntatori, e quindi si passa l'indirizzo del puntatore.
+
+es 2:
+il programma, dato come numero di matricola 185792, da come output 801, questo perhe' entra nel ciclo while con a=0
+e pone i[a] = f(++a) ovvero i[0] = f(1) ovvero 1, poi rientra nel con a=1 e pone i[1] = 
