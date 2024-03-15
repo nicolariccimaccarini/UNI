@@ -3,24 +3,43 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+    Parametri di un esperimento.
+
+    minSize: dimensione dell'array nel primo esperimento.
+    maxSize: dimensione dell'array nell'ultimo esperimento.
+    step: incremento di dimensione dell'array tra un esperimento e il successivo.
+    repetitions: numero di volte in cui un esperimento e' ripetuto, al fine di ottenere tempi statisticamente validi.
+    see: seme del generatore di numeri pseudocasuali, al fine di garantire la ripsoducibilita' degli esperimenti.
+*/
+
 struct configuration
 {
-    int minSize, maxSize;
-    int step, repetitions, seed;
+    int minSize, maxSize, step, repetitions, seed;
 };
 
-struct configuration initConfiguration() {
-    struct configuration config;
+void initConfiguartion(struct configuration *config) {
+    printf("Inserire minSize (ad esempio, 10): ");
+    scaf("%d", &config->minSize);
 
-    config.minSize = 10;
-    config.maxSize = 1000;
-    config.step = 10;
-    config.repetitions = 50;
-    config.seed = 362372;
+    printf("Inserire maxSize (ad esempio, 1000): ");
+    scaf("%d", &config->maxSize);
 
-    return config;
+    printf("Inserire step (ad esempio, 10): ");
+    scaf("%d", &config->step);
+
+    printf("Inserire repetitions (ad esempio, 50): ");
+    scaf("%d", &config->repetitions);
+
+    printf("Inserire seed (ad esempio, 362372): ");
+    scaf("%d", &config->seed);
+
+    // controllo valori
+    if (config->minSize >= config->maxSize) exit(-1);
+    if (config->repetitions <= 0) exit(-1);
 }
 
+// implementaziione di insertion sort
 void insertionSort(int *arr, int start, int end) {
     int key, i;
     
@@ -36,24 +55,26 @@ void insertionSort(int *arr, int start, int end) {
     }
 }
 
+// funzione antagonista: controlla che un array sia ordinato
 int check(int *arr, int size) {
     for (int i=1; i<size; i++) {
         if (arr[i] < arr[i-1]) {
             return -1;
         }
     }
+
+    return 1;
 }
 
-int main(void) {
-    struct configuration config = initConfiguration();
-
-    runExperiments(config);
-
-    return 0;
-}
-
+/*
+    Esegue un numero di misurazioni pari a quelle di 'repetitions'.
+    Ogni misurazione riguarda l'applicazione di un certo algoritmo di ordinamento ad un array di dimensione size, 
+    inizializzato con numeri pseudocasuali.
+    Restituisce un valore 'double', contenente il tempo medio di esecuzione.
+*/
 double run(int size, int repetitions){
     double elapsedTime = 0.0;
+
     for (int i=0; i<repetitions; i++) {
         int arr[size];
         for (int j=0; j<size; j++) {
@@ -76,12 +97,32 @@ double run(int size, int repetitions){
     return elapsedTime / repetitions;
 }
 
+/*
+    Manager degli esperimenti.
+    Chiama un esperimento piu' volte, gestendo di volta in volta l'incremento della dimensione dell'array soggetto degli esperimenti.
+    Si occupa di analizzare e variare il generatore di numeri pseudocasuali, e di stampare a video i risultati.
+*/
 void runExperiments(struct configuration config) {
     
     for (int i=config.minSize; i=config.maxSize; i+=config.step){
         srand(config.seed);
         double elapsedTime = (i, config.repetitions);
+        config.seed++;
 
         printf("%d %g\n", i, elapsedTime);
     }
+}
+
+/*
+    Entry point per gli esperimenti.
+
+    Dopo aver chiesto all'utente di inserire una configurazione, esegue gli esperimenti.
+*/
+int main(void) {
+    struct configuration config;
+    initConfiguartion(config);
+
+    runExperiments(config);
+
+    return 0;
 }
