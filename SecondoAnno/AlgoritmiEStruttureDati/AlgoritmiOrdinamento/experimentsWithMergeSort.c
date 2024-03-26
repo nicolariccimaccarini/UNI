@@ -240,22 +240,26 @@ void run_experiments(struct configuration config, FILE *report) {
     }
     fprintf(report, "\n");
 
+    int initialSeed = config.seed;
+    int mutableSeed = config.seed;
+
     // Per ogni algoritmo caricato nella configurazione...
     for (int algo_idx=0; algo_idx<config.n_algorithms; algo_idx++) {
 
         // Esegui un esperimento, e stampa passo dopo passo l'asse delle y.
         for (int i=config.min_size; i<=config.max_size; i+=config.step) {
-            srand(config.seed);
+            srand(mutableSeed);
             double elapsed_time = run(
                 i, 
                 config.repetitions, 
                 select_algorithm(config.algorithms[algo_idx])
             );
-            config.seed++;
+            mutableSeed++;
 
             fprintf(report, "%g ", elapsed_time);
         }
         // Passa al prossimo algoritmo.
+        mutableSeed = initialSeed;
         fprintf(report, "\n");
     }
 }
