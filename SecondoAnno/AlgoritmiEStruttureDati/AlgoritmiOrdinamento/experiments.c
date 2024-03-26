@@ -44,13 +44,24 @@ void initConfiguartion(struct configuration *config) {
     if (config->minSize >= config->maxSize) exit(-1);
     if (config->repetitions <= 0) exit(-1);
 
-    int nAlgorithms = 5;
+    int nAlgorithms = 2;
     char *algos[] = {"INSERTIONSORT", "MERGE"};
 
     config->nAlgorithms = nAlgorithms;
-    for (int i=0; i<nAlgorithms; i++) {
-        strcpy(config->algorithms[i], algorithms[i]);
+    for (int algo_idx=0; algo_idx < n_algorithms; algo_idx++) {
+        strcpy(config->algorithms[algo_idx], algos[algo_idx]);
     }
+}
+
+// funzione antagonista: controlla che un array sia ordinato
+int check(int *arr, int size) {
+    for (int i=1; i<size; i++) {
+        if (arr[i] < arr[i-1]) {
+            return -1;
+        }
+    }
+
+    return 1;
 }
 
 // implementaziione di insertion sort
@@ -69,6 +80,9 @@ void insertionSort(int *arr, int start, int end) {
     }
 }
 
+/**
+ * Sottoprocedura di `merge_sort` per unire due range.  
+ */
 void merge(int *arr, int start, int middle, int end) {
     int n1 = middle - start + 1;
     int n2 = end - middle;
@@ -107,7 +121,7 @@ void merge(int *arr, int start, int middle, int end) {
     }
 }
 
-// implementazione di merge sort
+// implementazione di `merge_sort`
 void mergeSort(int *arr, int start, int end) {
     if (start < end) {
         int middle = (start+end)/2;
@@ -117,8 +131,20 @@ void mergeSort(int *arr, int start, int end) {
     }
 }
 
+/**
+ * Interfaccia per una generica funzione di ordinamento,
+ * che ha come argomenti (in ordine):
+ * 1) il riferimento al primo elemento di un array
+ * 2) l'inizio del range da ordinare nell'array
+ * 3) la fine del range da ordinare nell'array
+ */
 typedef void(*algoPtr)(int*, int, int);
 
+/**
+ * Seleziona un algoritmo di ordinamento scegliendolo
+ * in base alla stringa passata come argomento.
+ * Vedi `algo_ptr`.
+ */
 algoPtr selectAlgorithm(char *algoName) {
     if (strcmp(algoName, "INSERTIONSORT")) {
         return &insertionSort;
@@ -130,16 +156,6 @@ algoPtr selectAlgorithm(char *algoName) {
     }
 }
 
-// funzione antagonista: controlla che un array sia ordinato
-int check(int *arr, int size) {
-    for (int i=1; i<size; i++) {
-        if (arr[i] < arr[i-1]) {
-            return -1;
-        }
-    }
-
-    return 1;
-}
 
 /*
     Esegue un numero di misurazioni pari a quelle di 'repetitions'.
