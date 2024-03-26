@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 with open("report.txt", "r") as f:
     lines = f.readlines()
 
-algos = ["INSERTION", "MERGE"]
+algos = ["INSERTION", "MERGE", "HYBRIDMERGE"]
 
 x_data = list(map(int, lines[0].split()))
 y_data = [list(map(float, line.split())) for line in lines[1:]]

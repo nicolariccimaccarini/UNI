@@ -9,6 +9,9 @@
 #define MAX_ALGO 16
 #define MAX_ALGO_BUFF 64
 
+// soglia di ibridazione per `hybrid merge sort`
+#define  HYBRID_MS_K 90
+
 /**
  * Parametri di un esperimento.
  *
@@ -63,8 +66,8 @@ void init(struct configuration *config) {
     // TODO: prova a scrivere un ciclo che chiede all'utente 
     // quanti algoritmi vuole, e inserisca i loro nomi tra una
     // lista di proposte.
-    int n_algorithms = 2;
-    char *algos[] = {"INSERTION", "MERGE"};
+    int n_algorithms = 3;
+    char *algos[] = {"INSERTION", "MERGE", "HYBRIDMERGE"};
     
     config->n_algorithms = n_algorithms;
     for (int algo_idx=0; algo_idx < n_algorithms; algo_idx++) {
@@ -148,6 +151,21 @@ void merge_sort(int *arr, int start, int end) {
 }
 
 /**
+ * Implementazione di `hybrid merge sort`.
+ */
+void hybrid_merge_sort(int *arr, int start, int end) {
+    if (end-start > HYBRID_MS_K) {
+        int mid = start + (end-start) / 2;
+        merge_sort(arr, start, mid);
+        merge_sort(arr, mid+1, end);
+        merge(arr, start, mid, end);
+    }
+    else {
+        insertion_sort(arr, start, end);
+    }
+}
+
+/**
  * Interfaccia per una generica funzione di ordinamento,
  * che ha come argomenti (in ordine):
  * 1) il riferimento al primo elemento di un array
@@ -166,6 +184,8 @@ algo_ptr select_algorithm(char *algo_name) {
         return &insertion_sort;
     } else if(strcmp(algo_name, "MERGE") == 0) {
         return &merge_sort;
+    } else if(strcmp(algo_name, "HYBRIDMERGE") == 0) {
+        return &hybrid_merge_sort;
     } else {
         printf("Errore - l'algoritmo selezionato non è disponibile.");
         exit(-1);
