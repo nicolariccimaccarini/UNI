@@ -53,7 +53,7 @@ void pianetaSpritz(FILE* in_file, FILE *out_file, int dimension) {
     // controllo che N e Q rispettino i vincoli
     if (N < 1 || N > 102 || Q < 1 || Q > 10000){
         fprintf(stderr, "N e Q non rispettano i vincoli imposti");
-        return -3;
+        return -1;
     }
 
     /* alloco dinamicamente la memoria per l'array di struct 'coords' 
@@ -69,14 +69,24 @@ void pianetaSpritz(FILE* in_file, FILE *out_file, int dimension) {
         coordinates[i].x = x;
         coordinates[i].y = y;
         coordinates[i].z = z;
+
+        if ((x < pow(-2, 30) || x > pow(2, 30)) && (y < pow(-2, 30) || y > pow(2, 30)) && (z < pow(-2, 30) || z > pow(2, 30))) {
+            fprintf(stderr, "Errorre vincoli coordinate");
+            return -1;
+        }
     }
 
     // leggo e salvo le Q righe rimanenti conenenti i raggi 
     for (int i=0; i<Q; i++) {
         // i = raggio letto
         fscanf(in_file, "%d", &radius[i]);
+        if (radius[i] < 0 || radius[i] > pow(2, 31)) {
+            fprintf(stderr, "Errori vincoli sul raggio");
+            return -1;
+        }
     }
     
+    // checkConstraints();
     checkRadius(coordinates, radius, N, Q, dimension, out_file);
 
     free(coordinates);
