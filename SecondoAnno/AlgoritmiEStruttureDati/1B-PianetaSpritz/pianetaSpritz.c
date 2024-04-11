@@ -2,32 +2,53 @@
 #include <stdlib.h>
 #include <math.h>
 
-typedef struct
-{
-    long long x;
-    long long y;
-    long long z;
-} coords;
+void merge(double arr[], int left, int mid, int right) {
+    int i, j, k;
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-/*
-funzione che preso ogni set di coordinate ne calcola la distanza dal centro tramite questa formula: sqrt(x^2 + y^2 + z^2)
-se la distanza e' minore del raggio incrementa un contatore e a fine di ogni raggio 
-stampa su out_file il numero di set di coordinate che rientra nel raggio
-*/
-void checkRadius(coords coordinates[], unsigned int radius[], int N, int Q, FILE *out_file) {
-    for (int i=0; i<Q; i++) {
-        int insideCount = 0;
+    double L[n1], R[n2];
 
-        for (int j=0; j<N; j++) {
-            
-            double distance = sqrt(pow(coordinates[j].x, 2) + pow(coordinates[j].y, 2) + pow(coordinates[j].z, 2));
+    for (i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
 
-            if (distance <= radius[i]) {
-                insideCount++;
-            }
+    i = 0; 
+    j = 0; 
+    k = left; 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
         }
-        // stampo insideCount in output.txt
-        fprintf(out_file, "%d\n", insideCount);
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(double arr[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        merge(arr, left, mid, right);
     }
 }
 
@@ -37,29 +58,39 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
 
     /* alloco dinamicamente la memoria per l'array di struct 'coords' 
     e l'array di interi dove andranno memorizzati i Q raggi */
-    coords* coordinates = (coords*) malloc(N * sizeof(coords));
-    unsigned int* radius = (unsigned int*) malloc(Q * sizeof(unsigned int));
+    unsigned int radius;
+    double* distance = (double*) malloc(N * sizeof(double));
+    int insideCount = 0;
 
     // leggo e salvo le coordinate
     for (int i=0; i<N; i++) {
         long long x, y, z;
         fscanf(in_file, "%lld %lld %lld", &x, &y, &z);
 
-        coordinates[i].x = x;
-        coordinates[i].y = y;
-        coordinates[i].z = z;
+        distance[i] = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
     }
+
+    // Call mergeSort function
+    mergeSort(distance, 0, N - 1);
 
     // leggo e salvo le Q righe rimanenti conenenti i raggi 
     for (int i=0; i<Q; i++) {
         // i = raggio letto
-        fscanf(in_file, "%u", &radius[i]);
-    }
-    
-    checkRadius(coordinates, radius, N, Q, out_file);
+        insideCount = 0;
+        fscanf(in_file, "%u", &radius);
 
-    free(coordinates);
-    free(radius);
+        for (int j=0; i<N; j++) {
+            if (distance[j] <= radius) {
+                insideCount++;
+            } else {
+                break;
+            }
+        }
+
+        fprintf(out_file, "%d\n", insideCount);
+    }
+
+    free(distance);
 }
 
 int main(void) {

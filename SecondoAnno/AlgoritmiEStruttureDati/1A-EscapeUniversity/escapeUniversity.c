@@ -59,7 +59,6 @@ void mergeSort(valu arr[], int left, int right) {
     }
 }
 
-
 int binarySearch(valu arr[], int left, int right, int target) {
     if (right >= left) {
         int mid = left + (right - left) / 2;
