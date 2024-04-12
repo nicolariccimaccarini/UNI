@@ -69,7 +69,7 @@ void solve(valu *values, int values_size, int query, FILE *out_file) {
     if (p.val == query) {
         fprintf(out_file, "%d ", p.id);
     } else {
-        fprintf(out_file, "NULL");
+        fprintf(out_file, "NULL ");
     }
 }
 

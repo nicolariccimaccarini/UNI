@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <math.h>
 
-void merge(double arr[], int left, int mid, int right) {
+void merge(double* arr, int left, int mid, int right) {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    double L[n1], R[n2];
+    // con calloc inizializzo la memoria allocata a 0 prevenendo errori non deterministici dovuti a valori di memoria non utilizzati
+    double *L = (double*) calloc(n1, sizeof(double));
+    double *R = (double*) calloc(n2, sizeof(double));
 
     for (i = 0; i < n1; i++)
         L[i] = arr[left + i];
@@ -39,9 +41,12 @@ void merge(double arr[], int left, int mid, int right) {
         j++;
         k++;
     }
+
+    free(L);
+    free(R);
 }
 
-void mergeSort(double arr[], int left, int right) {
+void mergeSort(double* arr, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
 
@@ -52,6 +57,20 @@ void mergeSort(double arr[], int left, int right) {
     }
 }
 
+int iterativeBinarySearch(double* arr, int start, int end, unsigned int radius) {
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] <= radius) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    return start;
+}
+
 void pianetaSpritz(FILE* in_file, FILE *out_file) {
     int N, Q;   
     fscanf(in_file, "%d %d", &N, &Q);
@@ -59,7 +78,7 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
     /* alloco dinamicamente la memoria per l'array di struct 'coords' 
     e l'array di interi dove andranno memorizzati i Q raggi */
     unsigned int radius;
-    double* distance = (double*) malloc(N * sizeof(double));
+    double* distance = (double*) calloc(N, sizeof(double));
     int insideCount = 0;
 
     // leggo e salvo le coordinate
@@ -70,22 +89,13 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
         distance[i] = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
     }
 
-    // Call mergeSort function
-    mergeSort(distance, 0, N - 1);
+    mergeSort(distance, 0, N-1);
 
     // leggo e salvo le Q righe rimanenti conenenti i raggi 
     for (int i=0; i<Q; i++) {
-        // i = raggio letto
-        insideCount = 0;
         fscanf(in_file, "%u", &radius);
 
-        for (int j=0; i<N; j++) {
-            if (distance[j] <= radius) {
-                insideCount++;
-            } else {
-                break;
-            }
-        }
+        insideCount = iterativeBinarySearch(distance, 0, N, radius);
 
         fprintf(out_file, "%d\n", insideCount);
     }
