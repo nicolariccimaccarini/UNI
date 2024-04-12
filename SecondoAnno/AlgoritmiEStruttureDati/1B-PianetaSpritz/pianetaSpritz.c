@@ -7,7 +7,6 @@ void merge(double* arr, int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    // con calloc inizializzo la memoria allocata a 0 prevenendo errori non deterministici dovuti a valori di memoria non utilizzati
     double *L = (double*) calloc(n1, sizeof(double));
     double *R = (double*) calloc(n2, sizeof(double));
 
