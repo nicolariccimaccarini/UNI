@@ -57,19 +57,18 @@ void mergeSort(double* arr, int left, int right) {
 }
 
 int recursiveBinarySearch(double* arr, int start, int end, unsigned int radius) {
-    if (start <= end) {
-        int mid = start + (end - start) / 2;
-
-        if (arr[mid] == radius) {
-            return mid;
-        } else if (arr[mid] < radius) {
-            return recursiveBinarySearch(arr, mid + 1, end, radius);
-        } else {
-            return recursiveBinarySearch(arr, start, mid - 1, radius);
-        }
+    if (start >= end) {
+        if (radius >= arr[start]) return start + 1;
+        if (radius < arr[start]) return start;
     }
 
-    return -1;
+    int mid = (start + end) / 2;
+
+    if (arr[mid] <= radius) {
+        return recursiveBinarySearch(arr, mid+1, end, radius);
+    } else {
+        return recursiveBinarySearch(arr, start, mid-1, radius);
+    }
 }
 
 void pianetaSpritz(FILE* in_file, FILE *out_file) {
@@ -97,7 +96,7 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
     for (int i=0; i<Q; i++) {
         fscanf(in_file, "%u", &radius);
 
-        insideCount = recursiveBinarySearch(distance, 0, N, radius);
+        insideCount = recursiveBinarySearch(distance, 0, N-1, radius);
 
         fprintf(out_file, "%d\n", insideCount);
     }
