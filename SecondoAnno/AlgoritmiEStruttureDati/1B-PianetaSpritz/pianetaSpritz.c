@@ -56,18 +56,20 @@ void mergeSort(double* arr, int left, int right) {
     }
 }
 
-int iterativeBinarySearch(double* arr, int start, int end, unsigned int radius) {
-    while (start <= end) {
+int recursiveBinarySearch(double* arr, int start, int end, unsigned int radius) {
+    if (start <= end) {
         int mid = start + (end - start) / 2;
 
-        if (arr[mid] <= radius) {
-            start = mid + 1;
+        if (arr[mid] == radius) {
+            return mid;
+        } else if (arr[mid] < radius) {
+            return recursiveBinarySearch(arr, mid + 1, end, radius);
         } else {
-            end = mid - 1;
+            return recursiveBinarySearch(arr, start, mid - 1, radius);
         }
     }
 
-    return start;
+    return -1;
 }
 
 void pianetaSpritz(FILE* in_file, FILE *out_file) {
@@ -88,13 +90,14 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
         distance[i] = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
     }
 
+    // ordino i bar per distanza dal centro
     mergeSort(distance, 0, N-1);
 
     // leggo e salvo le Q righe rimanenti conenenti i raggi 
     for (int i=0; i<Q; i++) {
         fscanf(in_file, "%u", &radius);
 
-        insideCount = iterativeBinarySearch(distance, 0, N, radius);
+        insideCount = recursiveBinarySearch(distance, 0, N, radius);
 
         fprintf(out_file, "%d\n", insideCount);
     }
