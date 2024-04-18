@@ -75,8 +75,6 @@ void pianetaSpritz(FILE* in_file, FILE *out_file) {
     int N, Q;   
     fscanf(in_file, "%d %d", &N, &Q);
 
-    /* alloco dinamicamente la memoria per l'array di struct 'coords' 
-    e l'array di interi dove andranno memorizzati i Q raggi */
     unsigned int radius;
     double* distance = (double*) calloc(N, sizeof(double));
     int insideCount = 0;
