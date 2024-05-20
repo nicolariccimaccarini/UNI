@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+		        
+		<title>Esercitazione 1 - Modulo anagrafica</title>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+		<style>
+			body {
+				max-width: 1200px;
+			}
+		</style>
+    </head>
+    
+    <body>
+        <section>
+            <h1>Modulo per la Raccolta dei Dati Anagrafici</h1>
+            <p>Si prega di compilare il seguente modulo con le informazioni richieste.</p>
+        </section>
+
+		<form action="process_anagrafica.php" method="POST">
+			<fieldset>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required><br>
+        
+                <label for="cognome">Cognome:</label>
+                <input type="text" id="cognome" name="cognome" required><br>
+        
+                <label for="data_di_nascita">Data di Nascita:</label>
+                <input type="date" id="data_di_nascita" name="data_di_nascita" required><br>
+        
+                <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required><br>
+        
+                <button type="submit">Invia</button>
+			</fieldset>
+		</form>
+	</body>
+	
+</html>
