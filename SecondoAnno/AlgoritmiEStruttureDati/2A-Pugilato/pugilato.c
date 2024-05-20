@@ -2,25 +2,26 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX_SIZE 1000000
-
-#define WHITE 0
-#define GREY  1
-#define BLACK 2
-
 // creo la struttura dati di un grafo indiretto usando una lista di adiacenza
 typedef struct Node {
     int vertex;
     struct Node* next;
-    struct Node* prev;
 } Node;
 
 
 typedef struct Graph {
     int numVertices;
-    Node** adjLists;
-    int *colors;
+    Node **adjLists;
+    bool *visited;
+    int *parent_vertices;
 } Graph;
+
+
+typedef struct Stack {
+    int *array;
+    int top;
+    int max_size;
+} Stack;
 
 
 Node* createNode(int v) {
@@ -33,13 +34,18 @@ Node* createNode(int v) {
 
 Graph* createGraph(int vertices) {
     Graph *graph = malloc(sizeof(Graph));
+
     graph->numVertices = vertices;
     graph->adjLists = (Node **) malloc(vertices * sizeof(Node*));
-    graph->colors = (int *) malloc(vertices * sizeof(int));
+        graph->visited = (bool *) malloc(vertices * sizeof(bool));
+    graph->parent_vertices = (int *) malloc(vertices * sizeof(int));
+    
     for (int i = 0; i < vertices; i++) {
         graph->adjLists[i] = NULL;
-        graph->colors[i] = WHITE;
+        graph->visited[i] = false;
+        graph->parent_vertices[i] = -1;
     }
+
     return graph;
 }
 
@@ -55,52 +61,6 @@ void addEdge(Graph *graph, int src, int dest) {
 }
 
 
-bool depthVisit(Graph *graph, int vertex) {
-    int stack[MAX_SIZE];
-    int top = -1;
-
-    graph->colors[vertex] = GREY;
-
-    stack[++top] = vertex;
-
-    while (top != -1) {
-        int currentVertex = stack[top--];
-
-        Node *adjList = graph->adjLists[currentVertex];
-
-        while (adjList != NULL) {
-            int connectedVertex = adjList->vertex;
-
-            if (graph->colors[connectedVertex] == WHITE) {
-                graph->colors[connectedVertex] = GREY;
-                stack[++top] = connectedVertex;
-            } else if (graph->colors[connectedVertex] == GREY) {
-                return true;
-            }
-
-            adjList = adjList->next;
-        }
-
-        graph->colors[currentVertex] = BLACK;
-    }
-
-    return false;
-}
-
-
-bool depthFirstSearch(Graph *graph) {
-    for (int i = 0; i < graph->numVertices; i++) {
-        if (graph->adjLists[i] != NULL && graph->colors[i] == WHITE) {
-            if (depthVisit(graph, i)) {
-                return true;
-            }
-        }
-    }
- 
-    return false;
-}
-
-
 void freeGraph(Graph *graph) {
     Node *adjList, *tmp;
 
@@ -113,8 +73,97 @@ void freeGraph(Graph *graph) {
         }
     }
     free(graph->adjLists);
-    free(graph->colors);
+    free(graph->visited);
+    free(graph->parent_vertices);
     free(graph);
+}
+
+
+Stack *create_stack(int max_size) {
+    Stack *stack = (Stack *) malloc(sizeof(Stack));
+ 
+    stack->array = (int *) malloc(max_size * sizeof(int));
+    stack->top = -1;
+    stack->max_size = max_size;
+ 
+    return stack;
+}
+
+
+void push_stack(Stack *stack, int value) {
+    stack->array[++stack->top] = value;
+}
+ 
+ 
+int pop_stack(Stack *stack) {
+    return stack->array[stack->top--];
+}
+ 
+ 
+bool is_empty_stack(Stack *stack) {
+    return stack->top == -1;
+}
+ 
+ 
+void free_stack(Stack *stack) {
+    free(stack->array);
+    free(stack);
+}
+
+
+bool depth_visit(Graph *graph, Stack *stack, int start_vertex) {
+    Node *adj_list_node;
+    int current_vertex, adj_vertex;
+ 
+    push_stack(stack, start_vertex);
+ 
+    while (!is_empty_stack(stack)) {
+        current_vertex = pop_stack(stack);
+        graph->visited[current_vertex] = true;
+ 
+        adj_list_node = graph->adj_lists[current_vertex];
+ 
+        while (adj_list_node != NULL) {
+            adj_vertex = adj_list_node->vertex;
+ 
+            if (adj_vertex != graph->parent_vertices[current_vertex]) {
+                if (graph->visited[adj_vertex]) {
+                    return false;
+                }
+                graph->parent_vertices[adj_vertex] = current_vertex;
+                push_stack(stack, adj_vertex);
+            }
+ 
+            adj_list_node = adj_list_node->next;
+        }
+    }
+
+    return true;
+}
+
+
+bool depthFirstSearch(Graph *graph, Stack *stack) {
+    for (int i = 0; i < graph->num_vertices; i++) {
+        if (graph->adj_lists[i] != NULL && !graph->visited[i]) {
+            if (!depth_visit(graph, stack, i)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+bool isAcyclic(Graph *graph) {
+    Stack *stack;
+    bool is_acyclic;
+
+    stack = create_stack(graph->numVertices);
+    is_acyclic = depthFirstSearch(graph, stack);
+
+    free_stack(stack);
+
+    return is_acyclic;
 }
 
 
