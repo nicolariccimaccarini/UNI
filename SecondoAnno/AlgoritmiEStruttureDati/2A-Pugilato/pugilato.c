@@ -62,30 +62,62 @@ void addEdge(Graph *graph, int src, int dest) {
 }
 
 
+Stack *createStack(int maxSize) {
+    Stack *stack = (Stack *) malloc(sizeof(Stack));
+
+    stack->array = (int *) malloc(maxSize * sizeof(int));
+    stack->top = -1;
+    stack->maxSize = maxSize;
+
+    return stack;
+}
+
+
+void pushStack(Stack *stack, int element) {
+    stack->array[++stack->top] = element;
+}
+
+
+int popStack(Stack *stack) {
+    return stack->array[stack->top--];
+}
+
+
+bool isEmptyStack(Stack *stack) {
+    return stack->top == -1;
+}
+
+
+void freeStack(Stack *stack) {
+    free(stack->array);
+    free(stack);
+}
+
 // Utilizzo la DFS colorando i nodi per verificare se una componente del grafo e' bipartita
 bool isBipartite(Graph *graph, int startVertex) {
-    int *stack = (int *) malloc(graph->numVertices * sizeof(int));
-    int top = -1;
-    stack[++top] = startVertex;
+    Stack *stack = createStack(graph->numVertices);
+
+    pushStack(stack, startVertex);
     graph->colors[startVertex] = 0;
 
-    while (top != -1) {
-        int vertex = stack[top--];
+    while (!isEmptyStack(stack)) {
+        int vertex = popStack(stack);
         Node *adjList = graph->adjLists[vertex];
+
         while (adjList != NULL) {
             int adjVertex = adjList->vertex;
             if (graph->colors[adjVertex] == -1) {
                 graph->colors[adjVertex] = 1 - graph->colors[vertex]; // color with opposite color
-                stack[++top] = adjVertex;
+                pushStack(stack, adjVertex);
             } else if (graph->colors[adjVertex] == graph->colors[vertex]) {
-                free(stack);
+                freeStack(stack);
                 return false;
             }
             adjList = adjList->next;
         }
     }
 
-    free(stack);
+    freeStack(stack);
     return true;
 }
 
