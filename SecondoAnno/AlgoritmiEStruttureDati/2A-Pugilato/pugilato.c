@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// creo la struttura dati di un grafo indiretto usando una lista di adiacenza
+
+// Struttura dati del grafo
 typedef struct Node {
     int vertex;
     struct Node* next;
@@ -12,11 +13,11 @@ typedef struct Node {
 typedef struct Graph {
     int numVertices;
     Node **adjLists;
-    bool *visited;
-    int *parentVertices;
+    int *colors; // -1: uncolored, 0: color 0, 1: color 1
 } Graph;
 
 
+// creo la stack
 typedef struct Stack {
     int *array;
     int top;
@@ -32,24 +33,24 @@ Node* createNode(int v) {
 }
 
 
+// Creo un grafo inizializzando le liste di adiacenza e i colori dei nodi.
 Graph* createGraph(int vertices) {
     Graph *graph = malloc(sizeof(Graph));
 
     graph->numVertices = vertices;
     graph->adjLists = (Node **) malloc(vertices * sizeof(Node*));
-    graph->visited = (bool *) malloc(vertices * sizeof(bool));
-    graph->parentVertices = (int *) malloc(vertices * sizeof(int));
+    graph->colors = (int *) malloc(vertices * sizeof(int));
     
     for (int i = 0; i < vertices; i++) {
         graph->adjLists[i] = NULL;
-        graph->visited[i] = false;
-        graph->parentVertices[i] = -1;
+        graph->colors[i] = -1;
     }
 
     return graph;
 }
 
 
+// Aggiungo un lato non orientato tra due nodi del grafo.
 void addEdge(Graph *graph, int src, int dest) {
     Node* newNode = createNode(dest);
     newNode->next = graph->adjLists[src];
@@ -61,109 +62,61 @@ void addEdge(Graph *graph, int src, int dest) {
 }
 
 
-void freeGraph(Graph *graph) {
-    Node *adjList, *tmp;
+// Utilizzo la DFS colorando i nodi per verificare se una componente del grafo e' bipartita
+bool isBipartite(Graph *graph, int startVertex) {
+    int *stack = (int *) malloc(graph->numVertices * sizeof(int));
+    int top = -1;
+    stack[++top] = startVertex;
+    graph->colors[startVertex] = 0;
 
-    for (int v = 0; v < graph->numVertices; v++) {
-        adjList = graph->adjLists[v];
+    while (top != -1) {
+        int vertex = stack[top--];
+        Node *adjList = graph->adjLists[vertex];
         while (adjList != NULL) {
-            tmp = adjList;
-            adjList = adjList->next;
-            free(tmp);
-        }
-    }
-    free(graph->adjLists);
-    free(graph->visited);
-    free(graph->parentVertices);
-    free(graph);
-}
-
-
-Stack *createStack(int maxSize) {
-    Stack *stack = (Stack *) malloc(sizeof(Stack));
- 
-    stack->array = (int *) malloc(maxSize * sizeof(int));
-    stack->top = -1;
-    stack->maxSize = maxSize;
- 
-    return stack;
-}
-
-
-void pushStack(Stack *stack, int value) {
-    stack->array[++stack->top] = value;
-}
- 
- 
-int popStack(Stack *stack) {
-    return stack->array[stack->top--];
-}
- 
- 
-bool isEmptyStack(Stack *stack) {
-    return stack->top == -1;
-}
- 
- 
-void freeStack(Stack *stack) {
-    free(stack->array);
-    free(stack);
-}
-
-
-bool depthVisit(Graph *graph, Stack *stack, int startVertex) {
-    Node *adjListNode;
-    int currentVertex, adjVertex;
- 
-    pushStack(stack, startVertex);
- 
-    while (!isEmptyStack(stack)) {
-        currentVertex = popStack(stack);
-        graph->visited[currentVertex] = true;
- 
-        adjListNode = graph->adjLists[currentVertex];
- 
-        while (adjListNode != NULL) {
-            adjVertex = adjListNode->vertex;
- 
-            if (adjVertex != graph->parentVertices[currentVertex]) {
-                if (graph->visited[adjVertex]) {
-                    return false;
-                }
-                graph->parentVertices[adjVertex] = currentVertex;
-                pushStack(stack, adjVertex);
+            int adjVertex = adjList->vertex;
+            if (graph->colors[adjVertex] == -1) {
+                graph->colors[adjVertex] = 1 - graph->colors[vertex]; // color with opposite color
+                stack[++top] = adjVertex;
+            } else if (graph->colors[adjVertex] == graph->colors[vertex]) {
+                free(stack);
+                return false;
             }
- 
-            adjListNode = adjListNode->next;
+            adjList = adjList->next;
         }
     }
 
+    free(stack);
     return true;
 }
 
 
-bool depthFirstSearch(Graph *graph, Stack *stack) {
-    for (int i = 0; i < graph->numVertices; i++) {
-        if (graph->adjLists[i] != NULL && !graph->visited[i]) {
-            if (!depthVisit(graph, stack, i)) {
+// Controllo se il grafo puo' essere partizionato in due insiemi senza avere rivalita' interne
+bool canBePartitioned(Graph *graph) {
+    for (int i=0; i<graph->numVertices; i++) {
+        if (graph->colors[i] == -1) {
+            if (!isBipartite(graph, i)) {
                 return false;
             }
         }
     }
+
     return true;
 }
 
 
-bool isAcyclic(Graph *graph) {
-    Stack *stack;
-    bool res;
+void freeGraph(Graph *graph) {
+    for (int i = 0; i < graph->numVertices; i++) {
+        Node* adjList = graph->adjLists[i];
+        while (adjList != NULL) {
+            Node* tmp = adjList;
+            adjList = adjList->next;
+            free(tmp);
+        }
+    }
 
-    stack = createStack(graph->numVertices);
-    res = depthFirstSearch(graph, stack);
-
-    freeStack(stack);
-
-    return res;
+    free(graph->adjLists);
+    free(graph->colors);
+    free(graph);
 }
 
 
@@ -183,7 +136,7 @@ int pugilato(FILE *in_file, FILE *out_file) {
         addEdge(grafo, boxer1, boxer2);             // creo il collegamento
     }
 
-    fprintf(out_file, (isAcyclic(grafo)) ? "TRUE\n" : "FALSE\n");
+    fprintf(out_file, (canBePartitioned(grafo)) ? "TRUE\n" : "FALSE\n");
 
     freeGraph(grafo);
     
