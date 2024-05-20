@@ -13,14 +13,14 @@ typedef struct Graph {
     int numVertices;
     Node **adjLists;
     bool *visited;
-    int *parent_vertices;
+    int *parentVertices;
 } Graph;
 
 
 typedef struct Stack {
     int *array;
     int top;
-    int max_size;
+    int maxSize;
 } Stack;
 
 
@@ -37,13 +37,13 @@ Graph* createGraph(int vertices) {
 
     graph->numVertices = vertices;
     graph->adjLists = (Node **) malloc(vertices * sizeof(Node*));
-        graph->visited = (bool *) malloc(vertices * sizeof(bool));
-    graph->parent_vertices = (int *) malloc(vertices * sizeof(int));
+    graph->visited = (bool *) malloc(vertices * sizeof(bool));
+    graph->parentVertices = (int *) malloc(vertices * sizeof(int));
     
     for (int i = 0; i < vertices; i++) {
         graph->adjLists[i] = NULL;
         graph->visited[i] = false;
-        graph->parent_vertices[i] = -1;
+        graph->parentVertices[i] = -1;
     }
 
     return graph;
@@ -74,67 +74,67 @@ void freeGraph(Graph *graph) {
     }
     free(graph->adjLists);
     free(graph->visited);
-    free(graph->parent_vertices);
+    free(graph->parentVertices);
     free(graph);
 }
 
 
-Stack *create_stack(int max_size) {
+Stack *createStack(int maxSize) {
     Stack *stack = (Stack *) malloc(sizeof(Stack));
  
-    stack->array = (int *) malloc(max_size * sizeof(int));
+    stack->array = (int *) malloc(maxSize * sizeof(int));
     stack->top = -1;
-    stack->max_size = max_size;
+    stack->maxSize = maxSize;
  
     return stack;
 }
 
 
-void push_stack(Stack *stack, int value) {
+void pushStack(Stack *stack, int value) {
     stack->array[++stack->top] = value;
 }
  
  
-int pop_stack(Stack *stack) {
+int popStack(Stack *stack) {
     return stack->array[stack->top--];
 }
  
  
-bool is_empty_stack(Stack *stack) {
+bool isEmptyStack(Stack *stack) {
     return stack->top == -1;
 }
  
  
-void free_stack(Stack *stack) {
+void freeStack(Stack *stack) {
     free(stack->array);
     free(stack);
 }
 
 
-bool depth_visit(Graph *graph, Stack *stack, int start_vertex) {
-    Node *adj_list_node;
-    int current_vertex, adj_vertex;
+bool depthVisit(Graph *graph, Stack *stack, int startVertex) {
+    Node *adjListNode;
+    int currentVertex, adjVertex;
  
-    push_stack(stack, start_vertex);
+    pushStack(stack, startVertex);
  
-    while (!is_empty_stack(stack)) {
-        current_vertex = pop_stack(stack);
-        graph->visited[current_vertex] = true;
+    while (!isEmptyStack(stack)) {
+        currentVertex = popStack(stack);
+        graph->visited[currentVertex] = true;
  
-        adj_list_node = graph->adj_lists[current_vertex];
+        adjListNode = graph->adjLists[currentVertex];
  
-        while (adj_list_node != NULL) {
-            adj_vertex = adj_list_node->vertex;
+        while (adjListNode != NULL) {
+            adjVertex = adjListNode->vertex;
  
-            if (adj_vertex != graph->parent_vertices[current_vertex]) {
-                if (graph->visited[adj_vertex]) {
+            if (adjVertex != graph->parentVertices[currentVertex]) {
+                if (graph->visited[adjVertex]) {
                     return false;
                 }
-                graph->parent_vertices[adj_vertex] = current_vertex;
-                push_stack(stack, adj_vertex);
+                graph->parentVertices[adjVertex] = currentVertex;
+                pushStack(stack, adjVertex);
             }
  
-            adj_list_node = adj_list_node->next;
+            adjListNode = adjListNode->next;
         }
     }
 
@@ -143,9 +143,9 @@ bool depth_visit(Graph *graph, Stack *stack, int start_vertex) {
 
 
 bool depthFirstSearch(Graph *graph, Stack *stack) {
-    for (int i = 0; i < graph->num_vertices; i++) {
-        if (graph->adj_lists[i] != NULL && !graph->visited[i]) {
-            if (!depth_visit(graph, stack, i)) {
+    for (int i = 0; i < graph->numVertices; i++) {
+        if (graph->adjLists[i] != NULL && !graph->visited[i]) {
+            if (!depthVisit(graph, stack, i)) {
                 return false;
             }
         }
@@ -156,21 +156,20 @@ bool depthFirstSearch(Graph *graph, Stack *stack) {
 
 bool isAcyclic(Graph *graph) {
     Stack *stack;
-    bool is_acyclic;
+    bool res;
 
-    stack = create_stack(graph->numVertices);
-    is_acyclic = depthFirstSearch(graph, stack);
+    stack = createStack(graph->numVertices);
+    res = depthFirstSearch(graph, stack);
 
-    free_stack(stack);
+    freeStack(stack);
 
-    return is_acyclic;
+    return res;
 }
 
 
 int pugilato(FILE *in_file, FILE *out_file) {
     int N, M;           // N = numero totale di pugili --- M = numero di match (n righe dopo N e M)
     int boxer1, boxer2; // pugili che si scontrano per ogni match
-    bool isAcyclic = false;
 
     Graph *grafo;       // creo il grafo
 
@@ -184,12 +183,7 @@ int pugilato(FILE *in_file, FILE *out_file) {
         addEdge(grafo, boxer1, boxer2);             // creo il collegamento
     }
 
-    isAcyclic = depthFirstSearch(grafo);
-    if (isAcyclic) {
-        fprintf(out_file, "FALSE");
-    } else {
-        fprintf(out_file, "TRUE");
-    }
+    fprintf(out_file, (isAcyclic(grafo)) ? "TRUE\n" : "FALSE\n");
 
     freeGraph(grafo);
     
