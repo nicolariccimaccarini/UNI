@@ -2,16 +2,16 @@
 
     include_once('connsessione.php');
 
-    $NOME_BATT  = $_POST['NOME_BATT'];
-    $INIZ_INT   = $_POST['INIZ_INT'];
-    $COGNOME    = $_POST['COGNOME'];
-    $SSN        = $_POST['SSN'];
-    $DATA_N     = $_POST['DATA_N'];
+    $NOME_BATT     = $_POST['NOME_BATT'];
+    $INIZ_INT      = $_POST['INIZ_INT'];
+    $COGNOME       = $_POST['COGNOME'];
+    $SSN           = $_POST['SSN'];
+    $DATA_N        = $_POST['DATA_N'];
     $INDIRIZZO     = $_POST['INDIRIZZO'];
     $SESSO         = $_POST['SESSO'];
     $STIPENDIO     = $_POST['STIPENDIO'];
     $SUPER_SSN     = $_POST['SUPER_SSN'];
-    $N_D         = $_POST['N_D'];
+    $N_D           = $_POST['N_D'];
 
     $sql = "INSERT INTO IMPIEGATO
                 VALUES ('$NOME_BATT', '$INIZ_INT', '$COGNOME', '$SSN', 
