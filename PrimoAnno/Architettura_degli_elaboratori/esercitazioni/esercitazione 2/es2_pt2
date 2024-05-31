@@ -1,0 +1,40 @@
+.data
+A: .word 15
+B: .word 10
+C: .word 7
+D: .word 2
+E: .word 18
+F: .word -3
+testo: .asciiz "il risultato vale: "
+
+.text
+lw $s0, A
+lw $s1, B
+add $t0, $s0, $s1 	# A + B in $t0
+
+lw $s0, C
+lw $s0, D
+sub $t1, $s0, $s1 	# C - D in $t1
+
+lw $s0, E
+lw $s0, F
+add $t2, $s0, $s1 	# E + F in $t2
+
+lw $s0, A
+lw $s1, C
+sub $t3, $s0, $s1 	# A - C in $t3
+
+add $t0, $t0, $t1 	
+add $t0, $t0, $t2
+sub $t0, $t0, $t3
+
+la $a0, testo
+li $v0, 4
+syscall
+
+move $a0, $t0
+li $v0, 1
+syscall
+
+li $v0, 10
+syscall
