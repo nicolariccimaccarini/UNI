@@ -3,74 +3,183 @@
 #include <limits.h>
 #include <stdbool.h>
 
+#define MAXN 10004
+#define MAXM 100005
 
-// Represents an edge in a graph.
+
 typedef struct {
-    int u;  // source vertex
-    int v;  // destination vertex
-    int w;  // weight of the edge
+    int dest;
+    int cost'
+    struct Edge *next'
 } Edge;
 
 
 typedef struct {
-    int v; // vertex number
-    int d; // distance from the source
-} Node;
+    Edge *head;
+} AdjList;
 
 
-// Swap two nodes in the heap
-void swap(Node *x, Node *y) {
-    Node *temp = x;
-    *x = *y;
-    *y = *temp;
+typedef struct {
+    int vertex;
+    int key;
+} MinHeapNode;
+
+
+typedef struct {
+    int size;
+    int capacity;
+    int *pos;
+    MinHeapNode **array;
+} MinHeap;
+
+
+Edge* newEdge(int dest, int cost) {
+    Edge* newNode = (Edge *) malloc(sizeof(Edge));
+    newNode->dest = dest;
+    newNode->cost = cost;
+    newNode->next = NULL;
+    return newNode;
 }
 
 
-// Find the vertex in the minumum distance
-int minimumDistance(Node *heap, bool *visited, int size) {
-    int minIndex = -1;
-
-    for (int v = 0; v < size; v++) {
-        if (!visited[v] && (minIndex == -1 || heap[v].d < heap[minIndex].d)) {
-            minIndex = v;
-        }
-    }
-
-    return minIndex;
+MinHeapNode* newMinHeapNode(int v, int key) {
+    MinHeapNode* minHeapNode = (MinHeapNode *) malloc(sizeof(MinHeapNode));
+    minHeapNode->vertex = v;
+    minHeapNode->key = key;
+    return minHeapNode;
 }
 
 
-// Using Dijkstra's algorithm for finding the minimum path
-void findMinimumPath(Edge *edges, int n, int m, FILE *out_file) {
-    Node heap[n];
-    bool visited[n];
+MinHeap* createMinHeap(int capacity) {
+    MinHeap* minHeap = (MinHeap *) malloc(sizeof(MinHeap));
+    minHeap->pos = (int *) malloc(capacity * sizeof(int));
+    minHeap->size = 0;
+    minHeap->capacity = capacity;
+    minHeap->array = (MinHeapNode **) malloc(capacity * sizeof(MinHeapNode*));
+    return minHeap;
+}
 
-    for (int v = 0; v < n; v++) {
-        heap[v].v = v;
-        heap[v].d = INT_MAX;
-        visited[v] = false;
+
+void swapMinHeapNode(MinHeapNode** a, MinHeapNode** b) {
+    MinHeapNode* t = *a;
+    *a = *b;
+    *b = t;
+}
+
+
+void minHeapify(MinHeap* minHeap, int idx) {
+    int smallest = idx;
+    int left = 2 * idx + 1;
+    int right = 2 * idx + 2;
+
+    if (left < minHeap->size && minHeap->array[left]->key < minHeap->array[smallest]->key)
+        smallest = left;
+
+    if (right < minHeap->size && minHeap->array[right]->key < minHeap->array[smallest]->key)
+        smallest = right;
+
+    if (smallest != idx) {
+        MinHeapNode *smallestNode = minHeap->array[smallest];
+        MinHeapNode *idxNode = minHeap->array[idx];
+
+        minHeap->pos[smallestNode->vertex] = idx;
+        minHeap->pos[idxNode->vertex] = smallest;
+
+        swapMinHeapNode(&minHeap->array[smallest], &minHeap->array[idx]);
+
+        minHeapify(minHeap, smallest);
+    }
+}
+
+
+int isEmpty(MinHeap *minHeap) {
+    return minHeap->size == 0;
+}
+
+
+MinHeapNode* extractMin(MinHeap* minHeap) {
+    if (isEmpty(minHeap))
+        return NULL;
+
+    MinHeapNode* root = minHeap->array[0];
+    MinHeapNode* lastNode = minHeap->array[minHeap->size - 1];
+    minHeap->array[0] = lastNode;
+
+    minHeap->pos[root->vertex] = minHeap->size - 1;
+    minHeap->pos[lastNode->vertex] = 0;
+
+    --minHeap->size;
+    minHeapify(minHeap, 0);
+
+    return root;
+}
+
+
+void decreaseKey(MinHeap* minHeap, int v, int key) {
+    int i = minHeap->pos[v];
+    minHeap->array[i]->key = key;
+
+    while (i && minHeap->array[i]->key < minHeap->array[(i - 1) / 2]->key) {
+        minHeap->pos[minHeap->array[i]->vertex] = (i-1)/2;
+        minHeap->pos[minHeap->array[(i-1)/2]->vertex] = i;
+        swapMinHeapNode(&minHeap->array[i], &minHeap->array[(i - 1) / 2]);
+
+        i = (i - 1) / 2;
+    }
+}
+
+
+int isInMinHeap(MinHeap *minHeap, int v) {
+    if (minHeap->pos[v] < minHeap->size)
+        return 1;
+    return 0;
+}
+
+
+void PrimMST(AdjList* graph, int n) {
+    int parent[MAXN];
+    int key[MAXN];
+
+    MinHeap* minHeap = createMinHeap(n);
+
+    for (int v = 1; v < n; ++v) {
+        parent[v] = -1;
+        key[v] = INT_MAX;
+        minHeap->array[v] = newMinHeapNode(v, key[v]);
+        minHeap->pos[v] = v;
     }
 
-    // set the distance from teh source to istself to 0
-    heap[0].d = 0;
+    key[0] = 0;
+    minHeap->array[0] = newMinHeapNode(0, key[0]);
+    minHeap->pos[0] = 0;
+    minHeap->size = n;
 
-    // Dijkstra algorithm
-    for (int i = 0; i < n; i++) {
-        int u = minimumDistance(heap, visited, n);
+    while (!isEmpty(minHeap)) {
+        MinHeapNode* minHeapNode = extractMin(minHeap);
+        int u = minHeapNode->vertex;
 
-        visited[u] = true;
+        Edge* pCrawl = graph[u].head;
+        while (pCrawl != NULL) {
+            int v = pCrawl->dest;
 
-        for (int j = 0; j < m; j++) {
-            int v = edges[j].v;
-            int w = edges[j].w;
-
-            if (!visited[v] && heap[u].d != INT_MAX && heap[u].d + w < heap[v].d) {
-                heap[v].d = heap[u].d + w;
+            if (isInMinHeap(minHeap, v) && pCrawl->cost < key[v]) {
+                key[v] = pCrawl->cost;
+                parent[v] = u;
+                decreaseKey(minHeap, v, key[v]);
             }
+            pCrawl = pCrawl->next;
         }
     }
 
-    fprintf(out_file, "%d\n", heap[n-1].d);
+    int totalCost = 0;
+    for (int i = 1; i < n; ++i)
+        totalCost += key[i];
+
+    FILE *outputFile = fopen("output.txt", "w");
+    if (outputFile != NULL) {
+        fprintf(outputFile, "%d\n", totalCost);
+        fclose(outputFile);
+    }
 }
 
 
@@ -78,15 +187,36 @@ int sfortuna(FILE *in_file, FILE *out_file) {
     int n, m;
     fscanf(in_file, "%d %d", &n, &m);
 
-    Edge *edges = malloc(m * sizeof(Edge));
-    for (int i = 0; i < m; i++) {
-        fscanf(in_file, "%d %d %d", &edges[i].u, &edges[i].v, &edges[i].w);
+    AdjList *graph = (AdjList *) malloc(N * sizeof(AdjList));
+    for (int i = 0; i < N; i++) 
+        graph[i].head = NULL;
+    
+    for (int i = 0; i < M; ++i) {
+        int u, v, w;
+        fscanf(inputFile, "%d %d %d", &u, &v, &w);
+
+        Edge* newNode = newEdge(v, w);
+        newNode->next = graph[u].head;
+        graph[u].head = newNode;
+
+        newNode = newEdge(u, w);
+        newNode->next = graph[v].head;
+        graph[v].head = newNode;
     }
 
-    findMinimumPath(edges, n, m, out_file);
+    PrimMST(graph, N);
 
-    // Free the memory allocated for the edges array
-    free(edges);
+        for (int i = 0; i < N; ++i) {
+        Edge* pCrawl = graph[i].head;
+        while (pCrawl != NULL) {
+            Edge* temp = pCrawl;
+            pCrawl = pCrawl->next;
+            free(temp);
+        }
+    }
+
+    free(graph);
+    return 0;
 }
 
 
