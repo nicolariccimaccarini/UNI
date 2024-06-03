@@ -31,9 +31,9 @@ Noi diciamo che un **problema** e' cio' che dobbiamo risolvere, e chiameremo **p
 
 ## Scrivere algoritmi
 In **linguistica** si distinguono tre aspetti di un linguaggio: 
-- La **sintassi** --> come strutturo una frase;
-- La **semantica** --> cosa significa una frase;
-- La **pragmatica** --> lo studio di qual'e' il miglior modo di esprimere un concetto.
+- La **sintassi** $\rightarrow$ come strutturo una frase;
+- La **semantica** $\rightarrow$ cosa significa una frase;
+- La **pragmatica** $\rightarrow$ lo studio di qual'e' il miglior modo di esprimere un concetto.
 
 Gli algoritmi non sono programmi. I programmi **descrivono** gli algoritmi, nascondendo, di fatto, l'intuizione che soggiace all'algoritmo stesso.
 **Tutti i linguaggi di programmazione sufficientemente espressivi sono ugualmente espressivi.** Questo significa che possiamo scegliere un linguaggio o un altro e non perdere nulla in termini di capacita' di risolvere il problema.
@@ -50,9 +50,9 @@ L'esistenza di un algoritmo per un problema ci da un tetto alla complessita' del
 
 ## Analizzare gli algoritmi
 Ci sono quattro caratteristiche fondamentali che ci interessano di un algoritmo:
-- **correttezza** --> affermare che esso restituisce sempre una risposta corretta;
-- **completezza** --> affermare che ogni risposta corretta e', prima o poi, effettivamente restituita
-- **terminazione** --> assicurare che per ogni input la computazione finisca
+- **correttezza** $\rightarrow$ affermare che esso restituisce sempre una risposta corretta;
+- **completezza** $\rightarrow$ affermare che ogni risposta corretta e', prima o poi, effettivamente restituita
+- **terminazione** $\rightarrow$ assicurare che per ogni input la computazione finisca
 - **complessità** 
 
 Molti problemi che vedremo sono di tipo **funzionale**: trova il minimo, il massimo, restituisci l'input ordinato, ... In questi casi, distinguere tra le caratteristiche viste prima non e' sempre conveniente ne' naturale. In generale, noi ci riferiremo semplicemente alla correttezza di un algoritmo funzionale, e diremo appunto che esso e' **corretto** solo se restituisce tutte e solamente le risposte giuste, e termina sempre.
@@ -80,13 +80,23 @@ Per la **correttezza** possiamo usare la tecnica dell'**invariante**, che consis
 
 ### Analizzare gli algoritmi: complessita' nel caso iterativo
 Passiamo allo studio della **complessità** di InsertionSort,
-![[InsertionSortComplexity.png]]
+``` Pseudocodice
+proc InsertionSort(A) {
+	for (j = 2 to A.lenght)
+		key = A[j]
+		i = j - 1
+		while ((i > 0) and (A[i] > key))
+			A[i+1] = A[i]
+			i = i - 1
+		A[i+1] = key
+}
+```
 
 c1, c2, ... sono costanti; n e' la dimensione dell'input; $t_j$ va da 2 a *n* e dipende da istanza a istanza. **Nel caso migliore** $t_j = 1$ per ogni $j = 2, ..., n$ e questo caso corrisponde all'input gia' ordinato in partenza. **Nel caso peggiore** $t_j = j$ per ogni $j = 2, ..., n$ e corrisponde all'input **ordinato in ordine inverso** in partenza. 
 
 Nel caso migliore quindi:
-		$T(n) = c_1 * n + c_2 * (n-1) + c_3 * (n-1) + c_7 * (n-1) + c_4 * (n-1)$ 
-Quindi $T(n) = a * n + b$ e' una funzione lineare per qualche costante a, b.
+$$ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_7 \cdot (n-1) + c_4 \cdot (n-1) $$ 
+Quindi $T(n) = a \cdot n + b$ e' una funzione lineare per qualche costante a, b.
 
 Nel caso peggiore invece, succede quanto segue. L'istruzione di controllo del **while** si esegue, ad ogni istanza del ciclo piu' esterno, esattamente $j$ volte; le due istruzioni interne, esattamente $j-1$ volte. Succede che: 
 $$ \sum_{j=2}^n j = \frac{n · (n+1)}{2}-1 $$
@@ -94,7 +104,7 @@ e che
 $$ \sum_{j=2}^n (j-1) = \frac{n · (n-1)}{2}$$
 
 e pertanto
-	$T(n) = C + c_4 · (\frac{n · (n+1)}{2} - 1) + c_5 · (\frac{n · (n-1)}{2}) + c_6 (\frac{n · (n-1)}2)$  
+	$$ T(n) = C + c_4 · (\frac{n · (n+1)}{2} - 1) + c_5 · (\frac{n · (n-1)}{2}) + c_6 (\frac{n · (n-1)}2) $$  
 
 dove la parte $C$ e' rimasta come nel caso migliore.
 Il risultato e' quindi una funzione *quadratica* $T(n) = a · n^2 + b · c$ per qualche a, b, c.
@@ -177,7 +187,7 @@ Esistono tre modi per la soluzione di ricorrenze:
 
 ## Soluzione di ricorrenze: sviluppo
 Il metodo dello sviluppo si basa sull'idea di **sviluppare** la ricorrenza per cercare di estrarne il comportamento.
-Se ad esempio $T(n) = T(frazione-di-n) + f(n)$, allora per calcolare *T(frazione di n)* posso ri-applicare la stessa ricorrenza, e ottenere una forma, ancora implicita, ma con un termine in piu'.
+Se ad esempio $T(n) = T(\text{frazione di n}) + f(n)$, allora per calcolare *T(frazione di n)* posso ri-applicare la stessa ricorrenza, e ottenere una forma, ancora implicita, ma con un termine in piu'.
 
 Supponiamo di risolvere $T(n) = T(\frac{n}{2})+1$
 Da $T(n) = T(\frac{n}{2})+1$, abbiamo che:
@@ -231,11 +241,11 @@ $$ \sum_{i=0}^{lob_b(n)-1}a^i · f(\frac{n}{b^i}) + Θ(n^{log_b(a)}) $$ sotto ip
 Supponiamo adesso che $f(n)$ sia ordine **polinomicamente** inferiore a $n^{log_b(a)}$; questo si scriverebbe: $f(n)=O(n^{log_b}(a)-ε)$ per un certo $ε>0$. In questo caso, valutiamo la prima parte dell'espressione precedente:
 $$
 \begin{align*}
-\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= O(\sum_{i=0}^{log_b(n)-1} a^i · (\frac{n}{b^i})^{log_b(a) - ε)} \qquad &\text{sostituzione} \\ 
-&=O(\sum_{i=0}^{log_b(n)-1} \frac{a^i · n^{log_b(a)-ε}}{b^{i · (log_b(a)-ε)}}) \qquad &\text{moltiplicazione} \\
-&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} \frac{a^i·b^{i·ε}}{b^{i·log_b(a)}}) \qquad &\text{estrazione} \\
-&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} (\frac{a·b^ε}{b^log_b(a)})^i) \qquad &\text{esponente} \\
-&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} (b^ε)^i) \qquad &\text{prop. logaritmi} \\
+\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= O(\sum_{i=0}^{log_b(n)-1} a^i · (\frac{n}{b^i})^{log_b(a) - ε)} \qquad &&\text{sostituzione} \\ 
+&=O(\sum_{i=0}^{log_b(n)-1} \frac{a^i · n^{log_b(a)-ε}}{b^{i · (log_b(a)-ε)}}) &&\text{moltiplicazione} \\
+&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} \frac{a^i·b^{i·ε}}{b^{i·log_b(a)}})  &&\text{estrazione} \\
+&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} (\frac{a·b^ε}{b^log_b(a)})^i) \qquad &&\text{esponente} \\
+&= O(n^{log_b(n)-ε} · \sum_{i=0}^{log_b(n)-1} (b^ε)^i) \qquad &&\text{prop. logaritmi} \\
 \end{align*}
 $$
 Ci accorgiamo che la sommatoria e' nota: si tratta di una sommatoria geometrica, che sappiamo sempre valutare.
@@ -243,9 +253,9 @@ Ci accorgiamo che la sommatoria e' nota: si tratta di una sommatoria geometrica,
 Quindi:
 $$
 \begin{align*}
-\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= O(n^{log_b(n)-ε} · \frac{b^{ε·log_b(n)}-1}{b^ε-1} ) \qquad &\text{somma geometrica} \\
-&= O(n^{log_b(n)-ε} · \frac{n^ε-1}{b^ε-1}) \qquad &\text{prop. logaritmi} \\
-&= O(n^{log_b(a)}) \qquad &\text{moltip. e diff. di O()}
+\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= O(n^{log_b(n)-ε} · \frac{b^{ε·log_b(n)}-1}{b^ε-1} ) \qquad &&\text{somma geometrica} \\
+&= O(n^{log_b(n)-ε} · \frac{n^ε-1}{b^ε-1}) \qquad &&\text{prop. logaritmi} \\
+&= O(n^{log_b(a)}) \qquad &&\text{moltip. e diff. di O()}
 \end{align*}
 $$
 
@@ -254,8 +264,8 @@ $$ T(n) = O(n^{log_b(a)}) + Θ(n^{log_b(a)}) = Θ(n^{log_b(a)}) $$
 Cosa succederebbe se $f(n) = Θ(n^{log_b(a)})$? Avremmo che
 $$
 \begin{align*}
-\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= Θ(\sum_{i=0}^{log_b(n)-1} a^i · (\frac{n}{b^i})^{log_b(a)}) \qquad &\text{sostituzione} \\
-&= Θ( n^{log_b(a)} · \sum_{i=0}^{log_b(n)-1} \frac{a^i}{b^{i·log_b(a)}} ) \qquad &\text{moltiplicazione} \\
+\sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &= Θ(\sum_{i=0}^{log_b(n)-1} a^i · (\frac{n}{b^i})^{log_b(a)}) \qquad &&\text{sostituzione} \\
+&= Θ( n^{log_b(a)} · \sum_{i=0}^{log_b(n)-1} \frac{a^i}{b^{i·log_b(a)}} ) \qquad &&\text{moltiplicazione} \\
 &= Θ( n^{log_b(a)} · \sum_{i=0}^{log_b(n)-1} -1) \\
 &= Θ( n^{log_b(a)} · log_b(n))
 \end{align*}
@@ -268,8 +278,8 @@ Supponiamo, infine, che $f(n) = Ω(n^{log_b(a)+ε})$ (cioe' *f(n)* polinomicamen
 $$
 \begin{align*}
 \sum_{i=0}^{log_b(n)-1} a^i · f(\frac{n}{b^i}) &≤ \sum_{i=0}^{log_b(n)-1} c^i · f(n) \\
-&≤ f(n) · \sum_{i=0}^\infty c^i \qquad \text{maggiorazione} \\
-&= f(n) \cdot \frac{1}{1-c} \qquad \text{somma di serie geometrica} 
+&≤ f(n) · \sum_{i=0}^\infty c^i \qquad &&\text{maggiorazione} \\
+&= f(n) \cdot \frac{1}{1-c} \qquad &&\text{somma di serie geometrica} 
 \end{align*}
 $$
 Pertanto:
@@ -316,10 +326,10 @@ Immaginiamo ad esempio che $T(n) \le c \cdot log(n)$; allora si ha:
 $$
 \begin{align}
 T(n) &= T(\lceil\frac{n}{2}\rceil) + 1 \\
-T(n) &\le c \cdot log(\lceil\frac{n}{2}\rceil) + 1 \qquad &\text{ipotesi induttiva} \\
-&\le c \cdot log(\frac{n+1}{2}) + 1 \qquad &\text{maggiorazione} \\
-&\le c \cdot log(n+1) - c \cdot log(2) + 1 \qquad &\text{proprieta' logaritmi} \\
-&\le^? c \cdot log(n) \qquad &\text{NON FUNZIONA}
+T(n) &\le c \cdot log(\lceil\frac{n}{2}\rceil) + 1 \qquad &&\text{ipotesi induttiva} \\
+&\le c \cdot log(\frac{n+1}{2}) + 1 \qquad &&\text{maggiorazione} \\
+&\le c \cdot log(n+1) - c \cdot log(2) + 1 \qquad &&\text{proprieta' logaritmi} \\
+&\le^? c \cdot log(n) \qquad &&\text{NON FUNZIONA}
 \end{align}
 $$
 Non funziona perche' non c'e' nessuna scelta di *c* che rende vero $c \cdot log(n+1) -c+1 \le c \cdot log(n)$. 
@@ -328,10 +338,10 @@ Non esiste una strategia sicura per costruire la giusta ipotesi. Immaginiamo che
 $$
 \begin{align}
 T(n) &= T(\lceil\frac{n}{2}\rceil) + 1 \\
-T(n) &\le c \cdot log(\lceil\frac{n}{2}\rceil -2) + 1 \qquad &\text{ipotesi induttiva} \\
-&\le c \cdot log(\frac{n+1}{2} + \frac{1}{2} -2) + 1 \qquad &\text{maggiorazione} \\
-&\le c \cdot log(\frac{n-2}{2}) + 1 \qquad &\text{algebra} \\
-&\le c \cdot log(n-2) -c \cdot log(2) + 1 \qquad &\text{algebra} \\
+T(n) &\le c \cdot log(\lceil\frac{n}{2}\rceil -2) + 1 \qquad &&\text{ipotesi induttiva} \\
+&\le c \cdot log(\frac{n+1}{2} + \frac{1}{2} -2) + 1 \qquad &&\text{maggiorazione} \\
+&\le c \cdot log(\frac{n-2}{2}) + 1 \qquad &&\text{algebra} \\
+&\le c \cdot log(n-2) -c \cdot log(2) + 1 \qquad &&\text{algebra} \\
 &\le c \cdot log(n-2) \qquad &\text{maggiorazione}
 \end{align}
 $$
@@ -339,12 +349,12 @@ $$
 Come altro esempio, cerchiamo di mostrare che $T(n)=2 \cdot T(\lfloor\frac{n}{2}\rfloor) + n$ ha come soluzione $O(log(n))$. Assumiamo che $T(n) \le c \cdot n \cdot log(n)$ per qualche $c \gt 0$, e si ha:
 $$
 \begin{align}
-T(n) &= 2 \cdot T(\lfloor\frac{n}{2}\rfloor) + 2 \qquad &\text{ricorrenza} \\
-&\le 2 \cdot (c \cdot \lfloor\frac{n}{2}\rfloor \cdot log(\lfloor\frac{n}{2}\rfloor)) + n \qquad &\text{ipotesi induttiva} \\
-&\le c \cdot n \cdot log(\frac{n}{2}) + 2 \qquad &\text{algebra e maggiorazione} \\
-&= c \cdot n \cdot log(n) - c \cdot n \cdot log(2) + n \qquad &\text{proprieta' di log()} \\
-&= c \cdot n \cdot log(n) - c \cdot n + n \qquad &\text{log(2) = 1} \\
-&\le c \cdot n \cdot log(n) \qquad &\text{maggiorazione, con } c \ge 1
+T(n) &= 2 \cdot T(\lfloor\frac{n}{2}\rfloor) + 2 \qquad &&\text{ricorrenza} \\
+&\le 2 \cdot (c \cdot \lfloor\frac{n}{2}\rfloor \cdot log(\lfloor\frac{n}{2}\rfloor)) + n \qquad &&\text{ipotesi induttiva} \\
+&\le c \cdot n \cdot log(\frac{n}{2}) + 2 \qquad &&\text{algebra e maggiorazione} \\
+&= c \cdot n \cdot log(n) - c \cdot n \cdot log(2) + n \qquad &&\text{proprieta' di log()} \\
+&= c \cdot n \cdot log(n) - c \cdot n + n \qquad &&\text{log(2) = 1} \\
+&\le c \cdot n \cdot log(n) \qquad &&\text{maggiorazione, con } c \ge 1
 \end{align}
 $$
 
@@ -618,26 +628,26 @@ Dimostreremo che $T(n) = O(n \cdot log(n))$ attraverso la tecnica della sostituz
 Procediamo. In prima istanza semplifichiamo la nostra espressione:
 $$
 \begin{align}
-T(n) &= \frac{n}{2} \cdot \sum_{k=0}^{n-1}T(k) + \Theta(n) \qquad &\text{ricorrenza} \\
-&\le \frac{2}{n} \cdot \sum_{k=1}^{n-1}(a \cdot k \cdot log(k) + b) + \frac{2 \cdot b}{n} + \Theta(n) \qquad &\text{ip. produttiva} \\
-&= \frac{2}{n} \cdot \sum_{k=1}^{n-1}(a \cdot k \cdot log(k) + b) + \Theta(n) \qquad &k=0 \quad \text{messo in } \Theta(n) \\
-&= \frac{2}{n} \cdot \sum_{k=1}^{n-1} a \cdot k \cdot log(k) + \frac{2}{n} \cdot \sum_{k=1}^{n-1}b + \Theta(n) \qquad &\text{somma distributiva} \\
-&= \frac{2 \cdot a}{n} \cdot \sum_{k=1}^{n-1} k \cdot log(k) + \frac{2 \cdot a}{n} \cdot (n-1) + \Theta(n) \qquad &\text{seconda somma valutata} \\
-&\le \frac{2 \cdot a}{n} \cdot \sum_{k=1}^{n-1} k \cdot log(k) + 2 \cdot b + \Theta(n) \qquad &\frac{n-1}{n} \lt 1
+T(n) &= \frac{n}{2} \cdot \sum_{k=0}^{n-1}T(k) + \Theta(n) \qquad &&\text{ricorrenza} \\
+&\le \frac{2}{n} \cdot \sum_{k=1}^{n-1}(a \cdot k \cdot log(k) + b) + \frac{2 \cdot b}{n} + \Theta(n) \qquad &&\text{ip. produttiva} \\
+&= \frac{2}{n} \cdot \sum_{k=1}^{n-1}(a \cdot k \cdot log(k) + b) + \Theta(n) \qquad &&k=0 \quad \text{messo in } \Theta(n) \\
+&= \frac{2}{n} \cdot \sum_{k=1}^{n-1} a \cdot k \cdot log(k) + \frac{2}{n} \cdot \sum_{k=1}^{n-1}b + \Theta(n) \qquad &&\text{somma distributiva} \\
+&= \frac{2 \cdot a}{n} \cdot \sum_{k=1}^{n-1} k \cdot log(k) + \frac{2 \cdot a}{n} \cdot (n-1) + \Theta(n) \qquad &&\text{seconda somma valutata} \\
+&\le \frac{2 \cdot a}{n} \cdot \sum_{k=1}^{n-1} k \cdot log(k) + 2 \cdot b + \Theta(n) \qquad &&\frac{n-1}{n} \lt 1
 \end{align}
 $$
 
 Secondariamente, osserviamo che $\sum_{k=1}^n k \cdot log(k)$ puo' essere limitata verso l'alto, come segue:
 $$
 \begin{align}
-\sum_{k=1}^{n-1}(k \cdot log(k)) &= \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} (k \cdot log(k)) + \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} (k \cdot log(k)) \qquad &\text{spezzo} \\
-&\le \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} (k \cdot log(\frac{n}{2})) + \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} (k \cdot log(n)) \qquad &\text{maggioro} \\
-&= (log(n) - 1) \cdot \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k + log(n) \cdot \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} k \qquad &\text{estraggo} \\
-&= (log(n) - 1) \cdot \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k - \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k + log(n) \cdot \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} k \qquad &\text{distribuisco} \\
-&= log(n) \cdot \sum_{k=1}^{n-1}k - \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k \qquad &\text{sommo} \\
-&\le \frac{1}{2} \cdot log(n) \cdot n \cdot (n-1) - \frac{1}{2} \cdot \frac{n}{2} \cdot (\frac{n}{2} - 1) \qquad &\text{valuto} \\
-&= \frac{1}{2} \cdot (n^2 \cdot log(n) - n \cdot log(n)) - \frac{1}{8} \cdot n^2 + \frac{1}{4} \cdot n \qquad &\text{valuto} \\
-&\le \frac{1}{2} \cdot log(n) - \frac{1}{8} \cdot n^2 \qquad &n \ge 2 \\
+\sum_{k=1}^{n-1}(k \cdot log(k)) &= \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} (k \cdot log(k)) + \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} (k \cdot log(k)) \qquad &&\text{spezzo} \\
+&\le \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} (k \cdot log(\frac{n}{2})) + \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} (k \cdot log(n)) \qquad &&\text{maggioro} \\
+&= (log(n) - 1) \cdot \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k + log(n) \cdot \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} k \qquad &&\text{estraggo} \\
+&= (log(n) - 1) \cdot \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k - \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k + log(n) \cdot \sum_{k=\lceil \frac{n}{2} \rceil}^{n-1} k \qquad &&\text{distribuisco} \\
+&= log(n) \cdot \sum_{k=1}^{n-1}k - \sum_{k=1}^{\lceil \frac{n}{2} \rceil -1} k \qquad &&\text{sommo} \\
+&\le \frac{1}{2} \cdot log(n) \cdot n \cdot (n-1) - \frac{1}{2} \cdot \frac{n}{2} \cdot (\frac{n}{2} - 1) \qquad &&\text{valuto} \\
+&= \frac{1}{2} \cdot (n^2 \cdot log(n) - n \cdot log(n)) - \frac{1}{8} \cdot n^2 + \frac{1}{4} \cdot n \qquad &&\text{valuto} \\
+&\le \frac{1}{2} \cdot log(n) - \frac{1}{8} \cdot n^2 \qquad &&n \ge 2 \\
 \end{align}
 $$
 
@@ -805,7 +815,16 @@ proc ListDelete(L, x) {
 La **correttezza** di queste operazioni e' immediata da dimostrare, cosi' come le loro **complessità**: l'inserimento prende $\Theta(1)$, in quanto inserisce sempre in testa all'oggetto, la cancellazione prende $\Theta(1)$ assumendo di conoscere il puntatore dell'elemento da cancellare, il quale si ottiene attraverso la ricerca che costa $\Theta(n)$ (nel caso peggiore). Anche se abbiamo detto che non ha molto senso parlare di inserimento e cancellazione in array (come struttura concreta), possiamo domandarci come, dal punto di vista della complessità, array e liste si possano confrontare.
 
 ## Array vs Liste: confronto
-![[ArraiVSListe.png]]
+
+|                  | array (c. peggiore e medio) | lista (c. peggiore e medio) |
+| ---------------- | --------------------------- | --------------------------- |
+| ricerca          | $\Theta(n)$                 | $\Theta(n)$                 |
+| minimo           | $\Theta(n)$                 | $\Theta(n)$                 |
+| massimo          | $\Theta(n)$                 | $\Theta(n)$                 |
+| successore       | $\Theta(n)$                 | $\Theta(n)$                 |
+| predecessore     | $\Theta(n)$                 | $\Theta(n)$                 |
+| inserimento      | $\Theta(1)$ *               | $\Theta(1)$                 |
+| cancellazione ** | $\Theta(1)$                 | $\Theta(1)$                 |
 
 $*$ : assumendo di avere allocato abbastanza spazio, altrimenti costa $\Theta(n)$.
 $**$ : per la cancellazione di una **chiave** (senza conoscere l'indirizzo della sua posizione), va sommato il costo della ricerca.
@@ -827,18 +846,14 @@ proc Empty(S) {
 		then return true
 	return false
 }
-```
 
-``` Pseudocodice
 proc Push(S, x) {
 	if (S.top = S.max)
 		then return "overflow"
 	S.top = S.top + 1
 	S[S.top] = x
 }
-```
 
-``` Pseudocodice
 proc Pop(S) {
 	if (Empty(S))
 		then return "underflow"
@@ -862,9 +877,7 @@ proc Enqueue(Q, x) {
 		else Q.tail = Q.tail + 1
 	Q.dim = Q.dim + 1
 }
-```
 
-``` Pseudocodice
 proc Dequeue(Q) {
 	if (Q.dim = 0)
 		then return "underflow"
@@ -888,15 +901,11 @@ proc Empty(S) {
 		then return true
 	return false
 }
-```
 
-``` Pseudocodice
 Proc Push(S, x) {
 	Insert(S, x)
 }
-```
 
-``` Pseudocodice
 proc Pop(S) {
 	if (Empty(S))
 		then return "underflow"
@@ -917,15 +926,11 @@ proc Empty(Q) {
 		then return true 
 	return false
 }
-```
 
-``` Pseudocodice
 proc Enqueue(Q, x) {
 	Insert(Q, x)
 }
-```
 
-``` Pseudocodice
 proc Dequeue(Q) {
 	if Empty(Q)
 		then return "underflow"
@@ -947,7 +952,7 @@ La lista e' la piu' semplice delle strutture dati dinamiche e puo' essere implem
 ## Min e Max Heap
 Un heap e' una struttura dati astratta, parzialmente basata sull'ordinamento e necessariamente compatta (sara' dunque basata su array). La caratteristica principale e' quella che una heap mantiene le chiavi semi-ordinate. Useremo le heap come base per le code di priorita' (anche loro strutture dati astratte), ma anche come base per un nuovo algoritmo di ordinamento che risolve il maggior problema di `MergeSort` (quello di non essere in place) ed il maggior problema di `QuickSort` (quello di non avere tempo quadratico nel caso peggiore).
 
-Una **(min/max) heap** e' un array *H* che puo' essere visto come un albero binario **quasi completo**, cioe' tale da avere tutti i livelli pieni, meno l'ultimo. I nodi dell'albero corrispondono agli elementi dell'array. L'elemento `H[1]` dell'array e' la **radice** dell'albero e, normalmente, si tende a differenziare i valori `H.lenght()` (lunghezza dell'array che **contiene** l'heap) e `H.heapsize()` (numero di elementi della heap contenuti in `H`). Tipicamente si ha che `0 <= H.hepsize <= H.lenght`. 
+Una **(min/max) heap** e' un array *H* che puo' essere visto come un albero binario **quasi completo**, cioe' tale da avere tutti i livelli pieni, meno l'ultimo. I nodi dell'albero corrispondono agli elementi dell'array. L'elemento $H[1]$ dell'array e' la **radice** dell'albero e, normalmente, si tende a differenziare i valori `H.lenght()` (lunghezza dell'array che **contiene** l'heap) e `H.heapsize()` (numero di elementi della heap contenuti in $H$). Tipicamente si ha che `0 <= H.hepsize <= H.lenght`. 
 Una heap e' un array con il fatto che per convenienza si puo' visualizzare come albero, dal punto di vista algebrico non ci sono differenze, ma dal punto di vista delle strutture dati le heap **non** sono alberi.
 
 ![[full-complete-perfect-trees.png]]
@@ -958,15 +963,11 @@ La corretta implementazione di una heap prevede che i **figli** di un nodo nella
 proc Parent(i) {
 	return floor(1/2)
 }
-```
 
-``` Pseudocodice
 proc Left(i) {
 	return 2*i
 }
-```
 
-``` Pseudocodice
 proc Right(i) {
 	return 2 * i + 1
 }
@@ -1028,7 +1029,7 @@ Per quanto riguarda la **correttezza**, osserviamo che `MinHeapify` e' costruita
 Dimostriamo l'invariante:
 - Supponiamo , come **caso base**, `MinHeapify` venga chiamata su un nodo ad altezza h=0. Le ipotesi sono rispettate (il nodo e' figlio); inoltre la procedura non ha alcun effetto, ma allo stesso tempo, un nodo senza figli e' gia' una min-heap.
 - Per il **caso induttivo**, consideriamo un nodo in posizione *i* ad altezza $h>0$. Sappiamo che entrambi i suoi figli, in posizione $2 \cdot i$ e $2 \cdot i + 1$, se esistono, sono radici di min-heap per ipotesi.
-  Poiche' `H[i]` e' il minimo tra `H[i], H[2 · i], e H[2 · i + 1]`, allora anche il nodo *i* e' radice di una min-heap, come volevamo.
+  Poiche' `H[i]` e' il minimo tra $H[i], H[2 · i], \space e \space H[2 · i + 1]$, allora anche il nodo *i* e' radice di una min-heap, come volevamo.
 
 Per calcolare la **complessità** di `MinHeapify`, dobbiamo costruire una ricorrenza. 
 Incorriamo in due problemi:
@@ -1054,10 +1055,10 @@ proc BuildminHeap(H) {
 
 ### Correttezza e complessita' di `BuildMinHeap`
 La **terminazione** della procedura e' ovvia.
-Per la **correttezza**, l'**invariante** che usiamo e': all'inizio di ogni iterazione del ciclo **for**, ogni elemento `H[i+1], H[i+2], ...` e' la radice di una min-heap e all'uscita dall'iterazione anche `H[i]` lo e'.
+Per la **correttezza**, l'**invariante** che usiamo e': all'inizio di ogni iterazione del ciclo **for**, ogni elemento $H[i+1], H[i+2], ...$ e' la radice di una min-heap e all'uscita dall'iterazione anche $H[i]$ lo e'.
 Dimostriamo:
-- Nel **caso base** $i = \lfloor \frac{A.lenght}{2} \rfloor$: ogni elemento del tipo `1H[i+k]` con k>0 e' una foglia e pertanto la radice triviale di un solo elemento.
-- Nel **caso induttivo**, e' sufficiente riferirsi alla correttezza di `MinHeapify`. Questa proprieta', riferita all'uscita dal ciclo, dice: `H[1]` e' una min-heap.
+- Nel **caso base** $i = \lfloor \frac{A.lenght}{2} \rfloor$: ogni elemento del tipo $H[i+k]$ con k>0 e' una foglia e pertanto la radice triviale di un solo elemento.
+- Nel **caso induttivo**, e' sufficiente riferirsi alla correttezza di `MinHeapify`. Questa proprieta', riferita all'uscita dal ciclo, dice: $H[1]$ e' una min-heap.
 
 Un calcolo della **complessità** approssimativo ci porterebbe alla seguente conclusione: ogni chiamata di `MinHeapify` costa $O(log(n))$ nel caso peggiore e si chiama $\Theta(n)$ volte, pertanto il costo totale e' $O(n \cdot log(n))$. 
 In questo caso possiamo dare un limite piu' stretto grazie ad un'analisi piu' dettagliata. Il costo di `MinHeapify` puo' essere espresso come $O(h)$; supponiamo che *h* sia l'altezza del **nodo** su cui viene chiamato. Una semplice osservazione ci dice che se in un albero binario quasi completo ci sono *n* elementi, allora al massimo $\lceil \frac{n}{2^{h+1}} \rceil$ di loro si trovano ad altezza *h*.
@@ -1085,7 +1086,7 @@ e, per il teorema del rapporto, questa condizione e' sufficiente per la converge
 Il caso migliore (quello in cui un array e' gia' una min-heap) ha costo $\Theta(n)$, perche' la procedura e' governata da un ciclo **for**. 
 
 ## Ordinamento con `HeapSort`
-Una max-heap puo' essere adesso usata efficientemente per progettare un algoritmo di ordinamento. Consideriamo una max heap e ricordiamo una delle priorita' e' che il massimo elementi di H si trova in `H[1]`. Se consideriamo `H[1]` come gia' ordinato (basta metterlo sulla giusta posizione: l'ultima) e sostituiamo il contenuto di `H[1]` succede che `H[2]` e `H[3]` sono ancora max-heap. Quindi chiamando `MAxHeapify` rispettiamo le ipotesi e possiamo ripetere il processo. Il codice di `HeapSort` si basa precisamente su questa osservazione.
+Una max-heap puo' essere adesso usata efficientemente per progettare un algoritmo di ordinamento. Consideriamo una max heap e ricordiamo una delle priorita' e' che il massimo elementi di H si trova in $H[1]$. Se consideriamo $H[1]$come gia' ordinato (basta metterlo sulla giusta posizione: l'ultima) e sostituiamo il contenuto di $H[1]$ succede che $H[2]$ e $H[3]$ sono ancora max-heap. Quindi chiamando `MAxHeapify` rispettiamo le ipotesi e possiamo ripetere il processo. Il codice di `HeapSort` si basa precisamente su questa osservazione.
 
 ``` Pseudocodice
 proc HeapSort(H) {
@@ -1196,7 +1197,7 @@ La soluzione che prevede l'uso di una lista presenta $\Theta(1)$ per l'inserimen
 Una tabella hash ad accesso diretto *T* e' un semplice array di **puntatori** ad oggetti; `T[key]` punta all'oggetto la cui chiave assegnata e' `key`.
 Diciamo che gli oggetti sono denotati con `x, y, ...` e che per ognuno di essi il campo `key` e' la sua chiave.
 Per una tabella ad accesso diretto:
-- `x.key` e' sempre piccolo (se `m` e' la dimensione della tabella $\rightarrow$ `x,key <= m`)
+- `x.key` e' sempre piccolo (se m e' la dimensione della tabella $\rightarrow$ `x.key <= m`)
 - `x.key != y.key` per ogni coppia di `x != y`.
 Per *m* molto grande, anche un operazione elementare come **creare** *T* vuoto prende troppo tempo.
 
@@ -1209,14 +1210,14 @@ Qual'e' una caratteristica comune a tutte le applicazioni tipiche in questo cont
 - $\rightarrow$ non posso dire che l'accesso lineare e' efficiente
 
 ## Tabelle hash con chaining
-Se il numero effettivo *n* di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'unicerso, possiamo ancora implementare *T* con un array di posizioni `1, ..., m`, ma nasce il problema della memorizzazione della chiave `k` molto piu' grande di `m`, quindi senza accesso diretto.
+Se il numero effettivo *n* di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'unicerso, possiamo ancora implementare *T* con un array di posizioni $1, \ldots, m$, ma nasce il problema della memorizzazione della chiave $k$ molto piu' grande di $m$, quindi senza accesso diretto.
 Per risolverlo creiamo questa funzione:
 $$
 h: \mathcal{U} \rightarrow \{1, ..., m\}
 $$
-detta **funzione hash**, per poter indirizzare l'elemento `k` alla posizione `h(k)`. `h` non puo' essere iniettiva. Quando $k_1 \ne k_2$ e si da il caso che $h(k_1) = h(k_2)$, chiameremo questa situazione di **conflitto**.
+detta **funzione hash**, per poter indirizzare l'elemento $k$ alla posizione `h(k)`. $h$ non puo' essere iniettiva. Quando $k_1 \ne k_2$ e si da il caso che $h(k_1) = h(k_2)$, chiameremo questa situazione di **conflitto**.
 Abbiamo gia' ottenuto un primo vantaggio:
-- `T` e' molto piccolo (ha esattamente `m` posizioni) e quindi diventa inutilizzata.
+- $T$ e' molto piccolo (ha esattamente $m$ posizioni) e quindi diventa inutilizzata.
 Inoltre, il tempo di accesso e' ancora costante **a meno dell'overload dovuto ad un conflitto**.
 
 >La funzione di hash puo' essere:
@@ -1235,7 +1236,7 @@ Vorremmo che la funzione hash:
 Il nostro obiettivo e' quello di progettare una funzione di hash che **minimizzi** i conflitti. 
 La tecnica chiamata **chaining** risolve tutti i conflitti utilizzando una lista doppiamente collegata. La testa della lista e' memorizzata in `T[h(k)]`, che quando e' vuota contiene **nil**.
 
-> Questa soluzione occupa un po' piu' di `m` parole di memoria, ma molte meno di cardinalita' dell'universo
+> Questa soluzione occupa un po' piu' di $m$ parole di memoria, ma molte meno di cardinalita' dell'universo
 
 ![[hashMapChaining.png]]
 
@@ -1692,9 +1693,9 @@ Sospettiamo che $T(n) = \Theta(n)$ e dimostriamo che $T(n)=O(n)$. Ipotizziamo ch
 $$
 \begin{align}
 T(n) &= T(k) + T(n-k-1) + \Theta(1) \\
-&\le c \cdot k + c \cdot (n-k-1) + \Theta(1) \qquad &\text{ipotesi} \\
-&= c \cdot k + c \cdot n - c \cdot k - c + \Theta(1) &\text{calcolo} \\
-&= c \cdot n &\text{calcolo} 
+&\le c \cdot k + c \cdot (n-k-1) + \Theta(1) \qquad &&\text{ipotesi} \\
+&= c \cdot k + c \cdot n - c \cdot k - c + \Theta(1) &&\text{calcolo} \\
+&= c \cdot n &&\text{calcolo} 
 \end{align}
 $$
 
@@ -2545,37 +2546,37 @@ Ci concentriamo sui grafi pesati indiretti connessi. Sia quindi $G = (V, E, W)$.
 
 Definiamo un **alberi di copertura minimo** (o **MST**) come un sottoinsieme di archi che forma un albero, copre tutti i vertici e la cui somma dei pesi e' minima.
 
-> MST $\rightarrow$ **minumum spanning tree** 
+> MST $\rightarrow$ **minimum spanning tree** 
 
 La strategia generale per risolvere questo problema e' di tipo **greedy**. Questo significa che ad ogni passo faremo la scelta **localmente** migliore e vogliamo in questo modo ottenere il risultato **globalmente** migliore. 
 
-Osserviamo che un MST `A` e' un insieme di archi tali che formano un albero (indiretto) che tocca tutti i nodi del grafo. Quindi, eliminando qualunque arco da un albero di copertura si ottengono due alberi connessi.
-Qualunque partizione di `V` in due sottoinsiemi `S` e `V \ S` viene chiamato **taglio del grafo** (semplicemente, **taglio**). Costruire un MST `T` significa considerare un taglio ed aggiungere progressivamente un arco, partendo dal taglio piu' semplice che comprende un solo nodo di `S`.
+Osserviamo che un MST $A$ e' un insieme di archi tali che formano un albero (indiretto) che tocca tutti i nodi del grafo. Quindi, eliminando qualunque arco da un albero di copertura si ottengono due alberi connessi.
+Qualunque partizione di $V$ in due sottoinsiemi $S$  e $V/S$ viene chiamato **taglio del grafo** (semplicemente, **taglio**). Costruire un MST $T$ significa considerare un taglio ed aggiungere progressivamente un arco, partendo dal taglio piu' semplice che comprende un solo nodo di $S$ .
 
 ![[taglioVS.png]]
 
-Consideriamo un taglio qualsiasi (`S, V\S`) tale che per una certa coppia di nodi $a, \space b, \space a \in S \space \text{e} \space b \notin S$. Poiche' vogliamo costruire un MST, dovremo scegliere un arco che connetta qualche nodo di `S` con qualche nodo di `V\S`: se non lo facessimo non potremo mai ottenere un MST.
-Immaginiamo adesso che tra tutti gli archi con questa proprieta', l'arco (`a, b`) sia quello di peso minimo. Vogliamo mostrare che **l'arco** (`a, b`) **deve essere scelto**. 
+Consideriamo un taglio qualsiasi $(S, V/S)$ tale che per una certa coppia di nodi $a, \space b, \space a \in S \space \text{e} \space b \notin S$. Poiche' vogliamo costruire un MST, dovremo scegliere un arco che connetta qualche nodo di $S$ con qualche nodo di $V/S$: se non lo facessimo non potremo mai ottenere un MST.
+Immaginiamo adesso che tra tutti gli archi con questa proprieta', l'arco $(a, b)$ sia quello di peso minimo. Vogliamo mostrare che **l'arco** $(a, b)$ **deve essere scelto**. 
 
-Immaginiamo di non scegliere (`a, b`) nella costruzione di un MST. Per la proprieta' detta precedentemente, a fine operazioni ci sara' certamente un arco (`u, v`) che connette qualche nodo di `S` con qualche nodo di `V\S`:
+Immaginiamo di non scegliere $(a, b)$ nella costruzione di un MST. Per la proprieta' detta precedentemente, a fine operazioni ci sara' certamente un arco $(u, v)$ che connette qualche nodo di $S$ con qualche nodo di $V/S$:
 
 ![[taglioVS2.png]]
 
-Sia `T` l' MST ottenuto scegliendo (`u, v`) invece di (`a, b`). Possiamo costruire un nuovo albero `T'` cosi': $T' = (T \backslash \{(u, v)\}) \cup \{(a, b)\}$. Chiaramente, se `T` era un albero d copertura, lo e' anche `T'`; inoltre `T'` pesa meno di `T`. Pertanto `T'` **non poteva essere un** MST.
+Sia $T$ l' MST ottenuto scegliendo $(u, v)$ invece di $(a, b)$. Possiamo costruire un nuovo albero $T'$ cosi': $T' = (T \backslash \{(u, v)\}) \cup \{(a, b)\}$. Chiaramente, se $T$ era un albero d copertura, lo e' anche $T'$; inoltre $T'$ pesa meno di $T$. Pertanto $T'$ **non poteva essere un** MST.
 Abbiamo dimostrato la seguente proprieta':
 - considerata qualunque situazione di un MST, il prossimo passo per la costruzione e' segliere sempre l'arco di peso minimo che lo attraversa.
 Chiamiamo questo arco **sicuro**.
 
-La proprieta' vista prima e' un algoritmo di costruzione di un MST, che non rimane che codificare. Ci permette di fare le seguenti considerazioni. Se tutti i pesi di archi di `G` sono diversi tra loro, allora l'MST e' unico: per ogni taglio ci sarebbe sempre una sola scelta. 
+La proprieta' vista prima e' un algoritmo di costruzione di un MST, che non rimane che codificare. Ci permette di fare le seguenti considerazioni. Se tutti i pesi di archi di $G$ sono diversi tra loro, allora l'MST e' unico: per ogni taglio ci sarebbe sempre una sola scelta. 
 L'algoritmo di Prim e' un modo efficiente per vedere quanto visto.
 
 ### Alberi di copertura minimi: algoritmi di Prim
 L'idea di base dell'algoritmo di Prim e' quella di partire da un vertice qualsiasi e, ad ogni passo, aggiungere un arco in modo che l'arco aggiunto sia sicuro. La corretta struttura dati in questo caso deve permettere di mantenere un insieme di vertici in maniera da poter facilmente individuare ed estrarre, tra questi, quello che comporta una spesa minima in termini di peso dell'arco che viene scelto per raggiungere quel vertice.
 
-Ogni vertice `G` viene arricchito con due campi:
-- `v.key` $\rightarrow$ il peso minimo, inizialmente $\infty$, tra gli archi che connettono qualche vertice `T` con `v` 
-- `v.pi` $\rightarrow$ il padre di `v`, inizialmente `Nil`, nel MST risultante.
-Inizialmente tutti i vertici si trovano nella coda di priorita' `Q` semi-ordinata su `v.key`, dove inizialmente tutti gli elementi sono $\infty$. La radice `r` e' data esplicitamente e si cerca un MST radicato in `r`. Ad ogni scelta, i pesi degli elementi in `Q` vengono modificati in base al principio che abbiamo spiegato, il vertice estratto da `Q` e inserito in `T` e ripetiamo finche' `Q` si svuota.
+Ogni vertice $G$ viene arricchito con due campi:
+- `v.key` $\rightarrow$ il peso minimo, inizialmente $\infty$, tra gli archi che connettono qualche vertice $T$ con $v$ 
+- `v.pi` $\rightarrow$ il padre di $v$, inizialmente `Nil`, nel MST risultante.
+Inizialmente tutti i vertici si trovano nella coda di priorita' $Q$ semi-ordinata su `v.key`, dove inizialmente tutti gli elementi sono $\infty$. La radice $r$ e' data esplicitamente e si cerca un MST radicato in $r$. Ad ogni scelta, i pesi degli elementi in $Q$ vengono modificati in base al principio che abbiamo spiegato, il vertice estratto da $Q$ e inserito in $T$ e ripetiamo finche' $Q$ si svuota.
 
 ``` Pseudocodice
 proc MST-Prim(G, w, r) {
@@ -2594,10 +2595,10 @@ proc MST-Prim(G, w, r) {
 ```
 
 ### Correttezza di `MST-Prim`
-Per mostrare che `MST-Prim` e' **corretto**, definiamo `T` come l'insieme di tutte le coppie (`v.pi, v`) tali che `v.pi` e' definito e $v \notin Q$.
-Mostriamo che vale la seguente **invariante**: `T` e' sempre sottoinsieme di qualche MST.
-- Nel **caso base**, `T` e' vuoto e l'invariante e' rispettata in maniera triviale.
-- Supponiamo che l'invariante valga per `T` ad un certo punto della computazione (**caso induttivo**) e consideriamo l'insieme `T'` ottenuto dopo una esecuzione del ciclo **while**. Succede che $T' = T \cup \{(v.\pi, v)\}$, e `v` e' il vertice tale che `v.key` e' il minore tra quelli ancora nella coda `Q`. Vogliamo mostrare che `T'` è ancora sottoinsieme di qualche MST. Sia `S` l'insieme di tutti e soli i vertici coperti da archi di `T`. Chiaramente, (`S, V \ S`) è un taglio di `G`, e chiaramente, l'arco (`v.π, v`) è un arco sicuro per il taglio. Pertanto, `T'` è ancora sottoinsieme di qualche MST.
+Per mostrare che `MST-Prim` e' **corretto**, definiamo $T$ come l'insieme di tutte le coppie $(v.pi, v)$ tali che `v.pi` e' definito e $v \notin Q$.
+Mostriamo che vale la seguente **invariante**: $T$ e' sempre sottoinsieme di qualche MST.
+- Nel **caso base**, $T$ e' vuoto e l'invariante e' rispettata in maniera triviale.
+- Supponiamo che l'invariante valga per $T$ ad un certo punto della computazione (**caso induttivo**) e consideriamo l'insieme $T'$ ottenuto dopo una esecuzione del ciclo **while**. Succede che $T' = T \cup \{(v.\pi, v)\}$, e $v$ e' il vertice tale che `v.key` e' il minore tra quelli ancora nella coda $Q$. Vogliamo mostrare che $T'$ è ancora sottoinsieme di qualche MST. Sia $S$ l'insieme di tutti e soli i vertici coperti da archi di $T$. Chiaramente, ($S, V / S$) è un taglio di $G$, e chiaramente, l'arco $(v.π, v)$ è un arco sicuro per il taglio. Pertanto, $T'$ è ancora sottoinsieme di qualche MST.
 
 #### Complessità di `MST-Prim`
 In alternativa possiamo usare una **heap binaria** per implementare la coda, il che ci permette di avere un vantaggio in caso di grafi sparsi. Avremo che la costruzione della coda costa sempre $\Theta(|V|)$, l'estrazione del minimo costa $\Theta(log(|V|))$ e il decremento costa $\Theta(log(|V|))$.
@@ -2608,21 +2609,21 @@ Con un grafo sparso avremo:
 - $\Theta(E \cdot log(|V|))$ $\rightarrow$ decrementi
 - **totale** $\rightarrow$ $\Theta(E \cdot log(|V|))$
 
-Il caso peggiore si verifica con un grafo denso e per minimizzare il danno si preferisce l'implementazione con una coda senza struttura. I grafi si considerano non densi anche quando `|E|` cresce rispetto a `|V|` ma non si avvicina asintoticamente a $|V|^2$; anche in questo caso, la seconda scelta e' migliore della prima.
+Il caso peggiore si verifica con un grafo denso e per minimizzare il danno si preferisce l'implementazione con una coda senza struttura. I grafi si considerano non densi anche quando $|E|$ cresce rispetto a $|V|$ ma non si avvicina asintoticamente a $|V|^2$; anche in questo caso, la seconda scelta e' migliore della prima.
 
 ### Alberi di copertura minimi: algoritmo di Kruskal
 Una valida alternativa a `MST-Prim` è l'algoritmo noto come algoritmo di Kruskal, che utilizza una generalizzazione del concetto di taglio e del concetto di arco sicuro per il taglio al ne di ottenere un albero di copertura minimo.
 
 L'idea di `MST-Kruskal` e' che possiamo ordinare gli archi in ordine crescente di peso e, analizzandoli uno a uno in questo ordine, stabilire se inserirlo come parte dell'albero di copertura minimo oppure no.
 Quale sarebbe la ragione di non farlo a un certo punto dell'esecuzione? Semplicemente, un arco 
-(`u,v`) **non** e' parte di nessun MST se `u` e `v` sono gia' connessi da qualche altro arco precedentemente scelto.
-Sia `T` l'insieme di archi che abbiamo scelto fino ad un certo punto. `T` a differenza del caso di 
-`MST-Prim` non e' necessariamente un albero ad ogni momento, ma lo e' direttamente alla fine della computazione. Dati gli archi di `T` e dato l'insieme `V` di vertici, diciamo che un sottoinsieme `S` di `V` e' T-**connesso** se, considerando solo archi in `T`, e' un albero ed e' massimale.
+$(u, v)$ **non** e' parte di nessun MST se $u$ e $v$ sono gia' connessi da qualche altro arco precedentemente scelto.
+Sia $T$ l'insieme di archi che abbiamo scelto fino ad un certo punto. $T$ a differenza del caso di 
+`MST-Prim` non e' necessariamente un albero ad ogni momento, ma lo e' direttamente alla fine della computazione. Dati gli archi di $T$ e dato l'insieme $V$ di vertici, diciamo che un sottoinsieme $S$ di $V$ e' T-**connesso** se, considerando solo archi in $T$, e' un albero ed e' massimale.
 
-Dato `T` ad un certo punto della computazione, identifichiamo tutte le componenti `T-connesse` di `V`: $S_1, S_2, ..., S_n$. La tupla $(S_1, S_2, ..., S_n)$ e' certamente una partizione di `V` e generalizza il concetto di taglio visto prima. Lo chiamiamo **taglio generalizzato**. Possiamo affermare che **un arco di peso minimo tra quelli non ancora considerati** che attraversa un taglio generalizzato e' un arco sicuro.
+Dato $T$ ad un certo punto della computazione, identifichiamo tutte le componenti `T-connesse` di $V$: $S_1, S_2, ..., S_n$. La tupla $(S_1, S_2, ..., S_n)$ e' certamente una partizione di $V$ e generalizza il concetto di taglio visto prima. Lo chiamiamo **taglio generalizzato**. Possiamo affermare che **un arco di peso minimo tra quelli non ancora considerati** che attraversa un taglio generalizzato e' un arco sicuro.
 
 Come facciamo a garantire che un arco scelto attraversi il taglio? La definizione e' semplice:
-- un arco (`u, v`) attraversa un taglio generalizzato se `u` e `v` appartengono a diverse componenti `T-connesse`.
+- un arco $(u, v)$ attraversa un taglio generalizzato se $u$ e $v$ appartengono a diverse componenti `T-connesse`.
 Quindi abbiamo bisogno di una struttura dati per insiemi disgiunti.
 
 ``` Pseudocodice
@@ -2640,10 +2641,10 @@ proc MST-Kruskal(G, w) {
 ```
 
 #### Correttezza di `MST-Kruskal`
-Per mostrare che `MST-Kruskal` e' **corretto**, osserviamo che tutti gli insiemi $S_1, S_2, ..., S_{|V|}$ che vengono creati da `MakeSet` nella prima operazione costituiscono un taglio generalizzato, considerando che `T` e' vuoto.
+Per mostrare che `MST-Kruskal` e' **corretto**, osserviamo che tutti gli insiemi $S_1, S_2, ..., S_{|V|}$ che vengono creati da `MakeSet` nella prima operazione costituiscono un taglio generalizzato, considerando che $T$ e' vuoto.
 Dimostriamo la seguente **invariante**: ogni arco che viene aggiunto nel ciclo non e' sicuro.
 - Poiché gli archi vengono ordinati in maniera crescente, l'invariante è vera all'inizio (**caso base**): il primo arco scelto è un arco di peso minimo, e certamente attraversa il taglio.
-- Supponiamo adesso che l'invariante sia vero fino ad una certa esecuzione (**caso induttivo**). Sia $(S_1, . . . , S_n$), con $n ≤ |V|$, il taglio generalizzato corrente, e sia (`u, v`) l'arco considerato. Per definizione di `FindSet`, u e v appartengono a due diverse componenti T-connesse, quindi attraversa il taglio. Ogni arco (`u', v'`) di peso minore di (`u, v`) è gia' stato considerato prima di ('u, v'), e attraversava il taglio quando era stato considerato (dunque, dopo Union, non lo attraversa piu') oppure non lo attraversava. Quindi (`u', v'`) non attraversa il taglio, e (`u, v`) è un arco di peso minimo che attraversa il taglio.
+- Supponiamo adesso che l'invariante sia vero fino ad una certa esecuzione (**caso induttivo**). Sia $(S_1, . . . , S_n$), con $n ≤ |V|$, il taglio generalizzato corrente, e sia $(u, v)$ l'arco considerato. Per definizione di `FindSet`, $u$ e $v$ appartengono a due diverse componenti T-connesse, quindi attraversa il taglio. Ogni arco $(u', v')$ di peso minore di $(u, v)$ è gia' stato considerato prima di $(u, v)$, e attraversava il taglio quando era stato considerato (dunque, dopo Union, non lo attraversa piu') oppure non lo attraversava. Quindi $(u', v')$ non attraversa il taglio, e $(u, v)$ è un arco di peso minimo che attraversa il taglio.
 
 #### Complessità di `MST-Kruskal`
 Per calcolare la **complessità** di `MST-Kruskal` dobbiamo distinguere tra grafi sparsi e grafi densi. 
