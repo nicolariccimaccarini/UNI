@@ -42,7 +42,7 @@ Facciamo le seguenti ipotesi. Le istruzioni semplici si eseguono in tempo costan
 se non esplicitamente detto il contrario.
 
 ## Caratteristiche degli algoritmi
-L'esistenza di un algoritmo per un problema ci da un tetto alla complessita' del problema stesso. Per esempio, un algoritmo di ordinamento potrebbe avere complessita' di tempo n * log(n): cio' significa che se una particolare istanza e' lunga *n*, ci si mette circa n * log(n) passi **elementari** per risolverlo
+L'esistenza di un algoritmo per un problema ci da un tetto alla complessita' del problema stesso. Per esempio, un algoritmo di ordinamento potrebbe avere complessita' di tempo $n \cdot log(n)$: cio' significa che se una particolare istanza e' lunga *n*, ci si mette circa $n \cdot log(n$) passi **elementari** per risolverlo
 
 
 ---
@@ -58,7 +58,7 @@ Ci sono quattro caratteristiche fondamentali che ci interessano di un algoritmo:
 Molti problemi che vedremo sono di tipo **funzionale**: trova il minimo, il massimo, restituisci l'input ordinato, ... In questi casi, distinguere tra le caratteristiche viste prima non e' sempre conveniente ne' naturale. In generale, noi ci riferiremo semplicemente alla correttezza di un algoritmo funzionale, e diremo appunto che esso e' **corretto** solo se restituisce tutte e solamente le risposte giuste, e termina sempre.
 
 ### Analizzare gli algoritmi: correttezza nel caso iterativo
-Per comprendere formalmente la correttezza degli algoritmi iterativi, partiamo dall'algoritmo di ordinamento di numeri interi, cioe' InsertionSort. 
+Per comprendere formalmente la correttezza degli algoritmi iterativi, partiamo dall'algoritmo di ordinamento di numeri interi, cioe' `InsertionSort()`. 
 
 ``` Pseudocodice
 proc InsertionSort(A) {
@@ -74,9 +74,8 @@ proc InsertionSort(A) {
 }
 ```
 
-Vogliamo dimostrare la correttezza dell'algoritmo. Per la **terminazione**, osserviamo che il ciclo **for** termina quando `j > A.lenght`, e il ciclo **while** e' sempre vincolato tra j - 1 e 0, e che per ogni j, la variabile i, che inizia da un valore positivo, si decrementa sempre. Dunque la terminazione e' garantita sia a livello del ciclo piu' esterno che di quello piu' interno.
-Per la **correttezza** possiamo usare la tecnica dell'**invariante**, che consiste nello stabilire una proprieta' del ciclo principale (o di un ciclo dell'algoritmo) che sia vera dalla prima esecuzione, durante ogni esecuzione, e dopo l'ultima esecuzione, e che implichi la correttezza. Nel nostro caso una **invariante** del ciclo piu' esterno che che `A[1, ..., j-1]` e' sempre ordinato in maniera non decrescente; si noti che quando `j = A.lenght + 1`, l'algoritmo termina, verificando che 
-`A[1, ..., n]` e' ordinato in maniera non decrescente.
+Vogliamo dimostrare la correttezza dell'algoritmo. Per la **terminazione**, osserviamo che il ciclo **for** termina quando `j > A.lenght`, e il ciclo **while** e' sempre vincolato tra $j - 1$ e $0$, e che per ogni $j$, la variabile $i$, che inizia da un valore positivo, si decrementa sempre. Dunque la terminazione e' garantita sia a livello del ciclo piu' esterno che di quello piu' interno.
+Per la **correttezza** possiamo usare la tecnica dell'**invariante**, che consiste nello stabilire una proprieta' del ciclo principale (o di un ciclo dell'algoritmo) che sia vera dalla prima esecuzione, durante ogni esecuzione, e dopo l'ultima esecuzione, e che implichi la correttezza. Nel nostro caso una **invariante** del ciclo piu' esterno che che `A[1, ..., j-1]` e' sempre ordinato in maniera non decrescente; si noti che quando `j = A.lenght + 1`, l'algoritmo termina, verificando che `A[1, ..., n]` e' ordinato in maniera non decrescente.
 
 ### Analizzare gli algoritmi: complessita' nel caso iterativo
 Passiamo allo studio della **complessità** di InsertionSort,
@@ -92,7 +91,7 @@ proc InsertionSort(A) {
 }
 ```
 
-c1, c2, ... sono costanti; n e' la dimensione dell'input; $t_j$ va da 2 a *n* e dipende da istanza a istanza. **Nel caso migliore** $t_j = 1$ per ogni $j = 2, ..., n$ e questo caso corrisponde all'input gia' ordinato in partenza. **Nel caso peggiore** $t_j = j$ per ogni $j = 2, ..., n$ e corrisponde all'input **ordinato in ordine inverso** in partenza. 
+$c1$, $c2$, ... sono costanti; $n$ e' la dimensione dell'input; $t_j$ va da 2 a *n* e dipende da istanza a istanza. **Nel caso migliore** $t_j = 1$ per ogni $j = 2, ..., n$ e questo caso corrisponde all'input gia' ordinato in partenza. **Nel caso peggiore** $t_j = j$ per ogni $j = 2, ..., n$ e corrisponde all'input **ordinato in ordine inverso** in partenza. 
 
 Nel caso migliore quindi:
 $$ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_7 \cdot (n-1) + c_4 \cdot (n-1) $$ 
@@ -112,7 +111,7 @@ Il risultato e' quindi una funzione *quadratica* $T(n) = a · n^2 + b · c$ per 
 Il nostro scopo era calcolare $T(n)$ cioe' il numero di operazioni semplici effettuate per l'entrata di dimensione *n*, e lo abbiamo fatto **a meno di qualche costante**. Il caso migliore non e' mai una buona scelta. Lo faremo sempre nel **caso peggiore** o nel **caso medio**, il quale a sua volta coincide nella maggior parte dei casi nella speranza che il caso medio presenti un comportamento migliore.
 
 ### Analizzare gli algoritmi: correttezza nel caso ricorsivo
-Per introdurre l'analisi della complessita' di un algoritmo ricorsivo, utilizziamo l'algoritmo di ricerca binaria, *RecursiveBinarySearch* 
+Per introdurre l'analisi della complessita' di un algoritmo ricorsivo, utilizziamo l'algoritmo di ricerca binaria, `RecursiveBinarySearch()` 
 ``` Pseudocodice
 proc RecursiveBinarySerach(A, low, high, k) {
 	if (low > high)
@@ -127,16 +126,16 @@ proc RecursiveBinarySerach(A, low, high, k) {
 }
 ```
 
-Questo algoritmo serve per risolvere il seguente problema: dato un'array, orinato, ed una chiave *k*, restituisce, se esiste, l'indice *k* nell'array, altrimenti restituisce **nil**. *RecursiveBinarySearch* e' un algoritmo interessante perche' molto piu' efficiente dell'idea naïve di scorrere l'array in cerca di *k*.
+Questo algoritmo serve per risolvere il seguente problema: dato un'array, orinato, ed una chiave *k*, restituisce, se esiste, l'indice *k* nell'array, altrimenti restituisce **nil**. `RecursiveBinarySearch()` e' un algoritmo interessante perche' molto piu' efficiente dell'idea naïve di scorrere l'array in cerca di *k*.
 
 Come nel caso iterativo, vogliamo assicurare la **terminazione** dell'algoritmo: ad ogni chiamata ricorsiva, la differenza tra high e low diminuisce. La condizione per effettuare un'altra chiamata ricorsiva e' che **low < high**, cosa che, prima o poi, deve necessariamente essere falsa, il che implica che ad un certo punto non ci saranno piu' chiamate.
 Per la **correttezza**, utilizziamo la tecnica dell'**invariante introduttiva**. Invece di concentrarci su un ciclo, ci concentriamo su cio' che accade **dopo ogni chiamata ricorsiva**.
 
 Le invarianti ricorsive si mostrano vere attraverso l'induzione:
 - Nel **caso base**, cioe' prima della chiamata ricorsiva, $low = 1$ e $high=n$; quindi se *k* e' in A, e' chiaramente in $A[low, ..., high]$.
-- Nel **caso induttivo** si assume che *k*, se esiste, sia in $A[low, ..., high]$ (prima della chiamata ricorsiva); poiche' A e' ordinato, e mid è l'indice mediano, se k esiste è $A[mid]$, oppure è alla sua sinistra (se $A[mid] > k$), oppure è alla sua destra (se $A[mid] < k$), e la successiva chiamata ricorsiva, se si effettua, cambia low o high in maniera da rispettare proprio questo principio. Dunque k, se esiste, si trova di nuovo in $A[low, . . . , high]$ all'inizio della seguente chiamata ricorsiva, dove low o high è stato opportunamente cambiato.
+- Nel **caso induttivo** si assume che *k*, se esiste, sia in $A[low, ..., high]$ (prima della chiamata ricorsiva); poiche' A e' ordinato, e mid è l'indice mediano, se $k$ esiste è $A[mid]$, oppure è alla sua sinistra (se $A[mid] > k$), oppure è alla sua destra (se $A[mid] < k$), e la successiva chiamata ricorsiva, se si effettua, cambia low o high in maniera da rispettare proprio questo principio. Dunque k, se esiste, si trova di nuovo in $A[low, . . . , high]$ all'inizio della seguente chiamata ricorsiva, dove low o high è stato opportunamente cambiato.
 
-**Complessità**. Operare in come *InsertionSort* per operare la complessita' di *RecursiveBinarySearch* non porta a nulla: tutte le operazioni semplici hanno complessita' costante e non ci sono cicli. Ci sono, pero', due chiamate ricorsive che rendono difficile formalizzare il costo totale. $T(n)$, cioe' la nostra funzione di complessita', e' un **incognita**, della quale sappiamo le seguenti cose: costa una costante *c* **prima di dichiararsi**, che possiamo approssimare a 1, e nel **caso peggiore** si richiama esattamente una volta; poiché la variabile mid assume il valore dell'indice centrale dell'array arrotondato, eventualmente, all'intero inferiore, quando la procedura si richiama lo fa, al massimo, sulla metà degli elementi originali.
+**Complessità**. Operare in come `InsertionSort()` per operare la complessita' di `RecursiveBinarySearch()` non porta a nulla: tutte le operazioni semplici hanno complessita' costante e non ci sono cicli. Ci sono, pero', due chiamate ricorsive che rendono difficile formalizzare il costo totale. $T(n)$, cioe' la nostra funzione di complessita', e' un **incognita**, della quale sappiamo le seguenti cose: costa una costante *c* **prima di dichiararsi**, che possiamo approssimare a 1, e nel **caso peggiore** si richiama esattamente una volta; poiché la variabile mid assume il valore dell'indice centrale dell'array arrotondato, eventualmente, all'intero inferiore, quando la procedura si richiama lo fa, al massimo, sulla metà degli elementi originali.
 Formalizzando
 $$ T(n) = T(\frac{n}{2}) + 1 $$
 Diciamo che l'espressione che descrive $T(n)$ e' una **ricorrenza**, e che questa si risolve trovando l'aspetto esplicito di $T(n)$. 
@@ -151,7 +150,7 @@ A seconda del contesto, ci chiederemo quanti sono i **confronti**, o piu' in gen
 
 A questo punto possiamo studiare con maggiore dettaglio il concetto di **ordine di grandezza** di una funzione sui numeri naturali.
 
-Nel caso di *InsertionSort* abbiamo detto che:
+Nel caso di `InsertionSort()` abbiamo detto che:
 $$ T(n) = a·n^2 + b·n + c = Θ(n^2) $$Ma cos'e' $Θ(f(n))$?
 Per una funzione $f(n)$ diremo, che $f(n)$ e' **limitata da** (o e' un **o grande** di). $g(n)$ ($f (n) = O(g(n)))$) se e solo se **esiste una costante** $c > 0$ tale che **per tutti gli** $n ≥ n_0$ e' il caso che:
 $$ 0 ≤ f (n) ≤ c · g(n) $$
@@ -161,25 +160,26 @@ Nel caso piu' semplice, abbiamo, ad esempio, che $f(n) = a · n^k$ e' tale che $
 Generalizzando, possiamo dire che:
 $$ \sum_{i=0}{k} a^i · n^i = Ω(n^k) $$
 
-Naturalmente, $f(n) = O(g(n))$ e $f(n) = Ω(g(n))$ **non** sono definizioni equivalenti. Per esempio, se prendiamo il caso di $f(n) = log(n)$ (come sempre, non specificando altrimenti, usiamo logaritmi in base 2). Non e' vero che $log(n) ≥ c · n$ per $n ≥ n_0$ per nessuna scelta di *c* e di $n_0$. Quindi $log(n) =/  Ω(n)$.
+Naturalmente, $f(n) = O(g(n))$ e $f(n) = Ω(g(n))$ **non** sono definizioni equivalenti. Per esempio, se prendiamo il caso di $f(n) = log(n)$ (come sempre, non specificando altrimenti, usiamo logaritmi in base 2). Non e' vero che $log(n) ≥ c · n$ per $n ≥ n_0$ per nessuna scelta di *c* e di $n_0$. Quindi $log(n) \ne  Ω(n)$.
 
 Arriviamo adesso alla nozione che avevamo al principio. Per una funzione $f(n)$, diremo che $f(n)$ e' **dello stesso ordine** di $g(n)$ se e solo se **esistono due costanti** $c_1, c_2 > 0$  tali che, per qualche $n_0$, **per tutti gli** $n ≥ n_0$ e' il caso che:
-$$ 0 ≤ c_1 · g(n) ≤ f (n) ≤ c2 · g(n) $$ In altre parole l'insieme $Θ(g(n))$ contiene tutte e solo quelle funzioni $f(n)4 tali che, a partire da un certo momento in poi (per tutti gli $n ≥ n_0$), il valore di $f(n)$ e' descrittivo al valore $g(n)$ a meno di una costante. Quindi, asintoticamente, $f(n)$ si comporta come $g(n)$.
+$$ 0 ≤ c_1 · g(n) ≤ f (n) ≤ c2 · g(n) $$
+In altre parole l'insieme $Θ(g(n))$ contiene tutte e solo quelle funzioni $f(n)$ tali che, a partire da un certo momento in poi (per tutti gli $n ≥ n_0$), il valore di $f(n)$ e' descrittivo al valore $g(n)$ a meno di una costante. Quindi, asintoticamente, $f(n)$ si comporta come $g(n)$.
 
 Chiaramente:
 $$ f(n) = Θ(g(n)) $$
 se e solo se:
-$$ f (n) = O(g(n)) e f (n) = Ω(g(n)) $$
+$$ f (n) = O(g(n)) \quad e  \quad f(n) = \Omega(g(n)) $$
 ![[NotazioneAsintoticaGrafici.png]]
 
 Per confrontare gli ordini di grandezza di funzioni diverse, usiamo la notazione $o()$ e $ω()$ (**o piccolo** e **omega piccolo**).
-Diremo quindi che $f(n) = o(g(n))$ (**e' di un ordine inferiore a**) se e sollo se per ogni costante $c > 0$, esiste una costante $n_0$ tale che, per ogni $n > n_0$ si verifica che $0 ≤ f (n) ≤ c · g(n)$ . Questo si puo' vedere in maniera piu' semplice: $lim_n→∞ f(n)/g(n) = 0$.
-Analogamente, $f(n) = ω(g(n))$ (**e' di un ordine superiore a**) se e solo se per ogni costante $c > 0$, esiste una costante $n_0$ tale che, per ogni $n > n_0$ si verifica che $0 ≤ c · g(n) ≤ f (n)$. Piu' semplicemente: $lim_n→∞ f(n)/g(n) = ∞$.  
+Diremo quindi che $f(n) = o(g(n))$ (**e' di un ordine inferiore a**) se e solo se per ogni costante $c > 0$, esiste una costante $n_0$ tale che, per ogni $n > n_0$ si verifica che $0 ≤ f (n) ≤ c · g(n)$ . Questo si puo' vedere in maniera piu' semplice: $$lim_{n→∞} \frac{f(n)}{g(n)} = 0$$
+Analogamente, $f(n) = ω(g(n))$ (**e' di un ordine superiore a**) se e solo se per ogni costante $c > 0$, esiste una costante $n_0$ tale che, per ogni $n > n_0$ si verifica che $0 ≤ c · g(n) ≤ f (n)$. Piu' semplicemente: $lim_{n \rightarrow \infty} \frac{f(n)}{g(n)} = \infty$.  
 
 --- 
 # Soluzioni di ricorrenze
-Per ogni $T(n)$ **esplicita** (come ad esempio *InsertionSort*) possiamo trovare il suo ordine di grandezza (*InsertionSort* nel caso peggiore ha complessita' $Θ(n^2)$).
-Esistono vari metodi per trasformare una ricorrenza da **implicita** a **esplicita**. L'esempio che dobbiamo ancora risolvere e' quello di *RecursiveBinarySearch*, che ha complessita', nel caso peggiore, $T(n) = T(\frac{n}{2})+1$. 
+Per ogni $T(n)$ **esplicita** (come ad esempio `InsertionSort()`) possiamo trovare il suo ordine di grandezza (`InsertionSort()` nel caso peggiore ha complessita' $Θ(n^2)$).
+Esistono vari metodi per trasformare una ricorrenza da **implicita** a **esplicita**. L'esempio che dobbiamo ancora risolvere e' quello di `RecursiveBinarySearch()`, che ha complessita', nel caso peggiore, $T(n) = T(\frac{n}{2})+1$. 
 Esistono tre modi per la soluzione di ricorrenze:
 - il metodo **dell'albero di ricorsione** (o sviluppo in serie)
 - il **Master Theorem**
@@ -407,10 +407,10 @@ Una strategia per una ricorrenza puo' essere delineata come segue: come primo st
 ## Algoritmi di ordinamento
 Il problema dell'ordinamento di un array e' un mattone fondamentale dell'algoritmica. Non solo appare come problema in innumerevoli applicazioni dirette, ma e' anche particolarmente adatto a fare emergere alcune delle idee piu' importanti dell'algoritmica. 
 
-Chiameremo **elementari** quei metodi, basati sui confronti, che condividono la seguente caratteristica: ogni elemento viene spostato verso il/al posto giusto separatamente dagli altri, in maniera iterativa o ricorsiva. Questi metodi includono *InsertionSort*, *SelectionSort*, *BubbleSort*, e altri.
+Chiameremo **elementari** quei metodi, basati sui confronti, che condividono la seguente caratteristica: ogni elemento viene spostato verso il/al posto giusto separatamente dagli altri, in maniera iterativa o ricorsiva. Questi metodi includono `InsertionSort`, `SelectionSort`, `BubbleSort`, e altri.
 
 ## Alternative a *InsertionSort*: *SelectionSort*
-*SelectionSort* e' un'alternativa elementare a *InsertionSort* per l'ordinamento:
+`SelectionSort()` e' un'alternativa elementare a `InsertionSort()` per l'ordinamento:
 ``` Pseudocodice
 proc SelectionSort(A){
 	for (j=1 to A.lenght-1) {
@@ -424,14 +424,14 @@ proc SelectionSort(A){
 }
 ```
 
-Nel codice di *SelectionSort* abbiamo usato una procedura *SwapValue()* che, dati due indici dell'array, ne scambia i contenuti. Questa procedura ha costo costante.
+Nel codice di `SelectionSort()` abbiamo usato una procedura `SwapValue()` che, dati due indici dell'array, ne scambia i contenuti. Questa procedura ha costo costante.
 
 ## Algoritmi di ordinamento non elementari
-Tipicamente, gli algoritmi di ordinamento non elementari che non fanno uso di ipotesi aggiuntive sono ricorsivi. Nel nostro programma ne vediamo tre: *MergeSort*, *QuickSort* e *HeapSort*. 
+Tipicamente, gli algoritmi di ordinamento non elementari che non fanno uso di ipotesi aggiuntive sono ricorsivi. Nel nostro programma ne vediamo tre: `MergeSort()`, `QuickSort()` e `HeapSort()`. 
 
 ## *MergeSort* e *Merge* 
-Per la definizione dell'algoritmo *MergeSort*, studiamo prima un algoritmo che risolve un problema piu' semplice, cioe' quello di costituire una sequenza ordinata partendo da due sequenze ordinate.
-L'input e' un array A di interi e tre indici p, q, r su di esso, tali che $p \le q \lt r$ e che entrambi $A[p, ..., q]$ e $A[q+1, ..., r]$ sono ordinati. Vogliamo, come risultato, una permutazione di A tale che $A[p, ..., r]$ e' ordinato.
+Per la definizione dell'algoritmo `MergeSort()`, studiamo prima un algoritmo che risolve un problema piu' semplice, cioe' quello di costituire una sequenza ordinata partendo da due sequenze ordinate.
+L'input e' un array $A$ di interi e tre indici $p$, $q$, $r$ su di esso, tali che $p \le q \lt r$ e che entrambi $A[p, ..., q]$ e $A[q+1, ..., r]$ sono ordinati. Vogliamo, come risultato, una permutazione di $A$ tale che $A[p, ..., r]$ e' ordinato.
 
 ``` Pseudocodice
 proc Merge(A, p, q, r) {
@@ -462,17 +462,17 @@ proc Merge(A, p, q, r) {
 }
 ```
 
-L'idea alla base di *Merge* e' scegliere il minimo trai i due elementi in cima a L ed a R e posizionarlo nel giusto posto di A; in seguito, a seconda della scelta, si avanza su L o su R. Utilizziamo due procedure elementari chiamate *CopyFromL* e *CopyFromR* che hanno come effetto quello di copiare in A un elemento (quello il cui indice e' dato come parametro) di L (rispettivamente, R) e avanzare di una posizione la variabile indicata come parametro. La scelta di usare oggetti esterni L ed R e; molto conveniente per poter usare A come array di arrivo, ma questo significa che, **nella nostra implementazione**, ==*Merge* non e' in place==: quanto e' piu' grande l'input, maggiore e' la quantita' di spazio utilizzata da L e R, che pertanto non e' costante. Chiaramente ==*MergeSort*== eredita questa caratteristica, quindi ==non e' in place==.
+L'idea alla base di `Merge()` e' scegliere il minimo trai i due elementi in cima a L ed a R e posizionarlo nel giusto posto di A; in seguito, a seconda della scelta, si avanza su L o su R. Utilizziamo due procedure elementari chiamate `CopyFromL` e `CopyFromR` che hanno come effetto quello di copiare in A un elemento (quello il cui indice e' dato come parametro) di L (rispettivamente, R) e avanzare di una posizione la variabile indicata come parametro. La scelta di usare oggetti esterni L ed R e; molto conveniente per poter usare A come array di arrivo, ma questo significa che, **nella nostra implementazione**, ==`Merge()` non e' in place==: quanto e' piu' grande l'input, maggiore e' la quantita' di spazio utilizzata da L e R, che pertanto non e' costante. Chiaramente ==*MergeSort*== eredita questa caratteristica, quindi ==non e' in place==.
 
 ### Correttezza e complessita' di *Merge* 
-Studiamo la **terminazione**. I primi due cicli **for** terminano quando i=n1 e j=n2; il terzo ciclo **for** e' sempre vincolato tra *p* e *r*, e per ipotesi $p \lt r$. Pertanto *Merge* termina sempre quando la chiamata rispetta l'ipotesi.
-Per la **correttezza**, la nostra **invariante** e': nel terzo ciclo **for**, $A[p, ..., k-1]$ contiene k-p elementi piu' piccoli di $L[1, ..., n_1]$ e di $R[1, ..., n_2]$, ordinati; inoltre $L[i]$ e $R[j]$ sono i piu' piccoli elementi di L ed R non ancora copiati in A. Per dimostrare che l'invariante va bene, dobbiamo mostrare che dalla stessa si ottiene la proprieta' desiderata sull'output.
+Studiamo la **terminazione**. I primi due cicli **for** terminano quando $i=n1$ e $j=n2$; il terzo ciclo **for** e' sempre vincolato tra *p* e *r*, e per ipotesi $p \lt r$. Pertanto `Merge()` termina sempre quando la chiamata rispetta l'ipotesi.
+Per la **correttezza**, la nostra **invariante** e': nel terzo ciclo **for**, $A[p, ..., k-1]$ contiene $k-p$ elementi piu' piccoli di $L[1, ..., n_1]$ e di $R[1, ..., n_2]$, ordinati; inoltre $L[i]$ e $R[j]$ sono i piu' piccoli elementi di $L$ ed $R$ non ancora copiati in A. Per dimostrare che l'invariante va bene, dobbiamo mostrare che dalla stessa si ottiene la proprieta' desiderata sull'output.
 
 Adesso mostriamo che l'invariante vale.
-- **Caso base**: k=p. In questo caso $A[p, ..., k-1]$ e' vuoto. Si verifica ce contiene i k-p=0 elementi piu' piccoli di L e R, e poiche' i=j=1 si ha che $L[i]$ ed $R[j]$ sono gli elementi piu' piccoli dei rispettivi oggetti non ancora ricopiati in A.
-- **Caso induttivo**: si assume che la proprieta' valga per *k* e si dimostra che vale per k+1. All'inizio della iterazione k+1, $L[i]$ ed $R[j]$ sono gli elementi piu' piccoli dei rispettivi oggetti non ancora ricopiati in A (ipotesi induttiva). Se $L[i] \le R[j]$ (e $i, j \le n_1, n_2$), allora $L[i]$ e' il piu' piccolo elemento non ancora copiato in A. Poiche' $A[p, . . . , k − 1]$ sono gli elementi piu' piccoli e sono ordinati (ipotesi induttiva) e poiche' $L[i]$ si copia in $A[k]$, dopo la k + 1-esima iterazione $A[p, . . . , k]$ contiene gli elementi piu' piccoli, ordinati, e $L[i]$ è l'elemento piu' piccolo di L (giacche' i si è incrementato). Il caso $L[i] \gt R[j]$, e i casi in cui i o j sono n1 o n2, rispettivamente, si dimostrano in maniera simile.
+- **Caso base**: $k=p$. In questo caso $A[p, ..., k-1]$ e' vuoto. Si verifica ce contiene i $k-p=0$ elementi piu' piccoli di L e R, e poiche' $i=j=1$ si ha che $L[i]$ ed $R[j]$ sono gli elementi piu' piccoli dei rispettivi oggetti non ancora ricopiati in A.
+- **Caso induttivo**: si assume che la proprieta' valga per *k* e si dimostra che vale per $k+1$. All'inizio della iterazione $k+1$, $L[i]$ ed $R[j]$ sono gli elementi piu' piccoli dei rispettivi oggetti non ancora ricopiati in A (ipotesi induttiva). Se $L[i] \le R[j]$ (e $i, j \le n_1, n_2$), allora $L[i]$ e' il piu' piccolo elemento non ancora copiato in $A$. Poiche' $A[p, . . . , k − 1]$ sono gli elementi piu' piccoli e sono ordinati (ipotesi induttiva) e poiche' $L[i]$ si copia in $A[k]$, dopo la $k + 1$-esima iterazione $A[p, . . . , k]$ contiene gli elementi piu' piccoli, ordinati, e $L[i]$ è l'elemento piu' piccolo di $L$ (giacche' i si è incrementato). Il caso $L[i] \gt R[j]$, e i casi in cui $i$ o $j$ sono $n_1$ o $n_2$, rispettivamente, si dimostrano in maniera simile.
 
-Per completare lo studio di *Merge*, manca ancora da vedere la **complessità**. I primi due cicli **for** impiegano $\Theta(n_1)$ e $\Theta(n_2)$, ed entrambi sono equivalenti a $\Theta(n)$. Il terzo ciclo **for** impiega $\Theta(n)$. Poiche' $\Theta(n) + \Theta(n) = \Theta(n)$, quest'ultima e' la complessita' di *Merge*.
+Per completare lo studio di `Merge()`, manca ancora da vedere la **complessità**. I primi due cicli **for** impiegano $\Theta(n_1)$ e $\Theta(n_2)$, ed entrambi sono equivalenti a $\Theta(n)$. Il terzo ciclo **for** impiega $\Theta(n)$. Poiche' $\Theta(n) + \Theta(n) = \Theta(n)$, quest'ultima e' la complessita' di `Merge()`.
 
 ## Ordinamento con *MergeSort* 
 L'algoritmo di *MergeSort* presenta un codice molto semplice, pero' e' **ricorsivo**. Queto implica che il calcolo della complessità portera' a una ricorrenza. La caratteristica di essere ricorsivo spiega anche che nell'input dell'algoritmo appaiano due parametri *p, r* che sembrano non avere senso, quando il problema dell'ordinamento e' definito su tutto l'array di input. Infatti dobbiamo pensare che l'algoritmo **richiama se stesso** durante la computazione; quindi da un punto di vista dell'utente, dobbiamo solo capire qual'e' la giusta chiamata iniziale.
@@ -489,11 +489,11 @@ proc MergeSort(A, p, r) {
 ```
 ![[MergeSortAlgorithm.png]]
 
-**Terminazione**: ad ogni chiamata ricorsiva, la distanza tra *p* e *r* diminuisce. Si effettua una nuova chiamata solo quando $p \lt r$. Adesso vediamo la **correttezza**, che si basa su un'invariante ricorsiva (o induttiva). In questo caso affermiamo che, dopo ogni chiamata ricorsiva *MergeSort(A, p, r)*, $A[p, ..., r]$ e' ordinato.
+**Terminazione**: ad ogni chiamata ricorsiva, la distanza tra *p* e *r* diminuisce. Si effettua una nuova chiamata solo quando $p \lt r$. Adesso vediamo la **correttezza**, che si basa su un'invariante ricorsiva (o induttiva). In questo caso affermiamo che, dopo ogni chiamata ricorsiva `MergeSort(A, p, r)`, $A[p, ..., r]$ e' ordinato.
 
 Dobbiamo far vedere, per induzione, che l'invarante e' corretta.
-- **Caso base**. Quando p=r, non si effettuano chiamate; ma $A[p, ..., r]$ contiene una sola posizione, ed e' quindi ordinato.
-- **Caso induttivo**. Supponiamo quindi che $p \lt r$, e ragioniamo sulla chiamata k+1-esima. Questa corrisponde a due chiamate a *MergeSort*, entrambe a livello *k* della ricorsione. Per ipotesi induttiva, entrambe restituiscono un array ordinato. Questi due risultati vengono poi passati a *Merge*, il quale restituisce un array ordinato tra le posizioni *p* ed *r*.
+- **Caso base**. Quando $p=r$, non si effettuano chiamate; ma $A[p, ..., r]$ contiene una sola posizione, ed e' quindi ordinato.
+- **Caso induttivo**. Supponiamo quindi che $p \lt r$, e ragioniamo sulla chiamata $k+1$-esima. Questa corrisponde a due chiamate a `MergeSort()`, entrambe a livello *k* della ricorsione. Per ipotesi induttiva, entrambe restituiscono un array ordinato. Questi due risultati vengono poi passati a `Merge()`, il quale restituisce un array ordinato tra le posizioni *p* ed *r*.
 
 Stabiliamo adesso la **complessità** di questo algoritmo. Come in *Merge*, non ha senso chiedersi se ci sono degli input che migliorano, o peggiorano le sue prestazioni. *MergeSort* da luogo alla seguente ricorrenza:
 $$
@@ -507,9 +507,9 @@ $$
 La funzione $n \cdot log(n)$ e' chiamata **pseudo lineare** (piu' efficiente rispetto a $n^2$)
 
 ## *QuickSort* e *Partition*
-Come *MergeSort*, si tratta di un algoritmo ricorsivo che usa una procedura ausiliare, chiamata *Partition*, che permette di formulare diverse soluzioni a problemi che sono considerati **satellite** rispetto all'ordinamento.
+Come `MergeSort()`, si tratta di un algoritmo ricorsivo che usa una procedura ausiliare, chiamata `Partition`, che permette di formulare diverse soluzioni a problemi che sono considerati **satellite** rispetto all'ordinamento.
 
-L'algoritmo *Partition* ha l'effetto di generare una permutazione dell'array in input in maniera tale che tutti gli elementi piu' piccoli o uguali ad un elemento, chiamato **pivot** e che viene individuato arbitrariamente sullo stesso, si trovino a sinistra di esso, e tutti gli elementi piu' grandi a destra. L'idea piu' importante di questo algoritmo e' il fatto che questa permutazione venga trovata in tempo lineare e senza spazio aggiuntivo.
+L'algoritmo `Partition` ha l'effetto di generare una permutazione dell'array in input in maniera tale che tutti gli elementi piu' piccoli o uguali ad un elemento, chiamato **pivot** e che viene individuato arbitrariamente sullo stesso, si trovino a sinistra di esso, e tutti gli elementi piu' grandi a destra. L'idea piu' importante di questo algoritmo e' il fatto che questa permutazione venga trovata in tempo lineare e senza spazio aggiuntivo.
 
 ``` Pseudocodice
 proc Partition(A, p, r) {
@@ -526,17 +526,17 @@ proc Partition(A, p, r) {
 }
 ```
 
-Per osservare che *Partition* vale la **terminazione** osserviamo che il ciclo principale e' un **for**, che noi sappiamo termina sempre.
-Per quanto riguarda la **correttezza** usiamo la seguente **invariante**: all'inizio di ogni iterazione, per ogni indice *k*: se $p \le k \le i$, allora $A[k] \le x$; se $i + 1 ≤ k ≤ j − 1$, allora $A[k] \gt x$ e se $k=r$, allora $A[k] = x$. Non possiamo dire nulla sul contenuto di A da j in poi, in quanto non siamo ancora arrivati a quel punto del ciclo.
+Per osservare che `Partition` vale la **terminazione** osserviamo che il ciclo principale e' un **for**, che noi sappiamo termina sempre.
+Per quanto riguarda la **correttezza** usiamo la seguente **invariante**: all'inizio di ogni iterazione, per ogni indice *k*: se $p \le k \le i$, allora $A[k] \le x$; se $i + 1 ≤ k ≤ j − 1$, allora $A[k] \gt x$ e se $k=r$, allora $A[k] = x$. Non possiamo dire nulla sul contenuto di $A$ da $j$ in poi, in quanto non siamo ancora arrivati a quel punto del ciclo.
 Alla terminazione ($j=r$); applicando l'invariante, dopo l'ultima istruzione si ottiene un array che , tra le posizioni *p* ed *r*, e' tale che esiste un valore **pivot** ($i + 1$) e tutti i valori di A prima di $i+1$ sono minori o uguali al valori $A[i+1]$ il quale a sua volta e' minore o uguale a tutti i valori dopo la posizione $i+1$.
 
 ### Correttezza di *Partition*
-Dimostriamo la validita' dell'invariante. L'induzione e' sulla variabile j.
+Dimostriamo la validita' dell'invariante. L'induzione e' sulla variabile $j$.
 - **Ciclo base**. Osserviamo cosa accade prima della prima esecuzione del ciclo **for**. Si ha che $i=p-1$ e $j=p$, quindi la parte di A fino alla posizione $j-1$ (cioe' $p-1$) e' vuota, pertanto l'invariante predica trivialmente su un insieme vuoto ed e' vera.
-- **Caso induttivo**. Prima della j-esima esecuzione, l'elemento j-esimo non e' stato ancora visto, e l'invariante predica su tuti gli elementi fino al j-1-esimo compreso. Sul destino del j-esimo elemento decide la condizione $A[j] \le x$. Supponiamo che sia vera: quindi l'elemento $A[j]$ va spostato nel primo gruppo. Per fare questo, i avanza di uno e si scambiano le posizioni $i+1$ e j. Quindi, a fine di questo ciclo, il gruppo di sinistra ha un elemento in piu' (prima condizione dell'invariante) e il gruppo di destra ha lo stesso numero di elementi, ma j e' avanzato di una posizione. Se si verificasse che $A[j] \gt x$, *i* non si sposterebbe (mantenendo lo stesso numero di elementi a sinistra), ma *j* si, aumentando il gruppo a destra di un elemento.
+- **Caso induttivo**. Prima della j-esima esecuzione, l'elemento j-esimo non e' stato ancora visto, e l'invariante predica su tuti gli elementi fino al $j-1$-esimo compreso. Sul destino del j-esimo elemento decide la condizione $A[j] \le x$. Supponiamo che sia vera: quindi l'elemento $A[j]$ va spostato nel primo gruppo. Per fare questo, $i$ avanza di uno e si scambiano le posizioni $i+1$ e $j$. Quindi, a fine di questo ciclo, il gruppo di sinistra ha un elemento in piu' (prima condizione dell'invariante) e il gruppo di destra ha lo stesso numero di elementi, ma j e' avanzato di una posizione. Se si verificasse che $A[j] \gt x$, *i* non si sposterebbe (mantenendo lo stesso numero di elementi a sinistra), ma *j* si, aumentando il gruppo a destra di un elemento.
 
 ### Ordinamento con *QuickSort*
-L'idea alla base di *QuickSort* e' procedere ricorsivamente (divide and conquer) nella seguente maniera. Un array A, considerato dalla posizione *p* alla posizione *r*, viene prima separato in due sotto-strutture $A[p, ..., q-1]$ e $A[q, ..., r]$ in maniera che tutti gli elementi **prima** di *q* siano minori o uguali a $A[q]$, il quale, a sua volta, sia minore o uguale a tutti gli elementi dalla posizione $q+1$ in poi, attraverso *Partition*. Quindi, richiamiamo ricorsivamente l'algoritmo su $A[p, ..., q-1]$ e $A[q, ..., r]$: al ritorno dalla chiamata ricorsiva, entrambi sono ordinati e pertanto non c'e' bisogno di alcuna operazione per combinarli. Abbiamo cosi' ordinato $A[p, ..., r]$.
+L'idea alla base di `QuickSort()` e' procedere ricorsivamente (divide and conquer) nella seguente maniera. Un array A, considerato dalla posizione *p* alla posizione *r*, viene prima separato in due sotto-strutture $A[p, ..., q-1]$ e $A[q, ..., r]$ in maniera che tutti gli elementi **prima** di *q* siano minori o uguali a $A[q]$, il quale, a sua volta, sia minore o uguale a tutti gli elementi dalla posizione $q+1$ in poi, attraverso `Partition`. Quindi, richiamiamo ricorsivamente l'algoritmo su $A[p, ..., q-1]$ e $A[q, ..., r]$: al ritorno dalla chiamata ricorsiva, entrambi sono ordinati e pertanto non c'e' bisogno di alcuna operazione per combinarli. Abbiamo cosi' ordinato $A[p, ..., r]$.
 
 ``` Pseudocodice
 proc QuickSort(A, p, r) {
@@ -549,19 +549,19 @@ proc QuickSort(A, p, r) {
 ```
 
 ### Correttezza di *QuickSort*
-La correttezza di *QuickSort* puo' essere dimostrata banalmente a partire da quella di *Partition*. La sua **terminazione** dipende dal fatto che, come in *MergeSort*, la distanza tra *p* ed *r* diminuisce sempre perche' *q* cade sempre in mezzo ai due. Quindi prima o poi non ci saranno piu' chiamate ricorsive e il processo terminera'. Per la **correttezza** abbiamo la seguente **invariante ricorsiva**: al termine di ogni chiamata ricorsiva con indici *p, r*, $A[p, ..., r]$ e' ordinato.
+La correttezza di `QuickSort()` puo' essere dimostrata banalmente a partire da quella di `Partition`. La sua **terminazione** dipende dal fatto che, come in `MergeSort`, la distanza tra *p* ed *r* diminuisce sempre perche' *q* cade sempre in mezzo ai due. Quindi prima o poi non ci saranno piu' chiamate ricorsive e il processo terminera'. Per la **correttezza** abbiamo la seguente **invariante ricorsiva**: al termine di ogni chiamata ricorsiva con indici *p, r*, $A[p, ..., r]$ e' ordinato.
 
 Dimostriamo la validita' dell'invariante:
 - il **caso base** e' triviale: quando $p=r$, $A[p, ..., r]$ e' compreso da una sola posizione. ed e' quindi ordinato.
-- Nel **caso induttivo**, si considerino certi indici $p \lt r$. La prima operazione consiste nel chiamare *Partition*, che abbiamo mostrato essere corretto, e che restituisce un indice *q* e una permutazione di $A[p, ..., r]$ tale che $A[p, ..., q-1]$ contiene solo gli elementi piu' piccoli o uguali a $A[q]$, il quale a sua volta e' piu' piccolo di $A[q+1, ..., r]$. Dopo le due chiamate ricorsive, per ipotesi induttiva, $A[p, ..., q-1]$ e $A[q+1, ..., r]$ sono entrambi ordinati. Ma allora $A[p, ..., r]$ e; ordinato, come volevamo dimostrare.
+- Nel **caso induttivo**, si considerino certi indici $p \lt r$. La prima operazione consiste nel chiamare *Partition*, che abbiamo mostrato essere corretto, e che restituisce un indice *q* e una permutazione di $A[p, ..., r]$ tale che $A[p, ..., q-1]$ contiene solo gli elementi piu' piccoli o uguali a $A[q]$, il quale a sua volta e' piu' piccolo di $A[q+1, ..., r]$. Dopo le due chiamate ricorsive, per ipotesi induttiva, $A[p, ..., q-1]$ e $A[q+1, ..., r]$ sono entrambi ordinati. Ma allora $A[p, ..., r]$ e' ordinato, come volevamo dimostrare.
 
 ### Complessita' di *QuickSort*
-La **complessità** di *Partition* e' facile da calcolare: $\Theta(n)$. Il calcolo della complessita' di *QuickSort*, invece, presenta molti problemi. 
+La **complessità** di `Partition` e' facile da calcolare: $\Theta(n)$. Il calcolo della complessita' di `QuickSort()`, invece, presenta molti problemi. 
 Per cominciare, analizziamo il caso peggiore. Il primo problema e' stabilire qual'e' la situazione che ci porta al caso peggiore: lo denominiamo **partizione sbilanciata**. Una partizione sbilanciata e' si ottiene quando la scelta del pivot e' tale che, ad ogni passo, genera un sottoproblema di dimensione 0 e un sottoproblema di dimensione $n-1$. In questo caso la ricorrenza che si ottiene e':
 $$
 T(n) = T(n-1) + \Theta(n)
 $$
-la cui situazione, vista come sviluppo di una serie aritmetica, e' evidentemente $T(n) = \Theta(n^2)$. Quindi, stiamo considerando un algoritmo che si comporta in maniera peggiore di *MergeSort*, e, inoltre, e' tale che il suo caso peggiore si verifica quando l'array i partenza e' gia' ordinato in partenza: proprio una situazione nella quale addirittura *InsertionSort* si comporta meglio ($\Theta(n)$).
+la cui situazione, vista come sviluppo di una serie aritmetica, e' evidentemente $T(n) = \Theta(n^2)$. Quindi, stiamo considerando un algoritmo che si comporta in maniera peggiore di `MergeSort()`, e, inoltre, e' tale che il suo caso peggiore si verifica quando l'array i partenza e' gia' ordinato in partenza: proprio una situazione nella quale addirittura `InsertionSort()` si comporta meglio ($\Theta(n)$).
 
 D'altra parte, il caso migliore si verifica quando la partizione e' sempre bilanciata nel modo piu' equo possibile. In questo caso la ricorrenza che si ottiene e':
 $$
@@ -574,10 +574,10 @@ T(n) \le T(\frac{9 \cdot n}{10} + T(\frac{n}{10}) + \Theta(n))
 $$
 la cui soluzione si puo' mostrare essere $T(n) = O(n \cdot log(n))$. Questi esempi suggeriscono che quando la partizione e' costante allora non e' mai sbilanciata.
 
-La considerazione precedente si puo' portare all'estremo, osservando che **per ogni** scelta del pivot  (quindi, per ogni versione di *Partition*) **esiste** un input tale che portera' la corrispondente versione di *QuickSort* al caso peggiore. Possiamo pensare a questo problema in termini di gioco: per ogni mossa del giocatore **buono** (chi costruisce *Partition*) esiste una mossa del giocatore **cattivo** (chi costruisce l'input) in maniera da generare il caso peggiore. 
-Ma per un dato input ed una data versione di *Partition*, qual'e' la possibilita' che questo succeda?
+La considerazione precedente si puo' portare all'estremo, osservando che **per ogni** scelta del pivot  (quindi, per ogni versione di `Partition`) **esiste** un input tale che portera' la corrispondente versione di `QuickSort()` al caso peggiore. Possiamo pensare a questo problema in termini di gioco: per ogni mossa del giocatore **buono** (chi costruisce `Partition`) esiste una mossa del giocatore **cattivo** (chi costruisce l'input) in maniera da generare il caso peggiore. 
+Ma per un dato input ed una data versione di `Partition`, qual'e' la possibilita' che questo succeda?
 
-Mostreremo che la complessita' del caso medio di *QuickSort* e' $O(n \cdot log(n))$, sotto l'ipotesi che tutti gli input siano equamente probabili. In particolare possiamo **garantire** che tutti gli input siano equamente probabili attraverso una versione **randomizzata** dell'algoritmo.
+Mostreremo che la complessita' del caso medio di `QuickSort()` e' $O(n \cdot log(n))$, sotto l'ipotesi che tutti gli input siano equamente probabili. In particolare possiamo **garantire** che tutti gli input siano equamente probabili attraverso una versione **randomizzata** dell'algoritmo.
 Otteniamo due vantaggi:
 1. non ci possono essere input **volutamente** pessimi (possono ancora esistere, ma con una bassa probabilita')
 2. l'assunzione "tutti gli input sono equamente probabili" e' rispettata, il che rende leggermente piu' semplice il calcolo
@@ -610,10 +610,10 @@ proc RandomizedQuickSort(A, p, r) {
 }
 ```
 
-La scelta casuale del pivot implica che ad ogni passo tutte le partizioni sono ugualmente probabili. Questo significa che possiamo parlare della complessita' di *RandomizedQuickSort* nel caso medio in termini di probabilita' di una determinata partizione. Guardiamo cosa succede quando effettuiamo una partizione qualsiasi. Supponiamo che, dopo aver eseguito *Partition*, la situazione sia la seguente:
+La scelta casuale del pivot implica che ad ogni passo tutte le partizioni sono ugualmente probabili. Questo significa che possiamo parlare della complessita' di `RandomizedQuickSort()` nel caso medio in termini di probabilita' di una determinata partizione. Guardiamo cosa succede quando effettuiamo una partizione qualsiasi. Supponiamo che, dopo aver eseguito `Partition`, la situazione sia la seguente:
 ![[RandomizedQuickSort.png]]
 
-La posizione di P (il pivot) determina su quanti elementi di *QuickSort* si richiamera'. Detta *k* la cardinalita' del lato sinistro, la cardinalita' del lato destro sara' n-1-k, considerando che il pivot non viene piu' toccato.
+La posizione di $P$ (il pivot) determina su quanti elementi di `QuickSort()` si richiamera'. Detta *k* la cardinalita' del lato sinistro, la cardinalita' del lato destro sara' $n-1-k$, considerando che il pivot non viene piu' toccato.
 
 Se tutte le partizioni sono ugualmente probabili, la probabilita' di una specifica partizione e' proprio $\frac{1}{n}$. Formalizzando, si ottiene che 
 $$
@@ -623,7 +623,7 @@ e quindi:
 $$
 T(n) = \frac{2}{n} \cdot \sum_{k=0}^{n-1}T(k) + \Theta(n)
 $$
-Dimostreremo che $T(n) = O(n \cdot log(n))$ attraverso la tecnica della sostituzione. In particolare, mostreremo che $T(n) \le a \cdot n \cdot log(n) + b$ per qualche costante a, b.
+Dimostreremo che $T(n) = O(n \cdot log(n))$ attraverso la tecnica della sostituzione. In particolare, mostreremo che $T(n) \le a \cdot n \cdot log(n) + b$ per qualche costante $a, b$.
 
 Procediamo. In prima istanza semplifichiamo la nostra espressione:
 $$
@@ -659,10 +659,10 @@ T(n) &\le \frac{2 \cdot a}{n} \cdot (\frac{1}{2} \cdot (n^2 \cdot log(n) - \frac
 &\le a \cdot n \cdot log(n) + b \\
 \end{align}
 $$
-Quindi il tempo del caso medio di *RandomizedQuickSort* e' precisamente $O(n \cdot log(n))$ e abbiamo escluso la possibilita' di **poter** scegliere un'istanza di input al fine di ottenere il caso peggiore!
+Quindi il tempo del caso medio di `RandomizedQuickSort()` e' precisamente $O(n \cdot log(n))$ e abbiamo escluso la possibilita' di **poter** scegliere un'istanza di input al fine di ottenere il caso peggiore!
 
 ## Conclusione
-*MergeSort* e *Quicksort* sono esempi di strategia **divide and conquer**. Questa strategia si basa sull'idea di dividere il problema in due o piu' sotto-problemi separati tra loro, e poi combinare i risultati di questi ultimi. Si contrappone a strategie piu' semplici, come quelle iterative (come *InsertionSort*), piu' complesse, come la **programmazione dinamica**, o semplicemente diverse come la strategia **greedy**. Allo stesso modo, *QuickSort*, *Partition* e *RandomizedQuickSort* racchiudono numerosi concetti che possono essere considerati archetipici di molte idee algoritmiche.  
+`MergeSort()` e `Quicksort()` sono esempi di strategia **divide and conquer**. Questa strategia si basa sull'idea di dividere il problema in due o piu' sotto-problemi separati tra loro, e poi combinare i risultati di questi ultimi. Si contrappone a strategie piu' semplici, come quelle iterative (come `InsertionSort()`), piu' complesse, come la **programmazione dinamica**, o semplicemente diverse come la strategia **greedy**. Allo stesso modo, `QuickSort()`, `Partition()` e `RandomizedQuickSort()` racchiudono numerosi concetti che possono essere considerati archetipici di molte idee algoritmiche.  
 
 ---
 # *CountingSort* e *RadixSort* 
@@ -678,7 +678,7 @@ Quante permutazioni possibili con *n* elementi? Precisamente $n!$, e un albero b
 $$
 log(n!) = \Theta(n \cdot log(n))
 $$
-Quindi il nostro limite inferiore e' $\Omega(n \cdot log(n))$. Per esempio, questo significa che *MergeSort* e' **ottimo**, visto che ha complessita', nel caso peggiore, $\Theta(n \cdot log(n))$. *QuickSort* non e' ottimo, neppure nella sua versione randomizzata, ma altre considerazioni che abbiamo fatto ci portano a preferirlo in tate situazione.
+Quindi il nostro limite inferiore e' $\Omega(n \cdot log(n))$. Per esempio, questo significa che `MergeSort()` e' **ottimo**, visto che ha complessita', nel caso peggiore, $\Theta(n \cdot log(n))$. `QuickSort()` non e' ottimo, neppure nella sua versione randomizzata, ma altre considerazioni che abbiamo fatto ci portano a preferirlo in tate situazione.
 Per numeri sufficientemente **piccoli**, possiamo fare meglio di $n \cdot log(n)$, In realta', il limite che **non possiamo** vincere e' $log(n!)$.
 
 E' possibile ordinare correttamente 5 numeri basandoci sui confronti in meno di 8 confronti? Se rispondiamo di no, allora sbagliamo, anche se e' vero che $5 \cdot log(5) = 11.6 ≈ 12$. La risposta e' si, perche' $log(5!) = log(120) = 6,90 ≈ 7$, che e' il numero minimo di confronti necessari per decidere l'ordine di 5 elementi diversi. In linea di principio ne esiste uno specifico per qualunque numero **fissato** di elementi: questi algoritmi non sono eleganti, non insegnano nulla di concettuale e servono solo esclusivamente per rappresentare un'idea.
@@ -686,9 +686,9 @@ E' possibile ordinare correttamente 5 numeri basandoci sui confronti in meno di 
 Oltre ad esistere un numero minimo di confronti che qualunque algoritmo deve fare per poter risolvere il problema dell'ordinamento, esiste un numero minimo di operazioni, e quindi di complessita' minima.
 
 ## Ipotesi aggiuntive
-Aggiungendo delle ipotesi agli oggetti che vogliamo ordinare possiamo vincere dei limiti. Un esempio che vediamo sono gli algoritmi *CountingSort* e *RadixSort*.
-Entrambi gli algoritmi sono basati sull'ipotesi aggiuntiva di stare ordinando dei numeri interi du cui conosciamo il limite superiore. *CountingSort* lavora direttamente coi numeri e *RadixSort* ne generalizza l'uso.
-*CountingSort* si basa su un array A, su un appoggio di C (quindi non e' in place) e su uno di uscita B, dove si ottiene il risultato.
+Aggiungendo delle ipotesi agli oggetti che vogliamo ordinare possiamo vincere dei limiti. Un esempio che vediamo sono gli algoritmi `CountingSort()` e `RadixSort()`.
+Entrambi gli algoritmi sono basati sull'ipotesi aggiuntiva di stare ordinando dei numeri interi du cui conosciamo il limite superiore. `CountingSort()` lavora direttamente coi numeri e `RadixSort()` ne generalizza l'uso.
+`CountingSort()` si basa su un array $A$, su un appoggio di $C$ (quindi ==non e' in place==) e su uno di uscita B, dove si ottiene il risultato.
 
 ## *CountingSort*
 ``` Pseudocodice
@@ -710,21 +710,21 @@ proc CountingSort(A, B, k) {
 
 ### Correttezza di *CountingSort*
 Per la **terminazione**, vediamo che tutto l'algoritmo e' governato da cicli **for**, e quindi termina per definizione.
-Guardiamo la **correttezza**. Alla fine del secondo ciclo **for**, in C la posizione i-esima contiene il numero di elementi di A che sono uguali ad *i*, e alla fine del terzo, la posizione i-esima contiene il numero di elementi di A che sono uguali ad *i*. Un'**invariante** corretta per il quarto ciclo **for** e': al j-esimo passo, $C[A[j]]$ e' la posizione corretta di $A[j]$ in B. In primo luogo osserviamo che, prima di iniziare il quarto ciclo, per ogni *j* si ha che $C[A[j]] - z$ e' la posizione corretta di $A[j]$ in B se $A[j]$ e' tale che $|{A[I]|I > j, A[I] = A[j]}| = z$. 
+Guardiamo la **correttezza**. Alla fine del secondo ciclo **for**, in C la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$, e alla fine del terzo, la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$. Un'**invariante** corretta per il quarto ciclo **for** e': al j-esimo passo, $C[A[j]]$ e' la posizione corretta di $A[j]$ in B. In primo luogo osserviamo che, prima di iniziare il quarto ciclo, per ogni *j* si ha che $C[A[j]] - z$ e' la posizione corretta di $A[j]$ in B se $A[j]$ e' tale che $|{A[I]|I > j, A[I] = A[j]}| = z$. 
 
 Adesso dimostriamo il caso generale.
 - **Caso base**. L'invariante e' chiaramente vera per $j=n$, per l'osservazione precedente.
 - **Caso induttivo**. Supponiamo che l'invariante sia vera per un certo *j*. Dopo aver effettuato l'inseriemnto di $A[j]$ nella posizione $C[A[j]]$, quest'ultimo valore diminuisce di un'unita'. Consideriamo adesso l'elemento $A[j-1]$. Se questo e' diverso da tutti gli elementi $A[I]$ con $I \ge j$, allora per l'osservazione precedente l'invariante e' ancora vera. Supponiamo invece che esistano *p* elementi del tipo $A[I]$, con $I \ge j$, tali che $A[I] = A[j-1]$. Nei passaggi precedenti, il valore $C[A[j-1]]$ e' dunque diminuito di *p* unita'. Questo significa che adesso il valore di $C[A[j-1]]$ e' quello della posizione corretta di $A[j-1]$ in B.
 
-La correttezza di questa invariante implica direttamente che l'ultimo ciclo dell'algoritmo ordina A in B, come richiesto.
+La correttezza di questa invariante implica direttamente che l'ultimo ciclo dell'algoritmo ordina $A$ in $B$, come richiesto.
 
 ### Complessita' di *CountingSort*
-La **complessità** di *CountingSort* e' data dai quattro cicli. Due di questi hanno complessita' $\Theta(n)$ e gli altri due hanno complessita' $\Theta(k)$. Pertanto se $k = O(n)$ la complessita' totale e' $\Theta(n)$. Ma essendo precisi, la complessita' andrebbe scritta come $\Theta(n+k)$. Quindi se volessimo usare *CountingSort* su un'array qualsiasi che contiene interi, di cui non conosciamo il massimo, l'idea di fare una passata iniziale per computare il massimo, e dichiarare C in maniera dinamica, e' rischiosa: se *k* e' troppo grande, l'allocazione potrebbe fallire, e comunque, se $k>>n$, la complessita' non e' piu' lineare.
+La **complessità** di `CountingSort()` e' data dai quattro cicli. Due di questi hanno complessita' $\Theta(n)$ e gli altri due hanno complessita' $\Theta(k)$. Pertanto se $k = O(n)$ la complessita' totale e' $\Theta(n)$. Ma essendo precisi, la complessita' andrebbe scritta come $\Theta(n+k)$. Quindi se volessimo usare `CountingSort()`su un'array qualsiasi che contiene interi, di cui non conosciamo il massimo, l'idea di fare una passata iniziale per computare il massimo, e dichiarare $C$ in maniera dinamica, e' rischiosa: se *k* e' troppo grande, l'allocazione potrebbe fallire, e comunque, se $k>>n$, la complessita' non e' piu' lineare.
 
 ## L'algoritmo *RadixSort* per ordinare elementi multi-indice
-Immaginiamo di voler ordinare *n* elementi multi-indice. Un esempio potrebbe essere quello di ordinare *n* date (giorno-mese-anno). 
-Un algoritmo classico che si puo' utilizzare per risolvere questo problema prevede di ordinare gli elementi rispetto all'indice piu' significativo, per poi passare al secondo, e cosi' via. Nell'esempio, avremmo le date ordinate per anno, mese ed infine giorno. Il difetto principale di questa strategia e' che dopo la prima passata di ordinamento dobbiamo separare gli elementi per gruppi. Quando disponiamo di un algoritmo stabile come *CountingSort* possiamo usare una strategia contro-intuitiva: ordinare prima secondo gli indici meno significativi.
-*RadixSort* **non** e' un algoritmo a se' stante, ma un **meta-algoritmo**: si basa sun algoritmo interno di ordinamento, per esempio *CountingSort*.
+Immaginiamo di voler ordinare $n$ elementi multi-indice. Un esempio potrebbe essere quello di ordinare $n$ date (giorno-mese-anno). 
+Un algoritmo classico che si puo' utilizzare per risolvere questo problema prevede di ordinare gli elementi rispetto all'indice piu' significativo, per poi passare al secondo, e cosi' via. Nell'esempio, avremmo le date ordinate per anno, mese ed infine giorno. Il difetto principale di questa strategia e' che dopo la prima passata di ordinamento dobbiamo separare gli elementi per gruppi. Quando disponiamo di un algoritmo stabile come `CountingSort()` possiamo usare una strategia contro-intuitiva: ordinare prima secondo gli indici meno significativi.
+`RadixSort()` **non** e' un algoritmo a se' stante, ma un **meta-algoritmo**: si basa sun algoritmo interno di ordinamento, per esempio *CountingSort*.
 
 ``` Pseudocodice
 proc RaidxSort(A, d) {
@@ -739,10 +739,10 @@ La **terminazione** e' completamente ovvia, assumendo che la procedura interna t
 
 Mostriamo che l'invariante funziona.
 - **Caso base.** Se $i=1$, allora stiamo parlando di elementi fatti da un solo indice. Quindi, la correttezza segue dalla correttezza dell'algoritmo stabile utilizzato come sotto-procedura.
-- **Caso induttivo.** Assumiamo allora che $i > 1$, e che l'invariante valga per $i-1$. Consideriamo l'indicei-esimo. Dopo la i-esima esecuzione del ciclo **for**, gli elementi sono lessicograficamente ordinati sull'indice i-esimo (il piu' significativo). Consideriamo due elementi a, b che hanno lo stesso valore per l'indice i-esimo, ma valori diversi sull'indice (i-1)-esimo. Per ipotesi induttiva, dopo la (i-1)-esima esecuzione *a* viene posto prima di *b*; poiche' la sotto-procedura e' stabile, questa relazione viene mantenuta dopo la i-esima esecuzione, implicando che vale ancora $a<b$ dopo la i-esima esecuzione.
+- **Caso induttivo.** Assumiamo allora che $i > 1$, e che l'invariante valga per $i-1$. Consideriamo l'indicei-esimo. Dopo la i-esima esecuzione del ciclo **for**, gli elementi sono lessicograficamente ordinati sull'indice i-esimo (il piu' significativo). Consideriamo due elementi a, b che hanno lo stesso valore per l'indice i-esimo, ma valori diversi sull'indice ($i-1$)-esimo. Per ipotesi induttiva, dopo la ($i-1$)-esima esecuzione *a* viene posto prima di *b*; poiche' la sotto-procedura e' stabile, questa relazione viene mantenuta dopo la i-esima esecuzione, implicando che vale ancora $a<b$ dopo la i-esima esecuzione.
 
 ### Complessita' di *RadixSort*
-Tipicamente, ogni indice considerato da solo e; numerico con massimo *k* costante (per esempio, nelle date i giorni vanno da 1 a 31). Quindi, tipicamente, si usa *CountingSort* come procedura interna. Pertanto, la complessità di *RadixSort* per *n* elementi su *d* indici, essendo ogni indice limitato tra 0 e *k*, e' $\Theta(d \cdot (n+k))$. In generale, la complessita' del caso pessimo e' $O(d \cdot f(n))$, dove $O(f(n))$ e' la complessita' nel caso pessimo della procedura interna.
+Tipicamente, ogni indice considerato da solo e' numerico con massimo *k* costante (per esempio, nelle date i giorni vanno da 1 a 31). Quindi, tipicamente, si usa `CountingSort()` come procedura interna. Pertanto, la complessità di `RadixSort()` per *n* elementi su *d* indici, essendo ogni indice limitato tra 0 e *k*, e' $\Theta(d \cdot (n+k))$. In generale, la complessita' del caso pessimo e' $O(d \cdot f(n))$, dove $O(f(n))$ e' la complessita' nel caso pessimo della procedura interna.
 
 ---
 # Liste, pile e code
@@ -750,22 +750,25 @@ Tipicamente, ogni indice considerato da solo e; numerico con massimo *k* costant
 ## Strutture Dati
 Cosa possiamo dire delle strutture dati? Quali caratteristiche ci interessano?
 
-La **tassonomia** classica delle strutture dati prevede tre dimensioni originali tra loro. Una struttura dati puo' essere **statica** o **dinamica**: con dinamica intendiamo una struttura che e' pensata per aggiungere e togliere elementi durante l'esecuzione di un algoritmo (per esempio un'array e' dinamico mentre un grafo e' statico); **compatta** o **sparsa**: tipicamente le strutture dinamiche sono sparse, ovvero non possiamo fare ipotesi sulla posizione fisica degli elementi in memoria (per esempio, gli array son una struttura compatta perche', indipendentemente da dove da dove e' memorizzato, possiamo assumere che sa fatto in maniera da avere *n* posizioni)fisiche vicine tra loro); **basata** o **non basata sull'ordinamento** delle chiavi: se gli elementi sono disposti in maniera dipendente dal valore delle chiavi, allora sono basate sull'ordinamento, altrimenti non. 
+La **tassonomia** classica delle strutture dati prevede tre dimensioni originali tra loro. Una struttura dati puo' essere 
+- **statica** o **dinamica**: con dinamica intendiamo una struttura che e' pensata per aggiungere e togliere elementi durante l'esecuzione di un algoritmo (per esempio un'array e' dinamico mentre un grafo e' statico); 
+- **compatta** o **sparsa**: tipicamente le strutture dinamiche sono sparse, ovvero non possiamo fare ipotesi sulla posizione fisica degli elementi in memoria (per esempio, gli array son una struttura compatta perche', indipendentemente da dove da dove e' memorizzato, possiamo assumere che sa fatto in maniera da avere *n* posizioni)fisiche vicine tra loro);
+- **basata** o **non basata sull'ordinamento** delle chiavi: se gli elementi sono disposti in maniera dipendente dal valore delle chiavi, allora sono basate sull'ordinamento, altrimenti non. 
 
 Un altro elemento fondamentale e' la differenza tra **chiave** e **dato satellite**. Cio' che associamo ad una chiave si chiama **dato satellite**, e normalmente questo e' il contenuto informativo della chiave. Quando effettuiamo un movimento di chiave, implicitamente muoviamo anche i dati satelliti, la cui dimensione e' considerata costante.
 
-Array e liste sono considerate strutture dati **concrete** (o **fondamentali**). Su di esse, a volte, e' conveniente costruire strutture dati **astratte**, che nascondono l'implementazione soggiacente.. Questo e' cio' che viene fatto ad esempio nelle librerie offerte dai linguaggi di programmazione. La distinzione e' a volte non completamente netta (come nel caso delle liste).
+Array e liste sono considerate strutture dati **concrete** (o **fondamentali**). Su di esse, a volte, e' conveniente costruire strutture dati **astratte**, che nascondono l'implementazione soggiacente. Questo e' cio' che viene fatto ad esempio nelle librerie offerte dai linguaggi di programmazione. La distinzione e' a volte non completamente netta (come nel caso delle liste).
 
 Possiamo pensare gli array come una struttura dati statica (quindi senza algoritmi di inserimento o cancellazione) associata al problema dell'ordinamento. Quando studiamo strutture dati basate sull'ordinamento delle chiavi, potremmo, in linea teorica, associare anche ad esse il problema dell'ordinamento: normalmente questo non si fa, perche' si presta attenzione ad altri problemi.
 
-Una **lista concatenata** e' una struttura dati dinamica, non basata sull'ordinamento e sparsa. Ad essa, associamo le operazioni di inserimento, cancellazione e ricerca. In certo modo, una lista e' la versione dinamica di un array; cio' nonostante, l'operazione di ordinamento delle chiavi normalmente avviene attraverso la copiatura degli elementi su un oggetto di tipo array e non direttamente.
+Una **lista concatenata** e' una struttura dati ==dinamica, non basata sull'ordinamento e sparsa==. Ad essa, associamo le operazioni di inserimento, cancellazione e ricerca. In certo modo, una lista e' la versione dinamica di un array; cio' nonostante, l'operazione di ordinamento delle chiavi normalmente avviene attraverso la copiatura degli elementi su un oggetto di tipo array e non direttamente.
 
 ## Puntatori e lista
 Un **puntatore** e' un tipo di dato fondamentale e supportato da quasi tutti i linguaggi di programmazione. Quei linguaggi che non lo supportano offrono comunque le strutture dati principali in termini di oggetti e metodi. 
 Un puntatore e' un tipo di variabile che contiene un indirizzo di memoria. Viene associato al **tipo di dato puntato**, per cui un puntatore ad un intero e' in generale diverso da un puntatore ad un tipo complesso.
 
-Nel caso di liste concatenate, immaginiamo un tipo di dato **elemento** (ce contiene almeno la chiave ed un puntatore al contenuto) e due puntatori ad elemento, che chiamiamo **predecessore** e **successore**. Un elemento e' quindi un tipo di dato ricorsivo e come tale va dichiarato. Nella realta' dei linguaggi di programmazione i puntatori vanno creati, dando ordine al sistema operativo di allocare sufficiente spazio di memoria. 
-Ai fini didattici, creiamo adesso una variabile *L* (un oggetto di tipo lista) come una struttura che contiene, almeno, un attributo `L.head`, di tipo puntatore ad elemento, che punta alla testa dell'oggetto.. Si puo' pensare che contenga anche attributo tipo `L.numel` che indica il numero di elementi presenti in ogni momento. All'inizio, `L.head = nil` e `L.numel = 0`.
+Nel caso di liste concatenate, immaginiamo un tipo di dato **elemento** (che contiene almeno la chiave ed un puntatore al contenuto) e due puntatori ad elemento, che chiamiamo **predecessore** e **successore**. Un elemento e' quindi un tipo di dato ricorsivo e come tale va dichiarato. Nella realta' dei linguaggi di programmazione i puntatori vanno creati, dando ordine al sistema operativo di allocare sufficiente spazio di memoria. 
+Ai fini didattici, creiamo adesso una variabile $L$ (un oggetto di tipo lista) come una struttura che contiene, almeno, un attributo `L.head`, di tipo puntatore ad elemento, che punta alla testa dell'oggetto.. Si puo' pensare che contenga anche attributo tipo `L.numel` che indica il numero di elementi presenti in ogni momento. All'inizio, `L.head = nil` e `L.numel = 0`.
 
 
 Concentriamoci nel caso di liste **non ordinate**, **doppiamente collegate**; quindi stabiliamo che  un nodo *x* ha definiti la chiave (`x.key`), e i puntatori al prossimo (`x.next`) e al precedente (`x.prev`) elemento. All'inizio la lista e' vuota. Immaginiamo che sia *x* il nuovo elemento, gia' allocato, per esempio con la chiave 5.
@@ -784,7 +787,8 @@ proc ListInser(L, x) {
 }
 ```
 
-Il puntatore `L.head` punta sempre al primo elemento. Se l'oggetto e' vuoto, al primo inserimento *x* e' sia il primo che l'ultimo elemento, quindi il suo prossimo (*next*) e' vuoto. Se d'altra parte non è vuoto, allora l'elemento che segue *x* è quello che era il primo. Poiché si tratta di una lista doppiamente collegata (gli elementi puntano al loro predecessore), se non è vuoto (= se `L.head` non è `nil`) allora il predecessore di quello che prima era il primo elemento deve diventare *x*. Se invece era vuoto, questo puntatore non si modica e rimane `nil`. 
+Il puntatore `L.head` punta sempre al primo elemento. Se l'oggetto e' vuoto, al primo inserimento *x* e' sia il primo che l'ultimo elemento, quindi il suo prossimo 
+(`next`) e' vuoto. Se d'altra parte non è vuoto, allora l'elemento che segue *x* è quello che era il primo. Poiché si tratta di una lista doppiamente collegata (gli elementi puntano al loro predecessore), se non è vuoto (= se `L.head` non è `nil`) allora il predecessore di quello che prima era il primo elemento deve diventare *x*. Se invece era vuoto, questo puntatore non si modica e rimane `nil`. 
 
 ``` Pseudocodice
 proc ListSearch(L, k) {
@@ -838,7 +842,7 @@ Le pile e le code sono entrambe due strutture dati astratte. Nella nostra tasson
 Una **pila** (o **stack**) e' una struttura dati astratta che implementa la politica **last in first out** (**LIFO**). Una pila si utilizza in diversi contesti, tra cui valutazione di espressioni, processi di backtracking (per ricordarci le mosse che abbiamo fatto e l'ultimo punto di scelta), eliminazione della ricorsione, e molte altre. 
 
 ### Pile su Array
-Per implementare una pila ci possiamo basare su un array; avremo quindi una implementazione compatta. L'idea e' quella di **mascherare** la struttura portate all'utente finale. Si puo' pensare come un **oggetto** con i suoi relativi **metodi**. Assumeremo quindi che S sia  un array di interi, che interpretiamo come uno stack e che viene dotato con i parametri (naturali) `S.top` (inizializzato a 0) e `S.max` (che indica la massima capacita' di S). Le operazioni di inserimento ed eliminazione di un elemento nelle pile prendono il nome di *Push* e *Pop*, rispettivamente. La variabile S e' un array dotato di struttura
+Per implementare una pila ci possiamo basare su un array; avremo quindi una implementazione compatta. L'idea e' quella di **mascherare** la struttura portate all'utente finale. Si puo' pensare come un **oggetto** con i suoi relativi **metodi**. Assumeremo quindi che $S$ sia  un array di interi, che interpretiamo come uno stack e che viene dotato con i parametri (naturali) `S.top` (inizializzato a 0) e `S.max` (che indica la massima capacita' di S). Le operazioni di inserimento ed eliminazione di un elemento nelle pile prendono il nome di *Push* e *Pop*, rispettivamente. La variabile $S$ e' un array dotato di struttura.
 
 ``` Pseudocodice
 proc Empty(S) {
@@ -862,10 +866,9 @@ proc Pop(S) {
 }
 ```
 ### Code su array
+Una **coda** (o **queue**) e' una struttura dati elementare che implementa una politica **first in first out** (**FIFO**). Permette di accedere ai dati attraverso inserimento ed eliminazione che prendono normalmente i nomi di `Enqueue` e `Dequeue`, rispettivamente. Anche una coda puo' avere diversi usi: in una **playlist** le canzoni si trovano in una coda (circolare), in maniera che la canzone appena ascoltata si ripetera' **il piu' tardi possibile**; oppure nei processi di visita di strutture dati piu' complesse come i grafi.
 
-Una **coda** (o **queue**) e' una struttura dati elementare che implementa una politica **first in first out** (**FIFO**). Permette di accedere ai dati attraverso inserimento ed eliminazione che prendono normalmente i nomi di *Enqueue* e *Dequeue*, rispettivamente. Anche una coda puo' avere diversi usi: in una **playlist** le canzoni si trovano in una coda (circolare), in maniera che la canzone appena ascoltata si ripetera' **il piu' tardi possibile**; oppure nei processi di visita di strutture dati piu' complesse come i grafi.
-
-Per implementare uno stack ci possiamo basare su un array. Assumendo quindi che *Q* sia una coda (un array dotato di struttura), con parametri `Q.head`, `Q.tail` (naturali), la cui inizializzazione e' `Q.head = Q.tail = 1`. Per assicurare di essere capaci di distinguere perfettamente le due situazioni di pila vuota e di pila piena, entrambe caratterizzate da `Q.head = Q.tail`, aggiungiamo una variabile, chiamata *dim* inizialmente a 0 (perche' la coda e' vuota).
+Per implementare uno stack ci possiamo basare su un array. Assumendo quindi che $Q$ sia una coda (un array dotato di struttura), con parametri `Q.head`, `Q.tail` (naturali), la cui inizializzazione e' `Q.head = Q.tail = 1`. Per assicurare di essere capaci di distinguere perfettamente le due situazioni di pila vuota e di pila piena, entrambe caratterizzate da `Q.head = Q.tail`, aggiungiamo una variabile, chiamata $dim$ inizialmente a 0 (perche' la coda e' vuota).
 
 ``` Pseudocodice
 proc Enqueue(Q, x) {
@@ -893,7 +896,7 @@ proc Dequeue(Q) {
 **Correttezza**, **complessità** e **terminazione** di queste operazioni sono triviali da dimostrare.
 
 ### Pile su liste
-Pile e code possono anche essere implementate in maniera sparsa, utilizzando delle liste concatenate come supporto. Per quanto riguarda le pile, l'oeprazione di inserimento in testa di una lista e' proprio l'operazione di *Push* e l'operazione di *Pop* e' una semplificazione dell'operazione di delete. In questo caso, S e' semplicemente una lista, senza campi aggiuntivi.
+Pile e code possono anche essere implementate in maniera sparsa, utilizzando delle liste concatenate come supporto. Per quanto riguarda le pile, l'oeprazione di inserimento in testa di una lista e' proprio l'operazione di `Push` e l'operazione di `Pop` e' una semplificazione dell'operazione di delete. In questo caso, $S$ e' semplicemente una lista, senza campi aggiuntivi.
 
 ``` Pseudocodice
 proc Empty(S) {
@@ -918,7 +921,7 @@ proc Pop(S) {
 **Correttezza**, **complessità** e **terminazione** di queste operazioni non presentano nessun problema.
 
 ### Code su liste
-Per implementare una coda attraverso una lista dobbiamo immaginare che la lista Q sia dotata del campo `Q.tail` in aggiunta al campo `Q.head`. In questo modo possiamo implementare *Enqueue* semplicemente chiamando l'inserimento in una lista e *Dequeue* semplicemente chiamando l'eliminazione di un elemento in una lista.
+Per implementare una coda attraverso una lista dobbiamo immaginare che la lista $Q$ sia dotata del campo `Q.tail` in aggiunta al campo `Q.head`. In questo modo possiamo implementare `Enqueue` semplicemente chiamando l'inserimento in una lista e `Dequeue `semplicemente chiamando l'eliminazione di un elemento in una lista.
 
 ``` Pseudocodice
 proc Empty(Q) {
@@ -943,21 +946,21 @@ proc Dequeue(Q) {
 **Correttezza**, **complessità** e **terminazione** sono immediate.
 
 ## Conclusione
-La lista e' la piu' semplice delle strutture dati dinamiche e puo' essere implementata con collegamento semplice, doppio, oppure in maniere molto complesse che permettono di sfruttare delle euristiche di miglioramento delle complessita'. Le pile e le code sono strutture dati che non solo servono nelle situazioni che abbiamo descritto, ma sono anche rappresentative di concetti fondamentali in informatica e permettono di porsi domande fondamentali per la teoria della complessita' e della calcolabilita'
+==La lista e' la piu' semplice delle strutture dati dinamiche== e puo' essere implementata con collegamento semplice, doppio, oppure in maniere molto complesse che permettono di sfruttare delle euristiche di miglioramento delle complessita'. Le pile e le code sono strutture dati che non solo servono nelle situazioni che abbiamo descritto, ma sono anche rappresentative di concetti fondamentali in informatica e permettono di porsi domande fondamentali per la teoria della complessita' e della calcolabilita'
 
 ---
 
 # Heaps, heapsort e code di priorità
 
 ## Min e Max Heap
-Un heap e' una struttura dati astratta, parzialmente basata sull'ordinamento e necessariamente compatta (sara' dunque basata su array). La caratteristica principale e' quella che una heap mantiene le chiavi semi-ordinate. Useremo le heap come base per le code di priorita' (anche loro strutture dati astratte), ma anche come base per un nuovo algoritmo di ordinamento che risolve il maggior problema di `MergeSort` (quello di non essere in place) ed il maggior problema di `QuickSort` (quello di non avere tempo quadratico nel caso peggiore).
+Un heap e' una struttura dati ==astratta, parzialmente basata sull'ordinamento e necessariamente compatta== (sara' dunque basata su array). La caratteristica principale e' quella che una heap mantiene le chiavi semi-ordinate. Useremo le heap come base per le code di priorita' (anche loro strutture dati astratte), ma anche come base per un nuovo algoritmo di ordinamento che risolve il maggior problema di `MergeSort` (quello di non essere in place) ed il maggior problema di `QuickSort` (quello di non avere tempo quadratico nel caso peggiore).
 
-Una **(min/max) heap** e' un array *H* che puo' essere visto come un albero binario **quasi completo**, cioe' tale da avere tutti i livelli pieni, meno l'ultimo. I nodi dell'albero corrispondono agli elementi dell'array. L'elemento $H[1]$ dell'array e' la **radice** dell'albero e, normalmente, si tende a differenziare i valori `H.lenght()` (lunghezza dell'array che **contiene** l'heap) e `H.heapsize()` (numero di elementi della heap contenuti in $H$). Tipicamente si ha che `0 <= H.hepsize <= H.lenght`. 
+Una **(min/max) heap** e' un array $H$ che puo' essere visto come un albero binario **quasi completo**, cioe' tale da avere tutti i livelli pieni, meno l'ultimo. I nodi dell'albero corrispondono agli elementi dell'array. L'elemento $H[1]$ dell'array e' la **radice** dell'albero e, normalmente, si tende a differenziare i valori `H.lenght()` (lunghezza dell'array che **contiene** l'heap) e `H.heapsize()` (numero di elementi della heap contenuti in $H$). Tipicamente si ha che `0 <= H.hepsize <= H.lenght`. 
 Una heap e' un array con il fatto che per convenienza si puo' visualizzare come albero, dal punto di vista algebrico non ci sono differenze, ma dal punto di vista delle strutture dati le heap **non** sono alberi.
 
 ![[full-complete-perfect-trees.png]]
 
-La corretta implementazione di una heap prevede che i **figli** di un nodo nella posizione *i* siano precisamente gli elementi nelle posizioni $2 \cdot i$ e $2 \cdot i+1$ (sinistro e destro rispettivamente). Per conseguenza, il **padre** di un nodo *i* e' identificato dall'indice $\lfloor \frac{i}{2} \rfloor$.
+La corretta implementazione di una heap prevede che i **figli** di un nodo nella posizione $i$ siano precisamente gli elementi nelle posizioni $2 \cdot i$ e $2 \cdot i+1$ (sinistro e destro rispettivamente). Per conseguenza, il **padre** di un nodo $i$ e' identificato dall'indice $\lfloor \frac{i}{2} \rfloor$.
 
 ``` Pseudocodice
 proc Parent(i) {
@@ -977,7 +980,7 @@ proc Right(i) {
 Immaginiamo una variabile *H*, che e' un array di interi con un campo aggiuntivo `H.heapsize()`. Distinguiamo tra due tipi di heap: **max-heap** e **min-heap**. Entrambe soddisfano una proprieta':
 - nel primo caso abbiamo che per ogni *i*, `H[Parent(i)] >= H[i]`
 - nel secondo caso, per ogni *i*, `H[Parent(i)] <= H[i]`
-Di conseguenza, il massimo elemento di una max-heap si trova alla radice, mentre nel caso di una min-heap e' il minimo elemento a trovarsi alla radice.
+Di conseguenza, ==il massimo elemento di una max-heap si trova alla radice==, mentre nel caso di una ==min-heap== e' ==il minimo elemento a trovarsi alla radice==.
 L'**altezza** di una heap e' la lunghezza del massimo cammino dalla radice alla foglia.
 
 Esempio di min-heap:
@@ -985,7 +988,7 @@ Esempio di min-heap:
 
 ## Heap binarie su array: calcolo dell'altezza
 Se una heap ha altezza *h*, quali sono il minimo e il massimo di numeri che puo' contenere?
-In generale: una heap di altezza *h* contiene **al minimo** $2^h$ elementi ed **al massimo** $2^{h+1} -1$ elementi. Questa proprieta' dipende esclusivamente dal fatto che la heap e' come un albero binario quasi completo. Da qui otteniamo che:
+In generale: una heap di altezza $h$ contiene **al minimo** $2^h$ elementi ed **al massimo** $2^{h+1} -1$ elementi. Questa proprieta' dipende esclusivamente dal fatto che la heap e' come un albero binario quasi completo. Da qui otteniamo che:
 $$
 \begin{align}
 & 2^h \le n \le 2^{h+1}-1 \\ 
@@ -999,10 +1002,10 @@ Quindi:
 Pertanto $h = \Theta(log(n))$.
 
 ## Heap binarie su array: `BuildMinHeap()` e `MinHeapify()` 
-Problema: data una (non)heap *H* di numeri interi non negativi (cioe' una array), trasformarlo una una min-heap.
-A questo fine risolviamo un problema piu' semplice: dato un array *H* ed un indice *i* su di esso tale che `H[Left(i)]` `H[Right(i)]` sono gia' delle min-heap, trasformare *H* in un array tale che anche `H[i]` e' una min-heap.
+Problema: data una (non)heap $H$ di numeri interi non negativi (cioe' una array), trasformarlo una una min-heap.
+A questo fine risolviamo un problema piu' semplice: dato un array $H$ ed un indice $i$ su di esso tale che `H[Left(i)]` `H[Right(i)]` sono gia' delle min-heap, trasformare $H$ in un array tale che anche `H[i]` e' una min-heap.
 Procediamo in maniera ricorsiva: sistemiamo il potenziale errore localmente a `i, Left(i) e Right(i)` e poi correggiamo ricorsivamente gli errori che vengono generati dalla sistemazione a livelli piu' bassi. Vediamo una procedura che si chiama `MinHeapify` che fa quanto detto. 
-Si potrebbe anche fare riferimento a max-heap e alla procedura simmetrica `MaxHeapify`.
+Si potrebbe anche fare riferimento a max-heap e alla procedura simmetrica `MaxHeapify()`.
 
 ``` Pseudocodice
 proc MinHeapify(H, i) {
@@ -1024,27 +1027,27 @@ proc MinHeapify(H, i) {
 Per la **terminazione**, osserviamo che la procedura termina in due casi:
 - o perche' l'indice *i* non cambia durante una esecuzione (in questo caso non si effettuano chiamate ricorsive)
 - oppure perche' l'indice e' diventato piu' grande della dimensione dell'heap (poiche' se cambia cresce sempre)
-Per quanto riguarda la **correttezza**, osserviamo che `MinHeapify` e' costruita in maniera ricorsiva. Quindi dobbiamo trovare una **invariante** ricorsiva: dopo ogni chiamata a `MinHeapify` su un nodo di altezza *h* tale che entrambi i figli sono radici di min-heap prima della chiamata, quel nodo e' la radice di una min-heap.
+Per quanto riguarda la **correttezza**, osserviamo che `MinHeapify()` e' costruita in maniera ricorsiva. Quindi dobbiamo trovare una **invariante** ricorsiva: dopo ogni chiamata a `MinHeapify()` su un nodo di altezza $h$ tale che entrambi i figli sono radici di min-heap prima della chiamata, quel nodo e' la radice di una min-heap.
 
 Dimostriamo l'invariante:
-- Supponiamo , come **caso base**, `MinHeapify` venga chiamata su un nodo ad altezza h=0. Le ipotesi sono rispettate (il nodo e' figlio); inoltre la procedura non ha alcun effetto, ma allo stesso tempo, un nodo senza figli e' gia' una min-heap.
+- Supponiamo, come **caso base**, `MinHeapify()` venga chiamata su un nodo ad altezza $h=0$. Le ipotesi sono rispettate (il nodo e' figlio); inoltre la procedura non ha alcun effetto, ma allo stesso tempo, un nodo senza figli e' gia' una min-heap.
 - Per il **caso induttivo**, consideriamo un nodo in posizione *i* ad altezza $h>0$. Sappiamo che entrambi i suoi figli, in posizione $2 \cdot i$ e $2 \cdot i + 1$, se esistono, sono radici di min-heap per ipotesi.
   Poiche' `H[i]` e' il minimo tra $H[i], H[2 · i], \space e \space H[2 · i + 1]$, allora anche il nodo *i* e' radice di una min-heap, come volevamo.
 
-Per calcolare la **complessità** di `MinHeapify`, dobbiamo costruire una ricorrenza. 
+Per calcolare la **complessità** di `MinHeapify()`, dobbiamo costruire una ricorrenza. 
 Incorriamo in due problemi:
 - primo, dobbiamo capire qual'e' il caso peggiore
-- secondo, dobbiamo renderci conto che, da un lato vorremmo che come sempre la complessità fosse in funzione della quantita' di elementi nella struttura dati e dall'altro la complessita' di `MinHeapify` dipende dall'altezza dell'elemento su cui e' richiamato.
+- secondo, dobbiamo renderci conto che, da un lato vorremmo che come sempre la complessità fosse in funzione della quantita' di elementi nella struttura dati e dall'altro la complessita' di `MinHeapify()` dipende dall'altezza dell'elemento su cui e' richiamato.
 In primo luogo, il caso peggiore occorre quando la heap sulla quale la procedura e' richiamata tende ad essere sbilanciata, forzando piu' chiamate ricorsive. Possiamo mostrare che il peggior sbilanciamento possibile e' $\frac{2}{3}$. Inoltre, poiche' vogliamo un risultato che possiamo usare in ogni situazione, utilizziamo una ricorrenza leggermente piu' debole, cioe':
 $$
 T(n) \le T(\frac{2}{3}n) + \Theta(1).
 $$
 
-Risolvendo la ricorrenza classica associata a quella precedente si ottiene che $T(n) = \Theta(log(n))$ (Master Theorem, caso 2). Pertanto, nel caso peggiore `MinHeapify` costa $O(log(n))$.
-Questo e' un'approssimazione dovuta al fatto che dovremmo calcolare la complessita' in base all'altezza del nodo su cui la procedura viene chiamata; una forma alternativa di scrivere questo risultato e' dire che la complessità e' $O(h)$, dove *h* e' l'altezza della heap (anche in questo caso stiamo approssimando perche' non teniamo conto dell'altezza reale del nodo).
+Risolvendo la ricorrenza classica associata a quella precedente si ottiene che $T(n) = \Theta(log(n))$ (Master Theorem, caso 2). Pertanto, nel caso peggiore `MinHeapify()` costa $O(log(n))$.
+Questo e' un'approssimazione dovuta al fatto che dovremmo calcolare la complessita' in base all'altezza del nodo su cui la procedura viene chiamata; una forma alternativa di scrivere questo risultato e' dire che la complessità e' $O(h)$, dove $h$ e' l'altezza della heap (anche in questo caso stiamo approssimando perche' non teniamo conto dell'altezza reale del nodo).
 
 ## Heap binarie su array: `BuildMinHeap`
-Problema originale: dato un array di *H* interi, convertirlo in una min-heap.
+Problema originale: dato un array di $H$ interi, convertirlo in una min-heap.
 ``` Pseudocodice
 proc BuildminHeap(H) {
 	H.heapsize = H.lenght
@@ -1057,16 +1060,16 @@ proc BuildminHeap(H) {
 La **terminazione** della procedura e' ovvia.
 Per la **correttezza**, l'**invariante** che usiamo e': all'inizio di ogni iterazione del ciclo **for**, ogni elemento $H[i+1], H[i+2], ...$ e' la radice di una min-heap e all'uscita dall'iterazione anche $H[i]$ lo e'.
 Dimostriamo:
-- Nel **caso base** $i = \lfloor \frac{A.lenght}{2} \rfloor$: ogni elemento del tipo $H[i+k]$ con k>0 e' una foglia e pertanto la radice triviale di un solo elemento.
-- Nel **caso induttivo**, e' sufficiente riferirsi alla correttezza di `MinHeapify`. Questa proprieta', riferita all'uscita dal ciclo, dice: $H[1]$ e' una min-heap.
+- Nel **caso base** $i = \lfloor \frac{A.lenght}{2} \rfloor$: ogni elemento del tipo $H[i+k]$ con $k>0$ e' una foglia e pertanto la radice triviale di un solo elemento.
+- Nel **caso induttivo**, e' sufficiente riferirsi alla correttezza di `MinHeapify()`. Questa proprieta', riferita all'uscita dal ciclo, dice: $H[1]$ e' una min-heap.
 
-Un calcolo della **complessità** approssimativo ci porterebbe alla seguente conclusione: ogni chiamata di `MinHeapify` costa $O(log(n))$ nel caso peggiore e si chiama $\Theta(n)$ volte, pertanto il costo totale e' $O(n \cdot log(n))$. 
-In questo caso possiamo dare un limite piu' stretto grazie ad un'analisi piu' dettagliata. Il costo di `MinHeapify` puo' essere espresso come $O(h)$; supponiamo che *h* sia l'altezza del **nodo** su cui viene chiamato. Una semplice osservazione ci dice che se in un albero binario quasi completo ci sono *n* elementi, allora al massimo $\lceil \frac{n}{2^{h+1}} \rceil$ di loro si trovano ad altezza *h*.
+Un calcolo della **complessità** approssimativo ci porterebbe alla seguente conclusione: ogni chiamata di `MinHeapify()` costa $O(log(n))$ nel caso peggiore e si chiama $\Theta(n)$ volte, pertanto il costo totale e' $O(n \cdot log(n))$. 
+In questo caso possiamo dare un limite piu' stretto grazie ad un'analisi piu' dettagliata. Il costo di `MinHeapify()` puo' essere espresso come $O(h)$; supponiamo che *h* sia l'altezza del **nodo** su cui viene chiamato. Una semplice osservazione ci dice che se in un albero binario quasi completo ci sono *n* elementi, allora al massimo $\lceil \frac{n}{2^{h+1}} \rceil$ di loro si trovano ad altezza *h*.
 
-Il costo totale nel caso peggiore (quando `MinHeapify` deve sempre arrivare alle foglie), si puo' limitare con:
+Il costo totale nel caso peggiore (quando `MinHeapify()` deve sempre arrivare alle foglie), si puo' limitare con:
 $$
 \sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h)) = O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h}) $$
-L'altezza va da 0 a $log(n)$ e, fissata un'altezza *h*, ci sono $\lceil \frac{n}{2^{h+1}} \rceil$ nodi. Per ogni nodo ad altezza *h*, chiamare `MaxHeapify` costa $O(h)$ e quindi $\sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h))$ . Ma *n* non dipende da *h* (e quindi moltiplica la sommatoria) e $\frac{1}{2^{h+1}} \cdot h$ si puo' maggiorare con $\frac{h}{2^h}$, e quindi e' $O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h} )$.
+L'altezza va da 0 a $log(n)$ e, fissata un'altezza *h*, ci sono $\lceil \frac{n}{2^{h+1}} \rceil$ nodi. Per ogni nodo ad altezza $h$, chiamare `MaxHeapify()` costa $O(h)$ e quindi $\sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h))$. Ma $n$ non dipende da $h$ (e quindi moltiplica la sommatoria) e $\frac{1}{2^{h+1}} \cdot h$ si puo' maggiorare con $\frac{h}{2^h}$, e quindi e' $O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h} )$.
 
 $$
 \begin{align}
@@ -1085,7 +1088,7 @@ $$
 e, per il teorema del rapporto, questa condizione e' sufficiente per la convergenza.
 Il caso migliore (quello in cui un array e' gia' una min-heap) ha costo $\Theta(n)$, perche' la procedura e' governata da un ciclo **for**. 
 
-## Ordinamento con `HeapSort`
+## Ordinamento con `HeapSort()`
 Una max-heap puo' essere adesso usata efficientemente per progettare un algoritmo di ordinamento. Consideriamo una max heap e ricordiamo una delle priorita' e' che il massimo elementi di H si trova in $H[1]$. Se consideriamo $H[1]$come gia' ordinato (basta metterlo sulla giusta posizione: l'ultima) e sostituiamo il contenuto di $H[1]$ succede che $H[2]$ e $H[3]$ sono ancora max-heap. Quindi chiamando `MAxHeapify` rispettiamo le ipotesi e possiamo ripetere il processo. Il codice di `HeapSort` si basa precisamente su questa osservazione.
 
 ``` Pseudocodice
@@ -1099,13 +1102,12 @@ proc HeapSort(H) {
 }
 ```
 
-### Correttezza e complessita' di `HeapSort` 
-Nel caso di `HeapSort` la **correttezza** e' immediata, perche' dipende direttamente dalle procedure su cui e' basato. Anche la **terminazione** e' ovvia. La **complessità** di `HeapSort`, nel caso peggiore, si calcola come segue. La chiamata a `BuildMaxHEap` costa $\Theta(n)$; per ogni *i* si effettua uno scambio 
-($O(1)$) ed una chiamata a `MaxHeapify` ($\Theta(log(n))$). Il totale e' $\theta(n \cdot log(n))$. La complessità e' la stessa nel caso migliore e quindi nel caso medio: dopo aver effettuato `BuildMaxHeap` , per definizione ogni chiamata successiva a `MaxHeapify` (dopo lo scambio) deve arrivare alle foglie. Possiamo anche osservare che la nostra implementazione di `HeapSort` non e' stabile: si puo' dimostrare osservando il suo comportamento sull'array $H = [1,1]$. D'altra parte e' certamente in place, a meno delle chiamate ricorsive, che, come abbiamo osservato, sono unicamente 
-tail-recursive.
+### Correttezza e complessita' di `HeapSort()` 
+Nel caso di `HeapSort()` la **correttezza** e' immediata, perche' dipende direttamente dalle procedure su cui e' basato. Anche la **terminazione** e' ovvia. La **complessità** di `HeapSort()`, nel caso peggiore, si calcola come segue. La chiamata a `BuildMaxHEap()` costa $\Theta(n)$; per ogni *i* si effettua uno scambio 
+($O(1)$) ed una chiamata a `MaxHeapify()` ($\Theta(log(n))$). Il totale e' $\Theta(n \cdot log(n))$. La complessità e' la stessa nel caso migliore e quindi nel caso medio: dopo aver effettuato `BuildMaxHeap()`, per definizione ogni chiamata successiva a `MaxHeapify()` (dopo lo scambio) deve arrivare alle foglie. Possiamo anche osservare che la nostra implementazione di `HeapSort()` non e' stabile: si puo' dimostrare osservando il suo comportamento sull'array $H = [1,1]$. D'altra parte e' certamente in place, a meno delle chiamate ricorsive, che, come abbiamo osservato, sono unicamente tail-recursive.
 
 ## Code di priorita'
-Una **coda di priorità** e' una struttura dati astratta basata sull'ordinamento e necessariamente compatta. Possiamo costruire una coda di priorita' basandoci su una min-heap. A differenza di una coda classica, che implementa una politica FIFO, una coda di priorita' associa ad ogni chiave la **priorità** e serve (cioe' estrae) l'elemento a priorita' piu' bassa. Questa estrazione e' associata all'operazione che **aggiusta** la struttura dati, ed anche alla possibilita' di **inserire** nuovi elementi, o **cambiare la priorità** di un elemento inserito. Sia quindi *Q* una min-heap senza campi aggiuntivi.
+Una **coda di priorità** e' una struttura dati astratta basata sull'ordinamento e necessariamente compatta. Possiamo costruire una coda di priorita' basandoci su una min-heap. A differenza di una coda classica, che implementa una politica FIFO, una coda di priorita' associa ad ogni chiave la **priorità** e serve (cioe' estrae) l'elemento a priorita' piu' bassa. Questa estrazione e' associata all'operazione che **aggiusta** la struttura dati, ed anche alla possibilita' di **inserire** nuovi elementi, o **cambiare la priorità** di un elemento inserito. Sia quindi $Q$ una min-heap senza campi aggiuntivi.
 
 ``` Pseudocodice
 proc Enqueue(Q, priority) {
@@ -1142,7 +1144,7 @@ La **correttezza** di queste operazioni e' immediata da dimostrare usando gli st
 ### Code di priorita' su array
 Le code di priorita' come struttura dati astratta possono essere implementate anche direttamente su array, senza dover passare dalle heap. Questa soluzione ha il vantaggio della semplicita' di implementazione. La complessita' delle operazioni, invece, non sono comparabili. Questo significa che questa soluzione e' migliore in qualche caso e peggiore in qualche altro. In questa soluzione conviene esplicitare le chiavi associate per evitare confusioni.
 
-Q e' un array (che immaginiamo sempre con campo `Q.lenght`) e diciamo che ogni posizione *i* ha tre valori: *i* stesso, `Q[i]` e `Q[i].empty`, immaginiamo di aver inizializzato tutti i valori `Q[i].empty` a falso. In questo modo, abbiamo fatto l'equivalente della costruzione della coda. Il **costo** di questa inizializzazione e' $\Theta(n)$.
+$Q$ e' un array (che immaginiamo sempre con campo `Q.lenght`) e diciamo che ogni posizione $i$ ha tre valori: $i$ stesso, `Q[i]` e `Q[i].empty`, immaginiamo di aver inizializzato tutti i valori `Q[i].empty` a falso. In questo modo, abbiamo fatto l'equivalente della costruzione della coda. Il **costo** di questa inizializzazione e' $\Theta(n)$.
 
 ``` Pseudocodice
 proc Enqueue(Q, i, priority) {
@@ -1186,20 +1188,20 @@ In questa soluzione, la cui **correttezza** e **terminazione** sono immediate, l
 
 ---
 # Tabelle Hash
-Una **tabella hash** e' una struttura dati astratta. 
+Una **tabella hash** e' una ==struttura dati astratta==. 
 Nella sua versione piu' generale, il problema puo' essere descritta cosi': dato un numero di oggetti **relativamente piccolo**, ognuno dei quali e' denotato da una chiave il cui universo e' **relativamente grande**, trovare un modo efficiente di memorizzare in maniera dinamica questi oggetti e implementare le operazioni di inserimento, cancellazione e ricerca.
-Nella nostra implementazione, le tabelle hash sono dinamiche, parzialmente compatte e non basate su ordinamento.
+Nella nostra implementazione, ==le tabelle hash sono dinamiche, parzialmente compatte e non basate su ordinamento==.
 
 Non e' possibile costruire una tabella di assegnamento in maniera efficiente, ed i metodi impliciti generano chiavi molto grandi. La soluzione che prevede l'uso di un array (e si chiama **tabella hash ad accesso diretto**) ha ottime complessita': $\Theta(1)$ per tutte le operazioni. Purtroppo, la grandezza delle chiavi rende inaccettabile la maggioranza dei casi.
 La soluzione che prevede l'uso di una lista presenta $\Theta(1)$ per l'inserimento e $\Theta(n)$ per ricerca e cancellazione nei casi medio e pessimo.
 
 ## Tabelle hash: notazione
-Una tabella hash ad accesso diretto *T* e' un semplice array di **puntatori** ad oggetti; `T[key]` punta all'oggetto la cui chiave assegnata e' `key`.
-Diciamo che gli oggetti sono denotati con `x, y, ...` e che per ognuno di essi il campo `key` e' la sua chiave.
+Una tabella hash ad accesso diretto $T$ e' un semplice array di **puntatori** ad oggetti; `T[key]` punta all'oggetto la cui chiave assegnata e' `key`.
+Diciamo che gli oggetti sono denotati con $x, y, \ldots$ e che per ognuno di essi il campo `key` e' la sua chiave.
 Per una tabella ad accesso diretto:
-- `x.key` e' sempre piccolo (se m e' la dimensione della tabella $\rightarrow$ `x.key <= m`)
+- `x.key` e' sempre piccolo (se $m$ e' la dimensione della tabella $\rightarrow$ `x.key <= m`)
 - `x.key != y.key` per ogni coppia di `x != y`.
-Per *m* molto grande, anche un operazione elementare come **creare** *T* vuoto prende troppo tempo.
+Per $m$ molto grande, anche un operazione elementare come **creare** $T$ vuoto prende troppo tempo.
 
 Qual'e' una caratteristica comune a tutte le applicazioni tipiche in questo contesto? Il numero di chiavi effettivamente utilizzate e' molto inferiore alla cardinalita' del dominio, che in questo contesto si chiama **universo**, e si denota con $\mathcal{U}$. 
 
@@ -1210,7 +1212,7 @@ Qual'e' una caratteristica comune a tutte le applicazioni tipiche in questo cont
 - $\rightarrow$ non posso dire che l'accesso lineare e' efficiente
 
 ## Tabelle hash con chaining
-Se il numero effettivo *n* di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'unicerso, possiamo ancora implementare *T* con un array di posizioni $1, \ldots, m$, ma nasce il problema della memorizzazione della chiave $k$ molto piu' grande di $m$, quindi senza accesso diretto.
+Se il numero effettivo $n$ di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'unicerso, possiamo ancora implementare $T$ con un array di posizioni $1, \ldots, m$, ma nasce il problema della memorizzazione della chiave $k$ molto piu' grande di $m$, quindi senza accesso diretto.
 Per risolverlo creiamo questa funzione:
 $$
 h: \mathcal{U} \rightarrow \{1, ..., m\}
@@ -1222,11 +1224,7 @@ Inoltre, il tempo di accesso e' ancora costante **a meno dell'overload dovuto ad
 
 >La funzione di hash puo' essere:
  - crittografica
-> - non crittografica
->
- La funzione di hash puo' essere:
- - crittografica
-> - non crittografica
+> - non crittografica 
 
 Vorremmo che la funzione hash:
 - Resistenza alla per-immagine
@@ -1263,30 +1261,31 @@ proc HashDelete(T, k) {
 Queste operazioni sono **corrette** e **terminanti**, la loro **complessità** dipende dalla politica che utilizziamo sulle liste. Nel caso studiato da noi, l'inserimento e' precisamente $\Theta(1)$. Anche nel caso di `HashDelete` la complessita' e' $\Theta(1)$ piu' il costo di cercare il nodo giusto da cancellare.
 
 Quanto costa un `HashSearch`?
-- Fissiamo `n` come numero di elementi effettivamente inseriti in `T` e `m` come dimensione di `T`. Se tutti gli `m` elementi finiscono nella stessa cartella, la ricerca e quindi anche la cancellazione sono nel caso peggiore e la loro complessita' diventa $\Theta(n)$. 
+- Fissiamo $n$ come numero di elementi effettivamente inseriti in $T$ e $m$ come dimensione di $T$. Se tutti gli $m$ elementi finiscono nella stessa cartella, la ricerca e quindi anche la cancellazione sono nel caso peggiore e la loro complessita' diventa $\Theta(n)$. 
 
 Come calcoliamo il caso medio?
-- Il caso medio dipende dalla bonta' della funzione `h`. Sotto l'ipotesi di **hashing uniforme e semplice**, `h` inserisce una chiave `k` in un determinato slot con la stessa probabilita' con la quale inserisce in qualsiasi altro slot, indipendentemente dalla presenza di chiavi in `T`. Per ogni posizione `j` tra 1 e `m`, la lunghezza della lista `T(j) (|T(j)|)` e' tale che $\sum_{j=1}^m |T[j]| = n$, per cui il **valore atteso** di `|T(j)|`e' $\frac{n}{m}$ (che viene detto **fattore di carico**).  
-  Quindi, sotto l'ipotesi di hashing uniforme, il caso medio di `HashSearch` su una tabella hash a collisioni risolte per chaining ed in caso di ricerca con esito **negativo** ha complessita' $\Theta(1 + \frac{n}{m})$, assumendo che il calcolo `h` prenda tempo $O(1)$.
+- Il caso medio dipende dalla bonta' della funzione $h$. Sotto l'ipotesi di **hashing uniforme e semplice**, $h$ inserisce una chiave $k$ in un determinato slot con la stessa probabilita' con la quale inserisce in qualsiasi altro slot, indipendentemente dalla presenza di chiavi in $T$. Per ogni posizione $j$ tra 1 e $m$, la lunghezza della lista $T(j) (|T(j)|)$ e' tale che $\sum_{j=1}^m |T[j]| = n$, per cui il **valore atteso** di $|T(j)|$ e' $\frac{n}{m}$ (che viene detto **fattore di carico**).  
+  Quindi, sotto l'ipotesi di hashing uniforme, il caso medio di `HashSearch()` su una tabella hash a collisioni risolte per chaining ed in caso di ricerca con esito **negativo** ha complessita' $\Theta(1 + \frac{n}{m})$, assumendo che il calcolo $h$ prenda tempo $O(1)$.
 
-Cosa succede quando la ricerca ha esito positivo (la chiave e' **presente** in `T`)?
-- Rispetto al caso piu' complesso, il calcolo del tempo medio di esecuzione di `HashSearch` e' piu' complesso perche' il tempo dipende dal **numero di elementi della lista per la posizione** `h(k)` che bisogna guardare prima di arrivare a `k` stesso. 
+Cosa succede quando la ricerca ha esito positivo (la chiave e' **presente** in $T$)?
+- Rispetto al caso piu' complesso, il calcolo del tempo medio di esecuzione di `HashSearch()` e' piu' complesso perche' il tempo dipende dal **numero di elementi della lista per la posizione** $h(k)$ che bisogna guardare prima di arrivare a $k$ stesso. 
 - Osserviamo che questo numero e' esattamente il numero di elementi tale che:
-	- hanno chiave `k'` dove `h(k) = h(k')`
-	- sono stati inseriti **dopo** il momento in cui e' stato inserito `k`.
-- Le liste sono strutturate in modo che gli elementi nuovi appaiono prima e quindi se cerco un elemento a chiave `k` nella lista puntata da `h(k)` tale che `I` elementi hanno chiave `k'` con `h(k) = h(k')` sono stati inseriti dopo `k`, dovro' guardare `I` elementi prima di avere successo.
-- L'elemento cercato con chiave `k` ha la stessa probabilita' di essere uno degli `n` elementi correntemente in `T`. La probabilita' che due chiavi siano indirizzate alla stessa posizione e' $Pr(h(k)) = h(k')$, che sotto l'ipotesi di hashing uniforme semplice e' precisamente $\frac{1}{m}$.
-- Il valore atteso per la variabile probabilistica `V` '**numero di elementi da esaminare per giungere a** `k`' e':
+	- hanno chiave $k'$ dove $h(k) = h(k')$ 
+	- sono stati inseriti **dopo** il momento in cui e' stato inserito $k$.
+- Le liste sono strutturate in modo che gli elementi nuovi appaiono prima e quindi se cerco un elemento a chiave $k$ nella lista puntata da $h(k)$ tale che $I$ elementi hanno chiave $k'$ con $h(k) = h(k')$ sono stati inseriti dopo $k$, dovro' guardare $I$ elementi prima di avere successo.
+- L'elemento cercato con chiave $k$ ha la stessa probabilita' di essere uno degli $n$
+  elementi correntemente in $T$. La probabilita' che due chiavi siano indirizzate alla stessa posizione e' $Pr(h(k)) = h(k')$, che sotto l'ipotesi di hashing uniforme semplice e' precisamente $\frac{1}{m}$.
+- Il valore atteso per la variabile probabilistica $V$ '**numero di elementi da esaminare per giungere a** $k$' e':
 $$
 E[V] = \frac{1}{n} \cdot \Big(\sum_{i=1}^n \Big(1+\sum_{j=i+1}^n \frac{1}{m} \Big)\Big).
 $$
 - Quindi
 $$
 \begin{align}
-E[V] &= 1 + \frac{1}{n \cdot m} \cdot \sum_{i=1}^n(n-i) \qquad &\text{calcolo algebrico} \\
-&= 1 + \frac{1}{n \cdot m} \cdot \Big( \sum_{i=1}^n n - \sum_{i=1}^n i \big) \qquad &\text{calcolo algebrico} \\
-&= 1 + \frac{1}{n \cdot m} \cdot \Big( n^2 - \frac{n \cdot (n+1)}{2} \Big) \qquad &\text{sommatoria} \\
-&= 1 + \frac{n-1}{2 \cdot m} \qquad &\text{calcolo algebrico} \\
+E[V] &= 1 + \frac{1}{n \cdot m} \cdot \sum_{i=1}^n(n-i) \qquad &&\text{calcolo algebrico} \\
+&= 1 + \frac{1}{n \cdot m} \cdot \Big( \sum_{i=1}^n n - \sum_{i=1}^n i \big) \qquad &&\text{calcolo algebrico} \\
+&= 1 + \frac{1}{n \cdot m} \cdot \Big( n^2 - \frac{n \cdot (n+1)}{2} \Big) \qquad &&\text{sommatoria} \\
+&= 1 + \frac{n-1}{2 \cdot m} \qquad &&\text{calcolo algebrico} \\
 &= \Theta(1 + \frac{n}{m})
 \end{align}
 $$
@@ -1295,28 +1294,29 @@ Concludendo, il tempo medio per una ricerca e' $\Theta(1 + \frac{n}{m})$ (visto 
 
 ## Funzioni di hash per il chaining
 Da una funzione hash vorremmo che fosse uniforme semplice e che fosse computazionalmente semplice da calcolare.
-La letteratura ci ore varie possibilità che tengono conto delle diverse esigenze anche sul valore di m:
-- se abbiamo chiavi naturali con `m` numero primo, lontano dalla potenza di 2, allora usiamo il metodo della **divisione**;
-- se invece abbiamo chiavi naturali, con $m = 2^p$ per qualche `p`, allora usiamo il metodo della **moltiplicazione**;
-- infine, se abbiamo chiavi che sono stringhe o oggetti complessi, con `m` numero primo, lontano da una potenza di 2, possiamo usare il metodo dell'**addizione**.
+La letteratura ci offre varie possibilità che tengono conto delle diverse esigenze anche sul valore di $m$:
+- se abbiamo chiavi naturali con $m$ numero primo, lontano dalla potenza di 2, allora usiamo il metodo della **divisione**;
+- se invece abbiamo chiavi naturali, con $m = 2^p$ per qualche $p$, allora usiamo il metodo della **moltiplicazione**;
+- infine, se abbiamo chiavi che sono stringhe o oggetti complessi, con $m$ numero primo, lontano da una potenza di 2, possiamo usare il metodo dell'**addizione**.
 
 ### Funzioni di hash per il chaining: divisione
-Nel caso dei numeri naturali, una soluzione molto intuitiva e' usare il resto della divisione per `m`:
+Nel caso dei numeri naturali, una soluzione molto intuitiva e' usare il resto della divisione per $m$:
 $$
 h(k) = (k \cdot mod(m)) + 1
 $$
 
 Quando una funzione e' una funzione di hash uniforme semplice?
-- Quando si verifica che `m` e' un numero primo e lontano da una potenza di 2. Infatti quando `m` non e; un numero primo, i suoi divisori danno luogo a liste di chaining particolarmente lunghe. Inoltre, se $m=2^p$ per qualche `p`, allora `k mod(m)` dipende unicamente dagli ultimi `p` bits della rappresentazione binaria di `k`. Se le chiavi k sono uniformemente distribuite, nessuno di questi due problemi è realmente importante. Ma nella realtà le chiavi raramente sono uniformemente distribuite, e quindi usiamo questi accorgimenti per rimediare. 
+- Quando si verifica che $m$ e' un numero primo e lontano da una potenza di 2. Infatti quando $m$ non e; un numero primo, i suoi divisori danno luogo a liste di chaining particolarmente lunghe. Inoltre, se $m=2^p$ per qualche $p$, allora `k mod(m)` dipende unicamente dagli ultimi $p$ bits della rappresentazione binaria di 
+  $k$. Se le chiavi $k$ sono uniformemente distribuite, nessuno di questi due problemi è realmente importante. Ma nella realtà le chiavi raramente sono uniformemente distribuite, e quindi usiamo questi accorgimenti per rimediare. 
 
 ### Funzioni di hash per il chaining: moltiplicazione
-Se non vogliamo che la scelta di `m` influenzi le prestazioni, possiamo usare il metodo della moltiplicazione.
-Scegliamo una costante `A` tra 0 e 1 reale e costruiamo:
+Se non vogliamo che la scelta di $m$ influenzi le prestazioni, possiamo usare il metodo della moltiplicazione.
+Scegliamo una costante $A$ tra 0 e 1 reale e costruiamo:
 $$
 h(k) = \lfloor m \cdot (k \cdot A - \lfloor k \cdot A) \rfloor ) \rfloor +1
 $$
 
-Questo metodo funziona bene per ogni costante `A`, esistendo pero' certe costanti 'note' per cui la letteratura riporta ottimi comportamenti, come ad esempio $A = \frac{\sqrt{5} - 1}{2}$.
+Questo metodo funziona bene per ogni costante $A$, esistendo pero' certe costanti 'note' per cui la letteratura riporta ottimi comportamenti, come ad esempio $A = \frac{\sqrt{5} - 1}{2}$.
 
 ### Funzioni di hash per il chaining: stringhe (addizione)
 Come ci comportiamo quado le chiavi sono stringhe di un alfabeto $\sum$?
@@ -1329,16 +1329,16 @@ Come ci comportiamo quado le chiavi sono stringhe di un alfabeto $\sum$?
 > - $h(k) = \text{le R cifre centrali del ... } k^2$ 
 
 E' davvero efficiente questo calcolo?
-- Trasformare una stringa in un numero intero e' un'operazione che costa $\Theta(d)$ dove `d` e' il numero di caratteri della stringa.
+- Trasformare una stringa in un numero intero e' un'operazione che costa $\Theta(d)$ dove $d$ e' il numero di caratteri della stringa.
 Infatti, data una stringa:
 $$ a_1 a_2 ... a_n $$
-e la cardinalita' `B` di $\sum$, la trasformazione corrisponde a calcolare:
+e la cardinalita' $B$ di $\sum$, la trasformazione corrisponde a calcolare:
 $$a1 · B^{d−1} + a2 · B^{d−2} + . . . + ad · B^0$$
 cioe':
 $$ ((a_1 \cdot B + a_2) \cdot B + a_3) \cdot B + ... a_d $$
 
 Il problema che emerge nelle applicazioni reali e' quello della dimensione dei numeri ottenuti. Questi devono essere sottoposti poi ad operazioni aritmetiche, come il modulo o il confronto. Queste ultime non possono essere effettuate quando i numeri hanno dimensione troppo grande e hanno costo $\Theta(1)$. 
-Ricordiamo che l'operazione e il modulo e' invariante rispetto all'addizione e, se `m` e' primo, anche rispetto alla moltiplicazione. Allora abbiamo che:
+Ricordiamo che l'operazione e il modulo e' invariante rispetto all'addizione e, se $m$ e' primo, anche rispetto alla moltiplicazione. Allora abbiamo che:
 $$
 \begin{align}
 (a_i \cdot B + a_{i+1}) &=_m (z \cdot B +  a_{i+1}) \qquad &\text{se e solo se} \\
@@ -1348,7 +1348,7 @@ a_i &=_m z
 $$
 
 Poiche' questa puo' essere generalizzata, ci da un metodo semplice per calcolare 
-`h(k) = (k mod(m)) + 1`, con `k` **molto grande** senza mai dover memorizzare `k`.
+`h(k) = (k mod(m)) + 1`, con $k$ **molto grande** senza mai dover memorizzare $k$.
 
 #### Funzione modulo, correttezza e complessita'
 ``` Pseudocodice
@@ -1360,17 +1360,17 @@ proc HashComputeModulo(w, B, m) {
 }
 ```
 
-`HashComputeModulo` prende parametri $w = a_1 a_2 ... a_d$, `B`(dimensione dell'alfabeto) e `m`.
-Evidentemente questa funzione **termina** sempre, ha **complessità** $\Theta(d)$, ed e' **corretta** perche' utilizza le proprieta' dell'aritmetica modulare per `m` numero primo. 
+`HashComputeModulo()` prende parametri $w = a_1 a_2 ... a_d$, $B$ (dimensione dell'alfabeto) e $m$.
+Evidentemente questa funzione **termina** sempre, ha **complessità** $\Theta(d)$, ed e' **corretta** perche' utilizza le proprieta' dell'aritmetica modulare per $m$ numero primo. 
 
 ## Tabelle hash: open hashing
 Questa tecnica ha le seguenti caratteristiche importanti::
 - si eliminano le liste e quindi i chaining
-- una tabella hash di `m` elementi potra' ospitare al massimo `m` elementi e per ottenere questo risultato si rinuncia ad implementare la funzione di cancellazione.
+- una tabella hash di $m$ elementi potra' ospitare al massimo $m$ elementi e per ottenere questo risultato si rinuncia ad implementare la funzione di cancellazione.
 L'indirizzamento aperto si basa sull'idea di provare piu' di una posizione sulla tabella, finche' se ne trova una libera oppure si ha la certezza che la tabella e' piena.
 
 ### Open hashing: operazioni
-Data una chiave `k` da inserire in una tabella ad indirizzamento aperto per ottenere una posizione `h(k)`. Se questa e' libera, la chiave puo' essere inserita. Se invece la posizione e' gia' occupata, proviamo **un'altra posizione**: questa sequenza di tentativi si chiama **sequenza di probing**. Non tutte le sequenze di probing funzionano bene: la condizione e' che **tutte le posizioni della tabella devono essere provate** prima o poi.
+Data una chiave $k$ da inserire in una tabella ad indirizzamento aperto per ottenere una posizione $h(k)$. Se questa e' libera, la chiave puo' essere inserita. Se invece la posizione e' gia' occupata, proviamo **un'altra posizione**: questa sequenza di tentativi si chiama **sequenza di probing**. Non tutte le sequenze di probing funzionano bene: la condizione e' che **tutte le posizioni della tabella devono essere provate** prima o poi.
 Questa condizione si chiama **hashing uniforme** e generalizza la condizione di hashing uniforme semplice.
 Data una funzione di hashing qualsiasi, definiamo una sequenza di probing come:
 $$ h(k, i) $$
@@ -1409,7 +1409,7 @@ Come si ottiene una sequenza di probing uniforme?
 Due metodi:
 - **probing lineare**
 	- la sequenza viene stabilita cosi': $$h(k, i) = ((h'(k) + i) \cdot  mod(m)) + 1$$
-	- `h'` e' qualunque funzione di hashing uniforme semplice. Si vede chiaramente che le proprieta' di uniformita' e' rispettata per ogni chiave.
+	- $h'$ e' qualunque funzione di hashing uniforme semplice. Si vede chiaramente che le proprieta' di uniformita' e' rispettata per ogni chiave.
 - probing quadratico
 	- si scelgono due costanti $c_1$ e $c_2$ e si impone: $$ h(k, i) = ((h'(k) + c_1 \cdot i + c_2 \cdot i^2) \cdot  mod(m)) + 1 $$
 	- anche in questo caso la sequenza e' uniforme.
@@ -1420,7 +1420,7 @@ Non studiamo in maniera esplicita e formale la **correttezza, complessità e ter
 # Strutture dati per insiemi disgiunti 
 
 ## Insiemi disgiunti
-Sono una struttura dati astratta, parzialmente dinamica, parzialmente sparsa e non basata sull'ordinamento.
+Sono una ==struttura dati astratta, parzialmente dinamica, parzialmente sparsa e non basata sull'ordinamento==.
 La caratteristica principale di un insieme disgiunto e' che le operazioni ad esso associate sono tipicamente:
 - `MakeSet` $\rightarrow$ costruisce un nuovo insieme disgiunto
 - `Union` $\rightarrow$ unisce due insiemi disgiunti in uno solo
@@ -1431,33 +1431,31 @@ Gli insiemi crescono solo in due modi:
 - quando vengono uniti due insiemi in uno solo che contiene gli elementi di entrambi
 
 Immaginiamo di avere i seguenti insiemi: $S_1 = \{5, 12, 20\}, \space S_2 = \{7\}, \space S_3=\{13, 2\}$. Ognuno di essi puo' essere rappresentato da uno qualsiasi dei suoi elementi e cio' che dobbiamo mantenere e' l'informazione dell'insieme stesso, il quale non ha una vera struttura interna.
-Indipendentemente dall'implementazione scelta, possiamo immaginare che `S` abbia almeno un array che contiene tutte queste chiavi e, per ognuna di esse, un informazione aggiuntiva che ci permetta di ricostruire tutta la struttura.
+Indipendentemente dall'implementazione scelta, possiamo immaginare che $S$  abbia almeno un array che contiene tutte queste chiavi e, per ognuna di esse, un informazione aggiuntiva che ci permetta di ricostruire tutta la struttura.
 
 La particolare scelta delle operazioni che si vogliono rendere disponibili influenza la struttura dati, che tendenzialmente e' ottimizzata per quelle operazioni. Se si volesse offrire un'altra operazione diversa da quelle originali, questo risulterebbe impossibile o troppo costoso.
 Gli insiemi disgiunti hanno una applicazione fondamentale in uno degli algoritmi su grafi che vedremo piu' avanti (per il calcolo dell'albero di copertura minimo).
 
-Consideriamo questo scenario: abbiamo una rete molto grande di criminali e tutti usano molti **alias** diversi tra loro. I nostri informatori riescono, di tanto in tanto, a scoprire che due **alias** sono la
-stessa persona. 
+Consideriamo questo scenario: abbiamo una rete molto grande di criminali e tutti usano molti **alias** diversi tra loro. I nostri informatori riescono, di tanto in tanto, a scoprire che due **alias** sono la stessa persona. 
 
 ### Insiemi disgiunti: liste
-
 Qual è la struttura dati ottima per mantenere questa informazione?
-- L'implementazione piu' intuitiva per gestire `S` passa attraverso l'uso delle liste collegate. L'elemento $S \in S$ e' quindi una lista dotata degli attributi `S.head` (che punta al primo elemento) e `S.tail` (che punta all'ultimo elemento). Ogni elemento `x` e' dotato di `x.next` e `x.head` che punta all'insieme `S` che lo contiene.
+- L'implementazione piu' intuitiva per gestire $S$ passa attraverso l'uso delle liste collegate. L'elemento $S \in \mathcal{S}$ e' quindi una lista dotata degli attributi `S.head` (che punta al primo elemento) e `S.tail` (che punta all'ultimo elemento). Ogni elemento $x$ e' dotato di `x.next` e `x.head` che punta all'insieme $S$ che lo contiene.
   ![[InsiemiDisgiunti.png]]
-  In questa versione l'informazione aggiuntiva che contiene ogni $S[i]$ e' un puntatore all'elemento `i` in memoria, cioe' alla casella `x` che contiene la chiave `i`. Lo chiamiamo per esempio `S[i].set`.
+  In questa versione l'informazione aggiuntiva che contiene ogni $S[i]$ e' un puntatore all'elemento $i$ in memoria, cioe' alla casella $x$ che contiene la chiave $i$. Lo chiamiamo per esempio `S[i].set`.
   ![[InsiemiDisgiunti2.png]]
-  In questa maniera, implementare `MakeSet(x)` e' banale: crea un nuovo oggetto `S` tale che `S.head = S.tail = x`. Se poi decidiamo che il rappresentante di ogni `S` e' precisamente l'elemento puntato da `S.head`, allora implementare `FindSet(x)` e' altrettanto banale: dato `x` cerchiamo prima `x.head` poi `x.head.head` per arrivare al suo rappresentante.
+  In questa maniera, implementare `MakeSet(x)` e' banale: crea un nuovo oggetto $S$ tale che `S.head = S.tail = x`. Se poi decidiamo che il rappresentante di ogni $S$ e' precisamente l'elemento puntato da `S.head`, allora implementare `FindSet(x)` e' altrettanto banale: dato $x$ cerchiamo prima `x.head` poi `x.head.head` per arrivare al suo rappresentante.
   Entrambe le operazioni costano $O(1)$. 
   Tra le sue caratteristiche:
-	  - E' commutativa
-	  - Viene eseguita a partire da elementi dei due insiemi uniti
-	  - Distrugge il secondo insieme 
+	- E' commutativa
+	- Viene eseguita a partire da elementi dei due insiemi uniti
+	- Distrugge il secondo insieme 
 In ogni operazione, gli elementi sono ipotizzati gia' **creati e nella memoria principale**.
-Creare un nuovo insieme (`MakeSet`) significa:
-  - creare un oggetto `S`, creare un oggetto `x` con la chiave che vogliamo e collegarli.
+Creare un nuovo insieme (`MakeSet()`) significa:
+  - creare un oggetto $S$, creare un oggetto $x$ con la chiave che vogliamo e collegarli.
  La differenza con una lista 'normale' e' che l'oggetto 'lista' e' in memoria principale e non nello stack.
- L'operazione di `FindSet`, dato un oggetto `x`, che contiene una chiave della quale vogliamo conoscere il rappresentante, consiste nel seguire il puntatore `head` di `x` per arrivare ad `S` e poi nuovamente il puntatore `head`.
- L'operazione di `Union` di `x` e `y` consiste nel trovare $S_1$ ed $S_2$ e, se sono diversi, aggiornare $S_1.tail.next$ e $S_2.head$ e per ogni `z` tale che $z.head = S_2$, impostare $z.head = S_1$. 
+ L'operazione di `FindSet`, dato un oggetto $x$, che contiene una chiave della quale vogliamo conoscere il rappresentante, consiste nel seguire il puntatore `head` di $x$ per arrivare ad $S$ e poi nuovamente il puntatore `head`.
+ L'operazione di `Union` di $x$ e $y$ consiste nel trovare $S_1$ ed $S_2$ e, se sono diversi, aggiornare $S_1.tail.next$ e $S_2.head$ e per ogni $z$ tale che $z.head = S_2$, impostare $z.head = S_1$. 
 
 Vediamo il codice delle operazioni:
 ``` Pseudocodice
@@ -1493,26 +1491,25 @@ Per calcolare la **complessità** dobbiamo fare ricorso ad un tipo leggermente d
 
 > Nell'implementazione con liste il caso peggiore si ha quando le operazioni iniziano con `n` `Makeset` seguite da `n - m Union` nel peggior ordine possibile
 > 1. non ci sono `FindSet`
-> 2. tutte le `Union` costano $n-1 \rightarrow m = 2 * n-1$ 
+> 2. tutte le `Union` costano $n-1 \rightarrow m = 2 \cdot n-1$ 
 
 
-Per poterlo calcolare, diciamo che `m` denota il numero di operazioni qualsiasi fatte su `S`, ed 
-`n <= m` denota il numero di `MakeSet` tra le`m` operazioni.
+Per poterlo calcolare, diciamo che $m$ denota il numero di operazioni qualsiasi fatte su $S$, ed $n \le m$ denota il numero di `MakeSet` tra le $m$ operazioni.
 Consideriamo il caso peggiore:
-- Non e' difficile definire una situazione in cui abbiamo gli oggetti $x_1, ..., x_n$ ed ognuno costituisce il suo proprio insieme. Quindi abbiamo `n` operazioni `MakeSet` seguite da `n - 1 Union` in maniera che $m=2 \cdot n-1$. Spendiamo $\Theta(n)$ ooer generare gli insiemi. Nel caso peggiore, spendiamo 1 per la prima unione, 2 per la seconda e cosi' via fino all'ultima unione che costa `n`. Il totale e' $\Theta(n^2)$.
-  Le operazioni `FindSet` non contribuiscono a cambiare la struttura di `S` e hanno un costo costante; pertanto le abbiamo escluse dall'analisi.
+- Non e' difficile definire una situazione in cui abbiamo gli oggetti $x_1, ..., x_n$ ed ognuno costituisce il suo proprio insieme. Quindi abbiamo $n$ operazioni `MakeSet` seguite da `n - 1 Union` in maniera che $m=2 \cdot n-1$. Spendiamo $\Theta(n)$ per generare gli insiemi. Nel caso peggiore, spendiamo 1 per la prima unione, 2 per la seconda e cosi' via fino all'ultima unione che costa $n$. Il totale e' $\Theta(n^2)$
+  Le operazioni `FindSet` non contribuiscono a cambiare la struttura di $S$ e hanno un costo costante; pertanto le abbiamo escluse dall'analisi.
 
-> Sapendo che `m` operazioni di cui `n` sono `MakeSet` e danno il caso peggiore nella situazione vista prima e che in quella situazione $2*n+1 = \Theta(n)$, il costo medio ammortizzato di un'oerazione e' $\frac{\Theta n^2}{\Theta(n)} = \Theta(n)$ 
+> Sapendo che $m$ operazioni di cui $n$ sono `MakeSet` e danno il caso peggiore nella situazione vista prima e che in quella situazione $2 \cdot n+1 = \Theta(n)$, il costo medio ammortizzato di un'operazione e' $\frac{\Theta n^2}{\Theta(n)} = \Theta(n)$ 
 
 Qual'e' la differenza tra l'analisi ammortizzata e quella del caso medio?
-- Nell'analisi ammortizzata non ci sono considerazioni probabilistiche: si calcola il costo medio di ogni operazione nei casi ottimo, medio e pessimo, in maniera da tenere conto dell'influenza mutua tra operazioni.
+- ==Nell'analisi ammortizzata non ci sono considerazioni probabilistiche==: si calcola il costo medio di ogni operazione nei casi ottimo, medio e pessimo, in maniera da tenere conto dell'influenza mutua tra operazioni.
 Perche' non abbiamo avuto occasione di utilizzarla prima?
 - Perche' altre strutture dati, come le liste, non sono tali che eseguire un operazione influenza in maniera evidente il costo di eseguire altre operazioni.
 
 ### Insiemi disgiunti: liste con unione pesata
 Una prima strategia che possiamo usare per migliorare la situazione e' chiamata **unione pesata**.
 Il principio sul quale si basa e' semplice:
-- se manteniamo in ogni insieme `S` anche il numero degli elementi dell'insieme, allora possiamo implementare `Union` in maniera che gli aggiornamenti dei puntatori si facciano sempre sull'insieme piu' piccolo
+- se manteniamo in ogni insieme $S$ anche il numero degli elementi dell'insieme, allora possiamo implementare `Union` in maniera che gli aggiornamenti dei puntatori si facciano sempre sull'insieme piu' piccolo
 
 ``` Pseudocodice
 proc MakeSet(calS, S, x, i) {
@@ -1541,17 +1538,16 @@ proc Union(x, y) {
 ```
 
 Concentriamoci sulla **complessità**.
-Adesso il caso peggiore accade quando tutti gli `S` sono di dimensione uguale, L'analisi ammortizzata ci dira' che esiste un risparmio in media di tempo.
-Mettiamoci nelle stesse condizioni di primaL `m` operazioni generiche di cui `n MakeSet`. Come nel caso precedente, ci dovremmo fermare quando avremo raggiunto un solo insieme con tutti gli element. Le operazioni `FindSet` vengono inizialmente escluse dal ragionamento.
-Dati `n` insiemi tutti di un solo elemento, la situazione peggiore si verifica effettuando $\frac{n}{2}$ unioni: infatti, se non facessimo cosi', arriveremo ad avere un insieme con `n` elementi dopo solamente 
-`n-1` passi e non avremmo la situazione peggiore.
-Se, per comodita', ipotizziamo $n = 2^k$ per qualche `k`, allora possiamo proseguire ragionando nello stesso modo: $\frac{n}{2}$ unioni la prima volta, seguite da $\frac{n}{4}$ unioni e cosi' via, precisamente $log(n)$ volte.
+Adesso il caso peggiore accade quando tutti gli $S$ sono di dimensione uguale, L'analisi ammortizzata ci dira' che esiste un risparmio in media di tempo.
+Mettiamoci nelle stesse condizioni di prima: $m$ operazioni generiche di cui $n$ `MakeSet`. Come nel caso precedente, ci dovremmo fermare quando avremo raggiunto un solo insieme con tutti gli elementi. Le operazioni `FindSet` vengono inizialmente escluse dal ragionamento.
+Dati $n$ insiemi tutti di un solo elemento, la situazione peggiore si verifica effettuando $\frac{n}{2}$ unioni: infatti, se non facessimo cosi', arriveremo ad avere un insieme con $n$ elementi dopo solamente $n-1$ passi e non avremmo la situazione peggiore.
+Se, per comodita', ipotizziamo $n = 2^k$ per qualche $k$, allora possiamo proseguire ragionando nello stesso modo: $\frac{n}{2}$ unioni la prima volta, seguite da $\frac{n}{4}$ unioni e cosi' via, precisamente $log(n)$ volte.
 
-Quanto e' il costo totale delle `m` operazioni?
+Quanto e' il costo totale delle $m$ operazioni?
 - Ogni unione costa: 1 per la prima volta, 2 per la seconda, 4 per la terza e cosi' via.
-  Il costo totale di tutte le unioni che possiamo fare prima di arrivare all'insieme con tutti gli elementi e' $\Theta(n \cdot log(n))$. 
-  Nel caso peggiore (forzare che le `m` operazioni siano `n MakeSet` seguite da tutte le `Union` possibili) ci da un costo totale di $\Theta(n \cdot log(n))$.
-  In questo caso, aggiungere qualche `FindSet` nel gruppo di `m` operazioni puo' solo migliorare la complessita', ed e' per questo che le escludiamo dall'analisi del caso peggiore.
+- Il costo totale di tutte le unioni che possiamo fare prima di arrivare all'insieme con tutti gli elementi e' $\Theta(n \cdot log(n))$. 
+- Nel caso peggiore (forzare che le $m$ operazioni siano `n MakeSet` seguite da tutte le `Union` possibili) ci da un costo totale di $\Theta(n \cdot log(n))$.
+- In questo caso, aggiungere qualche `FindSet` nel gruppo di $m$ operazioni puo' solo migliorare la complessita', ed e' per questo che le escludiamo dall'analisi del caso peggiore.
 Possiamo migliorare queste prestazioni?
 - La strategia implementativa che ci permette una ulteriore miglioria consiste in tre passi:
 	1. cambiare la rappresentazione
@@ -1561,20 +1557,20 @@ Possiamo migliorare queste prestazioni?
 ### Insiemi disgiunti: foreste di alberi
 Il modo piu' efficiente per trattare gli insiemi disgiunti sono le **foreste di alberi**.
 
-La rappresentazione e' basata in **alberi** piuttosto che liste. Un nodo `x` conteine le seguenti informazioni:
+La rappresentazione e' basata in **alberi** piuttosto che liste. Un nodo $x$ contiene le seguenti informazioni:
 - `x.p` (il padre)
 - `x.rank` (un limite superiore all'altezza del sotto-albero radicato in `x`)
 Gli alberi sono `k-ari` e formano una **foresta** di $\mathcal{S}$.
 L'operazione di `MakeSet` e' la stessa:
-- si crea un nuovo albero di altezza massima 0 tale che il padre dell'unico nodo `x` e' `x` stesso.
+- si crea un nuovo albero di altezza massima 0 tale che il padre dell'unico nodo $x$ e' $x$ stesso.
 ==Attenzione: questi alberi sono liste particolari e non vanno confusi con alberi e grafi.==
 
 Un nodo di un albero `k-ario` **non ha, in generale, nessun puntatore ai figli**. Infatti, non abbiamo un limite superiore a quanti figli posso avere e non ci interessa agli scopi di questa struttura dati.
-Il rango **non** e' la misura dell'altezza ma un suo limite superiore. Questo significa che un albero in questa struttura puo' avere altezza `h` e rango qualsiasi (`>= h`).
+Il rango **non** e' la misura dell'altezza ma un suo limite superiore. Questo significa che un albero in questa struttura puo' avere altezza $h$ e rango qualsiasi ($\ge h$).
 
 ![[InsiemiDisgiunti3.png]]
 
-L'operazione di unione, in due fasi, consiste nel trovare rappresentanti degli elementi utilizzati come indici; se le due radici sono `x` e `y`, si sceglie quello il cui rango sia inferiore e si aggiorna **solo il padre**, rendendolo uguale all'altro elemento. Con il criterio **unione per rango** (il corrispondente dell'unione pesata nella versione con le liste), il rango dell'insieme risultante cambia **solo se i ranghi dei due componenti erano uguali** e rimane invariato negli altri casi.
+L'operazione di unione, in due fasi, consiste nel trovare rappresentanti degli elementi utilizzati come indici; se le due radici sono $x$ e $y$, si sceglie quello il cui rango sia inferiore e si aggiorna **solo il padre**, rendendolo uguale all'altro elemento. Con il criterio **unione per rango** (il corrispondente dell'unione pesata nella versione con le liste), il rango dell'insieme risultante cambia **solo se i ranghi dei due componenti erano uguali** e rimane invariato negli altri casi.
 L'operazione `FindSet` diventa attiva. Non solo si restituisce il rappresentante, ma, mentre scorre i puntatori verso l'alto alla sua ricerca, li aggiorna **appiattendo** il ramo al quale appartiene. Chiamiamo **compressione del percorso questa strategia**.
 
 Un'esempio di `FindSet`; a destra, l'effetto di chiamare `FindSet(h)`:
@@ -1606,10 +1602,10 @@ proc FindSet(x) {
 ```
 
 Nuovamente, **correttezza** e **terminazione** di queste procedure non sono in discussione.
-Il calcolo della **complessità** di `m` operazioni in questa implementazione e' molto difficile.
+Il calcolo della **complessità** di $m$ operazioni in questa implementazione e' molto difficile.
 La ragione per quale l'unione per rango sommata alla compressione del percorso migliora le prestazioni globali sono chiare. In sostanza, l'unione effettua sempre al massimo un aggiornamento sui puntatori. L'operazione `FindSet` aggiorna un certo numero di puntatori, ma questi, una volta aggiornati, non vengono toccati mai piu' e il prossimo `FindSet` su elementi del percorso che e' gia' stato compresso costera' un tempo costante. 
-Sia $\alpha$ una certa funzione da $\mathbb{N}$ a $\mathbb{N}$ che cresce approssimativamente come l'inverso della funzione di Ackermann (cioe' cresce in maniera **estremamente** lenta). Nel caso concreto in questione abbiamo che $\alpha(n)$ e' minore o uguale a 4 per $n \le 10^80$.
-Una corretta analisi di `m` operazioni darebbe che il costo totale e' $O(m \cdot \alpha(n))$, che, in ogni situazione pratica, e' lo stesso che $O(m)$. 
+Sia $\alpha$ una certa funzione da $\mathbb{N}$ a $\mathbb{N}$ che cresce approssimativamente come l'inverso della funzione di Ackermann (cioe' cresce in maniera **estremamente** lenta). Nel caso concreto in questione abbiamo che $\alpha(n)$ e' minore o uguale a 4 per $n \le 10^{80}$.
+Una corretta analisi di $m$ operazioni darebbe che il costo totale e' $O(m \cdot \alpha(n))$, che, in ogni situazione pratica, e' lo stesso che $O(m)$. 
 
 ## Conclusione
 Gli insiemi disgiunti sono un esempio di struttura dati non intuitiva. E' un esempio di struttura dati che fornisce idee non banali a chi la studia, che possono essere riutilizzate in altri contesti. 
@@ -1618,7 +1614,7 @@ Gli insiemi disgiunti sono un esempio di struttura dati non intuitiva. E' un ese
 # Alberi e Alberi binari di ricerca
 
 ## Alberi
-Gli alberi sono strutture dati fondamentali dinamiche e sparse. A seconda degli usi che se ne fanno, possono essere basate sull'ordinamento oppure no.
+Gli alberi sono ==strutture dati fondamentali dinamiche e sparse==. A seconda degli usi che se ne fanno, ==possono essere basate sull'ordinamento oppure no==.
 Da un lato possiamo dire che gli alberi generalizzano le liste:
 - se vediamo il puntatore **next** come un successore, allora nelle liste il successore e' unico e negli alberi no.
 In questo senso, possiamo dire che i grafi, a loro volta generalizzano gli alberi.
@@ -1629,7 +1625,7 @@ La struttura dati **albero** e' troppo generica e ubiqua per essere associata a 
 
 Un **albero radicato** (semplicemente **albero**) e' un grafo aciclico connesso tale che ogni coppia di vertici e' connessa da al piu' un cammino.
 - I vertici vengono chiamato **nodi**. 
-- Un'albero e' `k-ario` se ogni nodo ha al piu' `k` figli distinti.
+- Un'albero e' `k-ario` se ogni nodo ha al piu' $k$ figli distinti.
 - Albero **completo**: ogni livello e' completo (tutti i nodi di uno stesso livello hanno esattamente zero o due figli);
 - **quasi completo**: ogni livello, tranne eventualmente l'ultimo, e' completo;
 - **bilanciato**: tra il percorso semplice piu' breve e' quello semplice piu' lungo la radice ed una foglia esiste la differenza, al massimo, costante;
@@ -1682,7 +1678,7 @@ proc TreeInOrderTreeWalk(x) {
 La **terminazione** di questa procedura si vede immediatamente dalla struttura ricorsiva degli alberi e della procedura.
 Lo stesso vale per la **correttezza**, basta vedere che tutti gli elementi sono visitati esattamente una volta.
 La **complessità** di una visita non e' direttamente collegata all'altezza dell'albero e pertanto non presenta la separazione in caso medio e peggiore. 
-Consideriamo la generica visita di un nodo `x` tale che ci sono `k` nodi nel sotto-albero radicato a sinistra il che implica che ci sono $n-k-1$ nodi nel sotto-albero radicato a destra. Possiamo considerare che il costo della visita a `x` stesso sia costante.
+Consideriamo la generica visita di un nodo $x$ tale che ci sono $k$ nodi nel sotto-albero radicato a sinistra il che implica che ci sono $n-k-1$ nodi nel sotto-albero radicato a destra. Possiamo considerare che il costo della visita a $x$ stesso sia costante.
 
 Il costo totale e' dato dalla ricorrenza:
 $$
@@ -1726,10 +1722,10 @@ proc TreePostOrderTreeWalk(x) {
 ### Alberi: introduzione algoritmica
 Considerata l'alta versatilita' degli alberi, questi sono utilizzati in molti contesti diversi per sviluppare e testare l'introduzione algoritmica.
 Esempi includono problemi tipici come:
-- trovare un algoritmo per stampare tutte e sole le chiavi della **frontiera** di `T`;
-- trovare un algoritmo per stampare tutte e sole le chiavi del **costato sinistro** (o destro) di `T`;
-- dire quale/quali visite sono necessarie per ricostituire la struttura di `T`;
-- arricchire la struttura di `T` in maniera che ogni nodo punti anche allo **zio** (se esiste), otlre che al padre, e a molti altri.
+- trovare un algoritmo per stampare tutte e sole le chiavi della **frontiera** di $T$;
+- trovare un algoritmo per stampare tutte e sole le chiavi del **costato sinistro** (o destro) di $T$;
+- dire quale/quali visite sono necessarie per ricostituire la struttura di $T$;
+- arricchire la struttura di $T$ in maniera che ogni nodo punti anche allo **zio** (se esiste), otlre che al padre, e a molti altri.
 
 ## Alberi binari di ricerca: introduzione
 Gli **alberi binari di ricerca (BST)** sono una struttura:
@@ -1740,8 +1736,8 @@ Associamo gli alberi binari di ricerca le operazioni di inserimento, cancellazio
 I nodi di un BST sono nodi di un albero definiti come nel caso generale.
 
 Le regole che un albero binario di ricerca deve rispettare (anche note come **proprieta' BST**), sono:
-1. Per ogni nodo `x`, se un nodo `y` si trova nel **sotto-albero sinistro**, allora `y.key <= x.key`;
-2. Per ogni nodo `x`, se un nodo `y` s trova nel **sotto-albero destro**, allora `y.key > x.key`.
+1. Per ogni nodo $x$, se un nodo $y$ si trova nel **sotto-albero sinistro**, allora `y.key <= x.key`;
+2. Per ogni nodo $x$, se un nodo $y$ s trova nel **sotto-albero destro**, allora `y.key > x.key`.
 Dunque si puo' dire che un BST e' **parzialmente ordinato**.
 
 ![[BST.png]]
@@ -1752,7 +1748,8 @@ In alcuni casi (come quello della visita in order) restituiscono un risultato an
 Se un albero e' un BST ordinato, il risultato della sua visita in order e' l'insieme delle chiavi ordinato.
 
 ### Alberi binari di ricerca: ricerca, minimo e massimo
-Vogliamo una struttura che dati `x, k` ritorna un puntatore al nodo che contiene `k`, se esiste, e ritorna **nil** altrimenti.
+Vogliamo una struttura che dati `x, k` ritorna un puntatore al nodo che contiene 
+`k`, se esiste, e ritorna **nil** altrimenti.
 
 ``` Pseudocodice
 proc BSTTreeSearch(x, k) {
@@ -1765,7 +1762,7 @@ proc BSTTreeSearch(x, k) {
 ```
 
 #### Correttezza e complessità di `BSTTreeSearch`
-La **correttezza** di `BSTTreeSearch` e' triviale: se la chiave esiste, questa vinee trovata sicuramente, perche' tutti i nodi nella parte dell'albero dove la chiave deve essere. 
+La **correttezza** di `BSTTreeSearch` e' triviale: se la chiave esiste, questa viene trovata sicuramente, perche' tutti i nodi nella parte dell'albero dove la chiave deve essere. 
 La **complessità** di `BSTTreeSearch` e' direttamente proporzionale alla sua altezza. Nel caso peggiore, l'albero assume l'aspetto di una lista e la ricerca di una chiave che non esiste prende tempo $\Theta(n)$. Nel caso medio l'albero ha altezza logaritmica, e la ricerca di una chiave ha tempo $\Theta(log(n))$.
 
 #### `BSTTreeMinimum`, `BSTTreeMaximum`, correttezza e complessità
@@ -1783,7 +1780,7 @@ La **correttezza** di `BSTTreeMinimum` e `BSTTreeMaximum` si ricava immediatamen
 
 ### Alberi binari di ricerca: successore e predecessore
 Problema:
-- dato un nodo `x` in un BST, trovare il nodo `y`, se esiste, tale che `y.key` e' il **successore immediato** di `x.key` nell'ordinamento naturale delle chiavi.
+- dato un nodo $x$ in un BST, trovare il nodo $y$, se esiste, tale che `y.key` e' il **successore immediato** di `x.key` nell'ordinamento naturale delle chiavi.
 
 ![[BSTSuccessorePredecessore.png]]
 
@@ -1801,15 +1798,14 @@ proc BSTTreeSuccessor(x) {
 ```
 
 Andiamo per casi:
-- se `x` ha figlio destro $\rightarrow$ il successore immediato e' il **minimo** del sottoalbero destro di `x`;
-- se `x` non ha figlio destro $\rightarrow$ il successore immediato si trova tra i suoi antenati: bisogna risalire finche' la relazione padre-figlio e' di tipo padre-figlio **sinistro**
+- se $x$ ha figlio destro $\rightarrow$ il successore immediato e' il **minimo** del sottoalbero destro di $x$;
+- se $x$ non ha figlio destro $\rightarrow$ il successore immediato si trova tra i suoi antenati: bisogna risalire finche' la relazione padre-figlio e' di tipo padre-figlio **sinistro**
 
 #### Correttezza e complessità di `BSTTreeSuccessor`
-
 La **correttezza** di `BSTTreeSuccessor` e' evidente, considerato che implementa esattamente la strategia vista prima. La **complessità** di `BSTTreeSuccessor` e' proporzionale all'altezza dell'albero, cioe' $\Theta(n)$ nel caso peggiore e $\Theta(log(n))$ nel caso medio.
 
 ### Alberi binari di ricerca: inserimento
-L'operazione di **inserimento** di un nodo e' quella che ci permette di costruire e modificare un dato BST. Stabiliamo che l'inserimento opera su un BST (possibilmente vuoto) denotato da `T`, tale che `T.root = nil` quando l'albero e' vuoto, e punta alla radice di `T` in caso contrario. Si inserisce in `T` un nodo `z` in maniera che `z.key` contiene la chiave da inserire, `z.left = z.right = nil`; si noti che il nuovo nodo inserito finisce sempre per essere una nuova foglia di `T`.
+L'operazione di **inserimento** di un nodo e' quella che ci permette di costruire e modificare un dato BST. Stabiliamo che l'inserimento opera su un BST (possibilmente vuoto) denotato da $T$, tale che `T.root = nil` quando l'albero e' vuoto, e punta alla radice di $T$ in caso contrario. Si inserisce in $T$ un nodo $z$ in maniera che `z.key` contiene la chiave da inserire, `z.left = z.right = nil`; si noti che il nuovo nodo inserito finisce sempre per essere una nuova foglia di $T$.
 
 ``` Pseudocodice
 proc BSTTreeInsert(T, z) {
@@ -1832,28 +1828,28 @@ proc BSTTreeInsert(T, z) {
 ```
 
 #### Correttezza e complessità di `BSTTreeInsert`
-Vogliamo mostrare che `BSTTreeInsert` e' **corretta**, cioe' se `T` e' un BST e `T'` e' il risultato di inserimento, allora `T'` e' un BST. Se `T` e' vuoto, il ciclo **while** non si segue e tra le istruzioni restanti si segue solo la prima, mettendo z come radice di `T'`, che diventa un albero con un solo nodo e quindi corretto. Sia quindi `T` un BST corretto non vuoto. Vogliamo mostrare che l'**invariante** del ciclo e': la posizione corretta di `z` e' nel sottoalbero radicato in `x` e `y` ne mantiene il padre.
+Vogliamo mostrare che `BSTTreeInsert` e' **corretta**, cioe' se $T$ e' un BST e $T'$ e' il risultato di inserimento, allora $T'$ e' un BST. Se $T$ e' vuoto, il ciclo **while** non si segue e tra le istruzioni restanti si segue solo la prima, mettendo $z$ come radice di $T'$, che diventa un albero con un solo nodo e quindi corretto. Sia quindi $T$ un BST corretto non vuoto. Vogliamo mostrare che l'**invariante** del ciclo e': la posizione corretta di $z$ e' nel sottoalbero radicato in $x$ e $y$ ne mantiene il padre.
 Questa e':
 - vera all'inizio (**caso base**), perche' `x = T.root`;
-- vera anche dopo l'i-esima esecuzione del ciclo (**caso induttivo**): assumendola vera dopo la (i-1)-esima esecuzione, `z` viene confrontato con `x` (che non e' ancora una foglia) e `x` viene spostato correttamente, cosi' come `y`, mantenendo vera la proprieta'.
-Alla fine del ciclo, `x = nil`, ed e' precisamente la posizione di `z`: poiche' si e' persa la relazione padre-figlio tra `y` e `x`, le ultime due istruzioni recuperano questa relazione per ottenere la posizione corretta.
+- vera anche dopo l'i-esima esecuzione del ciclo (**caso induttivo**): assumendola vera dopo la ($i-1$)-esima esecuzione, $z$ viene confrontato con $x$ (che non e' ancora una foglia) e $x$ viene spostato correttamente, cosi' come $y$, mantenendo vera la proprieta'.
+Alla fine del ciclo, `x = nil`, ed e' precisamente la posizione di $z$: poiche' si e' persa la relazione padre-figlio tra $y$ e $x$, le ultime due istruzioni recuperano questa relazione per ottenere la posizione corretta.
 
 Osserviamo che e' l'operazione di inserimento che si occupa di decidere se le chiavi uguali vanno a sinistra o a destra. Tutte e due le scelte sono buone.
 La **complessità** di `BSTTreeInsert` e' proporzionale all'alteza dell'albero e pertanto e' $\Theta(n)$ nel caso peggiore e $\Theta(log(n))$ nel caso medio.
 
 ### Alberi binari di ricerca: eliminazione
 Eliminare un elemento da un BST dato e' un'operazione leggermente piu' difficile delle altre. 
-Considerando un nodo `z` qualsiasi:
-- se `z` e' foglia, si puo' eliminare semplicemente;
-- se `z` ha un solo figlio, allora l'operazione di eliminazione coincide con l'operazione di eliminazione in una lista;
-- se `z` ha due figli, allora dobbiamo trovare il modo di ricostruire l'albero dopo l'eliminazione.
-Se `z` ha due figli, il nodo che contiene la chiave successore di quella contenuta in `z` certamente non ha mai figlio sinistro. Questa osservazione e' importante perche' ci permette di ridurre il caso difficile ad uno piu' semplice.
+Considerando un nodo $z$ qualsiasi:
+- se $z$ e' foglia, si puo' eliminare semplicemente;
+- se $z$ ha un solo figlio, allora l'operazione di eliminazione coincide con l'operazione di eliminazione in una lista;
+- se $z$ ha due figli, allora dobbiamo trovare il modo di ricostruire l'albero dopo l'eliminazione.
+Se $z$ ha due figli, il nodo che contiene la chiave successore di quella contenuta in $z$ certamente non ha mai figlio sinistro. Questa osservazione e' importante perche' ci permette di ridurre il caso difficile ad uno piu' semplice.
 
 Procediamo cosi':
-- se `z` non ha figli sinistri, o e' una foglia, allora **trapiantiamo** il sotto-albero `z.right` al posto di `z` (anche se `z.right` e' **nil**: caso senza figli).
-- se `z` ha figlio sinistro, ma non destro, allora **trapiantiamo** il sotto-albero `z.left` al posto di `z` (`z.left` non puo' essere **nil**, altrimenti saremmo nel caso anteriore).
-- se `z` ha due figli, allora andiamo a prendere il suo successore immediato `y`, che si trova nel sotto-albero destro di `z` e non ha **al piu' un figlio**.
-  Il nodo `y` va a prendere il posto di `z` e se `y` e' figlio immediato di `z` allora il figlio destro di `z` diventa il figlio destro di `y` e il resto rimane invariato, altrimenti (`y` e' nel sotto-albero destro di `z` a non e' suo figlio immediato) allora prima rimpiazziamo `y` con il suo figlio destro, e poi rimpiazziamo `z` con `y`.
+- se $z$ non ha figli sinistri, o e' una foglia, allora **trapiantiamo** il sotto-albero `z.right` al posto di $z$ (anche se `z.right` e' **nil**: caso senza figli).
+- se $z$ ha figlio sinistro, ma non destro, allora **trapiantiamo** il sotto-albero `z.left` al posto di $z$ (`z.left` non puo' essere **nil**, altrimenti saremmo nel caso anteriore).
+- se $z$ ha due figli, allora andiamo a prendere il suo successore immediato $y$, che si trova nel sotto-albero destro di $z$ e non ha **al piu' un figlio**.
+  Il nodo $y$ va a prendere il posto di $z$ e se $y$ e' figlio immediato di $z$ allora il figlio destro di $z$ diventa il figlio destro di $y$ e il resto rimane invariato, altrimenti ($y$ e' nel sotto-albero destro di $z$ a non e' suo figlio immediato) allora prima rimpiazziamo $y$ con il suo figlio destro, e poi rimpiazziamo $z$ con $y$.
 
 Ad esempio, eliminiamo 5:
 ![[BSTEliminazione.png]]
@@ -1888,7 +1884,7 @@ proc BSTTreeTransplant(T, u, v) {
 
 #### Correttezza e complessità di `BSTTreeDelete`
 La **correttezza** di `BSTTreeDelete` e' implicita nell'algoritmo stesso, la cui casistica, riflette i passi necessari. Quindi consideriamo `BSTTreeDelete` corretto per progettazione.
-La **complessità** di `BSTTreeDelete`, che non contiene cicli, e' nuovamente $\Theta(n)$ nel caso peggiore e $\Theta(log(n))$ nel caso medio; questo si deve naturalmente alla presenza di una chiamata a `BSTTreeMinimum`.
+La **complessità** di `BSTTreeDelete`, che non contiene cicli, e' nuovamente $\Theta(n)$ nel caso peggiore e ==$\Theta(log(n))$== nel caso medio; questo si deve naturalmente alla presenza di una chiamata a `BSTTreeMinimum`.
 
 ## Alberi binari di ricerca e liste: confronto
 
@@ -1909,8 +1905,8 @@ Gli alberi sono una struttura dati molto versatile. Gli alberi binari di ricerca
 # Alberi red-black (RBT)
 
 ## Albero red-black: introduzione
-Un **albero red-black** (RBT) e' un albero binario di ricerca (BST) **bilanciato** per costruzione. Possiede tutte le caratteristiche di un BST, ma la sua altezza e' sempre $\Theta(log(n))$, dove `n` e' il numero di elementi di un albero.
-Un RBT e' una struttura dati dinamica, basata sull'ordinamento e sparsa. Tutte le operazioni, ed in particolare quelle di ricerca, che funzionano in un tempo proporzionale all'altezza diventano esponenzialmente piu' efficienti su un RBT.
+Un **albero red-black** (RBT) e' un albero binario di ricerca (BST) **bilanciato** per costruzione. Possiede tutte le caratteristiche di un BST, ma la sua altezza e' sempre $\Theta(log(n))$, dove $n$ e' il numero di elementi di un albero.
+Un RBT e' una ==struttura dati dinamica, basata sull'ordinamento e sparsa==. Tutte le operazioni, ed in particolare quelle di ricerca, che funzionano in un tempo proporzionale all'altezza diventano esponenzialmente piu' efficienti su un RBT.
 La caratteristica principale di queste strutture e' che l'inserimento e l'eliminazione mantengono la proprieta' di bilanciamento.
 
 Ogni nodo in un RBT ha un'informazione in piu' rispetto a un nodo di BST: oltre a un puntatore al padre, i puntatori ai due figli e la chiave, abbiamo il **colore** (`x.color`), che per convenzione e' rosso o nero.
@@ -1926,35 +1922,35 @@ Le regole che ogni RBT deve rispettare sono:
 
 Chiameremo i nodi di un albero RB **interni**, per distinguerli dai nodi **esterni** che aggiungiamo in maniera artificiale a ogni albero RB. Una foglia esterna e' un nodo che ha tutte le proprieta' di ogni altro nodo ma non porta alcuna chiave, ed e' sempre di colore nero.
 Ogni nodo interno di un RBT ha sempre due figli, a differenza di quello esterno che non ha figli.
-Dal punto di vista implementativo, definiamo una sentinella `T.nil` come un nodo con tutte le proprieta' di un nodo `T` e colore fissato a nero per il ruolo di foglia esterna.
+Dal punto di vista implementativo, definiamo una sentinella `T.nil` come un nodo con tutte le proprieta' di un nodo $T$ e colore fissato a nero per il ruolo di foglia esterna.
 
 ![[RBT_introduzione.png]]
 
 Il principio fondamentale degli RBT e' che le proprieta' sono valide quando l'albero e' vuoto e vengono mantenute tali dopo ogni inserimento e eliminazione. Dobbiamo ancora dimostrare che esse garantiscono il bilanciamento dell'albero - a meno di una costante. 
-Cominciamo definendo l'**altezza nera** (`bh(x)`) di un nodo `x` in `T` come il numero di nodi neri si qualsiasi percorso semplice da `x` (senza contare `x`) a una foglia esterna (contandola).
-L'altezza nera di `T` e' `bh(T.root)`.
+Cominciamo definendo l'**altezza nera** (`bh(x)`) di un nodo $x$ in $T$ come il numero di nodi neri si qualsiasi percorso semplice da $x$ (senza contare $x$) a una foglia esterna (contandola).
+L'altezza nera di $T$ e' `bh(T.root)`.
 
-Dimostriamo che se `T` e' un RBT con `n` nodi interni (quindi escludendo le foglie esterne), allora la sua altezza massima e' $2 \cdot log(n+1)$. 
-Mostriamo che il sotto-albero radicato in `x` contiene almeno $2^{bh(x)}-1$ nodi interi, per induzione.
-Quando `bh(x)` e' 0, allora per definizione `x = T.Nil`, e il sotto-albero indicato in `x` non ha nodi interni; l'alteza nera di `x` e' 0 (perche' non si include il nodo stesso), ed abbiamo che $2^{bh(x)}-1 = 1-1 = 0$, come volevamo. Se `bh(x)` e' positiva, allora l'altezza nera di entrambi i suoi figli e' almeno `bh(x) - 1`. Per ipotesi induttiva ognuno dei due sotto-alberi ha almeno $2^{bh(x)-1}-1$ nodi interni. Quindi il sotto-albero radicato in `x` ha almeno $2 \cdot (2^{bh(x)-1}-1)+1$ nodi interni, che e' esattamente $2^{bh(x)}-1$.
+Dimostriamo che se $T$ e' un RBT con $n$ nodi interni (quindi escludendo le foglie esterne), allora la sua altezza massima e' $2 \cdot log(n+1)$. 
+Mostriamo che il sotto-albero radicato in $x$ contiene almeno $2^{bh(x)}-1$ nodi interi, per induzione.
+Quando `bh(x)` e' 0, allora per definizione `x = T.Nil`, e il sotto-albero indicato in $x$ non ha nodi interni; l'alteza nera di $x$ e' 0 (perche' non si include il nodo stesso), ed abbiamo che $2^{bh(x)}-1 = 1-1 = 0$, come volevamo. Se `bh(x)` e' positiva, allora l'altezza nera di entrambi i suoi figli e' almeno `bh(x) - 1`. Per ipotesi induttiva ognuno dei due sotto-alberi ha almeno $2^{bh(x)-1}-1$ nodi interni. Quindi il sotto-albero radicato in $x$ ha almeno $2 \cdot (2^{bh(x)-1}-1)+1$ nodi interni, che e' esattamente $2^{bh(x)}-1$.
 
-Consideriamo adesso `T` di altezza `h`. Per la proprieta' 4, almeno la meta' dei nodi della radice (esclusa) ad una foglia si qualsiasi rampo e' nera. Quindi $\text{bh(T.root)} \ge \frac{h}{2}$. Dalla proprieta' precedente, il numero `n` di nodi in `T` e' $n \ge 2^{\text{bh(T.root)}}-1$, cioe' $n \ge 2^{\frac{h}{2}}-1$.
+Consideriamo adesso $T$ di altezza $h$. Per la proprieta' 4, almeno la meta' dei nodi della radice (esclusa) ad una foglia di qualsiasi ramo e' nera. Quindi $\text{bh(T.root)} \ge \frac{h}{2}$. Dalla proprieta' precedente, il numero $n$ di nodi in $T$ e' $n \ge 2^{\text{bh(T.root)}}-1$, cioe' $n \ge 2^{\frac{h}{2}}-1$.
 Quindi: 
 $$
 \begin{align}
-n &\ge 2^{\frac{h}{2}}-1 \qquad &\text{risultato precedente} \\
-n+1 &\ge 2^{\frac{h}{2}} &\text{calcolo algebrico} \\
-log(n+1) &\ge \frac{h}{2} &\text{proprieta' logaritmi} \\
-h &\le 2 \cdot log(n+1) &\text{tesi}
+n &\ge 2^{\frac{h}{2}}-1 \qquad &&\text{risultato precedente} \\
+n+1 &\ge 2^{\frac{h}{2}} &&\text{calcolo algebrico} \\
+log(n+1) &\ge \frac{h}{2} &&\text{proprieta' logaritmi} \\
+h &\le 2 \cdot log(n+1) &&\text{tesi}
 \end{align}
 $$
-Un albero binario completo ha altezza `h` sempre maggiore o uguale a $log(n)-1$, dove `n` e' il numero di nodi totali.
+Un albero binario completo ha altezza $h$ sempre maggiore o uguale a $log(n)-1$, dove $n$ e' il numero di nodi totali.
 Pertanto, $log(n)-1 \le h \le 2 \cdot log(n+1)$, cioe' $h = \Theta(log(n))$.
 
 ## Alberi red-black: rotazioni
 Inserimento ed eliminazioni in un RBT possono violare le proprieta' e che la maggiore difficolta' nell'implementare queste procedure consiste precisamente nel modificare la struttura dell'albero per ripristinare queste proprieta'.
-Un passo intermedio fondamentale per questa riparazione e' la **rotazione**, che puoi' essere destra o sinistra e che preserva le proprieta' BST. L'idea e' che possiamo ribilanciare l'albero e poi preoccuparci dei colori.
-Risolviamo il problema di **rotazione sinistra**: dato un RBT `T` ed un nodo `x` in `T` con figlio destro `y`, ottenere un nuovo albero `T'`, dove `y` ha come figlio sinistro `x`.
+Un passo intermedio fondamentale per questa riparazione e' la **rotazione**, che puo' essere destra o sinistra e che preserva le proprieta' BST. L'idea e' che possiamo ribilanciare l'albero e poi preoccuparci dei colori.
+Risolviamo il problema di **rotazione sinistra**: dato un RBT $T$ ed un nodo $x$ in $T$ con figlio destro $y$, ottenere un nuovo albero $T'$, dove $y$ ha come figlio sinistro $x$.
 Simmetricamente, potremmo definire il problema della rotazione destra. In entrambi i casi la complessita' e' $\Theta(1)$.
 
 ``` Pseudocodice
@@ -1978,7 +1974,7 @@ proc BSTTreeLeftRotate(T, x) {
 Una volta capito come funzionano i cambi di puntatori, mostrare la **correttezza** delle rotazioni e' immediato. Inoltre, si vede subito che la complessita' e' costante in entrambi i casi destro e sinistro.
 
 ## Alberi red-black: inserimento
-Risolviamo il problema di inserire un nodo `z` in un RBT `T` in maniera da mantenere tutte le proprieta' di `T`. Chiaramente usiamo `BSTTreeInsert` cosi' com'e', abbiamo la garanzia che la proprieta' BST sia rispettata. Se il nodo inserito e' colorato di rosso, allora anche la proprieta' 5 e' rispettata; inoltre, poiche' `z` sara' sempre una nuova foglia, inserendo correttamente le sue foglie esterne, garantiamo anche la proprieta' 3. La proprieta' 1 e' rispettata semplicemente assegnando il colore (rosso) a `z`. Quindi, solo due proprieta' possono essere violate: se `z` diventa la radice, allora **violiamo 2**, se invece `z` diventa figlio di un nodo rosso, **violiamo 4**.
+Risolviamo il problema di inserire un nodo $z$ in un RBT $T$ in maniera da mantenere tutte le proprieta' di $T$. Chiaramente usiamo `BSTTreeInsert` cosi' com'e', abbiamo la garanzia che la proprieta' BST sia rispettata. Se il nodo inserito e' colorato di rosso, allora anche la proprieta' 5 e' rispettata; inoltre, poiche' $z$ sara' sempre una nuova foglia, inserendo correttamente le sue foglie esterne, garantiamo anche la proprieta' 3. La proprieta' 1 e' rispettata semplicemente assegnando il colore (rosso) a $z$. Quindi, solo due proprieta' possono essere violate: se $z$ diventa la radice, allora **violiamo 2**, se invece $z$ diventa figlio di un nodo rosso, **violiamo 4**.
 
 ``` Pseudocodice
 proc BSTTreeInsert(T, z) {
@@ -2003,7 +1999,7 @@ proc BSTTreeInsert(T, z) {
 }
 ```
 
-Nell'albero di esempio, inseriamo `z` con chiave 27, ottenendo una violazione della proprieta' 4:
+Nell'albero di esempio, inseriamo $z$ con chiave 27, ottenendo una violazione della proprieta' 4:
 ![[RBT_inserimento.png]]
 
 ``` Pseudocodice
@@ -2050,20 +2046,19 @@ proc RBTreeInsertFixUpRight(T, z) {
 
 ## Alberi red-black: correttezza dell'inserimento
 La scelta che si fa all'inizio di  `RBTreeInsertFixup` genera due casi, che dipendono dal fatto che `z.p` sia figlio destro o sinistro di `z.p.p`.
-All'interno di ogni caso vi sono tre sotto-casi, che si distinguono dal colore di y (lo **zio** di `z`):
+All'interno di ogni caso vi sono tre sotto-casi, che si distinguono dal colore di y (lo **zio** di $z$):
 - se e' rosso e' un caso
 - se e' nero:
-	- se `z` e' figlio destro e' un secondo caso
-	- se `z` e' figlio sinistro e' un terzo caso
+	- se $z$ e' figlio destro e' un secondo caso
+	- se $z$ e' figlio sinistro e' un terzo caso
 
-Il totale e' quindi di 6 casi, i primi tre completamente simmetrici ai secondi tre. Osserviamo che se `z` e' la radice (abbiamo inserito un nodo in un albero vuoto), allora `z,p = T.Nil` e 
-`T.Nil.color = BLACK`: quindi la condizione del ciclo **while** e' corretta e determina un corretto caso di terminazione. Similmente, se `z` e' un figlio diretto della radice, allora `z.p` e' la radice, e quindi `z.p.p = T.Nil`, pertanto `z.p.p.left` e `z.p.p.right` sono entrambi `Nil` e diversi da `z.p`: quindi tutte le condizioni **if** sono ben definite.
+Il totale e' quindi di 6 casi, i primi tre completamente simmetrici ai secondi tre. Osserviamo che se $z$ e' la radice (abbiamo inserito un nodo in un albero vuoto), allora `z.p = T.Nil` e  `T.Nil.color = BLACK`: quindi la condizione del ciclo **while** e' corretta e determina un corretto caso di terminazione. Similmente, se $z$ e' un figlio diretto della radice, allora `z.p` e' la radice, e quindi `z.p.p = T.Nil`, pertanto `z.p.p.left` e `z.p.p.right` sono entrambi `Nil` e diversi da `z.p`: quindi tutte le condizioni **if** sono ben definite.
 
 Analizziamo il codice. L'idea di fondo e': se esiste un problema dopo l'inserimento (violazione della proprieta' 2 o della proprieta' 4), questo si **spinge verso l'alto** con il caso 1. Quando non e' piu' possibile, si salta al caso 2 (immediatamente convertito al caso 3) o al caso 3: una rotazione risolve il problema in forma definitiva e garantisce l'uscita dal ciclo (**terminazione**). 
-Per mostrare la **correttezza**, usiamo la seguente **invariante**: `z` e' rosso, se `z.p` e' al radice, allora e' nera, e se `T` viola qualsiasi proprieta', allora ne viola esattamente una, che e' la 2 o la 4.
+Per mostrare la **correttezza**, usiamo la seguente **invariante**: $z$ e' rosso, se `z.p` e' al radice, allora e' nera, e se $T$ viola qualsiasi proprieta', allora ne viola esattamente una, che e' la 2 o la 4.
 La condizione di uscita (nei tre casi) e' che `z.p` e' di colore nero; quindi l'invariante sommata alla condizione di uscita piu' l'ultima istruzione di `RBTreeInsertFixup` ci da la correttezza.
 
-Sappiamo che `T` e' un RBT legale prima di chiamare `RBTreeInsertFixup`. Per quanto riguarda l'**inizializzazione**, dobbiamo mostrare che l'invariante e' vera prima di chiamare `RBTreeInsertFixup` Osserviamo, prima di tutto, che `z` viene inserito rosso. Inoltre, se `z.p` e' la radice, allora `z.p` era nera e prima di chiamare `RBTreeInsertFixup` questo non e' cambiato. Infine, sappiamo che le proprieta' 1, 3 e 5 non sono violate alla chiamata di `RBTreeInsertFixup`. Se `T` viola 2, deve essere perche' `z` e' la radice (e `T` era vuoto prima dell'inserimento); in questo caso `z.p = z.left = z.right = T.Nil` sono tutti nodi neri, percio' la proprieta' 4 non e' violata e la violazione della 2 e' l'unica. Se invece `T` viola 4, poiché `z.left = z.right = T.Nil` sono neri, e il resto di `T` non ha violazioni, deve essere perché `z.p` è rosso come `z`.
+Sappiamo che $T$ e' un RBT legale prima di chiamare `RBTreeInsertFixup`. Per quanto riguarda l'**inizializzazione**, dobbiamo mostrare che l'invariante e' vera prima di chiamare `RBTreeInsertFixup` Osserviamo, prima di tutto, che $z$ viene inserito rosso. Inoltre, se `z.p` e' la radice, allora `z.p` era nera e prima di chiamare `RBTreeInsertFixup` questo non e' cambiato. Infine, sappiamo che le proprieta' 1, 3 e 5 non sono violate alla chiamata di `RBTreeInsertFixup`. Se $T$ viola 2, deve essere perche' $z$ e' la radice (e $T$ era vuoto prima dell'inserimento); in questo caso `z.p = z.left = z.right = T.Nil` sono tutti nodi neri, percio' la proprieta' 4 non e' violata e la violazione della 2 e' l'unica. Se invece $T$ viola 4, poiché `z.left = z.right = T.Nil` sono neri, e il resto di $T$ non ha violazioni, deve essere perché `z.p` è rosso come $z$.
 
 Cosa accade dopo la fine dell'inserimento?
 - Al termine della procedura`z.p` e' nero. 
@@ -2072,9 +2067,9 @@ Cosa accade dopo la fine dell'inserimento?
 
 Ci rimane da dimostrare che l'invariante e' mantenuta da un ciclo al seguente. Dei sei casi da analizzare ne analizziamo solo tre, assumendo che `z.p` e' figlio sinistro di `z.p.p`. Stiamo quindi assumendo che si esegue `RBTreeInsertFixUpLeft`.
 
-- **Caso 1**: lo zio `y` di `z` e' rosso. Poiche' `z.p.p` e' nero, coloriamo di nero sia `z.p` che `y` e coloriamo di rosso `z.p.p`, per mantenere la proprieta' 5. Adesso `z.p.p` diventa `z` (quindi spostiamo il potenziale problema un passo piu' in alto). Dobbiamo mostrare che il nuovo `z` e' tale che l'invariante e' mantenuta. Prima di tutto, `z` e' rosso; poi `z.p` non cambia colore, quindi, se e' la radice, e' rimasta nera; infine, le proprieta' 1 e 3 non sono a rischio e sappiamo gia' che 5 e' mantenuta: se `z` e' la radice, allora e' rossa e si viola 2, giacche' `z.p = T.Nil` e' nero, se il nuovo `z` non e' la radice allora solo 4 puo' essere ancora violata e grazie alle altre tre ipotesi ed alla correzione nel ciclo seguito, questa violazione e' dovuta a che `z.p` e' rosso.
+- **Caso 1**: lo zio $y$ di $z$ e' rosso. Poiche' `z.p.p` e' nero, coloriamo di nero sia `z.p` che $y$ e coloriamo di rosso `z.p.p`, per mantenere la proprieta' 5. Adesso `z.p.p` diventa $z$ (quindi spostiamo il potenziale problema un passo piu' in alto). Dobbiamo mostrare che il nuovo $z$ e' tale che l'invariante e' mantenuta. Prima di tutto, $z$ e' rosso; poi `z.p` non cambia colore, quindi, se e' la radice, e' rimasta nera; infine, le proprieta' 1 e 3 non sono a rischio e sappiamo gia' che 5 e' mantenuta: se $z$ e' la radice, allora e' rossa e si viola 2, giacche' `z.p = T.Nil` e' nero, se il nuovo `z` non e' la radice allora solo 4 puo' essere ancora violata e grazie alle altre tre ipotesi ed alla correzione nel ciclo seguito, questa violazione e' dovuta a che `z.p` e' rosso.
   
-- **Caso 3**: lo zio di `y` e' nero e `z` e' figlio sinistro di suo padre. Il caso 2 (`z` e' figlio destro di suo padre) si riporta immediatamente al caso 3 attraverso una rotazione ed un ricoloramento. Il nodo `z.p` diventa nero e il nodo `z.p.p` diventa rosso. La rotazione a destra su `z.p.p` ripristina la proprieta' 5. Ci rimane da mostrare che `z`  e' tale che l'invariante e' mantenuta: prima di tutto, `z` e' rosso, poi, se `z.p` e' la radice, e' diventata nera; infine le proprieta' 1 e 3 non sono a rischio e sappiamo gia' che 5 e' mantenuta; inoltre in questo caso la proprieta' 2 non si puo' violare. L'unica violazione alla proprieta' 4 (`z` e `z.p` entrambi rossi) viene corretta e non ci sono altre violazioni.
+- **Caso 3**: lo zio di $y$ e' nero e $z$ e' figlio sinistro di suo padre. Il caso 2 ($z$ e' figlio destro di suo padre) si riporta immediatamente al caso 3 attraverso una rotazione ed un ricoloramento. Il nodo `z.p` diventa nero e il nodo `z.p.p` diventa rosso. La rotazione a destra su `z.p.p` ripristina la proprieta' 5. Ci rimane da mostrare che $z$  e' tale che l'invariante e' mantenuta: prima di tutto, $z$ e' rosso, poi, se `z.p` e' la radice, e' diventata nera; infine le proprieta' 1 e 3 non sono a rischio e sappiamo gia' che 5 e' mantenuta; inoltre in questo caso la proprieta' 2 non si puo' violare. L'unica violazione alla proprieta' 4 ($z$ e `z.p` entrambi rossi) viene corretta e non ci sono altre violazioni.
 
 Concludendo l'analisi dell'inserimento (che ha **complessità**, nel caso peggiore, $\Theta(h) = \Theta(log(n))$: nel peggior caso si esegue tutto il ciclo while seguendo il caso 1 e si percorre un ramo intero), osserviamo che il caso 1 si verifica in un RBT previamente bilanciato e si sistemano i colori per mantenere, al peggio, un leggero sbilanciamento. I casi 2 e 3 invece operano su un RBT gia' leggermente sbilanciato: ma questo si rivela facile da sistemare grazie a, al massimo, due rotazioni e poi un ricoloramento sistematico. Questo complesso sistema ci permette di mantenere una struttura bilanciata anche quando si opera un inserimento di elementi in ordine, che invece genererebbe un BST molto sbilanciato. Come si puo' intuire, l'eliminazione di un nodo da un RBT e' **molto** complessa. Anche questa operazione ha costo $\Theta(h) = \Theta(log(n))$.
 
@@ -2099,40 +2094,39 @@ Concludendo l'analisi dell'inserimento (che ha **complessità**, nel caso peggio
 Un albero B (BT) generalizza un albero RB con fini differenti, ma mantenendo la sua proprieta' fondamentale di bilanciamento. Un albero B e' sempre completo.
 Nel modello piu' semplice e diffuso di computazione, dobbiamo distinguere tra memoria **principale** e **secondaria**. La memoria secondaria e' vari ordini di grandezza piu' capace, ma e' piu' lenta della memoria primaria.
 Gli alberi B sono una struttura dati ottimizzata per minimizzare gli accessi al disco; la complessita' delle operazioni si da lungo le direttive, tempo di CPU e numero di accessi al disco. La loro principale applicazione e' nelle basi di dati.
-Gli alberi B sono una struttura dinamica, basata sull'ordinamento e memorizzata in maniera sparsa.
+Gli alberi B sono una ==struttura dinamica, basata sull'ordinamento e memorizzata in maniera sparsa==.
 
 > Alberi B $\rightarrow$ BT (Balanced Tree)
 
-Un **albero B (BT)** si caratterizza per possedere una varieta' (che in questo contesto si conosce come **branching factor** (t)) superiore a 2, spesso dell'ordine di migliaia, un'altezza proporzionale a un algoritmo a base molto alta di `n`, dove `n` e' il numero di chiavi, per avere nodi che contengono molte chiavi, tra loro ordinate, e per crescere verso l'alto, non verso il basso: un nodo comincia con essere la radice, e poi si converte in nodo interno generando una nuova radice.
+Un **albero B (BT)** si caratterizza per possedere una varieta' (che in questo contesto si conosce come **branching factor** (t)) superiore a 2, spesso dell'ordine di migliaia, un'altezza proporzionale a un algoritmo a base molto alta di $n$, dove $n$ e' il numero di chiavi, per avere nodi che contengono molte chiavi, tra loro ordinate, e per crescere verso l'alto, non verso il basso: un nodo comincia con essere la radice, e poi si converte in nodo interno generando una nuova radice.
 La complessita' delle operazioni e' proporzionale all'altezza: quindi i BT possono essere usati come degli RBT.
 
-Un nodo `x` in un BT si caratterizza per avere comunque il puntatore al nodo padre (`x.p`), ma glia altri dati sono diversi da nodi degli alberi binari visti fino ad ora. Infatti, abbiamo:
+Un nodo $x$ in un BT si caratterizza per avere comunque il puntatore al nodo padre (`x.p`), ma gli altri dati sono diversi da nodi degli alberi binari visti fino ad ora. Infatti, abbiamo:
 - numero delle chiavi memorizzate nel nodo (`x.n`)
 - l'informazione sull'essere, o meno, una foglia (`x.leaf` = 1 se x e' foglia)
-- i puntatori agli $n+1$ figli di `x` (`x.c_1, ..., x.c_x.n+1`) definiti se `x` e' foglia
-- `n` chiavi (`x.key_1, ..., x.key_x.n`) invece di una
+- i puntatori agli $n+1$ figli di $x$ (`x.c_1, ..., x.c_x.n+1`) definiti se $x$ e' foglia
+- $n$ chiavi (`x.key_1, ..., x.key_x.n`) invece di una
 Il sotto-albero puntato da `x.c_i` e' legato alle chiavi `x.key_i-1` e `x.key_i`.
 
-In un nodo `x` il numero di chiavi, e quindi il branching factor, e' vincolato da un parametro che si chiama **grado minimo**, si denota con `t` ed e' sempre `>= 2`.
+In un nodo $x$ il numero di chiavi, e quindi il branching factor, e' vincolato da un parametro che si chiama **grado minimo**, si denota con $t$ ed e' sempre $\ge 2$.
 Le proprieta' di un albero B sono:
-1. Ogni nodo, tramite la radice, ha almeno `t-1` chiavi;
-2. Ogni nodo puo' contenere al massimo `2 * t - 1` chiavi;
-3. Per ogni nodo `x`, `x.key_1 <= x.key_2 <= ... <= x,key_x.n`;
-4. Per ogni nodo `x`, se un nodo `y` contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono minori o uguali a `x.key_i`
-5. Per ogni nodo `x` , se un nodo `y` e; contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono maggiori di `x.key_i-1`
+1. Ogni nodo, tramite la radice, ha almeno $t-1$ chiavi;
+2. Ogni nodo puo' contenere al massimo `$2 \cdot t-1$` chiavi;
+3. Per ogni nodo $x$, `x.key_1 <= x.key_2 <= ... <= x.key_x.n`;
+4. Per ogni nodo $x$, se un nodo $y$ contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono minori o uguali a `x.key_i`
+5. Per ogni nodo $x$ , se un nodo $y$ e; contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono maggiori di `x.key_i-1`
 
 Esempio di albero B:
 ![[BT_esempio.png]]
-E' immediato osservare che per `t=2`, si ottiene un albero che e' sempre **isomorfo** a un albero red-black. Questi particolari alberi B sono noti come **alberi 2-3-4**.
+E' immediato osservare che per $t=2$, si ottiene un albero che e' sempre **isomorfo** a un albero red-black. Questi particolari alberi B sono noti come **alberi 2-3-4**.
 
-Le prime due regole implicano che ogni nodo interno, tranne la radice, deve avere almeno `t` figli. Se l'albero non e' vuoto, allora la radice ha almeno una chiave; un nodo interno puo' avere fino a `2 * t` figli: in questo caso lo chiamiamo **nodo pieno**.
-Come conseguenza delle regole, l'altezza massima di un BT `T` con `n` chiavi e grado minimo 
-`t >= 2` e': 
+Le prime due regole implicano che ogni nodo interno, tranne la radice, deve avere almeno $t$ figli. Se l'albero non e' vuoto, allora la radice ha almeno una chiave; un nodo interno puo' avere fino a $2 \cdot t$ figli: in questo caso lo chiamiamo **nodo pieno**.
+Come conseguenza delle regole, l'altezza massima di un BT $T$ con $n$ chiavi e grado minimo $t \ge 2$ e': 
 $$ h \le log_t(\frac{n+1}{2}) = O(log_t(n)) $$
 e tutte le foglie sono alla stessa altezza. Dunque un albero B e' sempre completo.
 
 ## Alberi B: caratteristiche e altezza
-Per dimostrare la proprieta' sull'altezza logaritmica, osserviamo che nel caso peggiore la radice di `T` contiene una sola chiave e tutti gli altri almeno `t-1`. Percio', `T` di altezza `h` ha almeno due nodi ad altezza 1, almeno $2 \cdot t$ di altezza 3, almeno $2 \cdot t^2$ ad altezza 3, e cosi via, fino a $2 \cdot t^{h-1}$ ad altezza `h`. Percio' il numero di chiavi e':
+Per dimostrare la proprieta' sull'altezza logaritmica, osserviamo che nel caso peggiore la radice di $T$ contiene una sola chiave e tutti gli altri almeno $t-1$. Percio', $T$ di altezza $h$ ha almeno due nodi ad altezza 1, almeno $2 \cdot t$ di altezza 3, almeno $2 \cdot t^2$ ad altezza 3, e cosi via, fino a $2 \cdot t^{h-1}$ ad altezza $h$. Percio' il numero di chiavi e':
 $$ 1+2 \cdot (t-1) + 2 \cdot t \cdot (t-1) + 2 \cdot t^2 \cdot (t-1) + \space ... \space + 2 \cdot t^{h-1}(t-1) $$
 Abbiamo quindi la seguente disuguaglianza:
 $$
@@ -2160,7 +2154,7 @@ Convenzioni:
 Nel caso degli alberi B, calcoliamo la complessita' **sia in termini di uso della CPU sia in termini di numero di accessi al disco**. Infatti questi due aspetti sono separati e possiamo avere procedure che migliorano solo uno di essi, o entrambi.
 
 ## Alberi B: ricerca
-L'operazione di `BTreeSearch` e' la generalizzazione della ricerca su BST. Dobbiamo prendere una decisione tra molte possibilita' per ogni nodo esplorato: invece di scegliere tra due figli, scegliamo tra `x.n + 1` possibili figli. `BTreeSearch` prende in input un puntatore `x` ad un nodo di `T`, ed una chiave da cercare, e ritorna un puntatore ad un nodo `y` piu' un indice `i` (nel nodo) nei casi positivi, o **nil** se la chiave cercata non esiste nel sotto-albero radicato in `x`.
+L'operazione di `BTreeSearch` e' la generalizzazione della ricerca su BST. Dobbiamo prendere una decisione tra molte possibilita' per ogni nodo esplorato: invece di scegliere tra due figli, scegliamo tra `x.n + 1` possibili figli. `BTreeSearch` prende in input un puntatore $x$ ad un nodo di $T$, ed una chiave da cercare, e ritorna un puntatore ad un nodo $y$ piu' un indice $i$ (nel nodo) nei casi positivi, o **nil** se la chiave cercata non esiste nel sotto-albero radicato in $x$.
 ``` Pseudocodice
 proc BTreeSearch(x, k) {
 	i = 1
@@ -2191,7 +2185,7 @@ proc BTreeCreate(T) {
 }
 ```
 
-In sintesi, cerchiamo di riempire un nodo fino a quando diventa pieno; quando il nodo e' pieno, **dividiamo** il nodo in questione (che ha $2 \cdot t-1$ chiavi) in due nodi di $t-1$ ciascuno, ed inseriamo la nuova chiave nel nodo padre: se il padre diventa pieno i seguito a tale inserimento, ripetiamo l'operazione un livello piu' in alto. Quindi `T` cresce solamente quando la divisione ha luogo sulla radice: in questo caso si crea un nuovo nodo radice e si opera la divisione. 
+In sintesi, cerchiamo di riempire un nodo fino a quando diventa pieno; quando il nodo e' pieno, **dividiamo** il nodo in questione (che ha $2 \cdot t-1$ chiavi) in due nodi di $t-1$ ciascuno, ed inseriamo la nuova chiave nel nodo padre: se il padre diventa pieno i seguito a tale inserimento, ripetiamo l'operazione un livello piu' in alto. Quindi $T$ cresce solamente quando la divisione ha luogo sulla radice: in questo caso si crea un nuovo nodo radice e si opera la divisione. 
 
 > divisione di un nodo pieno non e' legata a inserire una chiave in quel nodo
 
@@ -2215,7 +2209,7 @@ proc BTreeSplitChild(x, i) {
 }
 ```
 
-La procedura assume che `x` sia un nodo interno non pieno gia' nella memoria principale e che il nodo figlio `x.c_i`, anche lui gia' nella memoria principale, sia pieno. Il nodo `x.c_i` e' diviso in due nodi, ognuno con la meta' delle chiavi ($2 \cdot t-1$ e' sempre dispari!).
+La procedura assume che $x$ sia un nodo interno non pieno gia' nella memoria principale e che il nodo figlio `x.c_i`, anche lui gia' nella memoria principale, sia pieno. Il nodo `x.c_i` e' diviso in due nodi, ognuno con la meta' delle chiavi ($2 \cdot t-1$ e' sempre dispari!).
 
 ![[BT_inserimento.png]]
 Nell'albero in figura a sinistra, l'esecuzione di `BTreeSplitChild(x, 2)` dove `x` e' il nodo piu' in alto provoca che il risultato sia quello a destra.
@@ -2265,24 +2259,24 @@ proc BTreeInsertNopnFull(x, k) {
 }
 ```
 
-La condizione di **non essere un nodo pieno** e' certamente vera all'entrata di `BTreeInsertNonFull`. Se `x` e' un nodo foglia, e non e' pieno, ci limitiamo a scegliere la posizione della nuova chiave e a muovere le altre chiavi per mantenere l'ordine. I puntatori ai figli sono tutti **nil** e cosi' rimangono. Altrimenti, si va a cercare la posizione per la scelta del figlio di `x` dove proseguire la ricerca della foglia corretta. 
+La condizione di **non essere un nodo pieno** e' certamente vera all'entrata di `BTreeInsertNonFull`. Se $x$ e' un nodo foglia, e non e' pieno, ci limitiamo a scegliere la posizione della nuova chiave e a muovere le altre chiavi per mantenere l'ordine. I puntatori ai figli sono tutti **nil** e cosi' rimangono. Altrimenti, si va a cercare la posizione per la scelta del figlio di $x$ dove proseguire la ricerca della foglia corretta. 
 Quando il figlio viene caricato in memoria principale possono succedere due cose:
 - non e' pieno, in questo caso semplicemente si fa una chiamata ricorsiva, giacche' sono rispettate le condizioni;
 - e' pieno, in quest caso, operiamo la divisione, scegliamo tra i due nodi nuovi qual'e' quello giusto e facciamo la chiamata ricorsiva.
 
 ## Correttezza e complessità di `BTreeInsert`
 L'inserimento in BT e' una procedura tail-recursive (`BTreeInsertNonFull`). Quindi possiamo mostrare la **correttezza** usando un invariante.
-Scegliamo: **all'inizio di ogni esecuzione di `BTreeInsertNonFull` `x` e' non pieno, e `k` va inserito nel sotto-albero radicato in `x`**.
-L'invariante e' vera all'inizio (**caso base**), perche' la procedura viene chiamata sulla radice dell'albero. Supponiamo che sia vera all'inizio di una certa esecuzione di `BTreeInsertNonFull` (**caso induttivo**). Poiché stiamo assumendo che ci sarà una prossima esecuzione, non siamo nel caso base della ricorsione, quindi entriamo nel ciclo **while**. Si trova il posto corretto per `k`, e poiché `x` non è una foglia, carica il giusto figlio. Poiché `x` non è pieno per ipotesi, se il nodo caricato fosse pieno potrebbe essere eseguito lo split, rendendolo non pieno. Questo è il nodo su cui poi verrà richiamato `BTreeInsertNonFull`, e quindi l'inviariante è ancora vera. Nel caso in cui `x` fosse una foglia, l'invariante dice che non è piena e che k va inserito esattamente in `x`.
+Scegliamo: **all'inizio di ogni esecuzione di `BTreeInsertNonFull` $x$ e' non pieno, e $k$ va inserito nel sotto-albero radicato in $x$**.
+L'invariante e' vera all'inizio (**caso base**), perche' la procedura viene chiamata sulla radice dell'albero. Supponiamo che sia vera all'inizio di una certa esecuzione di `BTreeInsertNonFull` (**caso induttivo**). Poiché stiamo assumendo che ci sarà una prossima esecuzione, non siamo nel caso base della ricorsione, quindi entriamo nel ciclo **while**. Si trova il posto corretto per $k$, e poiché $x$ non è una foglia, carica il giusto figlio. Poiché $x$ non è pieno per ipotesi, se il nodo caricato fosse pieno potrebbe essere eseguito lo split, rendendolo non pieno. Questo è il nodo su cui poi verrà richiamato `BTreeInsertNonFull`, e quindi l'inviariante è ancora vera. Nel caso in cui $x$ fosse una foglia, l'invariante dice che non è piena e che $k$ va inserito esattamente in $x$.
 La **complessità** in numero di operazioni su disco e' chiaramente $\Theta(h)$; invece, quella in termini di operazioni CPU e' $\Theta(h \cdot t) = \Theta(t \cdot log_t(n))$.
 
 --- 
 # Grafi: visita in ampiezza e problemi collegati
 
 ## Grafi: introduzione
-Un **grafo** e' una tripla `G = (v, E, W)` composta da un insieme di `V` di **vertici**, un insieme $E \subseteq V * V$  di **archi**, e una funzione $W : E \rightarrow \mathbb{R}$ che assegna un peso ad ogni arco. Il grafo `G` e' **indiretto** se vale sia $(u, v) \in E \iff (v, u) \in E$ che $W(u, v) = W(v, u)$, e **diretto** altrimenti.
-Quando da un vertice `u` possiamo raggiungere un vertice `v` usiamo il simbolo $u ⇝ v$. 
-Il **grado entrante** di un **nodo** di un grafo e' i numero di archi che lo raggiungono, ed il **grado uscente** il numero di archi che lo lasciano. Il grafo `G` e' **pesato** se `W` non e' costante, e **non pesato** altrimenti (spesso viene usata la notazione `G = (V, E)`).
+Un **grafo** e' una tripla $G = (V, E, W)$ composta da un insieme di $V$ di **vertici**, un insieme $E \subseteq V * V$  di **archi**, e una funzione $W : E \rightarrow \mathbb{R}$ che assegna un peso ad ogni arco. Il grafo $G$ e' **indiretto** se vale sia $(u, v) \in E \iff (v, u) \in E$ che $W(u, v) = W(v, u)$, e **diretto** altrimenti.
+Quando da un vertice $u$ possiamo raggiungere un vertice $v$ usiamo il simbolo $u ⇝ v$.
+Il **grado entrante** di un **nodo** di un grafo e' il numero di archi che lo raggiungono, ed il **grado uscente** il numero di archi che lo lasciano. Il grafo $G$ e' **pesato** se $W$ non e' costante, e **non pesato** altrimenti (spesso viene usata la notazione $G = (V, E)$).
 
 Chiamiamo **sparso** un grafo tale che $|E| << |V|^2$, e lo definiamo **denso** altrimenti.
 Ci sono due standard per rappresentare un grafo:
@@ -2290,11 +2284,11 @@ Ci sono due standard per rappresentare un grafo:
 - con una **matrice di adiacenza**.
 In entrambi i casi, e' conveniente pensare che ogni vertice $v \in V$ sia identificabile con un numero naturale da 1 a $|V|$.
 
-Nel caso della rappresentazione a liste di adiacenza, usiamo un array `Adj[1, ..., |V|]` dove ogni elemento punta ad una lista. Per ogni vertice `v`, la lista puntata da `Adj[v]` contiene la chiave `u` se e solo se $(v, u) \in E$ e, nel caso piu' generale, il nodo della lisa contiene anche il peso dell'arco. (per i grafi sparsi si preferisce questa rappresentazione)
+Nel caso della rappresentazione a liste di adiacenza, usiamo un array $Adj[1, ..., |V|]$ dove ogni elemento punta ad una lista. Per ogni vertice $v$, la lista puntata da $Adj[v]$ contiene la chiave $u$ se e solo se $(v, u) \in E$ e, nel caso piu' generale, il nodo della lisa contiene anche il peso dell'arco. (per i grafi sparsi si preferisce questa rappresentazione).
 ![[Grafi_rappr_liste.png]]
 
-Nel caso della matrice di adiacenza, usiamo una matrice `W` che contiene sia l'informazione sul peso di ogni arco sia quella della sua esistenza. Chiaramente e' una matrice quadrata di lato $|V|$, e si preferisce questo metodo per i grafi densi.
-Invece di `W[i, j]` si usa la scrittura $W_{ij}$.
+Nel caso della matrice di adiacenza, usiamo una matrice $W$ che contiene sia l'informazione sul peso di ogni arco sia quella della sua esistenza. Chiaramente e' una matrice quadrata di lato $|V|$, e si preferisce questo metodo per i grafi densi.
+Invece di $`W[i, j]$ si usa la scrittura $W_{ij}$.
 ![[Grafi_rappr_matrici.png]]
 
 I grafi (e gli algoritmi su di essi) sono pensati per essere **statici**.
@@ -2303,10 +2297,10 @@ Ma come ci comportiamo per un grafo dinamico? Esistono almeno due soluzioni per 
 	- Soluzione complessa quando il grafo e' pesato e quando e' ignoto il grado uscente massimo
 - La seconda prevede che sia i nodi, sia gli archi siano oggetti, entrambi inseriti in liste doppiamente collegate.
 
-Un grafo (per noi) e' una struttura dati **statica**, **non basata sull'ordinamento** e rappresentata in maniera **sparsa o compatta** a seconda del caso.
+==Un grafo== (per noi) ==e' una struttura dati **statica**, **non basata sull'ordinamento** e rappresentata in maniera **sparsa o compatta** a seconda del caso==.
 
-Per quanto riguarda il trattamento degli algoritmi sui grafi useremo la classica notazione `u.att` per indicare un attributo `att` associato con un vertice `v`. 
-Per quanto riguarda la complessita' degli algoritmi sui grafi, dobbiamo tenere conto di entrambe le componenti `E` e `V`. Un algoritmo **lineare** nel caso peggiore avra' complessita' $\Theta(|V| + |E|)$ o $O(|V| + |E|)$. 
+Per quanto riguarda il trattamento degli algoritmi sui grafi useremo la classica notazione `u.att` per indicare un attributo `att` associato con un vertice $v$. 
+Per quanto riguarda la complessita' degli algoritmi sui grafi, dobbiamo tenere conto di entrambe le componenti $E$ e $V$$. Un algoritmo **lineare** nel caso peggiore avra' complessita' $\Theta(|V| + |E|)$ o $O(|V| + |E|)$. 
 
 >`att` $\rightarrow$ nome generico di attributo
 
@@ -2332,8 +2326,8 @@ Non ha tanto senso utilizzare questa visita per i grafi pesati, anche se funzion
 > visita in ampiezza $\rightarrow$ preferibilmente applicabile a ==grafi indiretti e non pesati==
 
 Utilizzeremo i colori bianco, grigio e nero per colorare i vertici mentre sono scoperti.
-Tutti sono bianchi all'inizio: quando un nuovo vertice e' scoperto diventa grigio e quando tutti i vertici adiacente ad esso sono stati scoperti, diventa nero (ed il suo ruolo termina). Solo `s` e' colorato di grigio all'inizio e durante la scoperta `s` diventa la radice dell'albero di visita in ampiezza.
-Alla scoperta di un nuovo vertice `v` a partire da un vertice gia' scoperto `u`, l'arco `(u, v)` diventa parte dell'albero e `u` viene marcato come **predecessore** di `v` nell'albero stesso.
+Tutti sono bianchi all'inizio: quando un nuovo vertice e' scoperto diventa grigio e quando tutti i vertici adiacente ad esso sono stati scoperti, diventa nero (ed il suo ruolo termina). Solo $s$ e' colorato di grigio all'inizio e durante la scoperta $s$ diventa la radice dell'albero di visita in ampiezza.
+Alla scoperta di un nuovo vertice $v$ a partire da un vertice gia' scoperto $u$, l'arco $(u, v)$ diventa parte dell'albero e $u$ viene marcato come **predecessore** di $v$ nell'albero stesso.
 Un vertice bianco viene scoperto al massimo una volta.
 
 > attributi:
@@ -2365,38 +2359,38 @@ proc BreadthFirstSearch(G, s) {
 > primo ciclo for $\rightarrow$ inizializzazione del grafo
 > Q = 0 $\rightarrow$ inizializzazione della coda FIFO
 
-Tutti i nodi ad eccezione di `s` sono inizializzati di colore bianco, la loro distanza a infinito e il loro padre nell'albero a visita a nullo. I vertici vengono inseriti nella coda e gli adiacenti ai vertici vengono scopeti nell'ordine di inserimento. L'elemento `v.pi`, per ogni `v` e' chiamato **puntatore** (al **padre** di `v` nell'albero di visita in ampiezza). Non e' un puntatore classico, ma contiene il nome del padre di `v` nell'albero di visita.
+Tutti i nodi ad eccezione di $s$ sono inizializzati di colore bianco, la loro distanza a infinito e il loro padre nell'albero a visita a nullo. I vertici vengono inseriti nella coda e gli adiacenti ai vertici vengono scopeti nell'ordine di inserimento. L'elemento $v.\pi$, per ogni $v$ e' chiamato **puntatore** (al **padre** di $v$ nell'albero di visita in ampiezza). Non e' un puntatore classico, ma contiene il nome del padre di $v$ nell'albero di visita.
 ## Correttezza e complessità di `BreadthFirstSearch`
-Definiamo la **distanza piu' corta** di `v` dalla sorgente `s` ($\delta(s,v)$) come il **numero minimo di archi che sono necessari per raggiungere** `v` da `s`.
+Definiamo la **distanza piu' corta** di $v$ dalla sorgente $s$ ($\delta(s,v)$) come il **numero minimo di archi che sono necessari per raggiungere** $v$ da $s$.
 Le sue proprieta' sono:
 - che sia zero tra un vertice e se stesso $\rightarrow$ $\delta(s,s) = 0$;
-- che sia infinito da `s` a `v` quando il secondo e' irraggiungibile dal primo $\rightarrow \delta(s,v) = \infty$;
-- che sia una distanza $\rightarrow$ disuguaglianza triangolare (per ogni coppia di vertici `v, u` tali che esiste un arco `(u, v)`, succede che $\delta(s,v) \le \delta(s,u)+1$).
+- che sia infinito da $s$ a $v$ quando il secondo e' irraggiungibile dal primo $\rightarrow \delta(s,v) = \infty$;
+- che sia una distanza $\rightarrow$ disuguaglianza triangolare (per ogni coppia di vertici $v, u$ tali che esiste un arco $(u,v)$, succede che $\delta(s,v) \le \delta(s,u)+1$).
 
-**Correttezza** e **terminazione** di `BreadthFirstSearch`. Mostriamo che dopo l'esecuzione, per ogni `v` raggiungibile da `s`, $\text{v.d} = \delta(s,v)$ e se `v != s`, almeno uno dei percorsi piu' brevi da `s` a `v` si ottiene da uno dei percorsi piu' brevi da `s` a `v.pi` con l'arco `(v.pi, v)`.
-Osserviamo che in ogni momento gli elementi di `Q` sono ordinati per stima, cioe' se `u` e' prima di `v` in `Q` allora `u.d <= v.d`, e che se $\delta(\text{s, u}) \le \delta(\text{s, v})$, `u` entra in `Q` prima di `v`.
-Dimostriamo la correttezza semplicemente trasformandola in **invariante**: appena un vertice `v` entra in `Q`, si ha che $\text{v.d} = \delta(s, v)$; ragioniamo per induzione sul momento in cui `v` entra nella coda.
+**Correttezza** e **terminazione** di `BreadthFirstSearch`. Mostriamo che dopo l'esecuzione, per ogni $v$ raggiungibile da $s$, $\text{v.d} = \delta(s,v)$ e se $v \ne s$, almeno uno dei percorsi piu' brevi da $s$ a $v$ si ottiene da uno dei percorsi piu' brevi da $s$ a $v.\pi$ con l'arco $(v.\pi, v)$.
+Osserviamo che in ogni momento gli elementi di $Q$ sono ordinati per stima, cioe' se $u$ e' prima di $v$ in $Q$ allora $u.d \le v.d$, e che se $\delta(\text{s, u}) \le \delta(\text{s, v})$, $u$ entra in $Q$ prima di $v$.
+Dimostriamo la correttezza semplicemente trasformandola in **invariante**: appena un vertice $v$ entra in $Q$, si ha che $\text{v.d} = \delta(s, v)$; ragioniamo per induzione sul momento in cui $v$ entra nella coda.
 
-- **Caso base**: `v = s`. Chiaramente all'entrata in `Q` $\text{s.d} = 0 = \delta(s, s)$.
-- **Caso induttivo**. Consideriamo `v` scoperto durante l'esplorazione degli archi di `u`. Supponiamo, per assurdo, che `v` sia il primo vertice che entra nella coda con $\text{v.d} \ne \delta(s, v)$. Siccome `v` e' entrato, questo e' accaduto perche' il vertice `u` e' appena uscito. Per ipotesi induttiva, $\text{u.d} = \delta(s, u)$ e viene assegnato `v.d = u.d + 1`, quindi $\text{u.d} = \delta(s, u)$. Se, nell'ipotesi assurda, fosse che $\text{v.d} \le \delta(s, v)$ si avrebbe $\delta(s, v) > \delta(s, u)+1$, che contraddice la disuguaglianza triangolare. Allora l'unica possibilita' e' che $\text{v.d} > \delta(s, v)$, cioe' che esista `w` tale che $\delta(s, w) < \delta(s, u)$ e $(w,v) \in E$. Ma siccome `v` e' stato scoperto da `u`, `w` non puo' mai avere preceduto `u` in `Q`. Ma questo contraddice il fatto che $\delta(s,w) < \delta(s,u)$. Quindi $\text{v.d} = \delta(s, v)$.
+- **Caso base**: $v=s$. Chiaramente all'entrata in $Q$ $\text{s.d} = 0 = \delta(s, s)$.
+- **Caso induttivo**. Consideriamo $v$ scoperto durante l'esplorazione degli archi di $u$. Supponiamo, per assurdo, che $v$ sia il primo vertice che entra nella coda con $\text{v.d} \ne \delta(s, v)$. Siccome $v$ e' entrato, questo e' accaduto perche' il vertice $u$ e' appena uscito. Per ipotesi induttiva, $\text{u.d} = \delta(s, u)$ e viene assegnato $v.d = u.d + 1$, quindi $\text{u.d} = \delta(s, u)$. Se, nell'ipotesi assurda, fosse che $\text{v.d} \le \delta(s, v)$ si avrebbe $\delta(s, v) > \delta(s, u)+1$, che contraddice la disuguaglianza triangolare. Allora l'unica possibilita' e' che $\text{v.d} > \delta(s, v)$, cioe' che esista $W$ tale che $\delta(s, w) < \delta(s, u)$ e $(w,v) \in E$. Ma siccome $v$ e' stato scoperto da $u$, $W$ non puo' mai avere preceduto $u$ in $Q$. Ma questo contraddice il fatto che $\delta(s,w) < \delta(s,u)$. Quindi $\text{v.d} = \delta(s, v)$.
 
-La **complessità** della visita e' semplice da calcolare: e' facile osservare che un nodo entra nell coda al massimo una volta. Per ogni nodo che e' entrato nella coda si analizzano i suoi adiacenti ma il totale degli archi e' comunque `|E|`. 
+La **complessità** della visita e' semplice da calcolare: e' facile osservare che un nodo entra nell coda al massimo una volta. Per ogni nodo che e' entrato nella coda si analizzano i suoi adiacenti ma il totale degli archi e' comunque $|E|$. 
 Questa analisi e' detta **aggregata**, ed e' usata spesso nei grafi.
-Con questa analisi, se il grafo e' connesso, allora la complessita' e' $\Theta(|V| + |E|)$ in tutti i casi. Se il grafo e' sconnesso, la complessita' e' $O(|V| + |E|)$. La funzione `|V| + |E|` **diventa** $|V|^2$ quando il grado e' denso. Quindi nel caso peggiore (grafo connesso e denso) e' $\Theta(|V|^2)$, ma normalmente si accetta $\Theta(|V| + |E|)$.
+Con questa analisi, se il grafo e' connesso, allora la complessita' e' $\Theta(|V| + |E|)$ in tutti i casi. Se il grafo e' sconnesso, la complessita' e' $O(|V| + |E|)$. La funzione $|V| + |E|$ **diventa** $|V|^2$ quando il grado e' denso. Quindi nel caso peggiore (grafo connesso e denso) e' $\Theta(|V|^2)$, ma normalmente si accetta $\Theta(|V| + |E|)$.
 
 ---
 # Grafi: visita in profondità e problemi collegati
 
 ## Grafi: visita in profondità
-Consideriamo un grafo `G`. E' indifferente se `G` e' o no pesato, o se `G` e' o no diretto (come nelle visite in ampiezza). Ma se $G = (V, E)$, e' diretto. 
+Consideriamo un grafo $G$. E' indifferente se $G$ e' o no pesato, o se $G$ e' o no diretto (come nelle visite in ampiezza). Ma se $G = (V, E)$, e' diretto. 
 Ci proponiamo di risolvere tre problemi:
-- stabilire se `G` e' **ciclico** $\rightarrow$ stabilire se contiene almeno un ciclo;
-- costruire un **ordinamento topologico** di `G` $\rightarrow$ elencare tutti i suoi vertici in un ordine qualsiasi tale che ogni vertice `v` e' elencato solo se tutti i vertici **dai quali** `v` si puo' raggiungere sono stati elencati prima;
-- conoscere ed enumerare tutte le **componenti fortemente connesse** di `G` $\rightarrow$ elencare tutti i sottoinsiemi massimali di `V` tale che, ogni vertice in ogni sottoinsieme raggiunge ogni altro vertice di quel sottoinsieme.
+- stabilire se $G$ e' **ciclico** $\rightarrow$ stabilire se contiene almeno un ciclo;
+- costruire un **ordinamento topologico** di $G$ $\rightarrow$ elencare tutti i suoi vertici in un ordine qualsiasi tale che ogni vertice $v$ e' elencato solo se tutti i vertici **dai quali** $v$ si puo' raggiungere sono stati elencati prima;
+- conoscere ed enumerare tutte le **componenti fortemente connesse** di $G$ $\rightarrow$ elencare tutti i sottoinsiemi massimali di $V$ tale che, ogni vertice in ogni sottoinsieme raggiunge ogni altro vertice di quel sottoinsieme.
 La soluzione in comune per questi tre problemi e' la visita in profondita'.
 
-Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente `s`. La differenza tra le due visite e; che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e ' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che `G` sia rappresentato con liste di adiacenza e riempie un campo `v.pi` per generare un **albero di visa in profondita'** come risultato della visita; la differenza qui e' che invece di un solo albero, di produce una **foresta** di alberi, uno per ogni sorgente.
-`DepthFirstSearch` riempie anche dei campi `v.d` (**momento** della scoperta) e `v.f` (momento nel quale il vertice viene abbandonato). I campi `v.d` e `v.f` sono interi tra $1$ e $2 \cdot |V|$. Vengono generalmente chiamati **tempi**. Per ogni vertice `u`, abbiamo `u.d < u.f`.
+Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente $s$. La differenza tra le due visite e; che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e ' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che $G$ sia rappresentato con liste di adiacenza e riempie un campo $v.\pi$ per generare un **albero di visa in profondità** come risultato della visita; la differenza qui e' che invece di un solo albero, di produce una **foresta** di alberi, uno per ogni sorgente.
+`DepthFirstSearch` riempie anche dei campi $v.d$ (**momento** della scoperta) e $v.f$ (momento nel quale il vertice viene abbandonato). I campi $v.d$ e $v.f$ sono interi tra $1$ e $2 \cdot |V|$. Vengono generalmente chiamati **tempi**. Per ogni vertice $u$, abbiamo $u.d < u.f$.
 
 ``` Pseudocodice
 proc DepthFirstSearch(G) {
@@ -2425,17 +2419,17 @@ proc DepthVisit(G, u) {
 
 > `time` $\rightarrow$ variabile globale
 
-Ogni volta che `DepthVisit` viene chiamata, si inizia un nuovo albero della foresta degli alberi di visita in profondita'. Se `G` e' tale che tutti i vertici sono raggiungibili dal primo vertice visitato, allora ci sara' un solo albero, altrimenti ce ne saranno di piu'.
-Ogni vertice `u` sul quale si chiama `DepthVisit` e' inizialmente bianco, il suo tempo di scoperta viene marcato come tempo di inizio (`u.d`) e viene colorato di grigio.
-Ogni vertice nella lista di adiacenza di `u` viene esplorato ricorsivamente; alla fine di questa esplorazione `u` viene marcato come nero ed il suo tempo finale `u.f` viene registrato.
+Ogni volta che `DepthVisit` viene chiamata, si inizia un nuovo albero della foresta degli alberi di visita in profondita'. Se $G$ e' tale che tutti i vertici sono raggiungibili dal primo vertice visitato, allora ci sara' un solo albero, altrimenti ce ne saranno di piu'.
+Ogni vertice $u$ sul quale si chiama `DepthVisit` e' inizialmente bianco, il suo tempo di scoperta viene marcato come tempo di inizio ($u.d$) e viene colorato di grigio.
+Ogni vertice nella lista di adiacenza di $u$ viene esplorato ricorsivamente; alla fine di questa esplorazione $u$ viene marcato come nero ed il suo tempo finale $u.f$ viene registrato.
 
 ### Complessità di `DepthFirstSearch`
 L'analisi della **complessità** viene calcolata attraverso la tecnica dell'analisi aggregata.
 `BreadthFirstSearc` esegue un ciclo di che costa $|V|$ per la colorazione iniziale e per ogni vertice chiama `DepthVisit`. Ma il massimo numero di chiamate a `DepthVisit` e' $|E|$. Quindi la complessità e' $\Theta(|V| + |E|)$, che nel caso peggiore diventa $\Theta(|V|^2)$ (anche se accettiamo $\Theta(|V| + |E|)$).
 
 ## Grafi diretti: cicli
-In un grafo diretto, chiamiamo **ciclo** un percorso $v_1, v_2, ..., v_k$ di vertici tali che per ogni `i` esiste l'arco $(v_i, v_{i+1})$ e che $v_1 = v_k$. Quando un grafo diretto e' privo di cicli, lo chiamiamo `DAG` (Directed Acyclic Graph). 
-Definiamo il seguente problema: dato un grafo diretto `G` stabilire se presenta o no un ciclo. L'algoritmo `CycleDet` che usiamo prima di eseguire`DephtFirstSearch` modificata in maniera da interrompersi se si visita un nodo grigio: al momento di visitare un nodo grigio, siamo certi di aver trovato un ciclo.
+In un grafo diretto, chiamiamo **ciclo** un percorso $v_1, v_2, ..., v_k$ di vertici tali che per ogni $i$ esiste l'arco $(v_i, v_{i+1})$ e che $v_1 = v_k$. Quando un grafo diretto e' privo di cicli, lo chiamiamo `DAG` (Directed Acyclic Graph). 
+Definiamo il seguente problema: dato un grafo diretto $G$ stabilire se presenta o no un ciclo. L'algoritmo `CycleDet` che usiamo prima di eseguire`DephtFirstSearch` modificata in maniera da interrompersi se si visita un nodo grigio: al momento di visitare un nodo grigio, siamo certi di aver trovato un ciclo.
 
 ``` Pseudocodice
 proc CycleDet(G) {
@@ -2459,13 +2453,13 @@ proc DepthVisitCycle(G, u) {
 ```
 
 ### Correttezza e complessità di `CycleDet`
-**Correttezza**: l'algoritmo e' corretto se e solo se restituisce `True` quando `G` e' ciclico e `False` altrimenti.
+**Correttezza**: l'algoritmo e' corretto se e solo se restituisce `True` quando $G$ e' ciclico e `False` altrimenti.
 La **complessità** del nostro algoritmo e' la stessa della visita in profondita', e la **terminazione** e' ovvia.
 
 ## Grafi: ordinamento topologico di grafi diretti
-Uno degli usi piu' interessanti dei grafi diretti consiste nel rappresentare un insieme di vincoli rispetto a un insieme finito di compiti (o **task**). Se tutti i task son inseriti in un grafo diretto `G` dove un arco `(u, v)` rappresenta che `u` deve essere posto prima di `v`, una delle possibili soluzioni al problema di stabilire un ordine lineare (possibile) tra i task e' dato dall'**ordinamento topologico**. Il problema dell'ordinamento topologico non ha senso se il grafo diretto e' ciclico.
+Uno degli usi piu' interessanti dei grafi diretti consiste nel rappresentare un insieme di vincoli rispetto a un insieme finito di compiti (o **task**). Se tutti i task son inseriti in un grafo diretto $G$ dove un arco $(u,v)$ rappresenta che $`u`$ deve essere posto prima di $v$, una delle possibili soluzioni al problema di stabilire un ordine lineare (possibile) tra i task e' dato dall'**ordinamento topologico**. Il problema dell'ordinamento topologico non ha senso se il grafo diretto e' ciclico.
 
-Il problema dell'ordinamento topologico prende in input un grafo connesso `G` senza cicli e restituisce una lista collegata $v_1, ..., v_{|V|}$ di vertici topologicamente ordinati; per ogni coppia $v_i, v_j$ di vertici, $v_i$ appare prima nella lista di $v_j$ se e solo se $v_i$ precede topologicamente $v_j$.
+Il problema dell'ordinamento topologico prende in input un grafo connesso $G$ senza cicli e restituisce una lista collegata $v_1, ..., v_{|V|}$ di vertici topologicamente ordinati; per ogni coppia $v_i, v_j$ di vertici, $v_i$ appare prima nella lista di $v_j$ se e solo se $v_i$ precede topologicamente $v_j$.
 
 ``` Pseudocodice
 proc TopologicalSort(G) {
@@ -2498,10 +2492,10 @@ proc DepthVisitTS(G, u) {
 Per la **correttezza** di `TopologicalSort`, dopo l'esecuzione, la lista di uscita e' topologicamente ordinata. La **complessità** e' la stessa della visita in profondita' e la terminazione e' ovvia.
 
 ## Grafi: componenti fortemente connessi
-Dato un grafo diretto `G`, una **componente fortemente connessa** (SCC) e' un sottoinsieme massimale $V' \subseteq V$ tale che, per ogni $u, v \in V'$, succede che $u ⇝ v$ e che $v ⇝ u$. 
+Dato un grafo diretto $G$, una **componente fortemente connessa** (SCC) e' un sottoinsieme massimale $V' \subseteq V$ tale che, per ogni $u, v \in V'$, succede che $u ⇝ v$ e che $v ⇝ u$. 
 Osserviamo il concetto corrispondente nel caso di grafi indiretti e' quello di **componente connessa**; due termini per indicare un'idea simile in due contesti leggermente diversi.
 
-Un'elemento fondamentale nello studio delle SCC e' il grafo trasposto di `G`. Dato `G` diretto, il **grafo trasposto** $G^T$ di `G` e' ottenuto invertendo la direzione di ogni arco. La complessita' e' $\Theta(|V| + |E|)$ quando `G` e' rappresentato con liste di adiacenza. La proprieta' piu' interessante di $G^T$ e' che `G` e $G^T$ hanno le stesse SCC.
+Un'elemento fondamentale nello studio delle SCC e' il grafo trasposto di $G$. Dato $G$ diretto, il **grafo trasposto** $G^T$ di $G$ e' ottenuto invertendo la direzione di ogni arco. La complessita' e' $\Theta(|V| + |E|)$ quando $G$ e' rappresentato con liste di adiacenza. La proprieta' piu' interessante di $G^T$ e' che $G$ e $G^T$ hanno le stesse SCC.
 
 ``` Pseudcodice
 proc StronglyConnectedComponents(G) {
@@ -2527,16 +2521,17 @@ proc StronglyConnectedComponents(G) {
 
 ### Correttezza e complessità di `StronglyConnectedComponents`
 Mentre il calcolo della **complessità** e' molto semplice e porta a concludere che la complessita' di `StronglyConnectedComponents` e' la stessa della visita in profondita', la dimostrazione della **correttezza** e' piu' complessa.
-Osserviamo che da un grafo `G` possiamo ricavare il suo **grado delle componenti connesse** $G^{SCC}$ semplicemente considerando tutti i vertici di ogni SCC di `G` come un unico vertice di $G^{SCC}$ e impostando che esiste un arco (`u, v`) in $G^{SCC}$ se e solo se esiste un arco in `G` da uno dei nodi simboleggiati da `u` a uno dei nodi simboleggiato da `v`. Se $G^{SCC}$ e' un `DAG` possiamo calcolare il suo ordinamento topologico.
+Osserviamo che da un grafo $G$ possiamo ricavare il suo **grado delle componenti connesse** $G^{SCC}$ semplicemente considerando tutti i vertici di ogni SCC di $G$ come un unico vertice di $G^{SCC}$ e impostando che esiste un arco $(u,v)$ in $G^{SCC}$ se e solo se esiste un arco in $G$ da uno dei nodi simboleggiati da `u` a uno dei nodi simboleggiato da $v$. Se $G^{SCC}$ e' un `DAG` possiamo calcolare il suo ordinamento topologico.
 
-Per un gruppo di vertici `C` (che potrebbe essere una SCC) chiamiamo $f(C)$ il massimo tempo `u.f` tra tutti gli $u \in C$.  Osserviamo che la prima esecuzione di `DepthFirstSearch` ci da informazione sulle SCC di G. In poche parole, la componente `C'` viene scoperta tutta prima della fine della scoperta di `C`. Questo significa che una esecuzione di `DepthFirstSearch` sul grafo $G^T$ ha esattamente la proprieta' contraria.
+Per un gruppo di vertici $C$ (che potrebbe essere una SCC) chiamiamo $f(C)$ il massimo tempo $u.f$ tra tutti gli $u \in C$.  Osserviamo che la prima esecuzione di `DepthFirstSearch` ci da informazione sulle SCC di G. In poche parole, la componente $C'$ viene scoperta tutta prima della fine della scoperta di $C$. Questo significa che una esecuzione di `DepthFirstSearch` sul grafo $G^T$ ha esattamente la proprieta' contraria.
 
-Ragioniamo adesso per induzione sull'indice `k` che indica il k-esimo albero di visita in profondità generato dalla **seconda** visita `DepthFirstSearch`, quella effettuata su $G^T$ . Vogliamo mostrare che tutti questi alberi sono, in effetti, SCC di `G` (e di $G^T$ ) (e questa è l'**invariante** che stiamo cercando).
-- Quando `k = 0` (**caso base**) il risultato e' triviale
-- Per il **caso induttivo** supponiamo che i primi `k` alberi restituiti coincidano ancora con `k` SCC di `G`, e dimostriamo che questo e' ancora vero per il `(k+1)-esimo` albero. Supponiamo che `u` sia la radice del `(k+1)-esimo` albero. Questo vertice e' tale che `u.f = f(C)` ed e' maggiore di `f(C')` per ogni SCC `C'` ancora da visitare. Tutti i vertici in `C` sono bianchi a questo punto e tutti diventano discendenti di `u`. Quindi, l'albero risultante contiene tutti gli elementi di `C`
+Ragioniamo adesso per induzione sull'indice $k$ che indica il k-esimo albero di visita in profondità generato dalla **seconda** visita `DepthFirstSearch`, quella effettuata su $G^T$ . Vogliamo mostrare che tutti questi alberi sono, in effetti, SCC di $G$ (e di $G^T$ ) (e questa è l'**invariante** che stiamo cercando).
+- Quando $k=0$ (**caso base**) il risultato e' triviale
+- Per il **caso induttivo** supponiamo che i primi $k$ alberi restituiti coincidano ancora con $k$ SCC di $G$, e dimostriamo che questo e' ancora vero per il 
+  $k+1$-esimo albero. Supponiamo che $u$ sia la radice del $k+1$-esimo albero. Questo vertice e' tale che $u.f = f(C)$ ed e' maggiore di $f(C')$ per ogni SCC $C'$ ancora da visitare. Tutti i vertici in $C$ sono bianchi a questo punto e tutti diventano discendenti di $u$. Quindi, l'albero risultante contiene tutti gli elementi di $C$.
 
-Rimane da mostrare che nessun `v` che non appartenga a `C` appare come discendente di `u`.
-Infatti, se `v` è discendente di u, deve succedere in $G^T$ che $u ⇝ v$, e che `v` era bianco al momento di considerare `u`. Ma questo accade solo se $u ̸⇝ v$ in `G`. Quindi, nella prima visita di `G`, `v` è ancora bianco quando `u.f` viene deciso, e quindi, quando v viene visitato (e abbandonato) il suo `v.f` sarà maggiore di `u.f` . Pertanto, `v` è già apparso in qualche albero di visita (radicato in qualche `u′`) e quando viene visto durante la visita a partire da `u` è già nero, e non inserito nel rispettivo albero di visita. Allora, come volevamo dimostrare, anche l'albero `k` corrisponde ad una SCC di `G`.
+Rimane da mostrare che nessun $v$ che non appartenga a $C$ appare come discendente di $u$.
+Infatti, se $v$ è discendente di u, deve succedere in $G^T$ che $u ⇝ v$, e che $v$ era bianco al momento di considerare $u$. Ma questo accade solo se $u /\rightsquigarrow v$ in $G$. Quindi, nella prima visita di $G$, $v$ è ancora bianco quando $u.f$ viene deciso, e quindi, quando v viene visitato (e abbandonato) il suo $v.f$ sarà maggiore di $u.f$ . Pertanto, $v$ è già apparso in qualche albero di visita (radicato in qualche $u'$) e quando viene visto durante la visita a partire da $u$ è già nero, e non inserito nel rispettivo albero di visita. Allora, come volevamo dimostrare, anche l'albero $k$ corrisponde ad una SCC di $G$.
 
 --- 
 # Grafi e alberi di copertura minima
@@ -2992,7 +2987,7 @@ proc FloydWarshall(W) {
 ```
 
 La **correttezza** si basa sulle osservazioni precedenti.
-La **complessità** e' $\Theta(|V|^3) e la sua terminazione e' ovvia.
+La **complessità** e' $\Theta(|V|^3)$ e la sua terminazione e' ovvia.
 
 --- 
 # Teoria della complessità: accenni ed esempi
@@ -3178,27 +3173,3 @@ Nella maggioranza dei casi, le relazioni esatte sono ignote, si conoscono solo l
 problema, cioè della nostra possibilità di risolverlo pur senza limiti di tempo/spazio di computazione. Sorprende sapere che la grandissima maggioranza dei problemi **non può essere risolta** algoritmicamente.
 
 ![[complessita_calcolabilita.png]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[[#INDICE| GO TO INDEX]] 
