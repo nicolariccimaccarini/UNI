@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "77fc063b051f320e",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c8efb21e93f795a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af86ece80595164f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_Introduzione_e_Regole.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5660028fda2f10ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "8760be314e234748",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b20966eb4be8df19",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f17b2b82c9392657",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ca47c795672bee72",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "38074c6679f5182b",
+    "type": "split",
+    "children": [
+      {
+        "id": "494cff397da8e2d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7ab35cea45376185",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00_Introduzione_e_Regole.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "28165c8e69ae95eb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00_Introduzione_e_Regole.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6721fdf166ed4c46",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "732a1dae81d10340",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00_Introduzione_e_Regole.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "af86ece80595164f",
+  "lastOpenFiles": [
+    "Appunti_Algoritmi_e_Strutture_Dati.md",
+    "17_Teoria_della_complessità.md",
+    "16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
+    "15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
+    "14_Grafi_e_Alberi_di_copertura_minima.md",
+    "13_Grafi_visita_in_profondità_e_problemi_collegati.md",
+    "12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
+    "11_Alberi_B.md",
+    "10_Alberi_Red-Black.md",
+    "09_Alberi_e_Alberi_binari_di_ricerca.md",
+    "08_Strutture_Dati_per_Insiemi_Disgiunti.md",
+    "07_Tabelle_Hash.md",
+    "06_Heaps_heapsort_e_code_di_priorità.md",
+    "01_Correttezza_complessità_e_notazione_asintotica.md",
+    "05_Liste_pile_e_code.md",
+    "04_CountingSort_e_RadixSort.md",
+    "03_MergeSort_e_QuickSort.md",
+    "02_Soluzioni_di_ricorrenze.md",
+    "00_Introduzione_e_Regole.md"
+  ]
+}
