@@ -20,7 +20,7 @@ La distanza piu' corta gode delle stesse proprieta' di quella definita nel caso 
 Un percorso di peso minimo da $s$ a $v$, denotato con $s = v_0, v_1, \ldots, v_k = v$ ha una **struttura ottima**.
 Per ogni $i, j$, anche $v_1, \ldots, v_j$ e' un percorso minimo che va da $v_i$ a $v_j$ (per vederlo si ragiona per contraddizione sull'ipotesi che $v_0, \ldots, v_k$ fosse di peso minimo).
 Dobbiamo distinguere la situazione in cui i pesi negativi rendono la definizione di percorso minimo priva di senso e quelle in cui il percorso minimo esiste ancora ma un particolare algoritmo non e' in grado di gestirli.
-Se G ha pesi negativi, ma non ci sono **cicli negativi** raggiungibili da $s$, allora i percorsi minimi da $s$ sono ancora ben definiti.
+Se $G$ ha pesi negativi, ma non ci sono **cicli negativi** raggiungibili da $s$, allora i percorsi minimi da $s$ sono ancora ben definiti.
 D'altra parte se da $s$ c'e' un ciclo negativo raggiungibile, allora non ha senso definire un percorso di peso minimo da $s$: ogni nuovo passaggio attraverso quel ciclo diminuirebbe il peso.
 In questo caso diciamo che il peso del percorso da $s$ a $v, \space \delta(s, v)$ e' $-\infty$. Se $v$ semplicemente non e' raggiungibile da $s$, diremo che il peso minimo e' $\infty$.
 

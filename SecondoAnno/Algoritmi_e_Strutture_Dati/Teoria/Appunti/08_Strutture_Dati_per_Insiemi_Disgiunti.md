@@ -20,7 +20,7 @@ Consideriamo questo scenario: abbiamo una rete molto grande di criminali e tutti
 Qual è la struttura dati ottima per mantenere questa informazione?
 - L'implementazione piu' intuitiva per gestire $S$ passa attraverso l'uso delle liste collegate. L'elemento $S \in \mathcal{S}$ e' quindi una lista dotata degli attributi `S.head` (che punta al primo elemento) e `S.tail` (che punta all'ultimo elemento). Ogni elemento $x$ e' dotato di `x.next` e `x.head` che punta all'insieme $S$ che lo contiene.
   ![[InsiemiDisgiunti.png]]
-  In questa versione l'informazione aggiuntiva che contiene ogni $S[i]$ e' un puntatore all'elemento $i$ in memoria, cioe' alla casella $x$ che contiene la chiave $i$. Lo chiamiamo per esempio `S[i].set`.
+  In questa versione l'informazione aggiuntiva che contiene ogni $S[i]$ e' un puntatore all'elemento $i$ in memoria, cioe' alla casella $x$ che contiene la chiave $i$. Lo chiamiamo per esempio `calS[i].set`.
   ![[InsiemiDisgiunti2.png]]
   In questa maniera, implementare `MakeSet(x)` e' banale: crea un nuovo oggetto $S$ tale che `S.head = S.tail = x`. Se poi decidiamo che il rappresentante di ogni $S$ e' precisamente l'elemento puntato da `S.head`, allora implementare `FindSet(x)` e' altrettanto banale: dato $x$ cerchiamo prima `x.head` poi `x.head.head` per arrivare al suo rappresentante.
   Entrambe le operazioni costano $O(1)$. 

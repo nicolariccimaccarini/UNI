@@ -13,7 +13,7 @@ Nel caso della rappresentazione a liste di adiacenza, usiamo un array $Adj[1, ..
 ![[Grafi_rappr_liste.png]]
 
 Nel caso della matrice di adiacenza, usiamo una matrice $W$ che contiene sia l'informazione sul peso di ogni arco sia quella della sua esistenza. Chiaramente e' una matrice quadrata di lato $|V|$, e si preferisce questo metodo per i grafi densi.
-Invece di $`W[i, j]$ si usa la scrittura $W_{ij}$.
+Invece di $W[i, j]$ si usa la scrittura $W_{ij}$.
 ![[Grafi_rappr_matrici.png]]
 
 I grafi (e gli algoritmi su di essi) sono pensati per essere **statici**.
@@ -25,11 +25,11 @@ Ma come ci comportiamo per un grafo dinamico? Esistono almeno due soluzioni per 
 ==Un grafo== (per noi) ==e' una struttura dati **statica**, **non basata sull'ordinamento** e rappresentata in maniera **sparsa o compatta** a seconda del caso==.
 
 Per quanto riguarda il trattamento degli algoritmi sui grafi useremo la classica notazione `u.att` per indicare un attributo `att` associato con un vertice $v$. 
-Per quanto riguarda la complessita' degli algoritmi sui grafi, dobbiamo tenere conto di entrambe le componenti $E$ e $V$$. Un algoritmo **lineare** nel caso peggiore avra' complessita' $\Theta(|V| + |E|)$ o $O(|V| + |E|)$. 
+Per quanto riguarda la complessita' degli algoritmi sui grafi, dobbiamo tenere conto di entrambe le componenti $E$ e $V$. Un algoritmo **lineare** nel caso peggiore avra' complessita' $\Theta(|V| + |E|)$ o $O(|V| + |E|)$. 
 
 >`att` $\rightarrow$ nome generico di attributo
 
-Le applicazioni dei grafi sono innnumerevoli:
+Le applicazioni dei grafi sono innumerevoli:
 - rappresentazione di una rete sociale, dove i nodi sono le persone e gli archi le amicizie o i legami;
 - rappresentazione di un programma, dove i nodi sono funzioni e gli archi sono le dipendenze;
 - rappresentazione di una mappa, dove i nodi sono i luoghi e gli archi sono le strade che portano da un nodo all'altro.
@@ -44,8 +44,8 @@ Poi esistono applicazioni piu' complesse:
 > 		- si dividono a loro volta in ampiezza e profondita'
 > 	- Visit (trasversale) $\rightarrow$ non vedo tutti i nodi
 
-Dato un grafo `G = (V, E)` diretto o indiretto, non pesato, ed un vertice particolare chiamato **sorgente** $s \in V$, vogliamo sapere quanti archi sono necessari a raggiungere qualunque altro vertice (raggiungibile) da `s`. Utilizziamo una visita di `G` chiamata **in ampiezza**.
-`BreadthFirstSearch` esplora sistematicamente gli archi di `G` e cerca di **scoprire** nuovi vertici raggiungibili da quelli gia' conosciuti. Computa la distanza minima in termini di numero di archi che esiste tra `s` ed ogni vertice scoperto e produce un **albero di visita in ampiezza** che contiene tutti i vertici raggiungibili. 
+Dato un grafo $G = (V, E)$ diretto o indiretto, non pesato, ed un vertice particolare chiamato **sorgente** $s \in V$, vogliamo sapere quanti archi sono necessari a raggiungere qualunque altro vertice (raggiungibile) da $s$. Utilizziamo una visita di $G$ chiamata **in ampiezza**.
+`BreadthFirstSearch` esplora sistematicamente gli archi di $G$ e cerca di **scoprire** nuovi vertici raggiungibili da quelli gia' conosciuti. Computa la distanza minima in termini di numero di archi che esiste tra $s$ ed ogni vertice scoperto e produce un **albero di visita in ampiezza** che contiene tutti i vertici raggiungibili. 
 Non ha tanto senso utilizzare questa visita per i grafi pesati, anche se funziona. Viene naturale applicare la visita in ampiezza a grafi indiretti.
 
 > visita in ampiezza $\rightarrow$ preferibilmente applicabile a ==grafi indiretti e non pesati==
@@ -97,7 +97,7 @@ Osserviamo che in ogni momento gli elementi di $Q$ sono ordinati per stima, cioe
 Dimostriamo la correttezza semplicemente trasformandola in **invariante**: appena un vertice $v$ entra in $Q$, si ha che $\text{v.d} = \delta(s, v)$; ragioniamo per induzione sul momento in cui $v$ entra nella coda.
 
 - **Caso base**: $v=s$. Chiaramente all'entrata in $Q$ $\text{s.d} = 0 = \delta(s, s)$.
-- **Caso induttivo**. Consideriamo $v$ scoperto durante l'esplorazione degli archi di $u$. Supponiamo, per assurdo, che $v$ sia il primo vertice che entra nella coda con $\text{v.d} \ne \delta(s, v)$. Siccome $v$ e' entrato, questo e' accaduto perche' il vertice $u$ e' appena uscito. Per ipotesi induttiva, $\text{u.d} = \delta(s, u)$ e viene assegnato $v.d = u.d + 1$, quindi $\text{u.d} = \delta(s, u)$. Se, nell'ipotesi assurda, fosse che $\text{v.d} \le \delta(s, v)$ si avrebbe $\delta(s, v) > \delta(s, u)+1$, che contraddice la disuguaglianza triangolare. Allora l'unica possibilita' e' che $\text{v.d} > \delta(s, v)$, cioe' che esista $W$ tale che $\delta(s, w) < \delta(s, u)$ e $(w,v) \in E$. Ma siccome $v$ e' stato scoperto da $u$, $W$ non puo' mai avere preceduto $u$ in $Q$. Ma questo contraddice il fatto che $\delta(s,w) < \delta(s,u)$. Quindi $\text{v.d} = \delta(s, v)$.
+- **Caso induttivo**. Consideriamo $v$ scoperto durante l'esplorazione degli archi di $u$ Supponiamo, per assurdo, che $v$ sia il primo vertice che entra nella coda con $\text{v.d} \ne \delta(s, v)$. Siccome $v$ e' entrato, questo e' accaduto perche' il vertice $u$ e' appena uscito. Per ipotesi induttiva, $\text{u.d} = \delta(s, u)$ e viene assegnato $v.d = u.d + 1$, quindi $\text{u.d} = \delta(s, u)$. Se, nell'ipotesi assurda, fosse che $\text{v.d} \le \delta(s, v)$ si avrebbe $\delta(s, v) > \delta(s, u)+1$, che contraddice la disuguaglianza triangolare. Allora l'unica possibilita' e' che $\text{v.d} > \delta(s, v)$, cioe' che esista $W$ tale che $\delta(s, w) < \delta(s, u)$ e $(w,v) \in E$. Ma siccome $v$ e' stato scoperto da $u$, $W$ non puo' mai avere preceduto $u$ in $Q$. Ma questo contraddice il fatto che $\delta(s,w) < \delta(s,u)$. Quindi $\text{v.d} = \delta(s, v)$.
 
 La **complessità** della visita e' semplice da calcolare: e' facile osservare che un nodo entra nell coda al massimo una volta. Per ogni nodo che e' entrato nella coda si analizzano i suoi adiacenti ma il totale degli archi e' comunque $|E|$. 
 Questa analisi e' detta **aggregata**, ed e' usata spesso nei grafi.

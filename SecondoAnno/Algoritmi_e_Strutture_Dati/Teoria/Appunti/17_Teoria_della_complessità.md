@@ -22,7 +22,7 @@ I problemi della lista di prima hanno un loro corrispondente decisionale:
 
 Nella teoria della complessità (e anche in quella della calcolabilita') ci occupiamo di versioni decisionali di problemi, in un contesto in cui, in generale, la difficolta' di risolvere la versione non decisionale di un problema e' almeno tanto alta quanto quella del suo corrispondente decisionale.
 Supponiamo che stabilire qual'e' il percorso minimo tra due vertici in un grafo indiretto non pesato abbia un certo costo: 
-- stabilire se questo percorso minimo ha costo inferiore a un certo $k$ ha lo stesso cost, perche' basta calcolare il percorso e confrontare il suo peso con $k$.
+- stabilire se questo percorso minimo ha costo inferiore a un certo $k$ ha lo stesso costo, perche' basta calcolare il percorso e confrontare il suo peso con $k$.
 Ragionando al contrario, un risultato **negativo** di costo sulla versione decisionale di un problema ha effetto immediato sulla versione non decisionale, che presenta almeno lo stesso costo.
 
 ## La classe P
@@ -35,7 +35,7 @@ Appartengono tutti i problemi alla classe P?
 
 ### Il problema della $k$-clique
 Consideriamo un grafo indiretto non pesato $G = (V, E)$ e definiamo $k$-**clique** un sottoinsieme dei vertici di cardinalita' $k$ tale che, per ogni coppia $u, v$ in questo sottoinsieme, esiste l'arco $(u, v)$.
-Osserviamo che le 1-clique sono triviali (tutti i vertici sono una 1-clique) e che lo stesso vale per le 2clique.
+Osserviamo che le 1-clique sono triviali (tutti i vertici sono una 1-clique) e che lo stesso vale per le 2-clique.
 Non tutte le triple di vertici pero' sono 3-clique, e in generale e' sempre piu' difficile trovare una $k$-clique in un grafo man mano che $k$ cresce.
 Possiamo definire il problema di trovare la massima clique n un grafo indiretto non pesato, cosi' come la sua versione decisionale:
 - stabilire se un grafo presenta un $k$-clique o superiore, per un dato $k$.

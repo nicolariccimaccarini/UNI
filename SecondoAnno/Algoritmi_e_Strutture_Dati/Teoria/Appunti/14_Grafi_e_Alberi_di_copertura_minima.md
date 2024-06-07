@@ -8,18 +8,18 @@ Definiamo un **alberi di copertura minimo** (o **MST**) come un sottoinsieme di 
 La strategia generale per risolvere questo problema e' di tipo **greedy**. Questo significa che ad ogni passo faremo la scelta **localmente** migliore e vogliamo in questo modo ottenere il risultato **globalmente** migliore. 
 
 Osserviamo che un MST $A$ e' un insieme di archi tali che formano un albero (indiretto) che tocca tutti i nodi del grafo. Quindi, eliminando qualunque arco da un albero di copertura si ottengono due alberi connessi.
-Qualunque partizione di $V$ in due sottoinsiemi $S$  e $V/S$ viene chiamato **taglio del grafo** (semplicemente, **taglio**). Costruire un MST $T$ significa considerare un taglio ed aggiungere progressivamente un arco, partendo dal taglio piu' semplice che comprende un solo nodo di $S$ .
+Qualunque partizione di $V$ in due sottoinsiemi $S$  e $V \backslash S$ viene chiamato **taglio del grafo** (semplicemente, **taglio**). Costruire un MST $T$ significa considerare un taglio ed aggiungere progressivamente un arco, partendo dal taglio piu' semplice che comprende un solo nodo di $S$ .
 
 ![[taglioVS.png]]
 
-Consideriamo un taglio qualsiasi $(S, V/S)$ tale che per una certa coppia di nodi $a, \space b, \space a \in S \space \text{e} \space b \notin S$. Poiche' vogliamo costruire un MST, dovremo scegliere un arco che connetta qualche nodo di $S$ con qualche nodo di $V/S$: se non lo facessimo non potremo mai ottenere un MST.
+Consideriamo un taglio qualsiasi $(S, V \backslash S)$ tale che per una certa coppia di nodi $a, \space b, \space a \in S \space \text{e} \space b \notin S$. Poiche' vogliamo costruire un MST, dovremo scegliere un arco che connetta qualche nodo di $S$ con qualche nodo di $V \backslash S$: se non lo facessimo non potremo mai ottenere un MST.
 Immaginiamo adesso che tra tutti gli archi con questa proprieta', l'arco $(a, b)$ sia quello di peso minimo. Vogliamo mostrare che **l'arco** $(a, b)$ **deve essere scelto**. 
 
 Immaginiamo di non scegliere $(a, b)$ nella costruzione di un MST. Per la proprieta' detta precedentemente, a fine operazioni ci sara' certamente un arco $(u, v)$ che connette qualche nodo di $S$ con qualche nodo di $V/S$:
 
 ![[taglioVS2.png]]
 
-Sia $T$ l' MST ottenuto scegliendo $(u, v)$ invece di $(a, b)$. Possiamo costruire un nuovo albero $T'$ cosi': $T' = (T \backslash \{(u, v)\}) \cup \{(a, b)\}$. Chiaramente, se $T$ era un albero d copertura, lo e' anche $T'$; inoltre $T'$ pesa meno di $T$. Pertanto $T'$ **non poteva essere un** MST.
+Sia $T$ l'MST ottenuto scegliendo $(u, v)$ invece di $(a, b)$. Possiamo costruire un nuovo albero $T'$ cosi': $T' = (T \backslash \{(u, v)\}) \cup \{(a, b)\}$. Chiaramente, se $T$ era un albero d copertura, lo e' anche $T'$; inoltre $T'$ pesa meno di $T$. Pertanto $T'$ **non poteva essere un** MST.
 Abbiamo dimostrato la seguente proprieta':
 - considerata qualunque situazione di un MST, il prossimo passo per la costruzione e' segliere sempre l'arco di peso minimo che lo attraversa.
 Chiamiamo questo arco **sicuro**.
@@ -72,10 +72,8 @@ Il caso peggiore si verifica con un grafo denso e per minimizzare il danno si pr
 Una valida alternativa a `MST-Prim` è l'algoritmo noto come algoritmo di Kruskal, che utilizza una generalizzazione del concetto di taglio e del concetto di arco sicuro per il taglio al ne di ottenere un albero di copertura minimo.
 
 L'idea di `MST-Kruskal` e' che possiamo ordinare gli archi in ordine crescente di peso e, analizzandoli uno a uno in questo ordine, stabilire se inserirlo come parte dell'albero di copertura minimo oppure no.
-Quale sarebbe la ragione di non farlo a un certo punto dell'esecuzione? Semplicemente, un arco 
-$(u, v)$ **non** e' parte di nessun MST se $u$ e $v$ sono gia' connessi da qualche altro arco precedentemente scelto.
-Sia $T$ l'insieme di archi che abbiamo scelto fino ad un certo punto. $T$ a differenza del caso di 
-`MST-Prim` non e' necessariamente un albero ad ogni momento, ma lo e' direttamente alla fine della computazione. Dati gli archi di $T$ e dato l'insieme $V$ di vertici, diciamo che un sottoinsieme $S$ di $V$ e' T-**connesso** se, considerando solo archi in $T$, e' un albero ed e' massimale.
+Quale sarebbe la ragione di non farlo a un certo punto dell'esecuzione? Semplicemente, un arco $(u, v)$ **non** e' parte di nessun MST se $u$ e $v$ sono gia' connessi da qualche altro arco precedentemente scelto.
+Sia $T$ l'insieme di archi che abbiamo scelto fino ad un certo punto. $T$ a differenza del caso di `MST-Prim` non e' necessariamente un albero ad ogni momento, ma lo e' direttamente alla fine della computazione. Dati gli archi di $T$ e dato l'insieme $V$ di vertici, diciamo che un sottoinsieme $S$ di $V$ e' T-**connesso** se, considerando solo archi in $T$, e' un albero ed e' massimale.
 
 Dato $T$ ad un certo punto della computazione, identifichiamo tutte le componenti `T-connesse` di $V$: $S_1, S_2, ..., S_n$. La tupla $(S_1, S_2, ..., S_n)$ e' certamente una partizione di $V$ e generalizza il concetto di taglio visto prima. Lo chiamiamo **taglio generalizzato**. Possiamo affermare che **un arco di peso minimo tra quelli non ancora considerati** che attraversa un taglio generalizzato e' un arco sicuro.
 

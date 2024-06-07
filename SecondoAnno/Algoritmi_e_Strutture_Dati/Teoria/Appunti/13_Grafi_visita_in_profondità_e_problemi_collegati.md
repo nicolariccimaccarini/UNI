@@ -6,7 +6,7 @@ Ci proponiamo di risolvere tre problemi:
 - conoscere ed enumerare tutte le **componenti fortemente connesse** di $G$ $\rightarrow$ elencare tutti i sottoinsiemi massimali di $V$ tale che, ogni vertice in ogni sottoinsieme raggiunge ogni altro vertice di quel sottoinsieme.
 La soluzione in comune per questi tre problemi e' la visita in profondita'.
 
-Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente $s$. La differenza tra le due visite e; che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e ' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che $G$ sia rappresentato con liste di adiacenza e riempie un campo $v.\pi$ per generare un **albero di visa in profondità** come risultato della visita; la differenza qui e' che invece di un solo albero, di produce una **foresta** di alberi, uno per ogni sorgente.
+Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente $s$. La differenza tra le due visite e; che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che $G$ sia rappresentato con liste di adiacenza e riempie un campo $v.\pi$ per generare un **albero di visa in profondità** come risultato della visita; la differenza qui e' che invece di un solo albero, si produce una **foresta** di alberi, uno per ogni sorgente.
 `DepthFirstSearch` riempie anche dei campi $v.d$ (**momento** della scoperta) e $v.f$ (momento nel quale il vertice viene abbandonato). I campi $v.d$ e $v.f$ sono interi tra $1$ e $2 \cdot |V|$. Vengono generalmente chiamati **tempi**. Per ogni vertice $u$, abbiamo $u.d < u.f$.
 
 ``` Pseudocodice
@@ -46,7 +46,7 @@ L'analisi della **complessità** viene calcolata attraverso la tecnica dell'anal
 
 ## Grafi diretti: cicli
 In un grafo diretto, chiamiamo **ciclo** un percorso $v_1, v_2, ..., v_k$ di vertici tali che per ogni $i$ esiste l'arco $(v_i, v_{i+1})$ e che $v_1 = v_k$. Quando un grafo diretto e' privo di cicli, lo chiamiamo `DAG` (Directed Acyclic Graph). 
-Definiamo il seguente problema: dato un grafo diretto $G$ stabilire se presenta o no un ciclo. L'algoritmo `CycleDet` che usiamo prima di eseguire`DephtFirstSearch` modificata in maniera da interrompersi se si visita un nodo grigio: al momento di visitare un nodo grigio, siamo certi di aver trovato un ciclo.
+Definiamo il seguente problema: dato un grafo diretto $G$ stabilire se presenta o no un ciclo. L'algoritmo `CycleDet` che usiamo prima di eseguire `DephtFirstSearch` modificata in maniera da interrompersi se si visita un nodo grigio: al momento di visitare un nodo grigio, siamo certi di aver trovato un ciclo.
 
 ``` Pseudocodice
 proc CycleDet(G) {
@@ -74,7 +74,7 @@ proc DepthVisitCycle(G, u) {
 La **complessità** del nostro algoritmo e' la stessa della visita in profondita', e la **terminazione** e' ovvia.
 
 ## Grafi: ordinamento topologico di grafi diretti
-Uno degli usi piu' interessanti dei grafi diretti consiste nel rappresentare un insieme di vincoli rispetto a un insieme finito di compiti (o **task**). Se tutti i task son inseriti in un grafo diretto $G$ dove un arco $(u,v)$ rappresenta che $`u`$ deve essere posto prima di $v$, una delle possibili soluzioni al problema di stabilire un ordine lineare (possibile) tra i task e' dato dall'**ordinamento topologico**. Il problema dell'ordinamento topologico non ha senso se il grafo diretto e' ciclico.
+Uno degli usi piu' interessanti dei grafi diretti consiste nel rappresentare un insieme di vincoli rispetto a un insieme finito di compiti (o **task**). Se tutti i task son inseriti in un grafo diretto $G$ dove un arco $(u,v)$ rappresenta che $u$ deve essere posto prima di $v$, una delle possibili soluzioni al problema di stabilire un ordine lineare (possibile) tra i task e' dato dall'**ordinamento topologico**. Il problema dell'ordinamento topologico non ha senso se il grafo diretto e' ciclico.
 
 Il problema dell'ordinamento topologico prende in input un grafo connesso $G$ senza cicli e restituisce una lista collegata $v_1, ..., v_{|V|}$ di vertici topologicamente ordinati; per ogni coppia $v_i, v_j$ di vertici, $v_i$ appare prima nella lista di $v_j$ se e solo se $v_i$ precede topologicamente $v_j$.
 

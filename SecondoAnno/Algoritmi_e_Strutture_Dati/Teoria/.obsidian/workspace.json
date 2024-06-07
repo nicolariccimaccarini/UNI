@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1c8efb21e93f795a",
+        "id": "a025615cd68d1724",
         "type": "tabs",
         "children": [
           {
-            "id": "af86ece80595164f",
+            "id": "63513541b7b41387",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Introduzione_e_Regole.md",
+                "file": "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00_Introduzione_e_Regole.md",
+                "file": "Riassunto_Strutture_Dati.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "00_Introduzione_e_Regole.md",
+                "file": "Riassunto_Strutture_Dati.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00_Introduzione_e_Regole.md"
+                "file": "Riassunto_Strutture_Dati.md"
               }
             }
           }
@@ -146,26 +146,65 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "af86ece80595164f",
+  "floating": {
+    "id": "bdb2409eb031a8c1",
+    "type": "floating",
+    "children": [
+      {
+        "id": "0c42ed4ced77fa85",
+        "type": "window",
+        "children": [
+          {
+            "id": "686dac68e7dd3bd9",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "9706b043113230c4",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Riassunto_Strutture_Dati.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 1720,
+        "y": 0,
+        "width": 1720,
+        "height": 1392,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "9706b043113230c4",
   "lastOpenFiles": [
-    "Appunti_Algoritmi_e_Strutture_Dati.md",
-    "17_Teoria_della_complessità.md",
-    "16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
-    "15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
-    "14_Grafi_e_Alberi_di_copertura_minima.md",
-    "13_Grafi_visita_in_profondità_e_problemi_collegati.md",
-    "12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
-    "11_Alberi_B.md",
-    "10_Alberi_Red-Black.md",
-    "09_Alberi_e_Alberi_binari_di_ricerca.md",
-    "08_Strutture_Dati_per_Insiemi_Disgiunti.md",
-    "07_Tabelle_Hash.md",
-    "06_Heaps_heapsort_e_code_di_priorità.md",
-    "01_Correttezza_complessità_e_notazione_asintotica.md",
-    "05_Liste_pile_e_code.md",
-    "04_CountingSort_e_RadixSort.md",
-    "03_MergeSort_e_QuickSort.md",
-    "02_Soluzioni_di_ricorrenze.md",
-    "00_Introduzione_e_Regole.md"
+    "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
+    "Riassunto_Strutture_Dati.md",
+    "Appunti/07_Tabelle_Hash.md",
+    "Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
+    "Appunti/05_Liste_pile_e_code.md",
+    "Appunti/17_Teoria_della_complessità.md",
+    "Appunti",
+    "Appunti/16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
+    "Appunti/15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
+    "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
+    "Appunti/13_Grafi_visita_in_profondità_e_problemi_collegati.md",
+    "Appunti/12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
+    "Appunti/04_CountingSort_e_RadixSort.md",
+    "Appunti/01_Correttezza_complessità_e_notazione_asintotica.md",
+    "Appunti/00_Introduzione_e_Regole.md",
+    "Appunti/Appunti_Algoritmi_e_Strutture_Dati.md",
+    "Appunti/11_Alberi_B.md",
+    "Appunti/10_Alberi_Red-Black.md",
+    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
+    "Appunti/03_MergeSort_e_QuickSort.md",
+    "Appunti/02_Soluzioni_di_ricorrenze.md"
   ]
 }
