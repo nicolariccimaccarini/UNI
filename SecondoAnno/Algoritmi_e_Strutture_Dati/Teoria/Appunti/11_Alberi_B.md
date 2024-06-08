@@ -18,8 +18,8 @@ Il sotto-albero puntato da `x.c_i` e' legato alle chiavi `x.key_i-1` e `x.key_i`
 
 In un nodo $x$ il numero di chiavi, e quindi il branching factor, e' vincolato da un parametro che si chiama **grado minimo**, si denota con $t$ ed e' sempre $\ge 2$.
 Le proprieta' di un albero B sono:
-1. Ogni nodo, tramite la radice, ha almeno $t-1$ chiavi;
-2. Ogni nodo puo' contenere al massimo `$2 \cdot t-1$` chiavi;
+1. Ogni nodo, tranne la radice, ha almeno $t-1$ chiavi;
+2. Ogni nodo puo' contenere al massimo $2 \cdot t-1$ chiavi;
 3. Per ogni nodo $x$, `x.key_1 <= x.key_2 <= ... <= x.key_x.n`;
 4. Per ogni nodo $x$, se un nodo $y$ contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono minori o uguali a `x.key_i`
 5. Per ogni nodo $x$ , se un nodo $y$ e; contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono maggiori di `x.key_i-1`

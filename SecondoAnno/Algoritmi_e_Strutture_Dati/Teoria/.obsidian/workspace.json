@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
+                "file": "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Riassunto_Strutture_Dati.md",
+                "file": "Riassunto.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Riassunto_Strutture_Dati.md",
+                "file": "Riassunto.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Riassunto_Strutture_Dati.md"
+                "file": "Riassunto.md"
               }
             }
           }
@@ -164,7 +164,7 @@
                 "state": {
                   "type": "markdown",
                   "state": {
-                    "file": "Riassunto_Strutture_Dati.md",
+                    "file": "Riassunto.md",
                     "mode": "source",
                     "source": false
                   }
@@ -185,25 +185,25 @@
   },
   "active": "9706b043113230c4",
   "lastOpenFiles": [
+    "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
+    "Appunti/13_Grafi_visita_in_profondità_e_problemi_collegati.md",
+    "Riassunto.md",
+    "Appunti/12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
+    "Appunti/11_Alberi_B.md",
+    "Appunti/10_Alberi_Red-Black.md",
+    "Appunti/05_Liste_pile_e_code.md",
+    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
-    "Riassunto_Strutture_Dati.md",
     "Appunti/07_Tabelle_Hash.md",
     "Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
-    "Appunti/05_Liste_pile_e_code.md",
     "Appunti/17_Teoria_della_complessità.md",
     "Appunti",
     "Appunti/16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
     "Appunti/15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
-    "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
-    "Appunti/13_Grafi_visita_in_profondità_e_problemi_collegati.md",
-    "Appunti/12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
     "Appunti/04_CountingSort_e_RadixSort.md",
     "Appunti/01_Correttezza_complessità_e_notazione_asintotica.md",
     "Appunti/00_Introduzione_e_Regole.md",
     "Appunti/Appunti_Algoritmi_e_Strutture_Dati.md",
-    "Appunti/11_Alberi_B.md",
-    "Appunti/10_Alberi_Red-Black.md",
-    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Appunti/03_MergeSort_e_QuickSort.md",
     "Appunti/02_Soluzioni_di_ricorrenze.md"
   ]
