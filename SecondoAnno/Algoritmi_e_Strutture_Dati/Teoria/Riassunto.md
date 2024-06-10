@@ -41,12 +41,26 @@ Dimostrazione:
 $$
 T(n) = 
 \left\{\begin{align}
-& \Theta(n^{\log_b(a)}) \qquad &&\text{se} \quad n^{\log_b(a)} \space \text{ e' di ordine maggiore di } f(n) &&&\text{Caso I} \\
+& \Theta(n^{\log_b(a)}) \qquad &&\text{se} \quad n^{\log_b(a)} \space \text{ e' di ordine maggiore di } f(n)  \\
 & \Theta(n^{\log_b(a)} \cdot \log^{k+1}(n)) &&\text{se} \quad  n^{\log_b(a)} \cdot \log^{k+1}(n) \space \text{ e' dello stesso ordine di } f(n) \\
 & \Theta(f(n)) &&\text{se} \quad f(n) \text{ e' di ordine maggiore di } n^{\log_b(a)} \text{ e se esiste }  \\ 
 &\space && c>1 : a \cdot f(\frac{a}{b}) \le c \cdot f(n) \quad \text{per ogni } n \ge n_0
 \end{align}\right.
 $$
+
+**Dimostrazione Master Theorem**:
+Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecniche come l'albero di ricorsione o l'induzione 
+1. **Albero di ricorsione**: si costruisce un albero di ricorsione in cui ogni nodo rappresenta un sottoproblema. Il costo di ogni livello dell'albero viene analizzato e si sommano i costi di tutti i livelli per determinare il costo totale
+	- Esempio: $T(n) = 2T(\frac{n}{2}) + n$
+		- $a = 2, b = 2$ e $f(n) = n$
+		- $n^{log_22} = n \rightarrow$ siamo nel caso 2
+		- $T(n)) = \Theta(n \cdot \log(n))$
+1. **Induzione**: si assume una soluzione di forma $\Theta$ e si utilizza l'induzione per verificare che la soluzione ipotizzata soddisfi la ricorrenza data
+	- Esempio: $T(n) = T(\frac{n}{2}) + 1$
+		- $a=1, b=2$ e $f(n)=1$
+		- $n^{log_21} = n^0 = 1 \rightarrow$ siamo nel caso 2
+		- $T(n) = \Theta(\log(n))$
+
 ---
 ## Algoritmi di ordinamento
 
