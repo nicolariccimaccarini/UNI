@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9706b043113230c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Riassunto.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Appunti/02_Soluzioni_di_ricorrenze.md",
+                "file": "Riassunto.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Appunti/02_Soluzioni_di_ricorrenze.md",
+                "file": "Riassunto.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti/02_Soluzioni_di_ricorrenze.md"
+                "file": "Riassunto.md"
               }
             }
           }
@@ -146,44 +159,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "floating": {
-    "id": "bdb2409eb031a8c1",
-    "type": "floating",
-    "children": [
-      {
-        "id": "0c42ed4ced77fa85",
-        "type": "window",
-        "children": [
-          {
-            "id": "686dac68e7dd3bd9",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "9706b043113230c4",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Riassunto.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 1720,
-        "y": 0,
-        "width": 1720,
-        "height": 1392,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "63513541b7b41387",
+  "active": "9706b043113230c4",
   "lastOpenFiles": [
     "Riassunto.md",
     "Appunti/02_Soluzioni_di_ricorrenze.md",

@@ -69,6 +69,7 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 
 ### Merge Sort
 - E' un algoritmo non elementare per l'ordinamento
+- Sia `Merge()` che `MergeSort()` non sono in place $\rightarrow$ piu' grande e' l'inpute maggiore e' la quantita' di spazio utilizzata da L e R, pertanto non e' costante.
 - `Merge()`
 	- **invariante**: $A[p, \ldots, k-1]$ contiene i $k-p$ elementi piu' piccoli di $L[1, \ldots, n_1]$ e $R[1, \ldots, n_2]$
 	- **complessità**: $\Theta(n)$
