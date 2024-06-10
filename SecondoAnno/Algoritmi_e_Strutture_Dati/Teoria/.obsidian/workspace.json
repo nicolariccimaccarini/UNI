@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "63513541b7b41387",
+            "id": "47e48bbb19a2a667",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti/02_Soluzioni_di_ricorrenze.md",
+                "file": "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "38074c6679f5182b",
@@ -161,6 +162,7 @@
   },
   "active": "9706b043113230c4",
   "lastOpenFiles": [
+    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Riassunto.md",
     "Appunti/02_Soluzioni_di_ricorrenze.md",
     "Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
@@ -175,7 +177,6 @@
     "Appunti/11_Alberi_B.md",
     "Appunti/10_Alberi_Red-Black.md",
     "Appunti/05_Liste_pile_e_code.md",
-    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
     "Appunti/07_Tabelle_Hash.md",
     "Appunti",

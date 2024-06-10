@@ -69,7 +69,7 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 
 ### Merge Sort
 - E' un algoritmo non elementare per l'ordinamento
-- Sia `Merge()` che `MergeSort()` non sono in place $\rightarrow$ piu' grande e' l'inpute maggiore e' la quantita' di spazio utilizzata da L e R, pertanto non e' costante.
+- Sia `Merge()` che `MergeSort()` non sono in place $\rightarrow$ piu' grande e' l'input e maggiore e' la quantita' di spazio utilizzata da L e R, pertanto non e' costante.
 - `Merge()`
 	- **invariante**: $A[p, \ldots, k-1]$ contiene i $k-p$ elementi piu' piccoli di $L[1, \ldots, n_1]$ e $R[1, \ldots, n_2]$
 	- **complessità**: $\Theta(n)$
@@ -128,8 +128,7 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 
 ---
 ## Pile
-- Struttura dati astratta
-- Struttura dati dinamica, non basata sull'ordinamento, sparsa (basata su liste) o compatta (basata su array)
+- Struttura dati astratta, dinamica, non basata sull'ordinamento, sparsa (basata su liste) o compatta (basata su array)
 - Implementa la politica LIFO
 - Accesso agli elementi vincolato ad una politica per far risparmiare dettagli implementativi, assicurando un certo ordine di inserimento ed estrazione
 
@@ -143,8 +142,7 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 
 --- 
 ## Code
-- Struttura dati astratta
-- Struttura dati dinamica, non basata sull'ordinamento, sparsa (basata su liste) o compatta (basata su array)
+- Struttura dati astratta, dinamica, non basata sull'ordinamento, sparsa (basata su liste) o compatta (basata su array)
 - Implementa la politica FIFO
 - Accesso agli elementi vincolato ad una politica per far risparmiare dettagli implementativi, assicurando un certo ordine di inserimento ed estrazione
 - Permette di accedere ai dati attraverso inserimento ed eliminazione che prendono normalmente i nomi di `Enqueue` e `Dequeue`.
@@ -168,7 +166,8 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 	- min-heap $\rightarrow$ il minimo elemento si trova nella radice
 		- **Correttezza**: se i figli sono una min-heap, dopo la chiamata ricorsiva il il padre con i figli è una min-heap
 		- **Complessità** min-heap $\rightarrow$ $h = \Theta(log(n))$
-		- **Caso sbilanciato**: il peggior sbilanciamento possibile e' $\frac{2}{3}$. Questo caso succede quando la heap sulla quale la procedura e' chiamata tende ad essere sbilanciata, forzando piu' chiamate ricorsive. Risolvendo la ricorrenza $T(n) \le T(\frac{2}{3}n) + \Theta(1)$ (Master Theorem, caso 2) si ottiene che $T(n) = \Theta(log(n))$. 
+		- **Caso sbilanciato** $\rightarrow$ situazione in cui uno dei sottoalberi di un nodo e' significativamente piu' grande dell'altro. 
+			- il peggior sbilanciamento possibile e' $\frac{2}{3}$. Questo caso succede quando la heap sulla quale la procedura e' chiamata tende ad essere sbilanciata, forzando piu' chiamate ricorsive. Risolvendo la ricorrenza $T(n) \le T(\frac{2}{3}n) + \Theta(1)$ (Master Theorem, caso 2) si ottiene che $T(n) = \Theta(log(n))$. 
 - In generale una heap di altezza $h$ contiene **al minimo** $2^h$ elementi ed **al massimo** $2^{h+1} -1$ elementi
 
 ---
@@ -206,11 +205,10 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 - Tecnica che risolve i conflitti di una tabella hash usando un puntatore alla testa di una lista in ogni cella (testa memorizzata in `T[h(k)]`, quando è vuota punta a `nil`)
 - Operazioni:
 	- `HashInsert` $\rightarrow$ complessita' $\Theta(1)$
-	- `HashSearch` $\rightarrow$ complessita' $\Theta(n)$
-	- `HashDelete` $\rightarrow$ complessita' $\Theta(n)$ 
+	- `HashSearch` $\rightarrow$ complessita' $\Theta(n)$ $\leftarrow$ `HashDelete` 
 
 ### Funzioni di hash con il chaining
-Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera uniforme sulle m posizioni della tabella. Per farlo esistono diversi metodi:
+Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera uniforme sulle $m$ posizioni della tabella. Per farlo esistono diversi metodi:
 1. **Divisione**: $h(k) = (k \cdot mod(m)) + 1)$ $\rightarrow$ resto della divisione tra $k$ e $m+1$
 	- chiavi naturali
 	- $m$ numero primo
@@ -253,7 +251,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 	- quando vengono uniti due insiemi in uno solo che contiene gli elementi di entrambi
 
 ### Insiemi disgiunti: liste
-- Uso delle liste collegate per gestire $S$(`calS`)
+- Uso delle liste collegate per gestire $S$($\mathcal{S}$)
 - $S \in \mathcal{S}$ e' una lista con:
 	- `S.head` $\rightarrow$ punta al primo elemento
 	- `S.tail` $\rightarrow$ punta all'ultimo elemento
@@ -276,14 +274,14 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 - **Euristica** $\rightarrow$ strategia migliorativa e non un'implementazione diversa, ha un effetto soprattutto dal punto di vista pratico  
 - **Algoritmo Euristico** $\rightarrow$ algoritmo che da una soluzione non ottimale si trova un problema la cui soluzione ottimale esiste, lo si fa per scelta per evitare il costo computazionale che avrebbe avuto quella esecuzione
 - Strategia per migliorare la situazione $\rightarrow$ **unione pesata**
-	- scriviamo in ogni insieme $S$ il numero di elementi (`S.rank`)e con le `Union()` si fanno gli aggiornamenti dei puntatori sempre sull'insieme piu' piccolo
+	- scriviamo in ogni insieme $S$ il numero di elementi (`S.rank`) e con le `Union()` si fanno gli aggiornamenti dei puntatori sempre sull'insieme piu' piccolo
 - **Complessità**
 	- si ha il caso peggiore quando tutti gli $s$ sono di dimensione uguale
 	- costo totale delle $\Theta(n)$ unioni $\rightarrow$ $\Theta(n \cdot log(n))$ 
 
 ### Insiemi disgiunti: foreste di alberi
 - Metodo piu' efficiente per implementare gli insiemi disgiunti
-- In questa rappresentazione gli elementi vivono come prima, nelle strutture S, e sono puntati in un albero, mentre i rank sono i limiti superiori dell'altezza dell'albero.
+- In questa rappresentazione gli elementi vivono come prima, nelle strutture $S$, e sono puntati in un albero, mentre i rank sono i limiti superiori dell'altezza dell'albero.
 - **Rappresentazione**:
 	- nodo `x` (elemento che non ha puntatore ai figli) contiene:
     - `x.p` $\rightarrow$ padre
@@ -293,7 +291,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 - **Operazioni**:
 	- `Makeset` $\rightarrow$ crea un nuovo albero di altezza massima 0 con solo il nodo $x$
 	- `Union` $\rightarrow$ unisce due alberi in uno solo:
-		1. si trovano i rappresentanti degli elementi (x, y) usati come indici
+		1. si trovano i rappresentanti degli elementi $(x, y)$ usati come indici
 		2. si sceglie l'elemento di rango inferiore e si aggiorna solo il padre (si fa puntare il rappresentante con rango inferiore al rappresentante con rango superiore)
 	- `FindSet` $\rightarrow$ scorrendo i puntatori verso l'alto li aggiorna appiattendo il ramo al quale appartiene il rappresentante e lo restituisce
 - **Complessità**:
@@ -302,11 +300,11 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 
 --- 
 ## Alberi
-- Strutture dati fondamentali dinamiche e spare, possono essere basate sull'ordinamento oppure no
+- Strutture dati fondamentali dinamiche e sparse, possono essere basate sull'ordinamento oppure no
 - Generalizzano le liste ma se ne fa un uso diverso
 - **Albero** (o **albero radicato**) $\rightarrow$ grafo aciclico connesso tale che ogni coppia di vertici e' connessa da al piu' un cammino
-- **Nodi** $\rightarrow$ vertici dell'albero.  
-- **Foglie** $\rightarrow$ nodi senza figli.  
+	- **Nodi** $\rightarrow$ vertici dell'albero.  
+	- **Foglie** $\rightarrow$ nodi senza figli.  
 - **Albero k-ario** $\rightarrow$ ogni nodo ha al massimo k figli.  
 - **Altezza** $\rightarrow$ massimo numero di archi su un percorso semplice dalla radice ad una foglia (l'altezza è legata al numero di nodi in maniera non triviale).
 	- BST $\rightarrow$ $\Theta(n \cdot \log(n))$ 
@@ -357,7 +355,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 	- Inserimento:
 		- inserisce un nuovo elemento come foglia nell'albero, questo permette di rispettare la proprietà BST ed essere efficiente.
 		- Correttezza: si vuole dimostrare che il risultato di un inserimento sia un BST (T = BST, T' = risultato di un inserimento)
-			- se $T$ è vuoto $\rightarrow$ while non eseguito $\rightarrow$ z è la radice di $T'$ $\rightarrow$ $T'$ è un BST
+			- se $T$ è vuoto $\rightarrow$ while non eseguito $\rightarrow$ $z$ è la radice di $T'$ $\rightarrow$ $T'$ è un BST
 			- se $T$ non è vuoto $\rightarrow$ invariante del ciclo = posizione corretta di $z$ è nel sotto-albero di x e y ne mantiene il padre:
 			    - caso base: $x$ = `T.root`
 			    - caso induttivo: dopo la `i-1` esecuzione, $z$ è confrontato con $x$ e $y$, mantenendo la proprietà
@@ -368,7 +366,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 	- Eliminazione: 
 		- si distinguono 3 casi:
 			1. se $z$ è foglia (non ha figli) -> si elimina $z$
-			2. se $z$ ha un solo figlio -> si elimina $z$facendo puntare il padre di $z$ al figlio di $z$ (come eliminare un nodo in una lista)
+			2. se $z$ ha un solo figlio -> si elimina $z$ facendo puntare il padre di $z$ al figlio di $z$ (come eliminare un nodo in una lista)
 			3. se $z$ ha due figli -> si cerca il successore di $z$ (es. $y$) e si scambia $z$ con $y$, poi si elimina $y$
 		- Complessita':
 			- caso peggiore $\rightarrow$ $\Theta(n)$
@@ -376,7 +374,8 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 
 ### Alberi Red-Black (RBT)
 - E' un BST bilanciato per costruzione
-- Ha tutte le caratteristiche di un BST ma la sua altezza e' sempre $\Theta(\log(n))$ ($n =$ numero di nodi)
+- Ha tutte le caratteristiche di un BST ma la sua altezza e' sempre $\Theta(\log(n))$ 
+  ($n =$ numero di nodi)
 - E' una struttura dati dinamica, sparsa e basata sull'ordinamento
 - Ogni nodo in un RBT ha delle informazioni in piu' rispetto a un nodo di BST:
 	- colore (`x.color`) $\rightarrow$ rosso o nero (per convenzione)
@@ -443,7 +442,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 	2. Ogni nodo puo' contenere al massimo $2 \cdot t-1$ chiavi;
 	3. Per ogni nodo $x$, `x.key_1 <= x.key_2 <= ... <= x.key_x.n`;
 	4. Per ogni nodo $x$, se un nodo $y$ contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono minori o uguali a `x.key_i`
-	5. Per ogni nodo $x$ , se un nodo $y$ e; contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono maggiori di `x.key_i-1`
+	5. Per ogni nodo $x$ , se un nodo $y$ e' contenuto nel sotto-albero radicato in `x.c_i`, allora tutte le sue chiavi sono maggiori di `x.key_i-1`
 - Altezza massima $\rightarrow$ $h \le log_t(\frac{n+1}{2}) = O(log_t(n))$ 
 
 - **Operazioni**
@@ -531,7 +530,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 - L'algoritmo computa la distanza minima in numero di archi tra $s$ ed ogni vertice scoperto e produce un albero di visita in ampiezza con tutti i vertici raggiungibili da $s$
 - $\delta(s,v) \rightarrow$ **distanza piu' corta** da $v$ a $s$ (numero minimo di archi che sono necessari per raggiungere $v$ da $s$)
 - Proprieta':
-	- he sia zero tra un vertice e se stesso $\rightarrow$ $\delta(s,s) = 0$;
+	- che sia zero tra un vertice e se stesso $\rightarrow$ $\delta(s,s) = 0$;
 	- che sia infinito da $s$ a $v$ quando il secondo e' irraggiungibile dal primo $\rightarrow \delta(s,v) = \infty$;
 	- che sia una distanza $\rightarrow$ disuguaglianza triangolare (per ogni coppia di vertici $v, u$ tali che esiste un arco $(u,v)$, succede che $\delta(s,v) \le \delta(s,u)+1$).
 - **Correttezza**: dopo l'esecuzione, per ogni $v$ raggiungibile da $s$, $\text{v.d} = \delta(s,v)$ e se $v \ne s$, almeno uno dei percorsi piu' brevi da $s$ a $v$ si ottiene da uno dei percorsi piu' brevi da $s$ a $v.\pi$ con l'arco $(v.\pi, v)$.
@@ -850,4 +849,3 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 - Il problema della geografia generalizzata si trova nella classe di quei problemi la cui soluzione puo' essere trovata/verificata usando al massimo **spazio polinomiale** per la computazione.
 - $PSPACE = \{ \text{problemi la cui soluzione puo' essere trovata/verificata in spazio polinomiale} \}$
 - $NP \subseteq PSPACE$ 
-- 
