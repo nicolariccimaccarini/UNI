@@ -10,7 +10,7 @@ typedef struct {
 typedef struct {
     int from;               // nodo di partenza dell'arco
     int to;                 // nodo di destinazione dell'arco
-    int weight;             // peso dell'arco
+    long long weight;       // peso dell'arco
 } Edge;
 
 // Funzione per scambiare due valori interi
@@ -22,8 +22,8 @@ void swap(int *x, int *y) {
 
 // Funzione di comparazione per l'ordinamento degli archi in base al peso
 int weightComparator(const void *x, const void *y) {
-    int w1 = ((const Edge *) x)->weight;
-    int w2 = ((const Edge *) y)->weight;
+    long long w1 = ((const Edge *) x)->weight;
+    long long w2 = ((const Edge *) y)->weight;
     return w1 > w2;
 }
 
@@ -32,7 +32,7 @@ int findSet(int n, Set *sets) {
     while (n != sets[n].representative) {
         n = sets[n].representative;
     }
-
+    
     return n;
 }
 
@@ -55,9 +55,9 @@ bool isSameSet(int x, int y, Set *sets) {
 }
 
 // Funzione per calcolare il peso totale dell'albero di copertura minimo utilizzando l'algoritmo di Kruskal
-int kruskal(Set *sets, Edge *edges, int nEdges) {
+long long kruskal(Set *sets, Edge *edges, int nEdges) {
     Edge e;
-    int sum = 0;
+    long long sum = 0;
 
     for (int i = 0; i < nEdges; i++) {
         e = edges[i];
@@ -88,13 +88,13 @@ void sfortuna(FILE *in_file, FILE *out_file) {
 
     // Leggo tutti gli archi dall'input
     for (int i = 0; i < M; i++) {
-        fscanf(in_file, "%d %d %d", &edges[i].from, &edges[i].to, &edges[i].weight);
+        fscanf(in_file, "%d %d %lld", &edges[i].from, &edges[i].to, &edges[i].weight);
     }
 
     // Ordino gli archi in base al peso
     qsort(edges, M, sizeof(Edge), weightComparator);
 
-    fprintf(out_file, "%d\n", kruskal(sets, edges, M));
+    fprintf(out_file, "%lld\n", kruskal(sets, edges, M));
 
     free(sets);
     free(edges);
