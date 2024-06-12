@@ -61,8 +61,33 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 		- $n^{log_21} = n^0 = 1 \rightarrow$ siamo nel caso 2
 		- $T(n) = \Theta(\log(n))$
 
+### Metodo di sostituzione
+1. **Fare un'ipotesi sulla soluzione**: si ipotizza una forma per la soluzione della ricorrenza. Questa ipotesi dovrebbe essere basata su un'introduzione o su esperienze precedenti con ricorrenze simili. Spesso si utilizza la notazione asintotica come $O$, $\Theta$ o $\Omega$.
+2. **Sostituire l'ipotesi nella ricorrenza**: si sostituisce l'ipotesi fatta nella ricorrenza originale. 
+3. **Dimostrare che l'ipotesi e' corretta**: si dimostra che l'ipotesi e' corretta per una costante adatta $c$ (o per dei valori appropriati). 
+
+**Esempio**
+$T(n) = T(\frac{n}{2}) + 1$
+
+1. **Ipotesi**: 
+	- supponiamo che la soluzione sia $T(n) = O(\log n)$. Possiamo ipotizzare una forma piu' precisa come $T(n) \le c \cdot \log n$ per qualche costante $c>0$ 
+2. **Sostituzione**: 
+	- sostituiamo l'ipotesi $T(n) \le c \cdot \log n$ nella ricorrenza originale
+	- otteniamo $\rightarrow T(n) \le c \cdot \log (\frac{n}{2}) + 1$ 
+3. **Dimostrazione**:
+	- utilizzando la proprieta' dei logaritmi, possiamo semplificare:
+		- $T(n) \le c(\log n - \log 2) + 1 \rightarrow T(n) \le c\log n - c\log 2$ 
+	- mostriamo che $T(n) \le c\log n$:
+		- scegliamo una costante $c$ t.c. $-c \log 2 + 1 \le 0 \rightarrow c \ge \frac{1}{\log 2}$ 
+	- dato che $\log 2$ e' una costante positiva, possiamo sempre trovare un valore $c$ che soddisfi questa disuguaglianza. Pertanto, la nostra ipotesi e' corretta e possiamo concludere che $T(n) = O(\log n)$
+
 ---
 ## Algoritmi di ordinamento
+- **Algoritmi di ordinamento elementari** $\rightarrow$ metodi basati sui confronti dove ogni elemento viene spostato verso il/al posto giusto separatamente dagli altri, in maniera iterativa o ricorsiva. 
+- **Algoritmi di ordinamento non elementari** $\rightarrow$ es. `MergeSort`, `QuickSort`, `HeapSort`
+- **Algoritmi in place** $\rightarrow$ algoritmi che orinano l'array senza usare memoria aggiuntiva, quindi modificando la posizione delle chiavi nell'array stesso
+- **Algoritmi non in place** $\rightarrow$ algoritmi che ordinano l'array creandone uno nuovo
+- **Algoritmi stabili** $\rightarrow$ algoritmi che mantengono l'ordine relativo degli elementi con chiavi uguali (es. `A = [1, 2, 3, 4, 2]` se si usa un algoritmo stabile il secondo 2 andrà nella posizione seguente al primo 2, altrimenti potrebbe andare nella posizione precedente)
 
 ### Selection Sort
 - E' un algoritmo elementare per l'ordinamento come `InsertionSort`
@@ -94,6 +119,7 @@ Si basa sull'analisi del comportamento della ricorrenza attraverso l'uso di tecn
 
 ### Randomized Quick Sort
 - Per minimizzare la possibilita' di avere partizioni sbilanciate
+- **complessità**: $O(n \cdot log_2(n))$ 
 
 ### Counting Sort
 - **invariante**: 

@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "47e48bbb19a2a667",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "9706b043113230c4",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -162,9 +149,9 @@
   },
   "active": "9706b043113230c4",
   "lastOpenFiles": [
-    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
-    "Riassunto.md",
     "Appunti/02_Soluzioni_di_ricorrenze.md",
+    "Riassunto.md",
+    "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
     "Appunti/01_Correttezza_complessità_e_notazione_asintotica.md",
     "Appunti/00_Introduzione_e_Regole.md",
