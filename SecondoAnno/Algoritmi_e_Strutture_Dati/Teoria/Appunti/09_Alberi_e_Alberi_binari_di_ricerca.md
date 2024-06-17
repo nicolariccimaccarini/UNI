@@ -142,7 +142,7 @@ proc BSTTreeSearch(x, k) {
 		then return x
 	if (k <= x.key)
 		then return BSTTreeSearch(x.left, k)
-		else return BSTTreeSearch(x.right, k)
+	else return BSTTreeSearch(x.right, k)
 }
 ```
 

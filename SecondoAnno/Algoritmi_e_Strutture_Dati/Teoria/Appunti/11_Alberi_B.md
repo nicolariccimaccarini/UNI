@@ -78,7 +78,7 @@ proc BTreeSearch(x, k) {
 
 ### Complessità di `BTreeSearch` 
 La **correttezza** di questa procedura e' immediata. 
-Per quanto riguarda la **complessità**, e; facile vedere che si operano, al massimo, $O(h) = O(log_t(n))$ accessi al disco. Inoltre, se utilizziamo la ricerca lineare sul nodo, otteniamo che il tempo totale di CPU nel caso peggiore e' $\Theta(t \cdot h) = \Theta(t \cdot log_t(n))$. La forza dei BT non si apprezza nella notazione $O()$. 
+Per quanto riguarda la **complessità**, e' facile vedere che si operano, al massimo, $O(h) = O(log_t(n))$ accessi al disco. Inoltre, se utilizziamo la ricerca lineare sul nodo, otteniamo che il tempo totale di CPU nel caso peggiore e' $\Theta(t \cdot h) = \Theta(t \cdot log_t(n))$. La forza dei BT non si apprezza nella notazione $O()$. 
 
 ## Alberi B: inserimento
 Prima di poter fare inserimento di una chiave, dobbiamo assicurare che l'albero esista.
@@ -146,7 +146,7 @@ proc BTreeInsert(T, k) {
 Questo e' il momento in cui un albero B cresce di altezza. Quindi al chiamare di `BTreeInsertNonFull`, lo si fa o sulla radice originale che non era piena, o su quella nuova, che per costruzione non e' piena.
 
 ``` Pseudocodice
-proc BTreeInsertNopnFull(x, k) {
+proc BTreeInsertNonFull(x, k) {
 	i = x.n
 	if (x.leaf = True) then 
 		while ((i >= 1) and (k < x.key_i))

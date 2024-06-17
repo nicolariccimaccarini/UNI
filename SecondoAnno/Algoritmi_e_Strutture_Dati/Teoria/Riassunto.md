@@ -44,7 +44,7 @@ T(n) =
 & \Theta(n^{\log_b(a)}) \qquad &&\text{se} \quad n^{\log_b(a)} \space \text{ e' di ordine maggiore di } f(n)  \\
 & \Theta(n^{\log_b(a)} \cdot \log^{k+1}(n)) &&\text{se} \quad  n^{\log_b(a)} \cdot \log^{k+1}(n) \space \text{ e' dello stesso ordine di } f(n) \\
 & \Theta(f(n)) &&\text{se} \quad f(n) \text{ e' di ordine maggiore di } n^{\log_b(a)} \text{ e se esiste }  \\ 
-&\space && c>1 : a \cdot f(\frac{a}{b}) \le c \cdot f(n) \quad \text{per ogni } n \ge n_0
+&\space && c<1 : a \cdot f(\frac{n}{b}) \le c \cdot f(n) \quad \text{per ogni } n \ge n_0
 \end{align}\right.
 $$
 
@@ -91,6 +91,7 @@ $T(n) = T(\frac{n}{2}) + 1$
 
 ### Selection Sort
 - E' un algoritmo elementare per l'ordinamento come `InsertionSort`
+- **Complessità** $\rightarrow$ $\Theta(n^2)$ 
 
 ### Merge Sort
 - E' un algoritmo non elementare per l'ordinamento
@@ -119,7 +120,9 @@ $T(n) = T(\frac{n}{2}) + 1$
 
 ### Randomized Quick Sort
 - Per minimizzare la possibilita' di avere partizioni sbilanciate
-- **complessità**: $O(n \cdot log_2(n))$ 
+- **complessità**: 
+	- caso medio $\rightarrow$ $O(n \cdot log_2(n)$
+	- caso peggiore $\rightarrow$ $\Theta(n^2)$ 
 
 ### Counting Sort
 - **invariante**: 

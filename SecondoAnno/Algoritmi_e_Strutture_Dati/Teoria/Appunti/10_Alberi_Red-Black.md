@@ -71,14 +71,14 @@ Una volta capito come funzionano i cambi di puntatori, mostrare la **correttezza
 Risolviamo il problema di inserire un nodo $z$ in un RBT $T$ in maniera da mantenere tutte le proprieta' di $T$. Chiaramente usiamo `BSTTreeInsert` cosi' com'e', abbiamo la garanzia che la proprieta' BST sia rispettata. Se il nodo inserito e' colorato di rosso, allora anche la proprieta' 5 e' rispettata; inoltre, poiche' $z$ sara' sempre una nuova foglia, inserendo correttamente le sue foglie esterne, garantiamo anche la proprieta' 3. La proprieta' 1 e' rispettata semplicemente assegnando il colore (rosso) a $z$. Quindi, solo due proprieta' possono essere violate: se $z$ diventa la radice, allora **violiamo 2**, se invece $z$ diventa figlio di un nodo rosso, **violiamo 4**.
 
 ``` Pseudocodice
-proc BSTTreeInsert(T, z) {
+proc RBTreeInsert(T, z) {
 	y = T.Nil
 	x = T.root
 	while (x != T.Nil)
 		y = x
 		if (z.key < x.key)
 			then x = x.left
-			else x = x.right
+		else x = x.right
 	z.p = y
 	if (y = T.Nil)
 		then T.root = z
