@@ -45,7 +45,7 @@ Il modello e' stato proposto da E. F. Codd (IBM) nel 1970.
 - Ad esempio, l'attributo Nome-Cliente e' definito sul dominio delle stringhe di 25 caratteri. Il ruolo di queste stringhe nella relazione CLIENTI e' quello di specificare il nome dei clienti.
 - Formalmente, 
 	- Dato R(A1, A2, ..., An)
-	- **`r(R) ⊂ dom(A1) × dom(A2) × ... × dom(An)`** 
+	- `r(R) ⊂ dom(A1) × dom(A2) × ... × dom(An)` 
 		- *R*: schema di relazione
 		- *r* di *R*: uno specifico "valore" o popolazione di R. Chiamato **stato della relazione**
 		- *R* viene anche chiamato intensione della relazione

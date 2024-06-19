@@ -1,14 +1,3 @@
-## Sommario
-- [[#Database AZIENDA|Esempio di Applicazione con Database (AZIENDA)]] 
-- [[#Concetti del Modello ER]]
-	- [[#Entita' ed Attributi|Entita' e attributi]] 
-	- [[#Entità, Istanze e Attributi chiave|Entita', Istanze, Domini degli attributi, Attributi Chiave]] 
-	- [[#Associazioni ed Istanze di Associazioni]] 
-	- [[#Entita' deboli ed Associazioni Identificanti|Entita' Deboli]]   
-	- [[#Attributi delle Associazioni|Ruoli e Attributi delle Associazioni]] 
-- [[#Notazione ER|Notazione dei Diagrammi ER]] 
-- [[#Diagramma ER AZIENDA|Diagramma ER dello Schema AZIENDA]] 
-- [[#Notazione alternativa (min, max)|Notazioni alternative - Diagrammi di classe UML, etc...]]
 
 ## Database AZIENDA
 - Richieste sintetiche dell'Azienda (Analisi Requisiti)
@@ -33,7 +22,7 @@
 - **Multivalore { }**: Un'istanza puo' avere multipli per attributo. Ad esempio TitoloDiStudio. Denotati come {TitoloDiStudio}.
 
 ### Entità, Istanze e Attributi chiave
-- Le **Entità** Vengono anche chiamate Tipi di Entità ed ogni elemento in questa entità viene chiamato **Istanza dell'Entità**. In questo contesto si ha la corrispondenza [Entità, Istanza] ≈ [Tipo di Entità, Entità].
+- Le **Entità** Vengono anche chiamate Tipi di Entità ed ogni elemento in questa entità viene chiamato **Istanza dell'Entità**. In questo contesto si ha la corrispondenza `[Entità, Istanza]` $\approx$ `[Tipo di Entità, Entità]`.
 - In ogni Entità esiste un Attributo che il cui valore e' distinto (cioe' unico) per ogni singola istanza (elemento) dell'Entità.
 - Un Attributo con questa caratteristica e' detto **Attributo chiave**. Ad esempio, CF e DIPENDENTI.
 - Il valore dell'Attributo chiave e' utile per identificare univocamente una singola istanza dell'Entità.
@@ -62,7 +51,7 @@
 
 ### Entita' deboli ed Associazioni Identificanti
 - Un'entita' e' definita **debole** se non possiede un attributo chiave.
-- Un'entita' debole *deve* partecipare ad un'**associazione identificante** con un'altra entita' (non debole) identificante [proprietario].
+- Un'entita' debole *deve* partecipare ad un'**associazione identificante** con un'altra entita' (non debole) identificante `[proprietario]`.
 - Le sue istanze sono identificate da una combinazione di:
 	- Valore di una chiave parziale dell'entita' debole;
 	- Istanza dell'entita' identificante a cui e' associata (tramite associazione identificante).

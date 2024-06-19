@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lezioni/Lezione 8 - SQL.md",
+                "file": "lezioni/Lezione 04.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "37659353332901fc",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lezioni/Lezione 8 - SQL.md",
+                "file": "lezioni/Lezione 04.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lezioni/Lezione 8 - SQL.md",
+                "file": "lezioni/Lezione 04.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lezioni/Lezione 8 - SQL.md"
+                "file": "lezioni/Lezione 04.md"
               }
             }
           }
@@ -148,6 +149,9 @@
   },
   "active": "ee2cf2e91a95755b",
   "lastOpenFiles": [
+    "Pasted image 20240619101652.png",
+    "img/GerarchieEReticoli.png",
+    "lezioni/Lezione 8 - SQL.md",
     "lezioni/Lezione 06.md",
     "lezioni/Lezione 05.md",
     "lezioni/Lezione 04.md",

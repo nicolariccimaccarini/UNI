@@ -100,5 +100,37 @@
 - Nelle generalizzazioni, si inizia con alcune entita' e si generalizzano (in successione) quelle che hanno proprieta' comuni (processo di *sintesi concettuale* **bottom-up**)
 - In pratica, viene utilizzata molto spesso una combinazione dei due processi
 
+![[GerarchieEReticoli.png]]
 
-FINIRE LEZIONE 4
+## Categorie (tipi di UNIONE)
+- Tutte le associazioni superclasse/sottoclasse finora viste hanno una sola superclasse
+- Anche una sottoclasse condivisa ha in definitiva una singola superclasse per ogni associazione superclasse/sottoclasse a cui appartiene
+- In alcuni casi e' necessario modellare i dati in modo tale che una singola associazione superclasse/sottoclasse abbia piu' di una superclasse
+- Le superclassi in questo caso rappresentano differenti entita' (con ruoli e caratteristiche differenti)
+- Questo tipo di sottoclassi vengono chiamate **categorie** oppure **tipi di UNIONE**
+- Esempio: in un database per il PRA, il proprietario di un veicolo puo' essere una persona, una barca (con un leasing) o una ditta
+	- La categoria (sottoclasse) PROPRIETARIO contiene un *sottoinsieme* delle istanze provenienti dall'**unione** delle istanze delle entita' DITTA, BANCA, PERSONA (superclassi)
+	- Un membro della categoria deve esistere *in almeno una* delle sue superclassi
+- Nota: la differenza tra categorie e sottoclassi condivise e' che una sottoclasse condivisa contiene *tutte* le istanze provenienti dall'**intersezione** delle sue superclassi. Un membro della sottoclasse condivisa deve esistere *in tutte* le sue superclassi.
+
+## Definizioni formali del modello EER
+- **Classe** $C$: un'insieme di istanze; puo' essere un'entita', una sottoclasse, una superclasse, una categoria
+- **Sottoclasse** $S$: una classe le cui istanze debbano sempre essere un sottoinsieme delle istanze di un'altra classe, detta **superclasse** $C$ dell'associazione superclasse/sottoclasse (o E'-UN, IS-A) $C/S$. Si ha quindi: $$ S \subseteq C $$
+- **Specializzazione** $Z$: $Z = \{ S_1, S_2, \ldots, S_n \}$ e' un insieme di sottoclassi che hanno la stessa superclasse $G$; quindi $G / S_i$ e' un'associazione di superclasse $\forall i=1, \ldots, n$.
+	- $G$ e' chiamata una **generalizzazione** delle sottoclassi $\{ S_1, S_2, \ldots, S_n \}$ 
+	- $Z$ e' **totale** se si ha sempre (in ogni istante di tempo) $S_1 \cup S_2 \cup \ldots \cup S_n = G$ 
+	- Altrimenti $Z$ e' **parziale**
+	- $Z$ e' **disgiunta** se si ha sempre: $S_i \cap S_j = \oslash$ (insieme vuoto) per $i \ne j$  ;
+	- Altrimenti, $Z$ e' **sovrapposta**
+
+- Una sottoclasse $S$ di $C$ e' **definita tramite un predicato** (attributo) se si usa un predicato $p$ sugli attributi di $C$ per specificare quali istanze di $C$ sono anche membri di $S$; cioe', $S = C[p]$ e' l'insieme delle istanze di $C$ che soddisfano $p$.
+- Una sottoclasse non definita tramite un predicato e' detta **definita dall'utente**.
+- Specializzazione **definita tramite l'attributo**: se viene usato un predicato $A = c_i$ (dove $A$ e' un attributo di $G$ e $c_i$ e' un valore costante del dominio di $A$) per specificare l'insieme dei membri di ciascuna sottoclasse $S_i$ in $Z$
+- Nota: Se $c_i \ne c_j$ per $i \ne j$, e $A$ e' un attributo a valore singolo, allora la specializzazione sara' disgiunta
+
+- **Categoria** (o tipo UNIONE) $T$:
+	- una classe di sottoinsiemi dell'unione di $n$ superclassi che la definiscono $D_1, D_2, \ldots, D_3, \quad n>1$: $$ T \subseteq (D_1 \cup D_2 \cup \ldots \cup D_n) $$
+	- Un predicato $p_i$ sugli attributi $D_i$ puo' essere usato per specificare ai membri di ciascuna superclasse $D_i$ che sono anche membri di $T$.
+	- Se un predicato e' specificato su ciascun $D_i$, si ha: $$ T(D_i[p_i] \cup D_2[p_2] \cup \ldots \cup D_n[p_n]) $$
+	- Nota: la definizione di **associazione** deve essere estesa al rispetto del modello ER consentendo ad ogni **classe** di parteciparvi (non solo alle entita')
+ 
