@@ -133,4 +133,11 @@
 	- Un predicato $p_i$ sugli attributi $D_i$ puo' essere usato per specificare ai membri di ciascuna superclasse $D_i$ che sono anche membri di $T$.
 	- Se un predicato e' specificato su ciascun $D_i$, si ha: $$ T(D_i[p_i] \cup D_2[p_2] \cup \ldots \cup D_n[p_n]) $$
 	- Nota: la definizione di **associazione** deve essere estesa al rispetto del modello ER consentendo ad ogni **classe** di parteciparvi (non solo alle entita')
+
+## Associazioni di grado 3
+- *Associazione ternaria*: si considerino ad esempio le entita' FORNITORE, PARTE e PROGETTO e l'associazione di grado 3 FORNITURA le cui istanze sono un insieme di elementi della forma ($s, j, p)$ con $s$ istanza di FORNITORE, $j$ di PARTE e $p$ di PROGETTO.
+- Possiamo considerare 3 associazioni binarie tra queste entita': PUO'$\_$FORNIRE tra FORNITORE e PARTE, USA tra PROGETTO e PARTE, FORNISCE tra FORNITORE e PROGETTO
+	- Si puo' verificare che l'esistenzsa delle istanze $(s, p)$, $(j, p)$ e $(s, j)$ in PUO'$\_$FORNIRE, USA e FORNISCE non implica necessariamente l'esistenza di un'istanza $(s, j, p)$ nell'associazione ternaria FORNITURA
+	  Servono ulteriori **vincoli**!
+- Si puo' anche rappresentare FORNITURA come entita' debole con tre associazioni identificanti e le entita' FORNITORE, PARTE e PROGETTO in qualita' di proprietari. **Equivalenza**!
  

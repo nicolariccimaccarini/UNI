@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6b32dce5b539d5fc",
+        "id": "bd891de3f9b7718d",
         "type": "tabs",
         "children": [
           {
-            "id": "ee2cf2e91a95755b",
+            "id": "7afd667d38b729b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lezioni/Lezione 04.md",
+                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lezioni/Lezione 04.md",
+                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lezioni/Lezione 04.md",
+                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lezioni/Lezione 04.md"
+                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md"
               }
             }
           }
@@ -147,16 +147,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ee2cf2e91a95755b",
+  "active": "7afd667d38b729b0",
   "lastOpenFiles": [
+    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
+    "lezioni/Lezione 08 - SQL.md",
+    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
+    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
+    "lezioni/Lezione 04 - Modello EER.md",
+    "lezioni/Lezione 03 - Modello ER.md",
+    "lezioni/Lezione 02 - Database System.md",
+    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
+    "Domande Basi di Dati.md",
     "Pasted image 20240619101652.png",
-    "img/GerarchieEReticoli.png",
-    "lezioni/Lezione 8 - SQL.md",
-    "lezioni/Lezione 06.md",
-    "lezioni/Lezione 05.md",
-    "lezioni/Lezione 04.md",
-    "lezioni/Lezione 03.md",
-    "lezioni/Lezione 02.md",
-    "lezioni/Lezione 01.md"
+    "img/GerarchieEReticoli.png"
   ]
 }
