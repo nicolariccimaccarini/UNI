@@ -308,3 +308,224 @@ Una sottoclasse puo' avere in essa ulteriori sottoclasse specifiche su di essa (
 
 ---
 ## 5 - Modello dei dati relazionale
+Modello basato sul concetto di relazione (concetto matematico basato sulla teoria degli insiemi).
+
+### Definizioni informali
+- **Relazione** $\rightarrow$ tabella di valori rappresentata come un'insieme di righe o colonne.
+	- riga $\rightarrow$ rappresenta un'istanza di un'entita' o di una associazione del mini-mondo
+	- ogni riga ha un valore per elemento ad un insieme di elementi che la compongono che identifica univocamente la riga
+	- si possono assegnare identificatori di riga (row-id) o dei numeri sequenziali per identificare le righe nella tabella
+	- ciascuna colonna viene tipicamente individuata mediante il nome o l'interstazione della colonna o il nome dell'atributo
+
+### Definizioni formali
+Una relazione piu' essere definita in molti modi:
+- **Schema di una relazione**: $R(A_1, A_2, \ldots, A_n)$
+	- lo schema della relazione $R$ e' definito sugli attributi $A_1, A_2, \ldots, A_n$
+	- Esempio:
+		- CLIENTI (ID-Cliente, Nome-Cliente, Indirizzo, Tel)
+		- CLIENTI e' una relazione definita sui quattro attributi ID-Cliente, Nome-Cliente, Indirizzo e  Tel, ciascuno dei quali possiede un **dominio**, o insieme dei valori validi.
+- **Tuple**
+	- Insieme ordinato di valori
+	- Esempio:
+		- Ciascuna riga nella tabella CLIENTI puo' essere vista come una tupla della relazione, composta da quattro valori.
+		- <632895, “Giacomo Piva", "via Saragat 1, 44122, Ferrara", "+39 (0532) 974344">
+	- Una relazione puo' essere trattata come un insieme di tuple (righe)
+	- Le colonne della tabella sono chiamate attributi della relazione
+- **Dominio**
+	- Ha una definizione logica (es. "Numeri di Telefono" e' l'insieme dei numeri telefonici validi)
+	- Puo' avere:
+		- un tipo di dati (es. numeri di telefono $\rightarrow$ stringa di caratteri)
+		- formato ("Numeri di Telefono" puo' avere il formato: `+dd (dddd) dddddddd` dove d e' una cifra decimale)
+
+- **Stato della Relazione** (o relazione)
+	- e' formata dal prodotto cartesiano degli insiemi dominio dove ciascun insieme ha dei valori provenienti dal dominio (usato per definire il ruolo dell'attributo in questione)
+
+| Termini Informali      | Termini Formali     |
+| ---------------------- | ------------------- |
+| Tabella                | Relazione           |
+| Colonna                | Attributo/Dominio   |
+| Riga                   | Tupla               |
+| Valori di una colonna  | Dominio             |
+| Definizione di Tabella | Schema di Relazione |
+| Tabella Popolata       | Estensione (Stato)  |
+### Caratteristiche delle relazioni
+- Le tuple non devono considerarsi ordinate anche se appaiono in forma tabulare
+- Gli attributi $R(A_1, A_2, \ldots, A_3)$ ed i valori in $t=<v_1, v_2, \ldots, v_n>$ devono essere considerati ordinati
+- Una definizione ancora piu' generale di una relazione non richiede alcun tipo di ordinamento
+- Tutti i valori di una tupla sono considerati atomici (indivisibili) e NULL per i valori sconosciuti
+
+### Vincoli di integrita'
+Sono condizioni che devono essere rispettate da tutti gli stati di relazione validi.
+3 tipi di vincoli:
+- vincoli su chiave
+- vincoli di integrita' delle entita'
+- vincoli di integrita' referenziale
+
+**Vincoli su chiave**
+- Superchiave di $R$: insieme di attributi che identificano univocamente una tupla (per ogni coppia di tuple distinte $t_1$ e $t_2$ in $r(R)$, $t_1[SK] \ne t_2[SK]$).
+- Chiave di $R$: superchiave minimale (se si rimuove un attributo dalla superchiave, non e' piu' una superchiave)
+- Chiave primaria di $R$: chiave scelta come riferimento per la relazione tra varie possibili chiavi
+
+**Integrità sulle Entità** 
+- Gli attributi chiave primaria PK di ciascuno schema di relazione $R$ in $S$ non possono avere dei valori *null* in nessuna tupla $r(R)$
+
+**Integrità Referenziale**
+- Vincolo che coinvolge due relazioni
+- Usato per specificare un riferimento tra tuple in due relazioni (relazione referenziale e relazione riferita)
+- Tuple nella relazione referenziante $R_1$ hanno attributi *FK* (chiamati attributi chiave esterne) che fanno riferimento agli attributi chiave primarie *PK* della relazione riferita $R_2$.
+- Un vincolo di integrita' referenziale puo' essere indicato in uno schema relazionale con un arco diretto da $R_1.FK$ a $R_2.FK$.
+
+**Vincoli di integrità semantici** 
+- Basati sulla semantica dell'applicazione
+- Non possono essere espressi dal modello dei dati svincolato dall'applicazione/dati
+
+### Operazioni di aggiornamento sulle relazioni
+- **Inserimento** di una tupla (INSERT)
+- **Cancellazione** di una tupla (DELETE)
+- **Modifica** di una tupla (MODIFY, UPDATE)
+- I vincoli di integrita' non devono essere violati dalle operazioni di aggiornamento delle relazioni
+- Una serie di operazioni di aggiornamento possono essere raggruppate insieme
+- Le operazioni di aggiornamento possono creare in automatico altri aggiornamenti
+- Se un operazione di aggiornamento viola un vincolo di integrità:
+	- si annulla l'operazione che causa la violazione (REJECT)
+	- si esegue l'operazione, informando l'utente della violazione
+	- si eseguono altri aggiornamenti per correggere la violazione (CASCADE, SET NULL)
+	- si esegue una routine dall'utente per correggere la violazione
+
+---
+## 5b - dal modello concettuale al modello logico
+
+### ER - Relazionale
+1. **Entità**
+	- per ogni entita' $E$ si crea una relazione $R$ con tutti gli attributi semplici di $E$
+	- si sceglie uno degli attributi chiavi di $E$ come chiave primaria di $R$
+		- se la chiave $E$ scelta e' composta, l'insieme degli attributi semplici che la formano saranno chiave primaria di $R$.
+2. **Entità deboli**
+	- per ogni entita' debole $W$ con entita' prioritaria, si crea una relazione $R$ con tutti gli attributi semplici di $W$ e come chiave esterna gli attributi chiave primaria di $E$
+	- chiave primaria di $R$ $\rightarrow$ combinazione della chiave primaria dell'entita' $E$ e della chiave parziale dell'entita' debole $W$
+3. **Associazioni binarie 1:1**
+	- per ogni associazione si identificano le relazioni $S$ e $T$:
+		- chiave esterna $\rightarrow$ si sceglie una delle relazioni e si include come chiave esterna la chiave primaria dell'altra relazione, si inseriscono poi tutti gli attributi di $A$ in $S$
+		- unica relazione $\rightarrow$ si uniscono le due entita' e l'associazione in una singola relazione
+		- relazione associazione $\rightarrow$ si crea una terza relazione $R$ per avere un riferimento per le due relazioni $S$ e $T$
+4. **Associazioni binarie 1:N**
+	- per ogni associazione $A$ si identificano le relazioni $S$ (lato N) e $T$ (lato 1):
+		- si include come chiave esterna in $S$ la chiave primaria di $T$
+		- si includono tutti gli attributi semplici di $A$ in $S$
+5. **Associazione binarie N:M**
+	- per ogni relazione $A$ si crea una relazione $S$ che rappresenti $A$
+		- si includono come chiavi estere in $S$ le chiavi primarie delle due relazioni coinvolte in $A$, la loro combinazione sara' la chiave primaria di $S$
+		- si includono tutti gli attributi di $A$ in $S$
+6. **Attributi multivalore**
+	- Per ogni attributo multivalore $A$ si crea una nuova relazione $R$ dove questa avra' un attributo corrispondente ad $A$ e l'attributo $K$ corrispondente alla chiave primaria di $A$
+	- La chiave primaria di $R$ e' la combinazione di $A$ e $K$
+7. **Associazioni N-arie**
+	- per ogni associazione $A$ n-aria ($n > 2$) si crea una relazione $S$ per rappresentare $A$:
+		- si includono come chiavi esterne in $S$ le chiavi primarie delle relazioni che rappresentano le n entità coinvolte in $A$
+		- si includono tutti gli attributi di $A$ in $S$
+
+### EER - Relazioni
+8. **Specializzazioni e generalizzazioni**
+	- Conversione di ogni specializzazione di $m$ sottoclassi $\{ S_1, S_2, \ldots, S_m \}$ e superclasse generalizza $C$ con attributi $\{ k, A_1, \ldots, A_n \}$ ($k$ attributo chiave di $C$) in uno schema relazionale secondo le seguenti opzioni:
+		- **Opzione A**: relazioni multiple - superclasse e sottoclasse
+			- si crea la relazione $L$ per $C$ con i suoi attributi $Attr(L)$ e la sua chiave primaria $PK(L)=k$
+			- si crea la relazione $L[i]$ per ogni sottoclasse $S[i], \space 1<i<m$, con attributi $Attr(L[i]) = \{k\} \cup \{ \text{attr di S[i] e chiave primaria PK(L[i])=k} \}$ 
+		- **Opzione B**: relazioni multiple - solo relazioni sottoclasse
+			- si crea una relazione $L[i]$ per ogni sottoclasse $S[i], \space 1<i<m$, con attributi $Attr(L[i]) = \{ \text{attr di S[i]} \} \cup \{ k, A_1, \ldots, A_n \}$ e chiave primaria $PK(L[i])$
+		- **Opzione C**: relazione singola con un attributo tipo
+			- si crea una relazione $L$ con gli attributi $Attr(L) = \{k, A1, ..., An\} \cup \{\text{attr. di S1}\} \cup \ldots \cup \{\text{attr. di Sm}\} \cup \{t\}$ e chiave primaria $PK(L) = k$ 
+			- l'attributo $t$ è chiamato tipo e indica a quale sottoclasse appartiene ogni tupla
+		- **Opzione D**: relazione singola con molti attributi tipo
+			- si crea una relazione $L$ con gli attributi $Attr(L) = \{k, A_1, \ldots, A_n\} \cup \{\text{attr. di S1}\} \cup \{\text{attr. di Sm}\} \cup \{t_1, t_2, \ldots, t_m\}$ e chiave primaria $PK(L)=k$
+			- ogni $t[i], \space 1<i<m$ e' un attributo booleano (flag) che indica se la tupla appartiene alla sottoclasse $S[i]$
+
+---
+### 6 - Algebra e calcolo relazionale
+### Algebra relazionale
+- Algebra relazionale $\rightarrow$ l'insieme delle operazioni per il modello relazionale che consentono all'utente di specificare le interrogazioni fondamentali
+- Risultato $\rightarrow$ nuova relazione, che piu' essere formata a partire da una o piu' relazioni
+- Espressione dell'algebra relazionale $\rightarrow$ sequenza di operazioni dell'algebra relazionale, ha come risultato un'altra relazione che rappresenta il risultato di un'interrogazione del database
+
+### Operazioni relazionali unarie
+- **Operazione di selezione (SELECT)**: 
+	- Usata per selezionare un sottoinsieme di tuple di una relazione che soddisfano ima condizione di selezione
+	- Notazione: $\sigma_{\text{<condizione di selezione>}}(R)$ 
+	- Proprieta':
+		- produce una relazione $S$ che ha lo stesso schema della relazione $R$
+		- e' commutativa
+		- SELECT in cascata possono essere eseguite in qualunque ordine (per la proprieta' commutativa)
+		- SELECT in cascata possono essere sostituite da una singola SELECT avente come condizione la congiunzione di tutte le condizioni precedenti
+- **Operazione di proiezione (PROJECT)**:
+	- Seleziona alcuni attributi (colonne) da una relazione (tabella) e scarta gli altri (filtro verticale) eliminando eventuali duplicati delle tuple
+	- Notazione: $\pi_{\text{<elenco attributi>}}(R)$
+	- Proprieta':
+		- il numero di tuple nel risultato e' sempre $\le$ al numero di tuple in $R$
+		- se l'elenco degli attributi include una chiave $R$, allora il numero di tuple risultanti e' = al numero di tuple in $R$
+		- se $\text{<attributi2> = <attributi1>} \rightarrow  \pi_{\text{<attributi1>}}(\pi_{\text{<attributi2>}}(R)) = \pi_{\text{<attributi1>}}(R)$ 
+- **Operazione di ridenominazione (RENAME)**:
+	- Da la possibilita' di applicare un'operazione alla volta e creare relazioni con risultati intermedi con nomi diversi
+	- Notazione: $\rho_{\text{<nuovo nome>}}(R)$
+
+### Operazioni insiemistiche
+- **Operazione di unione (UNION)**:
+	- Unisce due relazioni in una includendo tutte le tuple di una e dell'altra. Le due tuple devono avere lo stesso numero di tuple (compatibili all'unione)
+	- Notazione: $R \cup S$
+	- Compatibilita' all'unione:
+		- $R$ ed $S$ devono avere lo stesso numero di attributi e il dominio di ogni attributo di $R$ deve essere lo stesso di quello di $S$
+		- la relazione risultante ha gli stessi nomi di attributi di $R$
+- **Operazione di intersezione (INTERSECTION)**:
+	- Restituisce una relazione che include tutte le tuple che sono presenti in entrambe le relazioni
+	- Notazione: $R \cap S$
+	- Compatibilità dell'intersezione: stessa compatibilità dell'unione
+- **Operazione di differenza (MINUS)**:
+	- Restituisce una relazione che include tutte le tuple che sono presenti in $R$ ma non in $S$
+	- Notazione: $R - S$
+	- Compatibilità dell'intersezione: stessa compatibilità dell'unione
+
+**Proprieta' di UNION, INTERSECTION e MINUS**
+- UNION e INTERSECTION sono commutative
+- UNION e INTERSECTION sono associative
+- MINUS non e' commutativa 
+
+**Operazione di prodotto cartesiano (prodotto incrociato)**
+- Restituisce una relazione con tutti gli attributi di $R$ e $S$ e tutte le possibili combinazioni di tuple di $R$ e $S$ 
+- Notazione: $|R \times S|$ ha $n \times m$ tuple (n = n. tuple di $R$, m = n. tuple di $S$)
+- $R$ e $S$ non devono essere compatibili all'unione
+
+### Operazioni relazionali binarie
+- **Operazione di JOIN**:
+	- Restituisce una relazione data da un prodotto cartesiano seguito da una selezione
+	- Notazione $\bf{R} \bowtie_{\text{<condizione di join>}} \bf{S}$ 
+- **THETA-JOIN**:
+	- JOIN con condizione arbitraria 
+	- Notazione: $\bf{R} \bowtie_{\text{<condizione> AND <condizione> AND ... AND <condizione>}} \bf{S}$ 
+- **EQUI-JOIN**:
+	- JOIN con unica operazione, quella di uguaglianza, e si ha come risultato una o più coppie di attributi con gli stessi valori in ogni tupla
+	- JOIN piu' comune
+- **JOIN naturale**:
+	- JOIN (indicata con $*$) che non include i duplicati in una condizione di uguaglianza. 
+	- Se due relazioni hanno attributi con lo stesso nome, la condizione di JOIN diventa una ridenominazione
+
+**Operazione di divisione (DIVISION)**:
+- Date due relazioni $R(Z) \div S(X)$ e $Y = Z-X$ ($Y$ e' l'insieme degli attributi di $R$ che sono in $S$), il risultato della divisione e' una relazione $T(Y)$ con le tuple $t$ di $R$ tali che, per ogni tupla in $S$, esiste almeno una tupla in $R$ che abbia gli stessi valori per gli attributi in $X$ e $Y$
+
+### Altre operazioni relazionali
+
+**Funzioni aggregate e raggruppamento**: 
+- operazioni che permettono di calcolare valori aggregati (es. SUM, AVERAGE, MAXIMUM, MINIMUM, COUNT) su gruppi di tuple
+
+**Uso dell'operatore funzionale** $\mathcal{F}$:
+- Operatore di funzione aggregata dove risulta una selezione con gli attributi di raggruppamento piu' un attributo per ogni elemento della lista di funzioni
+- Notazione: $\text{<attributi raggruppamento>} \quad \mathcal{F} \space \text{<lista funzioni>}(R)$ 
+	- $\text{<attributi raggruppamento>}$: lista di attributi della relazione R
+	- $\text{<lista funzioni>}$ lista di coppie (funzione, attributo)
+
+**Operazioni di chiusura ricorsiva**:
+- Operazioni che permettono di eseguire operazioni ricorsive su relazioni.
+- Esempio: cercare tutti i supervisori di un dipendente e a tutti i livelli (supervisore, supervisore del supervisore, ecc.)
+
+**Operazione di JOIN esterna (OUTER JOIN)**:
+- Quando si vuole includere le tuple che non hanno corrispondenza in una delle due relazioni (a differenza della JOIN che include solo le tuple che hanno corrispondenza in entrambe le relazioni)
+	- join esterna sinistra (**LEFT OUTER JOIN**): $\bf{R} \bowtie_\text{LEFT} \bf{S}$ mantiene tutte le tuple della prima relazione $R$ (se non c'è corrispondenza con la seconda relazione $S$, gli attributi di $S$ sono NULL)
+	- join esterna destra (**RIGHT OUTER JOIN**): mantiene tutte le tuple della seconda relazione (di destra) $S$ nel risultato di $\bf{R} \bowtie_\text{RIGHT} \bf{S}$.
+	- join esterna totale (**FULL OUTER JOIN**): mantiene tutte le tuple di entrambe le relazioni in $\bf{R} \bowtie_\text{FULL} \bf{S}$.
