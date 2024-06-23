@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -159,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Riassunto Basi di Dati.md",
+                "file": "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Riassunto Basi di Dati.md",
+                "file": "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -199,7 +199,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Riassunto Basi di Dati.md"
+                "file": "lezioni/Lezione 06 - Algebra e calcolo relazionale.md"
               }
             }
           }
@@ -257,17 +257,17 @@
       }
     ]
   },
-  "active": "c474cdbd78ef4556",
+  "active": "913c9850678a7405",
   "lastOpenFiles": [
-    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
     "Riassunto Basi di Dati.md",
+    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
+    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
     "lezioni/Lezione 04 - Modello EER.md",
+    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
     "Domande Basi di Dati.md",
     "lezioni/Lezione 03 - Modello ER.md",
     "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
     "lezioni/Lezione 02 - Database System.md",
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
-    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
     "lezioni/Lezione 08 - SQL.md",
     "Pasted image 20240619101652.png",
     "img/GerarchieEReticoli.png"
