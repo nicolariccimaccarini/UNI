@@ -19,8 +19,8 @@ Il modello e' stato proposto da E. F. Codd (IBM) nel 1970.
 
 # Definizioni Formali
 - Una relazione puo' essere definita in molti modi.
-- Lo **Schema di Relazione**: R (A1, A2, ..., An)
-	- Lo Schema di Relazione R e' definito sugli *Attributi* A1, A2, ..., An
+- Lo **Schema di Relazione**: $R(A_1, A_2, ..., A_n)$
+	- Lo Schema di Relazione $R$ e' definito sugli *Attributi* $A_1, A_2, ..., A_n$
 
 - Esempio:
 	- CLIENTI (ID-Cliente, Nome-Cliente, Indirizzo, Tel)
@@ -37,19 +37,18 @@ Il modello e' stato proposto da E. F. Codd (IBM) nel 1970.
 
 - Un **dominio** ha una *definizione logica*: ad esempio "Numeri di Telefono" e' l'insieme dei numeri telefonici validi, comprensivi del Country Code, del prefisso e del numero di lunghezza massima di 14 cifre.
 - Un dominio puo' avere un *tipo di dati* o un *formato definito*. Il dominio "Numeri di Telefono" puo' avere il formato: `+dd (dddd) dddddddd` dove d e' una cifra decimale. 
-  Esempio: le date hanno diversi formati, come giorno, mese, anno oppure `dd-mm-yy`, 
-  `dd-mm-yyyy`, ...
+  Esempio: le date hanno diversi formati, come giorno, mese, anno oppure `dd-mm-yy`, `dd-mm-yyyy`, ...
 - Un attributo specifica il *ruolo* ricoperto da un dominio. Ad esempio il dominio date puo' essere usato per definire degli attributi "Data Fattura" e "Data Pagamento".
 
 - Una relazione (stato ella relazione) e' formata sul prodotto cartesiano degli insiemi dominio; ciascun insieme ha dei valori provenienti da un dominio; il dominio e' usato per specificare il ruolo dell'attributo considerato.
 - Ad esempio, l'attributo Nome-Cliente e' definito sul dominio delle stringhe di 25 caratteri. Il ruolo di queste stringhe nella relazione CLIENTI e' quello di specificare il nome dei clienti.
 - Formalmente, 
-	- Dato R(A1, A2, ..., An)
-	- `r(R) ⊂ dom(A1) × dom(A2) × ... × dom(An)` 
-		- *R*: schema di relazione
-		- *r* di *R*: uno specifico "valore" o popolazione di R. Chiamato **stato della relazione**
-		- *R* viene anche chiamato intensione della relazione
-		- *r* viene anche chiamato estensione della relazione
+	- Dato $R(A_1, A_2, ..., A_n)$
+	- $r(R) \subset dom(A_1) \cdot dom(A_2) \cdot \ldots \cdot dom(A_n)$  
+		- $R$: schema di relazione
+		- $r(R)$: uno specifico "valore" o popolazione di $R$. Chiamato **stato della relazione**
+		- $R$ viene anche chiamato intensione della relazione
+		- $r$ viene anche chiamato estensione della relazione
 
 - Siano: **S1 = {0, 1}** e **S2 = {a, b, c}**
 - Definiamo **R ⊂ S1 × S2**
@@ -70,17 +69,17 @@ Il modello e' stato proposto da E. F. Codd (IBM) nel 1970.
 ![[lezione5esempio.png]]
 
 # Caratteristiche delle Relazioni
-- Ordinamento delle tuple in una relazione *r(R)*:
+- Ordinamento delle tuple in una relazione $r(R)$:
 	- Le tuple non devono considerarsi ordinate, anche se appaiono in forma tabulare
-- Ordinamento degli attributi in uno schema di relazione R (e dei valori all'interno di ciascuna tupla *t*):
-	- Gli attributi *R(A1, A2, ..., An)* ed i valori in $t = <v1, v2, ..., vn>$ devono essere considerati ordinati.
+- Ordinamento degli attributi in uno schema di relazione $R$ (e dei valori all'interno di ciascuna tupla *t*):
+	- Gli attributi $R(A_1, A_2, ..., A_n)$ ed i valori in $t = <v_1, v_2, ..., v_n>$ devono essere considerati ordinati.
 - In ogni caso, una definizione ancora piu' generale di relazione non richiede alcun tipo di ordinamento.
 - Valori in una tupla:
 	- Tutti i valori sono considerati atomici (indivisibili). Un valore speciale NULL viene spesso usato per rappresentare valori sconosciuti o non applicabili ad alcune tuple.
 
 - NOTAZIONE
-	- Ci riferiremo ai valori presenti in una tupla *t* con $t[A_i] = v_i$ (il valore dell'attrbuto $A_i$ per la tupla *t*)
-	- Analogamente, $t[A_u, A_vm, ..., A_w]$ si riferisce alla sotto-tupla di *t* che contiene i valori degli attributi $A_u, A_vm, ..., A_w$ rispettivamente.
+	- Ci riferiremo ai valori presenti in una tupla $t$ con $t[A_i] = v_i$ (il valore dell'attrbuto $A_i$ per la tupla $t$)
+	- Analogamente, $t[A_u, A_v, ..., A_w]$ si riferisce alla sotto-tupla di $t$ che contiene i valori degli attributi $A_u, A_v, ..., A_w$ rispettivamente.
 
 ![[caratteristiche_delle_relazioni.png]]
 
@@ -92,12 +91,12 @@ Il modello e' stato proposto da E. F. Codd (IBM) nel 1970.
 	3. Vincoli di Integrita' Referenziale
 
 ## Vincoli sulla Chiave
-- **Superchiave** di R:
-	- Un insieme di attributi *SK* di *R* tale che non esistano due tuple che abbiano lo stesso valore per *SK* ==in nessuno stato di relazione valido per *r(R)*;== 
-	  cioe' per ogni coppia di tuple distinte *t1* e *t2* in *r(R)*, `t1[SK] != t2[SK]`.
+- **Superchiave** di $R$:
+	- Un insieme di attributi *SK* di $R$ tale che non esistano due tuple che abbiano lo stesso valore per *SK* ==in nessuno stato di relazione valido per ==$r(R)$; cioe' per ogni coppia di tuple distinte $t_1$ e $t_2$ in $r(R)$, 
+	  $t_1[SK] \ne t_2[SK]$.
 
-- **Chiave** di *R*:
-	- Una superchiave minimale; cioe', una superchiave K tale che la rimozione di qualsiasi attributo da *K* risulti in un insieme di attributi che non e' piu' una superchiave.
+- **Chiave** di $R$:
+	- Una superchiave minimale; cioe', una superchiave $K$ tale che la rimozione di qualsiasi attributo da $K$ risulti in un insieme di attributi che non e' piu' una superchiave.
 		- Esempio: Lo schema di relazione AUTO
 		  `AUTO(ProvT, NumT, NumTelaio, Casa, Modello, Anno)`
 		  ha due chiavi `PK1 = {ProvT, NumT}, PK2 = {NumTelaio},` che sono anche superchiave `({PK1, PK2})`.

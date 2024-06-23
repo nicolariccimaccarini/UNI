@@ -9,7 +9,7 @@
 L'operazione di selezione e' usata per selezionare un *sottoinsieme* di tuple di una relazione che soddisfano una condizione di selezione. E' una sorta di filtro che trattiene solo quelle tuple che soddisfano una *condizione qualificante*. Puo' essere vista come una *partizione orizzontale* della relazione in due insiemi di tuple: quelle che soddisfano la condizione e vengono selezionate e quelle che non la soddisfano e vengono scartate.
 
 L'operazione di selezione e' indicata con: $$ \sigma_{\text{<condizione di selezione>}}(R) $$
-Dove il simbolo $\sigma$ (sigma) e' usato per denotare l'operatore di selezione e la condizione di selezione e' un'*espressione booleana* specificata sugli attributi della relazione R.
+Dove il simbolo $\sigma$ (sigma) e' usato per denotare l'operatore di selezione e la condizione di selezione e' un'*espressione booleana* specificata sugli attributi della relazione $R$.
 
 #### Proprieta' dell'operazione SELECT
 - L'operazione SELECT $\sigma_{\text{<condizione di selezione>}}(R)$ produce una relazione $S$ che ha lo **stesso** schema della relazione $R$.
