@@ -34,11 +34,11 @@ Altre caratteristiche:
 - ### Astrazione dei dati:
   Viene utilizzato un **modello dei dati** per nascondere all'utente i dettagli sulla memorizzazione e per presentare una rappresentazione concettuale del database.
   
-- ###  Supporto di viste multiple dei dati:
+- ### Supporto di viste multiple dei dati:
   Ciascun utente puo' vedere il database da prospettive diverse (**viste**). Ciascuna vista descrive solamente i dati interessati dall'utente.
   
 - ### Condivisione dei dati e gestione delle transazioni con utenti multipli:
-  Permette ad un insieme di utenti di operare in modo **concorrente** sul database. Il controllo della concorrenza del DBMS garantisce che ciascuna **transazione** sia eseguita correttamente oppure annullata. L'OLTP (Online Transaction Processing) e' un aspetto di grande rilievo per le applicazioni con database!.
+  Permette ad un insieme di utenti di operare in modo **concorrente** sul database. Il controllo della concorrenza del DBMS garantisce che ciascuna **transazione** sia eseguita correttamente oppure annullata. L'OLTP (Online Transaction Processing) e' un aspetto di grande rilievo per le applicazioni con database!
 
 ## Utenti del database
 Gli utenti possono essere suddivisi tra quelli che effettivamente utilizzano e controllano il contenuto del database (Attori sulla scena) e quelli che lavorano per la manutenzione del DBMS ma che non sono direttamente interessati al database in se' (Lavoratori dietro le quinte).

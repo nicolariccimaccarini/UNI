@@ -1,7 +1,7 @@
 ## Concetti del modello EER
 - Include tutti i concetti di modellazione del modello ER
 - Concetti addizionali: sottoclassi/superclassi, specializzazione, categorie, propagazione (ereditarieta') degli attributi
-- Il modello risultante e; chiamato Modello Enhanced-ER o Extended ER (E2R or EER)
+- Il modello risultante e' chiamato Modello Enhanced-ER o Extended ER (E2R or EER)
 - E' utilizzato per modellare applicazioni in maniera piu' accurata e piu' specifica
 - Include alcuni concetti derivati dalla programmazione ad oggetti come l'ereditarieta'
 
@@ -16,7 +16,7 @@
 
 - Sono anche chiamate associazioni E'-UN (IS-A): SEGRETARIO E'-UN DIPENDENTE, TECNICO E'-UN DIPENDENTE, ...
 - Nota: Un'istanza membro di una sottoclasse rappresenta la *stessa istanza del mini-mondo* di un qualche membro della superclasse.
-	- Il membro della sottoclasse e' la stessa istanza in n (distinto) ruolo specifico
+	- Il membro della sottoclasse e' la stessa istanza in $n$ (distinto) ruolo specifico
 	- Un'istanza non puo' esistere nel database solamente in qualita' di membro di una sottoclasse; deve essere membro della superclasse
 	- Un membro della superclasse puo' essere eventualmente incluso nei membri di un qualsiasi numero delle sue sottoclassi
 - Esempio: Un dipendente temporaneo che sia anche un ingegnere appartiene sia alla sottoclasse INGEGNERE che a TEMPORANEO
@@ -96,7 +96,7 @@
 - In un reticolo o in una gerarchia, una sottoclasse eredita gli attributi non solo della superclasse diretta, ma anche delle superclassi precedenti
 - Una sottoclasse con piu' di una superclasse (possibile solo in un reticolo) viene chiamata **sottoclasse condivisa**
 - Si possono avere *gerarchie* o *reticolo di specializzazione* oppure *gerarchie* o *reticoli di generalizzazione*
-- Nelle specializzazioni, si inizia con un'entita' e si definiscono sottoclassi dell'entita' mediante specializzazioni successive(processo di *raffinamento concettuale* **top down**)
+- Nelle specializzazioni, si inizia con un'entita' e si definiscono sottoclassi dell'entita' mediante specializzazioni successive (processo di *raffinamento concettuale* **top down**)
 - Nelle generalizzazioni, si inizia con alcune entita' e si generalizzano (in successione) quelle che hanno proprieta' comuni (processo di *sintesi concettuale* **bottom-up**)
 - In pratica, viene utilizzata molto spesso una combinazione dei due processi
 
@@ -108,7 +108,7 @@
 - In alcuni casi e' necessario modellare i dati in modo tale che una singola associazione superclasse/sottoclasse abbia piu' di una superclasse
 - Le superclassi in questo caso rappresentano differenti entita' (con ruoli e caratteristiche differenti)
 - Questo tipo di sottoclassi vengono chiamate **categorie** oppure **tipi di UNIONE**
-- Esempio: in un database per il PRA, il proprietario di un veicolo puo' essere una persona, una barca (con un leasing) o una ditta
+- Esempio: in un database per il PRA, il proprietario di un veicolo puo' essere una persona, una banca (con un leasing) o una ditta
 	- La categoria (sottoclasse) PROPRIETARIO contiene un *sottoinsieme* delle istanze provenienti dall'**unione** delle istanze delle entita' DITTA, BANCA, PERSONA (superclassi)
 	- Un membro della categoria deve esistere *in almeno una* delle sue superclassi
 - Nota: la differenza tra categorie e sottoclassi condivise e' che una sottoclasse condivisa contiene *tutte* le istanze provenienti dall'**intersezione** delle sue superclassi. Un membro della sottoclasse condivisa deve esistere *in tutte* le sue superclassi.

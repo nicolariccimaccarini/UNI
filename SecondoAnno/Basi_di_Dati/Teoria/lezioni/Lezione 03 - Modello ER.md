@@ -9,7 +9,7 @@
 
 ### Entita' ed Attributi
 - Le **entità** sono semplici oggetti o cose del mini-mondo che sono rappresentate dal database. Per esempio i DIPENDENTI, i DIPARTIMENTI, i PROGETTI.
-- Uno specifico dipendenti (e.g. Mario Rossi) viene definito un'**istanza** dell'entita' DIPENDENTI.
+- Uno specifico dipendente (e.g. Mario Rossi) viene definito un'**istanza** dell'entita' DIPENDENTI.
 - Gli **attributi** sono proprieta' usate per descrivere un'entita'. Per esempio i DIPENDENTI possono avere un Nome, un Codice Fiscale, un Indirizzo, etc...
 - Un *istanza* di un'entita' avra' un **valore** per ciascuno degli attributi. Ad esempio uno specifico dipendente puo' avere Nome=‘Mario Rossi’, CF=‘MRRSSU73D24D548V’, Indirizzo=‘Via Paradiso 12’, ...
 - Ciascun attributo ha un insieme di valori (o **tipo di dati**) associato ad esso. Esempio: intero, stringa, data, ...
@@ -67,7 +67,7 @@ Vincoli sui rapporti di cardinalita':
 	- Molti a molti (N:M)
 - **Cardinalita' Minima** 
   (chiamato anche vincolo di partecipazione o vincolo di dipendenza di esistenza)
-	- zero  (partecipazione opzionale, non dipendenza di esistenza)
+	- zero (partecipazione opzionale, non dipendenza di esistenza)
 	- uno o piu' (partecipazione obbligatoria, dipendenza di esistenza)
 
 ### Associazioni ed Istanze di Associazioni
@@ -107,7 +107,7 @@ Vincoli sui rapporti di cardinalita':
 - Derivata dalla conoscenza dei vincoli del mini-mondo. 
 
 Esempio
-- Un dipartimento ha esattamente un direttore e un dipendente puo' dirigere (al massimo) u solo dipartimento.
+- Un dipartimento ha esattamente un direttore e un dipendente puo' dirigere (al massimo) un solo dipartimento.
 	- Specificare (0,1) per la partecipazione di DIPENDENTE in DIRIGE
 	- Specificare (1,1) per la partecipazione di DIPARTIMENTO in DIRIGE
 ![[NotazioneMinMax1.png]]

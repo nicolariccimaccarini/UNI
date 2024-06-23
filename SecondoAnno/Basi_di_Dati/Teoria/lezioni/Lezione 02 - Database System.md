@@ -11,7 +11,8 @@
 ## Schema vs. Istanze
 - **Schema di un Database**: La descrizione del database. Include la descrizione della struttura e dei vincoli da rispettare.
 - **Diagramma di schema**: Una visualizzazione a diagramma di (qualche aspetto) di uno schema.
-- **Costrutto dello schema**: Una componente dello schema o un oggetto all'interno dello schema. (esempio: [STUDENTI, CORSI](obsidian://open?vault=Obsidian%20Vault&file=Basi%20di%20Dati%20e%20Laboratorio%2Fimg%2Fdb1.png))
+- **Costrutto dello schema**: Una componente dello schema o un oggetto all'interno dello schema. (esempio: `[STUDENTI, CORSI]`)
+  ![[db1.png]]
 - **Istanze del Database**: I dati veri e propri contenuti nel database in un particolare momento del tempo. Chiamata anche stato del database oppure occorrenza.
 
 ## Schema vs. Stato
@@ -27,16 +28,15 @@ Proposta per supportare le caratteristiche dei DBMS di:
 - Indipendenza tra programmi e dati
 - Supporto di viste multiple d'utente
 - Uso di un catalogo per memorizzare la descrizione (schema) del database
-
 Obiettivo di separare l'applicazione dell'utente dalla base di dati fisica.
 Definisce gli schemi del DBMS a tre livelli:
 - **Schema interno**: al livello interno, per descrivere le strutture di memorizzazione fisica ed i percorsi di accesso ai dati. Tipicamente si usa un modello dei dati fisico.
 - **Schema concettuale (logico)** al livello concettuale, per descrivere le strutture ed i vincoli per tutto il database per una comunita' di utenti. Usa un modello dei dati concettuale o implementabile.
 - **Schema esterno** al livello esterno, per descrivere le varie strutture utente. Solitamente utilizza lo stesso modello dei dati del livello concettuale.
 
-E' necessaria una [mappatura](obsidian://open?vault=Obsidian%20Vault&file=Basi%20di%20Dati%20e%20Laboratorio%2Fimg%2FA3L.png) tra i livelli di schemi per trasformare le richieste ed i dati.
+E' necessaria una **mappatura** tra i livelli di schemi per trasformare le richieste ed i dati.
 I programmi applicativi fanno riferimento ad uno schema esterno e sono mappati dal DBMS sullo schema interno per l'esecuzione.
-
+Mappatura: ![[A3L.png]]
 ## Indipendenza dei dati
 - **Indipendenza logica dei dati**: Capacita' di modificare lo schema logico senza dover cambiare gli schemi esterni e le loro applicazioni.
 - **Indipendenza fisica dei dati**: Capacita' di modificare lo schema interno senza dover cambiare lo schema logico.
@@ -70,10 +70,11 @@ I livelli superiori rimangono inalterati. Quindi i programmi applicativi non dev
 
 ## Architetture Centralizzate e Client-Server
 - **DBMS Centralizzati**: tutte le funzionalita' sono raccolte in un singolo sistema; i programmi del DBMS, i programmi applicativi, le interfacce utente ed il database stesso sono su un unico computer.
-### [Architetture Client-Server di base](obsidian://open?vault=Obsidian%20Vault&file=Basi%20di%20Dati%20e%20Laboratorio%2Fimg%2FClient-Server.png) 
+### Architetture Client-Server di base 
 - Server specializzati con funzioni specifiche
 - Client
 - DBMS Server
+![[Client-Server.png]]
 
 #### Server Specializzati
 - File Servers
@@ -99,7 +100,7 @@ La maggior parte dei produttori di DBMS forniscono i driver ODBC
 - Un Programma lato client puo' connettersi a piu' DBMS.
 - Sono possibili variazioni sul tema client: in qualche DBMS alcune funzionalita' proprie del server sono trasferite ai client, come ad esempio le funzioni di dizionario dati, di ottimizzazione e recovery. In questo caso il server viene indicato solamente come Data Server.
 
-### [Architetture Client-Server a tre livelli](obsidian://open?vault=Obsidian%20Vault&file=Basi%20di%20Dati%20e%20Laboratorio%2Fimg%2FClient-Server-3L.png)
+### Architetture Client-Server a tre livelli
 - Utilizzato per le applicazioni Web.
 - Un livello intermedio chiamato Application Server o Web Server:
 	- contiene il software per le connessioni web e le regole e la logica (vincoli) dell'applicazione usate per accedere ai dati necessari nel DBMS.
@@ -107,6 +108,7 @@ La maggior parte dei produttori di DBMS forniscono i driver ODBC
 - Ulteriori funzionalita' e sicurezze:
 	- cifratura dei dati a livello server prima della trasmissione
 	- decrittazione dei dati su client
+![[Client-Server-3L.png]]
 
 ## Classificazione dei DBMS
 - **Basata sul modello dei dati utilizzato**:
@@ -115,7 +117,7 @@ La maggior parte dei produttori di DBMS forniscono i driver ODBC
 	- Emergenti: NOSQL, Key-Value, Document
 
 - **Altre classificazioni**:
-	- **Single-user** (usati tipicamente su PC) vs.  **multi-user** (la maggior parte dei DBMS).
+	- **Single-user** (usati tipicamente su PC) vs. **multi-user** (la maggior parte dei DBMS).
 	- **Centralizzati** (usano un singolo computer con un database) vs. **Distribuiti** (usano piu' computer e piu' database).
 
 **Distributed Database Systems** have now come to be known as *client server based database systems* because they do not support a totally distributed environment, but rather a set of database servers supporting a set of clients.

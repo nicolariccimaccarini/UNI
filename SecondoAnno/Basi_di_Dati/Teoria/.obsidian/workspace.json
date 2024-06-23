@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bd891de3f9b7718d",
+        "id": "8b530a63293514b5",
         "type": "tabs",
         "children": [
           {
-            "id": "7afd667d38b729b0",
+            "id": "c10a68ff69ffa640",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,8 +18,81 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e170066bec2fd639",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 02 - Database System.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2ae967d3cca76fae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 03 - Modello ER.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8d1467561662818d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 04 - Modello EER.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "35fda413289f358e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "913c9850678a7405",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "cb58afd804f94ef6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -86,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
+                "file": "Riassunto Basi di Dati.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
+                "file": "Riassunto Basi di Dati.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +199,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md"
+                "file": "Riassunto Basi di Dati.md"
               }
             }
           }
@@ -147,17 +220,55 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7afd667d38b729b0",
+  "floating": {
+    "id": "7442f042cbe57bea",
+    "type": "floating",
+    "children": [
+      {
+        "id": "be16736c39809d06",
+        "type": "window",
+        "children": [
+          {
+            "id": "eed38baa9b9d57c5",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c474cdbd78ef4556",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Riassunto Basi di Dati.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 1720,
+        "y": 0,
+        "width": 1720,
+        "height": 1392,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "c474cdbd78ef4556",
   "lastOpenFiles": [
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
-    "lezioni/Lezione 08 - SQL.md",
-    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
     "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
+    "Riassunto Basi di Dati.md",
     "lezioni/Lezione 04 - Modello EER.md",
-    "lezioni/Lezione 03 - Modello ER.md",
-    "lezioni/Lezione 02 - Database System.md",
-    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
     "Domande Basi di Dati.md",
+    "lezioni/Lezione 03 - Modello ER.md",
+    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
+    "lezioni/Lezione 02 - Database System.md",
+    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
+    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
+    "lezioni/Lezione 08 - SQL.md",
     "Pasted image 20240619101652.png",
     "img/GerarchieEReticoli.png"
   ]

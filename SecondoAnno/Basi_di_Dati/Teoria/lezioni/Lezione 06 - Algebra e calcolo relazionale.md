@@ -8,10 +8,11 @@
 ### Operazione di selezione (SELECT)
 L'operazione di selezione e' usata per selezionare un *sottoinsieme* di tuple di una relazione che soddisfano una condizione di selezione. E' una sorta di filtro che trattiene solo quelle tuple che soddisfano una *condizione qualificante*. Puo' essere vista come una *partizione orizzontale* della relazione in due insiemi di tuple: quelle che soddisfano la condizione e vengono selezionate e quelle che non la soddisfano e vengono scartate.
 
-L'operazione di selezione e' indicata con: $$ \sigma_{\text{<condizione di selezione>}}(R) $$ Dove il simbolo $\sigma$ (sigma) e' usato per denotare l'operatore di selezione e la condizione di selezione e' un'*espressione booleana* specificata sugli attributi della relazione R.
+L'operazione di selezione e' indicata con: $$ \sigma_{\text{<condizione di selezione>}}(R) $$
+Dove il simbolo $\sigma$ (sigma) e' usato per denotare l'operatore di selezione e la condizione di selezione e' un'*espressione booleana* specificata sugli attributi della relazione R.
 
 #### Proprieta' dell'operazione SELECT
-- L'operazione SELECT $\sigma_{\text{<condizione di selezione>}}(R)$ produce una relazione `S` che ha lo **stesso** schema della relazione R.
+- L'operazione SELECT $\sigma_{\text{<condizione di selezione>}}(R)$ produce una relazione $S$ che ha lo **stesso** schema della relazione $R$.
 - L'operazione SELECT e' **commutativa**: $$ \sigma_{\text{<cond1>}}(\sigma_{\text{<cond2>}}(R)) = \sigma_{\text{<cond2>}}(\sigma_{\text{<cond1>}}(R)) $$
 - Operazioni di SELECT in **cascata** possono quindi essere eseguite in **qualunque ordine**: $$ \sigma_{\text{<cond1>}}(\sigma_{\text{<cond2>}}(\sigma_{\text{<cond3>}}(R))) = \sigma_{\text{<cond2>}}(\sigma_{\text{<cond3>}}(\sigma_{\text{<cond1>}}(R))) $$
 - Operazioni di SELECT in cascata possono essere sostituite da una singola operazione di SELECT avente come condizione la **congiunzione** di tute le condizioni precedenti: $$ \sigma_{\text{<cond1>}}(\sigma_{\text{<cond2>}}(\sigma_{\text{<cond3>}}(R))) = \sigma_{\text{<cond1> AND <cond2> AND <cond3>}}(R) $$
@@ -24,8 +25,8 @@ dove $\pi$ (pi-greco) e' il simbolo utilizzato per denotare l'operazione e `<ele
 L'operazione di proiezione **rimuove** eventuali **duplicati** delle tuple, in modo che il risultato dell'operazione sia un'insieme di tuple, e quindi una relazione **valida**.
 
 #### Proprieta' dell'operazione PROJECT
-- Il numero di tuple nel risultato di un'operazione di proiezione $\pi_{\text{<elenco attributi>}}(R)$ e' sempre **minore o uguale** al numero di tuple in R.
-- Se l'elenco degli attributi include una **chiave** di R, allora il numero di tuple nel risultato della proiezione e' **uguale** al numero di tuple in R.
+- Il numero di tuple nel risultato di un'operazione di proiezione $\pi_{\text{<elenco attributi>}}(R)$ e' sempre **minore o uguale** al numero di tuple in $R$.
+- Se l'elenco degli attributi include una **chiave** di $R$, allora il numero di tuple nel risultato della proiezione e' **uguale** al numero di tuple in $R$.
 - Vale la seguente uguaglianza: $$ \pi_{\text{<attributi1>}}(\pi_{\text{<attributi2>}}(R)) = \pi_{\text{<attributi1>}}(R) $$
   se `<attributi2>` contiene gli attributi elencati in `<attributi1>`.
 
@@ -36,27 +37,27 @@ L'operazione di ridenominazione e' $\rho$ (rho).
 
 In generale un'operazione RENAME puo' essere espressa in una delle seguenti forme:
 - $\rho_{S(B1, B2, ..., Bn)}(R)$ 
-	  e' una relazione ridenominata `S`, basata su `R(A1, A2, An)`, con gli attributi ridenominati in `B1, B2, ..., Bn`.
+	  e' una relazione ridenominata $S$, basata su $R(A1, A2, An)$, con gli attributi ridenominati in $B1, B2, ..., Bn$.
 - $\rho_S(R)$
-  e' una relazione ridenominata `S`, basata su `R`, che non specifica i nomi degli attributi.
+  e' una relazione ridenominata $S$, basata su $R$, che non specifica i nomi degli attributi.
 - $\rho_{(B1, B2, ..., Bn)}(R)$
-  e' una relazione con attributi ridenominati `B1, B2, ..., Bn` che non specifica il nuovo nome della relazione.
+  e' una relazione con attributi ridenominati $B1, B2, ..., Bn$ che non specifica il nuovo nome della relazione.
 
 ## Operazioni "insiemistiche"
 
 ### Operazione di unione (UNION)
-Il risultato di questa operazione, indicata con **R** $\cup$ **S**, e' una relazione che include tutte le tuple presenti in `R`, oppure in `S`, oppure in entrambe le relazioni. Eventuali duplicati vengono eliminati.
+Il risultato di questa operazione, indicata con **R** $\cup$ **S**, e' una relazione che include tutte le tuple presenti in $R$, oppure in $S$, oppure in entrambe le relazioni. Eventuali duplicati vengono eliminati.
 I due operandi devono essere **compatibili all'unione**, cioe' devono avere lo stesso **tipo di tuple**.
 
 #### Compatibilita' all'unione (di tipo)
-- Le relazioni operande `R1(A1, A2, ..., An)` e `R2(B1, B2, ..., Bn)` devono avere lo stesso numero di attributi, ed il dominio degli attributi corrispondenti deve essere corrispondente; si deve cioe' avere che `dom(Ai) = dom(Bi)` per ogni `i = 1, 2, ..., n`.
+- Le relazioni operande $R1(A1, A2, ..., An)$ e $R2(B1, B2, ..., Bn)$ devono avere lo stesso numero di attributi, ed il dominio degli attributi corrispondenti deve essere corrispondente; si deve cioe' avere che $dom(A_i) = dom(B_i)$ per ogni $i = 1, 2, ..., n$.
 - La relazione risultante dalle operazioni $\text{R1} \cup \text{R2}$, $\text{R1} \cap \text{R2}$, o $\text{R1} - \text{R2}$ avra' gli stessi nomi di attributo della prima relazione operanda `R1` (per convenzione).
 
 ### Operazione di intersezione (INTERSECRTION)
 Il risultato di questa operazione, indicata con **R** $\cap$ **S**, e' una relazione che include tutte le tuple che sono presenti sia nella relazione `R`, sia nella relazione `S`. I due operandi devono essere *compatibili all'unione*.
 
 ### Operazione di differenza (MINUS)
-Il risultato di questa operazione, indicata con **R - S**, e' una relazione che include tutte le tupole che sono presenti in `R` ma non in `S`. I due operandi devono essere *compatibili all'unione*
+Il risultato di questa operazione, indicata con **R - S**, e' una relazione che include tutte le tuple che sono presenti in `R` ma non in `S`. I due operandi devono essere *compatibili all'unione*
 
 ### Proprieta' della operazioni UNION, INTERSECTION E MINUS
 - Sia l'operazione di unione, sia quella di intersezione sono operazioni commutative; quindi: $$ \text{R} \cup \text{S} = \text{S} \cup \text{R} \text{, e R} \cap \text{S} = \text{S} \cap \text{R} $$
