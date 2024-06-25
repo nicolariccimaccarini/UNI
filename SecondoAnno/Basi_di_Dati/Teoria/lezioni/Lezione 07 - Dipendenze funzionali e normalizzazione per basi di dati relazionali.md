@@ -13,12 +13,12 @@ Esamineremo la loro bonta':
 	- Non bisogna mischiare attributi provenienti da piu' entita' e associazioni
 
 2. ==Riduzione dei valori ridondanti nelle tuple==
-	- Si vuole ridurre al minimo lo spezio di memoria occupato dalle relazioni
+	- Si vuole ridurre al minimo lo spazio di memoria occupato dalle relazioni
 	- es. 
 		- nella relazione IMP_DIP, se piu' di un impiegato appartiene a un determinato dipartimento allora l'informazione su quel dipartimento sarebbe ripetuta piu' e piu' volte (spreco di memoria)
 	- **Anomalie di aggiornamento**
 		- IMP_DIP puo' essere un esempio di JOIN naturale e se volessimo memorizzare questa nuova relazione, questo porterebbe ad anomalie di aggiornamento:
-			- Anomalie di inserimento $\rightarrow$ non riesco ad inserire l'infortmazione perche' non e' completa
+			- Anomalie di inserimento $\rightarrow$ non riesco ad inserire l'informazione perche' non e' completa
 			- Anomalie di aggiornamento $\rightarrow$ devo aggiornare piu' tuple che contengono lo stesso valore
 			- Anomalie di cancellazione $\rightarrow$ si eliminano informazioni importanti
 
@@ -39,7 +39,7 @@ Esamineremo la loro bonta':
 	- Si dice che i valori della componente $Y$ di una tupla sono determinati dai valori della componente $X$ o che i valori della componente $X$ determinano funzionalmente i valori della componente $Y$.
 - ==Osservazioni==
 	1. se $X$ e' un attributo chiave, allora $X \rightarrow Y$ e' valida per ogni insieme non vuoti di attributi $Y$ di $R$.
-	2. se $x \rightarrow Y$ in $R$, non e' detto che $Y \rightarrow X$
+	2. se $X \rightarrow Y$ in $R$, non e' detto che $Y \rightarrow X$
 - ==In sintesi==
 	1. Una dipendenza funzionale e' una proprieta' del DB
 	2. Ci permette di descrivere i vincoli sugli attributi presenti in una relazione, che deve mantenere in ogni momento
@@ -59,7 +59,7 @@ Esamineremo la loro bonta':
 
 ## Normalizzazione
 - ==Definizione: normalizzazione dei dati==
-	- Processo di analisi degli schemi di relazione forniti, bassato sulle loro dipendenze funzionali e chiavi primarie, per raggiungere le proprieta' di
+	- Processo di analisi degli schemi di relazione forniti, basato sulle loro dipendenze funzionali e chiavi primarie, per raggiungere le proprieta' di
 		- minimizzazione della ridondanza
 		- minimizzazione delle anomalie di inserimento, cancellazione e modifica
 	- Quindi il processo di normalizzazione sottopone uno schema di relazione a una serie di test per "certificare" se soddisfa una data formale normale

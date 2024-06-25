@@ -529,3 +529,96 @@ Sono condizioni che devono essere rispettate da tutti gli stati di relazione val
 	- join esterna sinistra (**LEFT OUTER JOIN**): $\bf{R} \bowtie_\text{LEFT} \bf{S}$ mantiene tutte le tuple della prima relazione $R$ (se non c'è corrispondenza con la seconda relazione $S$, gli attributi di $S$ sono NULL)
 	- join esterna destra (**RIGHT OUTER JOIN**): mantiene tutte le tuple della seconda relazione (di destra) $S$ nel risultato di $\bf{R} \bowtie_\text{RIGHT} \bf{S}$.
 	- join esterna totale (**FULL OUTER JOIN**): mantiene tutte le tuple di entrambe le relazioni in $\bf{R} \bowtie_\text{FULL} \bf{S}$.
+
+---
+## 7 - Normalizzazioni
+Obiettivo $\rightarrow$ valutare la qualita' della progettazione di schemi relazionale
+
+Esamineremo la loro bonta':
+- **A livello logico** (o concettuale) $\rightarrow$ come gli utenti interpretano gli schemi di relazione e il significato dei loro attributi
+- **A livello di implementazione** (o di archiviazione fisica) $\rightarrow$ come le tuple in una relazione di base sono memorizzate e aggiornate
+
+### Linee guida informali per la progettazione di schemi di relazione
+1. **Assegnazione di una semantica esplicita agli attributi delle relazioni**
+	- Il significato che viene dato agli attributi deve essere non ambiguo e semplice da spiegare
+	- Non bisogna mischiare attributi provenienti da piu' entita' e associazioni
+
+2. **Riduzione dei valori ridondanti nelle tuple**
+	- Si vuole ridurre al minimo lo spazio di memoria occupato dalle relazioni
+	- Anomalie di aggiornamento:
+		- Anomalie di inserimento $\rightarrow$ non riesco ad inserire l'informazione perche' non e' completa
+		- Anomalie di aggiornamento $\rightarrow$ devo aggiornare piu' tuple che contengono lo stesso valore
+		- Anomalie di cancellazione $\rightarrow$ si eliminano informazioni importanti
+
+3. **Riduzione del numero di valori nelle tuple**
+	- I valori nulli si presentano per due problemi:
+		- Spreco di memoria
+		- Sono ambigui
+
+4. **Impossibilita' di generare tuple spurie**
+	- **Tuple spurie** $\rightarrow$ tuple che rappresentano informazioni non valide
+
+### Dipendenze funzionali
+- **Definizione**: dipendenza funzionale
+	- Presa la relazione $R = \{A_1, \ldots, A_m\}$, $X, Y, \subseteq R$ sottoinsiemi di attributi di $R$, allora: $$ \forall t_1, t_2, \space \text{ SE } \space t_1[X] = t_2[X], \space \text{ ALLORA } \space t_1[Y] = t_2[Y] $$
+	- Si dice che i valori della componente $Y$ di una tupla sono determinati dai valori della componente $X$ o che i valori della componente $X$ determinano funzionalmente i valori della componente $Y$.
+- **Osservazioni**
+	1. se $X$ e' un attributo chiave, allora $X \rightarrow Y$ e' valida per ogni insieme non vuoti di attributi $Y$ di $R$.
+	2. se $X \rightarrow Y$ in $R$, non e' detto che $Y \rightarrow X$
+- **Sintesi**:
+	- Una dipendenza funzionale e' una proprieta' del DB che ci permette di descrivere i vincoli sugli attributi presenti in una relazione
+
+**Regole di inferenza** (data una relazione $R = \{A_1, \ldots, A_m\}$ e dati $X, Y, \space e, \space Z \subseteq R$ come insiemi non vuoti di attributi)
+1. **Riflessività** $\Rightarrow$ se $Y \subseteq X$, allora $X \rightarrow Y$
+2. **Aumentazione** $\Rightarrow$ se $X \rightarrow Y$, allora $X \cup Z \rightarrow Y \cup Z$ 
+3. **Transitività** $\Rightarrow$ se $X \rightarrow Y$ e $Y \rightarrow Z$, allora $X \rightarrow Z$
+4. **Unione** $\Rightarrow$ se $X \rightarrow Y$ e $Y \rightarrow Z$, allora $Y \cup Z$
+5. **Decomposizione** $\Rightarrow$ se $X \rightarrow Y \cup Z$, allora $X \rightarrow Y$ e $X \rightarrow Z$
+6. **Pseudo-transitività** $\Rightarrow$ se $X \rightarrow Y$ e $W \cup Y \rightarrow Z$, allora $W \cup X \rightarrow Z$ 
+
+### Normalizzazione
+**Definizione**: 
+- Processo di analisi degli schemi di relazione forniti, basato sulle loro dipendenze funzionali e chiavi primarie, per raggiungere le proprieta' di
+	- minimizzazione della ridondanza
+	- minimizzazione delle anomalie di inserimento, cancellazione e modifica
+
+**Proprietà**:
+- Proprieta' di JOIN non additiva $\rightarrow$ garantisce che non vengano generate tuple spurie dopo la decomposizione
+- Proprieta' di preservazione delle dipendenze $\rightarrow$ le dipendenze funzionali vengono rispettate anche nelle relazioni scomposte
+
+**Alcune definizioni**:
+- Superchiave di uno schema relazionale $R = \{A_1, \ldots, A_m\} \rightarrow$ insieme non vuoto di attributi $S \subseteq R$ tale che non possono esistere due tuple $t_1$ e $t_2$ in $r(R)$ per cui $t_1[S] = t_2[S]$
+- Superchiave minimale $\rightarrow$ minimo numero di attributi necessario affinché ogni tupla sia distinta
+- Attributo primo di $R$ $\rightarrow$ attributo membro di una qualche chiave candidata di $R$
+
+**Forma normale (1NF)**:
+- Domini degli attributi devono avere solo valori atomici
+	- aumento della ridondanza
+	- si crea una nuova relazione per ogni attributo multivalore
+	- si scompone gli attributi composti in attributi semplici
+- Deve esistere una chiave primaria
+
+**Seconda forma normale (2NF)**:
+- Deve essere 1NF
+- Ogni attributo non primo $A$ di $R$ dipende da una dipendenza funzionale piena della chiave primaria di $R$
+
+**Dipendenza funzionale piena**:
+- Una dipendenza funzionale $X \rightarrow Y$ e' una dipendenza funzionale piena se la rimozione di un qualunque attributo da $X$ significa che la dipendenza non e' piu' valida 
+
+**Terza forma normale (3NF)**:
+- Deve essere 2NF
+- Nessun attributo non primo di $R$ dipende transitivamente dalla chiave primaria
+
+**Proprieta' della dipendenza transitiva**:
+Una dipendenza funzionale $X \rightarrow Y$ di uno schema relazionale $R$ e' una dipendenza transitiva se:
+	1. esiste un insieme di attributi $Y$ in $R$ che non e' ne una chiave candidata ne un sottoinsieme di una chiave di $R$
+	2. vale: $X \rightarrow Y$ e $Y \rightarrow Z$
+
+**Forma normale di Boyce-Codd (BCNF)**:
+- se per ogni dipendenza funzionale non triviale $X \rightarrow A$ in $R$, vale che $X$ e' una superchiave di $R$
+
+**IMPORTANTE**
+- OGNI 2NF E' IN 1NF
+- OGNI 3NF E' IN 2NF
+- OGNI BCNF E' IN 3NF
+	- essendo la BCNF piu' restrittiva della 3NF, no e' vero che ogni 3NF e' in BCNF
