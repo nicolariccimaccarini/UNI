@@ -58,9 +58,9 @@
 20. Che cos'e' una superchiave?
 	- Insieme di uno o piu' attributi che identificano univocamente una tupla
 
-21. Differenza tra completezza totale e parziale
+21. Differenza tra completezza totale e parziale (SBAGLIATO)
 	- Totale: le superclassi hanno almeno una sottoclasse
-	  Parziale: le superclassi non hanno sottoclassi
+	- Parziale: le superclassi non hanno sottoclassi
 
 22. Che cos'e' un'associazione in ER.
 	- Una rappresentazione delle relazioni tra le entita' di un database

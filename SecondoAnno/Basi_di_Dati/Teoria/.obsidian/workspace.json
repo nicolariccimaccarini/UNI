@@ -4,31 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "7b1c13d3e75940b9",
+        "id": "4542e6d546b15650",
         "type": "tabs",
         "children": [
           {
-            "id": "17f7fd23c2f0d9fc",
+            "id": "4adc8c722ae1601d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Domande Basi di Dati.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3bfe00f41ca0f4b5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Riassunto Basi di Dati.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -98,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Domande Basi di Dati.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Domande Basi di Dati.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Domande Basi di Dati.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -159,13 +139,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "17f7fd23c2f0d9fc",
+  "active": "4adc8c722ae1601d",
   "lastOpenFiles": [
+    "Esercizi SQL su Database Azienda.md",
     "Riassunto Basi di Dati.md",
     "Domande Basi di Dati.md",
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
+    "lezioni/Lezione 04 - Modello EER.md",
+    "lezioni/Lezione 02 - Database System.md",
+    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
     "tutorato/Tutorato 11 - SQL.md",
-    "Esercizi SQL su Database Azienda.md",
+    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
     "tutorato/Tutorato 12 - SQL.md",
     "img/Stato_DB_Azienda.png",
     "img/tutorato12.png",
@@ -174,10 +157,7 @@
     "img/tutorato11.png",
     "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
     "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
-    "lezioni/Lezione 04 - Modello EER.md",
     "lezioni/Lezione 03 - Modello ER.md",
-    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
-    "lezioni/Lezione 02 - Database System.md",
     "lezioni/Lezione 08 - SQL.md",
     "Pasted image 20240619101652.png",
     "img/GerarchieEReticoli.png"

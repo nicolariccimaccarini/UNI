@@ -33,6 +33,8 @@
 	- poter cambiare la struttura del database o la memorizzazione dei dati senza dover cambiare i programmi che accedono al DBMS
 - **Astrazione dei dati**:
 	- uso di un modello di dati per nascondere i dettagli di memorizzazione e rappresentazione dei dati all'utente
+- **Supporto di liste multiple**:
+	- Ogni utente puo' vedere il database da prospettive diverse (visite)
 - **Condivisione dei dati e gestione delle transazioni con utenti multipli**:
 	- utenti che accedono al database in modo concorrente con controllo degli accessi e delle transazioni (OLTP - online transaction processing, importante per i database)
 
@@ -111,7 +113,7 @@ Per gli schemi e' necessario una mappatura tra i livello per trasformare le rich
 ### Indipendenza dei dati
 Quando uno schema di livello piu' basso viene modificato, si cambia solo la mappatura tra quello schema e quelli di livello superiore. I programmi applicativi non devono essere modificati.
 
-- **Indipendenza logica** $\rightarrow$ cambiamenti dello schema logico senza influenzare gli schemi interni e le loro applicazioni
+- **Indipendenza logica** $\rightarrow$ cambiamenti dello schema logico senza influenzare gli schemi esterni e le loro applicazioni
 - **Indipendenza fisica** $\rightarrow$ cambiamenti dello schema interno (fisico) senza dover cambiare lo schema logico
 
 ### Linguaggi del DBMS
@@ -149,7 +151,7 @@ Quando uno schema di livello piu' basso viene modificato, si cambia solo la mapp
 - DBMS server $\rightarrow$ gestisce le query e transazioni ai clienti
 
 **Architettura Client-Server a 2 livelli**
-- programmi di interfaccia utente e applicativi eseguiti sulla macchina
+- programmi di interfaccia utente e applicativi eseguiti sulla macchina client
 - l'interfaccia ODBC (Open Database Connectivity) fornisce una API (Application Program Interface) che permette di collegare il client al server
 - Un programma lato client puo' connettersi a piu' DBMS
 
@@ -205,7 +207,7 @@ Quando uno schema di livello piu' basso viene modificato, si cambia solo la mapp
 
 ### Entita' Deboli ed Associazioni Identificanti
 - **Entita' debole** $\rightarrow$ entita' che non possiede un attributo chiave
-	- deve partecipare a un'associazione identificante con un'altra entita' (non debole) identificante
+	- deve partecipare a un'associazione identificante con un'altra entita' (non debole) identificante, detta **proprietario** 
 - **Associazione identificante** $\rightarrow$ associazione che identifica un'entita' debole associandola ad un'entita' non debole
 
 ### Vincoli sulle associazioni
@@ -234,14 +236,14 @@ Quando uno schema di livello piu' basso viene modificato, si cambia solo la mapp
 	- MOSTRATO UTILIZZANDO UN SEGMENTO DOPPIO
 
 ## Notazione alternativa (min, max)
-- Specificata su tutte le partecipazioni di un'entita' E da un'associazione R.
-- Specifica che ciascuna istanza *e* dell'entita' E partecipa in almeno *min* ed al massimo *max* istanze di associazione dell'associazione R.
+- Specificata su tutte le partecipazioni di un'entita' $E$ da un'associazione $R$.
+- Specifica che ciascuna istanza $e$ dell'entita' $E$ partecipa in almeno *min* ed al massimo *max* istanze di associazione dell'associazione $R$.
 
 ### Problemi principali
 - Disegno
 - Metodologia
 - Il modello ER nella sua forma originale non sopporta:
-	- sottoclassi
+	- sottoclassi e superclassi
 	- specializzazione/generalizzazione
 
 ---
@@ -304,7 +306,7 @@ Una sottoclasse puo' avere in essa ulteriori sottoclasse specifiche su di essa (
 	- un'istanza deve esistere in almeno una superclasse
 - Sottoclassi condivise:
 	- contiene l'intersezione di istanze e superclassi
-	- un'istanze deve esistere in tutte le superclassi
+	- un'istanza deve esistere in tutte le superclassi
 
 ---
 ## 5 - Modello dei dati relazionale
@@ -313,9 +315,9 @@ Modello basato sul concetto di relazione (concetto matematico basato sulla teori
 ### Definizioni informali
 - **Relazione** $\rightarrow$ tabella di valori rappresentata come un'insieme di righe o colonne.
 	- riga $\rightarrow$ rappresenta un'istanza di un'entita' o di una associazione del mini-mondo
-	- ogni riga ha un valore per elemento ad un insieme di elementi che la compongono che identifica univocamente la riga
+	- ogni riga ha un valore per elemento o un insieme di elementi che la compongono che identifica univocamente la riga
 	- si possono assegnare identificatori di riga (row-id) o dei numeri sequenziali per identificare le righe nella tabella
-	- ciascuna colonna viene tipicamente individuata mediante il nome o l'interstazione della colonna o il nome dell'atributo
+	- ciascuna colonna viene tipicamente individuata mediante il nome o l'intestazione della colonna o il nome dell'attributo
 
 ### Definizioni formali
 Una relazione piu' essere definita in molti modi:
@@ -421,7 +423,7 @@ Sono condizioni che devono essere rispettate da tutti gli stati di relazione val
 	- La chiave primaria di $R$ e' la combinazione di $A$ e $K$
 7. **Associazioni N-arie**
 	- per ogni associazione $A$ n-aria ($n > 2$) si crea una relazione $S$ per rappresentare $A$:
-		- si includono come chiavi esterne in $S$ le chiavi primarie delle relazioni che rappresentano le n entità coinvolte in $A$
+		- si includono come chiavi esterne in $S$ le chiavi primarie delle relazioni che rappresentano le $n$ entità coinvolte in $A$
 		- si includono tutti gli attributi di $A$ in $S$
 
 ### EER - Relazioni
@@ -443,7 +445,7 @@ Sono condizioni che devono essere rispettate da tutti gli stati di relazione val
 ### 6 - Algebra e calcolo relazionale
 ### Algebra relazionale
 - Algebra relazionale $\rightarrow$ l'insieme delle operazioni per il modello relazionale che consentono all'utente di specificare le interrogazioni fondamentali
-- Risultato $\rightarrow$ nuova relazione, che piu' essere formata a partire da una o piu' relazioni
+- Risultato $\rightarrow$ nuova relazione, che puo' essere formata a partire da una o piu' relazioni
 - Espressione dell'algebra relazionale $\rightarrow$ sequenza di operazioni dell'algebra relazionale, ha come risultato un'altra relazione che rappresenta il risultato di un'interrogazione del database
 
 ### Operazioni relazionali unarie
@@ -505,9 +507,8 @@ Sono condizioni che devono essere rispettate da tutti gli stati di relazione val
 - **JOIN naturale**:
 	- JOIN (indicata con $*$) che non include i duplicati in una condizione di uguaglianza. 
 	- Se due relazioni hanno attributi con lo stesso nome, la condizione di JOIN diventa una ridenominazione
-
-**Operazione di divisione (DIVISION)**:
-- Date due relazioni $R(Z) \div S(X)$ e $Y = Z-X$ ($Y$ e' l'insieme degli attributi di $R$ che sono in $S$), il risultato della divisione e' una relazione $T(Y)$ con le tuple $t$ di $R$ tali che, per ogni tupla in $S$, esiste almeno una tupla in $R$ che abbia gli stessi valori per gli attributi in $X$ e $Y$
+- **Operazione di divisione (DIVISION)**:
+	- Date due relazioni $R(Z) \div S(X)$ e $Y = Z-X$ ($Y$ e' l'insieme degli attributi di $R$ che sono in $S$), il risultato della divisione e' una relazione $T(Y)$ con le tuple $t$ di $R$ tali che, per ogni tupla in $S$, esiste almeno una tupla in $R$ che abbia gli stessi valori per gli attributi in $X$ e $Y$
 
 ### Altre operazioni relazionali
 
@@ -560,7 +561,7 @@ Esamineremo la loro bonta':
 
 ### Dipendenze funzionali
 - **Definizione**: dipendenza funzionale
-	- Presa la relazione $R = \{A_1, \ldots, A_m\}$, $X, Y, \subseteq R$ sottoinsiemi di attributi di $R$, allora: $$ \forall t_1, t_2, \space \text{ SE } \space t_1[X] = t_2[X], \space \text{ ALLORA } \space t_1[Y] = t_2[Y] $$
+	- Presa la relazione $R = \{A_1, \ldots, A_m\}$, $X, Y \subseteq R$ sottoinsiemi di attributi di $R$, allora: $$ \forall t_1, t_2, \space \text{ SE } \space t_1[X] = t_2[X], \space \text{ ALLORA } \space t_1[Y] = t_2[Y] $$
 	- Si dice che i valori della componente $Y$ di una tupla sono determinati dai valori della componente $X$ o che i valori della componente $X$ determinano funzionalmente i valori della componente $Y$.
 - **Osservazioni**
 	1. se $X$ e' un attributo chiave, allora $X \rightarrow Y$ e' valida per ogni insieme non vuoti di attributi $Y$ di $R$.
@@ -595,7 +596,7 @@ Esamineremo la loro bonta':
 - Domini degli attributi devono avere solo valori atomici
 	- aumento della ridondanza
 	- si crea una nuova relazione per ogni attributo multivalore
-	- si scompone gli attributi composti in attributi semplici
+	- si scompongono gli attributi composti in attributi semplici
 - Deve esistere una chiave primaria
 
 **Seconda forma normale (2NF)**:
