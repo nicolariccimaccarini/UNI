@@ -21,7 +21,7 @@ Dal punto di vista implementativo, definiamo una sentinella `T.nil` come un nodo
 ![[RBT_introduzione.png]]
 
 Il principio fondamentale degli RBT e' che le proprieta' sono valide quando l'albero e' vuoto e vengono mantenute tali dopo ogni inserimento e eliminazione. Dobbiamo ancora dimostrare che esse garantiscono il bilanciamento dell'albero - a meno di una costante. 
-Cominciamo definendo l'**altezza nera** (`bh(x)`) di un nodo $x$ in $T$ come il numero di nodi neri si qualsiasi percorso semplice da $x$ (senza contare $x$) a una foglia esterna (contandola).
+Cominciamo definendo l'**altezza nera** (`bh(x)`) di un nodo $x$ in $T$ come il numero di nodi neri su qualsiasi percorso semplice da $x$ (senza contare $x$) a una foglia esterna (contandola).
 L'altezza nera di $T$ e' `bh(T.root)`.
 
 Dimostriamo che se $T$ e' un RBT con $n$ nodi interni (quindi escludendo le foglie esterne), allora la sua altezza massima e' $2 \cdot log(n+1)$. 
@@ -139,8 +139,8 @@ proc RBTreeInsertFixUpRight(T, z) {
 ```
 
 ## Alberi red-black: correttezza dell'inserimento
-La scelta che si fa all'inizio di  `RBTreeInsertFixup` genera due casi, che dipendono dal fatto che `z.p` sia figlio destro o sinistro di `z.p.p`.
-All'interno di ogni caso vi sono tre sotto-casi, che si distinguono dal colore di y (lo **zio** di $z$):
+La scelta che si fa all'inizio di `RBTreeInsertFixup` genera due casi, che dipendono dal fatto che `z.p` sia figlio destro o sinistro di `z.p.p`.
+All'interno di ogni caso vi sono tre sotto-casi, che si distinguono dal colore di $y$ (lo **zio** di $z$):
 - se e' rosso e' un caso
 - se e' nero:
 	- se $z$ e' figlio destro e' un secondo caso

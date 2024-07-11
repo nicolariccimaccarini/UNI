@@ -1,5 +1,5 @@
 ## Percorsi minimi con sorgente singola
-Ci concertiamo su grafi diretti, pesati e connessi. Dato $G = (V, E, W)$ e dato un vertice $s$, ci proponiamo di trovare per ogni $v \in V$ il percorso di peso minimo che porta da $s$ a $v$. 
+Ci concertiamo su ==grafi diretti, pesati e connessi==. Dato $G = (V, E, W)$ e dato un vertice $s$, ci proponiamo di trovare per ogni $v \in V$ il percorso di peso minimo che porta da $s$ a $v$. 
 Questo problema, chiamato **percorsi minimi con sorgente singola** e' da considerarsi la generalizzazione di `BreadthFirstSearch`.
 
 Anche nel caso dei grafi pesati possiamo definire il concetto di distanza minima tra i due vertici.
@@ -33,7 +33,7 @@ Interpretiamo l'output di un qualsiasi algoritmo che dati $G$ (diretto, pesato, 
 Cerchiamo l'**albero dei cammini di peso minimo** in $G$ (questa volta si tratta di un albero radicato diretto), non necessariamente unico e tale che ogni ramo rappresenta un cammino di peso minimo da $s$ al vertice in questione.
 Gli algoritmi per il calcolo di questo albero utilizzano una tecnica chiamata **rilassamento**, che funziona sulla base di $v.\pi$ come di $v.d$, rappresentando il cammino di peso minimo **che si conosce fino ad un determinato momento** da $s$ a $v$.
 
-Il valore $v.d$ deve essere visto pertanto come **una stima** del peso del cammino minimo da $s$ a $v$. Come tale delve essere inizializzata.
+Il valore $v.d$ deve essere visto pertanto come **una stima** del peso del cammino minimo da $s$ a $v$. Come tale deve essere inizializzata.
 ``` Pseudocodice
 proc InizializeSingleSource(G, s) {
 	for (v in G.V)

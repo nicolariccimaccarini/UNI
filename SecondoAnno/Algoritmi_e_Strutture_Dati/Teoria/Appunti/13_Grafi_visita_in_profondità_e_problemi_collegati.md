@@ -6,7 +6,7 @@ Ci proponiamo di risolvere tre problemi:
 - conoscere ed enumerare tutte le **componenti fortemente connesse** di $G$ $\rightarrow$ elencare tutti i sottoinsiemi massimali di $V$ tale che, ogni vertice in ogni sottoinsieme raggiunge ogni altro vertice di quel sottoinsieme.
 La soluzione in comune per questi tre problemi e' la visita in profondita'.
 
-Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente $s$. La differenza tra le due visite e; che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che $G$ sia rappresentato con liste di adiacenza e riempie un campo $v.\pi$ per generare un **albero di visa in profondità** come risultato della visita; la differenza qui e' che invece di un solo albero, si produce una **foresta** di alberi, uno per ogni sorgente.
+Il proposito della visita in profondita' e' quello di scoprire tutti i vertici raggiungibili da ogni potenziale sorgente $s$. La differenza tra le due visite e' che i vertici nella visita in profondita' vengono scoperti il **prima possibile** a partire da quelli gia' scoperti: la visita in profondita' e' ricorsiva. Anche `DepthFirstSearch` usa un sistema di colorazione per ricordare i vertici ancora da scoprire e quelli gia' scoperti. `DepthFirsSearch` assume che $G$ sia rappresentato con liste di adiacenza e riempie un campo $v.\pi$ per generare un **albero di visa in profondità** come risultato della visita; la differenza qui e' che invece di un solo albero, si produce una **foresta** di alberi, uno per ogni sorgente.
 `DepthFirstSearch` riempie anche dei campi $v.d$ (**momento** della scoperta) e $v.f$ (momento nel quale il vertice viene abbandonato). I campi $v.d$ e $v.f$ sono interi tra $1$ e $2 \cdot |V|$. Vengono generalmente chiamati **tempi**. Per ogni vertice $u$, abbiamo $u.d < u.f$.
 
 ``` Pseudocodice
@@ -42,7 +42,7 @@ Ogni vertice nella lista di adiacenza di $u$ viene esplorato ricorsivamente; all
 
 ### Complessità di `DepthFirstSearch`
 L'analisi della **complessità** viene calcolata attraverso la tecnica dell'analisi aggregata.
-`BreadthFirstSearc` esegue un ciclo di che costa $|V|$ per la colorazione iniziale e per ogni vertice chiama `DepthVisit`. Ma il massimo numero di chiamate a `DepthVisit` e' $|E|$. Quindi la complessità e' $\Theta(|V| + |E|)$, che nel caso peggiore diventa $\Theta(|V|^2)$ (anche se accettiamo $\Theta(|V| + |E|)$).
+`BreadthFirstSearc` esegue un ciclo che costa $|V|$ per la colorazione iniziale e per ogni vertice chiama `DepthVisit`. Ma il massimo numero di chiamate a `DepthVisit` e' $|E|$. Quindi la complessità e' $\Theta(|V| + |E|)$, che nel caso peggiore diventa $\Theta(|V|^2)$ (anche se accettiamo $\Theta(|V| + |E|)$).
 
 ## Grafi diretti: cicli
 In un grafo diretto, chiamiamo **ciclo** un percorso $v_1, v_2, ..., v_k$ di vertici tali che per ogni $i$ esiste l'arco $(v_i, v_{i+1})$ e che $v_1 = v_k$. Quando un grafo diretto e' privo di cicli, lo chiamiamo `DAG` (Directed Acyclic Graph). 

@@ -25,7 +25,7 @@ proc InsertionSort(A) {
 ```
 
 Vogliamo dimostrare la correttezza dell'algoritmo. Per la **terminazione**, osserviamo che il ciclo **for** termina quando `j > A.lenght`, e il ciclo **while** e' sempre vincolato tra $j - 1$ e $0$, e che per ogni $j$, la variabile $i$, che inizia da un valore positivo, si decrementa sempre. Dunque la terminazione e' garantita sia a livello del ciclo piu' esterno che di quello piu' interno.
-Per la **correttezza** possiamo usare la tecnica dell'**invariante**, che consiste nello stabilire una proprieta' del ciclo principale (o di un ciclo dell'algoritmo) che sia vera dalla prima esecuzione, durante ogni esecuzione, e dopo l'ultima esecuzione, e che implichi la correttezza. Nel nostro caso una **invariante** del ciclo piu' esterno che che `A[1, ..., j-1]` e' sempre ordinato in maniera non decrescente; si noti che quando `j = A.lenght + 1`, l'algoritmo termina, verificando che `A[1, ..., n]` e' ordinato in maniera non decrescente.
+Per la **correttezza** possiamo usare la tecnica dell'**invariante**, che consiste nello stabilire una proprieta' del ciclo principale (o di un ciclo dell'algoritmo) che sia vera dalla prima esecuzione, durante ogni esecuzione, e dopo l'ultima esecuzione, e che implichi la correttezza. Nel nostro caso una **invariante** del ciclo piu' esterno e' che `A[1, ..., j-1]` e' sempre ordinato in maniera non decrescente; si noti che quando `j = A.lenght + 1`, l'algoritmo termina, verificando che `A[1, ..., n]` e' ordinato in maniera non decrescente.
 
 ### Analizzare gli algoritmi: complessita' nel caso iterativo
 Passiamo allo studio della **complessità** di InsertionSort,
@@ -41,11 +41,11 @@ proc InsertionSort(A) {
 }
 ```
 
-$c1$, $c2$, ... sono costanti; $n$ e' la dimensione dell'input; $t_j$ va da 2 a *n* e dipende da istanza a istanza. **Nel caso migliore** $t_j = 1$ per ogni $j = 2, ..., n$ e questo caso corrisponde all'input gia' ordinato in partenza. **Nel caso peggiore** $t_j = j$ per ogni $j = 2, ..., n$ e corrisponde all'input **ordinato in ordine inverso** in partenza. 
+$c1$, $c2$, ... sono costanti; $n$ e' la dimensione dell'input; $t_j$ va da 2 a $n$ e dipende da istanza a istanza. **Nel caso migliore** $t_j = 1$ per ogni $j = 2, ..., n$ e questo caso corrisponde all'input gia' ordinato in partenza. **Nel caso peggiore** $t_j = j$ per ogni $j = 2, ..., n$ e corrisponde all'input **ordinato in ordine inverso** in partenza. 
 
 Nel caso migliore quindi:
 $$ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_7 \cdot (n-1) + c_4 \cdot (n-1) $$ 
-Quindi $T(n) = a \cdot n + b$ e' una funzione lineare per qualche costante a, b.
+Quindi $T(n) = a \cdot n + b$ e' una funzione lineare per qualche costante $a, b$.
 
 Nel caso peggiore invece, succede quanto segue. L'istruzione di controllo del **while** si esegue, ad ogni istanza del ciclo piu' esterno, esattamente $j$ volte; le due istruzioni interne, esattamente $j-1$ volte. Succede che: 
 $$ \sum_{j=2}^n j = \frac{n · (n+1)}{2}-1 $$
@@ -82,8 +82,8 @@ Come nel caso iterativo, vogliamo assicurare la **terminazione** dell'algoritmo:
 Per la **correttezza**, utilizziamo la tecnica dell'**invariante introduttiva**. Invece di concentrarci su un ciclo, ci concentriamo su cio' che accade **dopo ogni chiamata ricorsiva**.
 
 Le invarianti ricorsive si mostrano vere attraverso l'induzione:
-- Nel **caso base**, cioe' prima della chiamata ricorsiva, $low = 1$ e $high=n$; quindi se *k* e' in A, e' chiaramente in $A[low, ..., high]$.
-- Nel **caso induttivo** si assume che *k*, se esiste, sia in $A[low, ..., high]$ (prima della chiamata ricorsiva); poiche' A e' ordinato, e mid è l'indice mediano, se $k$ esiste è $A[mid]$, oppure è alla sua sinistra (se $A[mid] > k$), oppure è alla sua destra (se $A[mid] < k$), e la successiva chiamata ricorsiva, se si effettua, cambia low o high in maniera da rispettare proprio questo principio. Dunque k, se esiste, si trova di nuovo in $A[low, . . . , high]$ all'inizio della seguente chiamata ricorsiva, dove low o high è stato opportunamente cambiato.
+- Nel **caso base**, cioe' prima della chiamata ricorsiva, $low = 1$ e $high=n$; quindi se $k$ e' in $A$, e' chiaramente in $A[low, ..., high]$.
+- Nel **caso induttivo** si assume che *k*, se esiste, sia in $A[low, ..., high]$ (prima della chiamata ricorsiva); poiche' $A$ e' ordinato, e mid è l'indice mediano, se $k$ esiste è $A[mid]$, oppure è alla sua sinistra (se $A[mid] > k$), oppure è alla sua destra (se $A[mid] < k$), e la successiva chiamata ricorsiva, se si effettua, cambia low o high in maniera da rispettare proprio questo principio. Dunque $k$, se esiste, si trova di nuovo in $A[low, . . . , high]$ all'inizio della seguente chiamata ricorsiva, dove low o high è stato opportunamente cambiato.
 
 **Complessità**. Operare in come `InsertionSort()` per operare la complessita' di `RecursiveBinarySearch()` non porta a nulla: tutte le operazioni semplici hanno complessita' costante e non ci sono cicli. Ci sono, pero', due chiamate ricorsive che rendono difficile formalizzare il costo totale. $T(n)$, cioe' la nostra funzione di complessita', e' un **incognita**, della quale sappiamo le seguenti cose: costa una costante *c* **prima di dichiararsi**, che possiamo approssimare a 1, e nel **caso peggiore** si richiama esattamente una volta; poiché la variabile mid assume il valore dell'indice centrale dell'array arrotondato, eventualmente, all'intero inferiore, quando la procedura si richiama lo fa, al massimo, sulla metà degli elementi originali.
 Formalizzando

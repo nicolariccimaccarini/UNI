@@ -48,8 +48,8 @@ Quindi:
 Pertanto $h = \Theta(log(n))$.
 
 ## Heap binarie su array: `BuildMinHeap()` e `MinHeapify()` 
-Problema: data una (non)heap $H$ di numeri interi non negativi (cioe' una array), trasformarlo una una min-heap.
-A questo fine risolviamo un problema piu' semplice: dato un array $H$ ed un indice $i$ su di esso tale che `H[Left(i)]` `H[Right(i)]` sono gia' delle min-heap, trasformare $H$ in un array tale che anche `H[i]` e' una min-heap.
+Problema: data una (non) heap $H$ di numeri interi non negativi (cioe' una array), trasformarlo una una min-heap.
+A questo fine risolviamo un problema piu' semplice: dato un array $H$ ed un indice $i$ su di esso tale che `H[Left(i)]` `H[Right(i)]` sono gia' delle min-heap, trasformare $H$ in un array tale che anche $H[i]$ e' una min-heap.
 Procediamo in maniera ricorsiva: sistemiamo il potenziale errore localmente a `i, Left(i) e Right(i)` e poi correggiamo ricorsivamente gli errori che vengono generati dalla sistemazione a livelli piu' bassi. Vediamo una procedura che si chiama `MinHeapify` che fa quanto detto. 
 Si potrebbe anche fare riferimento a max-heap e alla procedura simmetrica `MaxHeapify()`.
 
@@ -71,7 +71,7 @@ proc MinHeapify(H, i) {
 
 ### Correttezza e complessità di `MinHeapify` 
 Per la **terminazione**, osserviamo che la procedura termina in due casi:
-- o perche' l'indice *i* non cambia durante una esecuzione (in questo caso non si effettuano chiamate ricorsive)
+- o perche' l'indice $i$ non cambia durante una esecuzione (in questo caso non si effettuano chiamate ricorsive)
 - oppure perche' l'indice e' diventato piu' grande della dimensione dell'heap (poiche' se cambia cresce sempre)
 Per quanto riguarda la **correttezza**, osserviamo che `MinHeapify()` e' costruita in maniera ricorsiva. Quindi dobbiamo trovare una **invariante** ricorsiva: dopo ogni chiamata a `MinHeapify()` su un nodo di altezza $h$ tale che entrambi i figli sono radici di min-heap prima della chiamata, quel nodo e' la radice di una min-heap.
 
@@ -110,12 +110,12 @@ Dimostriamo:
 - Nel **caso induttivo**, e' sufficiente riferirsi alla correttezza di `MinHeapify()`. Questa proprieta', riferita all'uscita dal ciclo, dice: $H[1]$ e' una min-heap.
 
 Un calcolo della **complessità** approssimativo ci porterebbe alla seguente conclusione: ogni chiamata di `MinHeapify()` costa $O(log(n))$ nel caso peggiore e si chiama $\Theta(n)$ volte, pertanto il costo totale e' $O(n \cdot log(n))$. 
-In questo caso possiamo dare un limite piu' stretto grazie ad un'analisi piu' dettagliata. Il costo di `MinHeapify()` puo' essere espresso come $O(h)$; supponiamo che *h* sia l'altezza del **nodo** su cui viene chiamato. Una semplice osservazione ci dice che se in un albero binario quasi completo ci sono *n* elementi, allora al massimo $\lceil \frac{n}{2^{h+1}} \rceil$ di loro si trovano ad altezza *h*.
+In questo caso possiamo dare un limite piu' stretto grazie ad un'analisi piu' dettagliata. Il costo di `MinHeapify()` puo' essere espresso come $O(h)$; supponiamo che $h$ sia l'altezza del **nodo** su cui viene chiamato. Una semplice osservazione ci dice che se in un albero binario quasi completo ci sono $n$ elementi, allora al massimo $\lceil \frac{n}{2^{h+1}} \rceil$ di loro si trovano ad altezza $h$.
 
 Il costo totale nel caso peggiore (quando `MinHeapify()` deve sempre arrivare alle foglie), si puo' limitare con:
 $$
 \sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h)) = O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h}) $$
-L'altezza va da 0 a $log(n)$ e, fissata un'altezza *h*, ci sono $\lceil \frac{n}{2^{h+1}} \rceil$ nodi. Per ogni nodo ad altezza $h$, chiamare `MaxHeapify()` costa $O(h)$ e quindi $\sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h))$. Ma $n$ non dipende da $h$ (e quindi moltiplica la sommatoria) e $\frac{1}{2^{h+1}} \cdot h$ si puo' maggiorare con $\frac{h}{2^h}$, e quindi e' $O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h} )$.
+L'altezza va da $0$ a $log(n)$ e, fissata un'altezza $h$, ci sono $\lceil \frac{n}{2^{h+1}} \rceil$ nodi. Per ogni nodo ad altezza $h$, chiamare `MaxHeapify()` costa $O(h)$ e quindi $\sum^{log(n)}_{h=0} (\lceil \frac{n}{2^{h+1}} \rceil \cdot O(h))$. Ma $n$ non dipende da $h$ (e quindi moltiplica la sommatoria) e $\frac{1}{2^{h+1}} \cdot h$ si puo' maggiorare con $\frac{h}{2^h}$, e quindi e' $O(n \cdot \sum^{log(n)}_{h=0} \frac{h}{2^h} )$.
 
 $$
 \begin{align}
@@ -135,7 +135,7 @@ e, per il teorema del rapporto, questa condizione e' sufficiente per la converge
 Il caso migliore (quello in cui un array e' gia' una min-heap) ha costo $\Theta(n)$, perche' la procedura e' governata da un ciclo **for**. 
 
 ## Ordinamento con `HeapSort()`
-Una max-heap puo' essere adesso usata efficientemente per progettare un algoritmo di ordinamento. Consideriamo una max heap e ricordiamo una delle priorita' e' che il massimo elementi di H si trova in $H[1]$. Se consideriamo $H[1]$come gia' ordinato (basta metterlo sulla giusta posizione: l'ultima) e sostituiamo il contenuto di $H[1]$ succede che $H[2]$ e $H[3]$ sono ancora max-heap. Quindi chiamando `MAxHeapify` rispettiamo le ipotesi e possiamo ripetere il processo. Il codice di `HeapSort` si basa precisamente su questa osservazione.
+Una max-heap puo' essere adesso usata efficientemente per progettare un algoritmo di ordinamento. Consideriamo una max-heap e ricordiamo una delle priorita' e' che il massimo elementi di $H$ si trova in $H[1]$. Se consideriamo $H[1]$come gia' ordinato (basta metterlo sulla giusta posizione: l'ultima) e sostituiamo il contenuto di $H[1]$ succede che $H[2]$ e $H[3]$ sono ancora max-heap. Quindi chiamando `MaxHeapify` rispettiamo le ipotesi e possiamo ripetere il processo. Il codice di `HeapSort` si basa precisamente su questa osservazione.
 
 ``` Pseudocodice
 proc HeapSort(H) {
@@ -153,7 +153,7 @@ Nel caso di `HeapSort()` la **correttezza** e' immediata, perche' dipende dirett
 ($O(1)$) ed una chiamata a `MaxHeapify()` ($\Theta(log(n))$). Il totale e' $\Theta(n \cdot log(n))$. La complessità e' la stessa nel caso migliore e quindi nel caso medio: dopo aver effettuato `BuildMaxHeap()`, per definizione ogni chiamata successiva a `MaxHeapify()` (dopo lo scambio) deve arrivare alle foglie. Possiamo anche osservare che la nostra implementazione di `HeapSort()` non e' stabile: si puo' dimostrare osservando il suo comportamento sull'array $H = [1,1]$. D'altra parte e' certamente in place, a meno delle chiamate ricorsive, che, come abbiamo osservato, sono unicamente tail-recursive.
 
 ## Code di priorita'
-Una **coda di priorità** e' una struttura dati astratta basata sull'ordinamento e necessariamente compatta. Possiamo costruire una coda di priorita' basandoci su una min-heap. A differenza di una coda classica, che implementa una politica FIFO, una coda di priorita' associa ad ogni chiave la **priorità** e serve (cioe' estrae) l'elemento a priorita' piu' bassa. Questa estrazione e' associata all'operazione che **aggiusta** la struttura dati, ed anche alla possibilita' di **inserire** nuovi elementi, o **cambiare la priorità** di un elemento inserito. Sia quindi $Q$ una min-heap senza campi aggiuntivi.
+Una **coda di priorità** e' una ==struttura dati astratta basata sull'ordinamento e necessariamente compatta==. Possiamo costruire una coda di priorita' basandoci su una min-heap. A differenza di una coda classica, che implementa una politica FIFO, una coda di priorita' associa ad ogni chiave la **priorità** e serve (cioe' estrae) l'elemento a priorita' piu' bassa. Questa estrazione e' associata all'operazione che **aggiusta** la struttura dati, ed anche alla possibilita' di **inserire** nuovi elementi, o **cambiare la priorità** di un elemento inserito. Sia quindi $Q$ una min-heap senza campi aggiuntivi.
 
 ``` Pseudocodice
 proc Enqueue(Q, priority) {

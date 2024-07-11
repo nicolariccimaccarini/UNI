@@ -22,7 +22,7 @@ Qual'e' una caratteristica comune a tutte le applicazioni tipiche in questo cont
 - $\rightarrow$ non posso dire che l'accesso lineare e' efficiente
 
 ## Tabelle hash con chaining
-Se il numero effettivo $n$ di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'unicerso, possiamo ancora implementare $T$ con un array di posizioni $1, \ldots, m$, ma nasce il problema della memorizzazione della chiave $k$ molto piu' grande di $m$, quindi senza accesso diretto.
+Se il numero effettivo $n$ di elementi **effettivamente utilizzati** e' molto piu' piccolo della cardinalita' dell'universo, possiamo ancora implementare $T$ con un array di posizioni $1, \ldots, m$, ma nasce il problema della memorizzazione della chiave $k$ molto piu' grande di $m$, quindi senza accesso diretto.
 Per risolverlo creiamo questa funzione:
 $$
 h: \mathcal{U} \rightarrow \{1, ..., m\}
@@ -116,8 +116,7 @@ h(k) = (k \cdot mod(m)) + 1
 $$
 
 Quando una funzione e' una funzione di hash uniforme semplice?
-- Quando si verifica che $m$ e' un numero primo e lontano da una potenza di 2. Infatti quando $m$ non e; un numero primo, i suoi divisori danno luogo a liste di chaining particolarmente lunghe. Inoltre, se $m=2^p$ per qualche $p$, allora `k mod(m)` dipende unicamente dagli ultimi $p$ bits della rappresentazione binaria di 
-  $k$. Se le chiavi $k$ sono uniformemente distribuite, nessuno di questi due problemi è realmente importante. Ma nella realtà le chiavi raramente sono uniformemente distribuite, e quindi usiamo questi accorgimenti per rimediare. 
+- Quando si verifica che $m$ e' un numero primo e lontano da una potenza di 2. Infatti quando $m$ non e' un numero primo, i suoi divisori danno luogo a liste di chaining particolarmente lunghe. Inoltre, se $m=2^p$ per qualche $p$, allora $k \cdot mod(m)$ dipende unicamente dagli ultimi $p$ bits della rappresentazione binaria di $k$. Se le chiavi $k$ sono uniformemente distribuite, nessuno di questi due problemi è realmente importante. Ma nella realtà le chiavi raramente sono uniformemente distribuite, e quindi usiamo questi accorgimenti per rimediare. 
 
 ### Funzioni di hash per il chaining: moltiplicazione
 Se non vogliamo che la scelta di $m$ influenzi le prestazioni, possiamo usare il metodo della moltiplicazione.
@@ -174,7 +173,7 @@ proc HashComputeModulo(w, B, m) {
 Evidentemente questa funzione **termina** sempre, ha **complessità** $\Theta(d)$, ed e' **corretta** perche' utilizza le proprieta' dell'aritmetica modulare per $m$ numero primo. 
 
 ## Tabelle hash: open hashing
-Questa tecnica ha le seguenti caratteristiche importanti::
+Questa tecnica ha le seguenti caratteristiche importanti:
 - si eliminano le liste e quindi i chaining
 - una tabella hash di $m$ elementi potra' ospitare al massimo $m$ elementi e per ottenere questo risultato si rinuncia ad implementare la funzione di cancellazione.
 L'indirizzamento aperto si basa sull'idea di provare piu' di una posizione sulla tabella, finche' se ne trova una libera oppure si ha la certezza che la tabella e' piena.

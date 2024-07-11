@@ -3,13 +3,13 @@ Qual'e' la complessita' minima del problema dell'ordinamento? Per rispondere, po
 
 Un algoritmo di ordinamento si **basa sui confronti** se ogni passo puo' essere visto come un'operazione di confronto tra due elementi, seguita da uno spostamento. Gli algoritmi visti fino ad ora sono basati sul confronto.
 Possiamo **generalizzare** il processo di ordinare per confronti?
-Assumendo che possiamo solo confrontare 2 elementi per volta, il processo di ordinare puo' essere visto come un albero binario la cui radice e' l'inpiut. Ad ogni nodo si associa la **permutazione** dell'oggetto che corrisponde ad uno scambio.
+Assumendo che possiamo solo confrontare 2 elementi per volta, il processo di ordinare puo' essere visto come un albero binario la cui radice e' l'input. Ad ogni nodo si associa la **permutazione** dell'oggetto che corrisponde ad uno scambio.
 
-Quante permutazioni possibili con *n* elementi? Precisamente $n!$, e un albero binario con $n!$ foglie e' alto, almeno, $log(n!)$. Quindi $log(n!)$ e' un limite inferiore alla lunghezza massima di un ramo nell'albero che rappresenta l'esecuzione di un qualsiasi algoritmo di ordinamento basato sui confronti. Sappiamo che:
+Quante permutazioni possibili con $n$ elementi? Precisamente $n!$, e un albero binario con $n!$ foglie e' alto, almeno, $log(n!)$. Quindi $log(n!)$ e' un limite inferiore alla lunghezza massima di un ramo nell'albero che rappresenta l'esecuzione di un qualsiasi algoritmo di ordinamento basato sui confronti. Sappiamo che:
 $$
 log(n!) = \Theta(n \cdot log(n))
 $$
-Quindi il nostro limite inferiore e' $\Omega(n \cdot log(n))$. Per esempio, questo significa che `MergeSort()` e' **ottimo**, visto che ha complessita', nel caso peggiore, $\Theta(n \cdot log(n))$. `QuickSort()` non e' ottimo, neppure nella sua versione randomizzata, ma altre considerazioni che abbiamo fatto ci portano a preferirlo in tate situazione.
+Quindi il nostro limite inferiore e' $\Omega(n \cdot log(n))$. Per esempio, questo significa che `MergeSort()` e' **ottimo**, visto che ha complessita', nel caso peggiore, $\Theta(n \cdot log(n))$. `QuickSort()` non e' ottimo, neppure nella sua versione randomizzata, ma altre considerazioni che abbiamo fatto ci portano a preferirlo in tale situazione.
 Per numeri sufficientemente **piccoli**, possiamo fare meglio di $n \cdot log(n)$, In realta', il limite che **non possiamo** vincere e' $log(n!)$.
 
 E' possibile ordinare correttamente 5 numeri basandoci sui confronti in meno di 8 confronti? Se rispondiamo di no, allora sbagliamo, anche se e' vero che $5 \cdot log(5) = 11.6 ≈ 12$. La risposta e' si, perche' $log(5!) = log(120) = 6,90 ≈ 7$, che e' il numero minimo di confronti necessari per decidere l'ordine di 5 elementi diversi. In linea di principio ne esiste uno specifico per qualunque numero **fissato** di elementi: questi algoritmi non sono eleganti, non insegnano nulla di concettuale e servono solo esclusivamente per rappresentare un'idea.
@@ -18,7 +18,7 @@ Oltre ad esistere un numero minimo di confronti che qualunque algoritmo deve far
 
 ## Ipotesi aggiuntive
 Aggiungendo delle ipotesi agli oggetti che vogliamo ordinare possiamo vincere dei limiti. Un esempio che vediamo sono gli algoritmi `CountingSort()` e `RadixSort()`.
-Entrambi gli algoritmi sono basati sull'ipotesi aggiuntiva di stare ordinando dei numeri interi du cui conosciamo il limite superiore. `CountingSort()` lavora direttamente coi numeri e `RadixSort()` ne generalizza l'uso.
+Entrambi gli algoritmi sono basati sull'ipotesi aggiuntiva di stare ordinando dei numeri interi di cui conosciamo il limite superiore. `CountingSort()` lavora direttamente coi numeri e `RadixSort()` ne generalizza l'uso.
 `CountingSort()` si basa su un array $A$, su un appoggio di $C$ (quindi ==non e' in place==) e su uno di uscita B, dove si ottiene il risultato.
 
 ## *CountingSort*
@@ -41,7 +41,7 @@ proc CountingSort(A, B, k) {
 
 ### Correttezza di *CountingSort*
 Per la **terminazione**, vediamo che tutto l'algoritmo e' governato da cicli **for**, e quindi termina per definizione.
-Guardiamo la **correttezza**. Alla fine del secondo ciclo **for**, in C la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$, e alla fine del terzo, la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$. Un'**invariante** corretta per il quarto ciclo **for** e': al j-esimo passo, $C[A[j]]$ e' la posizione corretta di $A[j]$ in B. In primo luogo osserviamo che, prima di iniziare il quarto ciclo, per ogni *j* si ha che $C[A[j]] - z$ e' la posizione corretta di $A[j]$ in B se $A[j]$ e' tale che $|{A[I]|I > j, A[I] = A[j]}| = z$. 
+Guardiamo la **correttezza**. Alla fine del secondo ciclo **for**, in $C$ la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$, e alla fine del terzo, la posizione i-esima contiene il numero di elementi di $A$ che sono uguali ad $i$. Un'**invariante** corretta per il quarto ciclo **for** e': al j-esimo passo, $C[A[j]]$ e' la posizione corretta di $A[j]$ in $B$. In primo luogo osserviamo che, prima di iniziare il quarto ciclo, per ogni *j* si ha che $C[A[j]] - z$ e' la posizione corretta di $A[j]$ in B se $A[j]$ e' tale che $|{A[I]|I > j, A[I] = A[j]}| = z$. 
 
 Adesso dimostriamo il caso generale.
 - **Caso base**. L'invariante e' chiaramente vera per $j=n$, per l'osservazione precedente.

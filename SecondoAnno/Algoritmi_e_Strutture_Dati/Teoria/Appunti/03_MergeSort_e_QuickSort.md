@@ -56,7 +56,7 @@ proc Merge(A, p, q, r) {
 }
 ```
 
-L'idea alla base di `Merge()` e' scegliere il minimo trai i due elementi in cima a L ed a R e posizionarlo nel giusto posto di A; in seguito, a seconda della scelta, si avanza su L o su R. Utilizziamo due procedure elementari chiamate `CopyFromL` e `CopyFromR` che hanno come effetto quello di copiare in A un elemento (quello il cui indice e' dato come parametro) di L (rispettivamente, R) e avanzare di una posizione la variabile indicata come parametro. La scelta di usare oggetti esterni L ed R e; molto conveniente per poter usare A come array di arrivo, ma questo significa che, **nella nostra implementazione**, ==`Merge()` non e' in place==: quanto e' piu' grande l'input, maggiore e' la quantita' di spazio utilizzata da L e R, che pertanto non e' costante. Chiaramente ==*MergeSort*== eredita questa caratteristica, quindi ==non e' in place==.
+L'idea alla base di `Merge()` e' scegliere il minimo trai i due elementi in cima a $L$ ed a $R$ e posizionarlo nel giusto posto di $A$; in seguito, a seconda della scelta, si avanza su $L$ o su $R$. Utilizziamo due procedure elementari chiamate `CopyFromL` e `CopyFromR` che hanno come effetto quello di copiare in $A$ un elemento (quello il cui indice e' dato come parametro) di $L$ (rispettivamente, $R$) e avanzare di una posizione la variabile indicata come parametro. La scelta di usare oggetti esterni $L$ ed $R$ e' molto conveniente per poter usare $A$ come array di arrivo, ma questo significa che, **nella nostra implementazione**, ==`Merge()` non e' in place==: quanto e' piu' grande l'input, maggiore e' la quantita' di spazio utilizzata da $L$ e $R$, che pertanto non e' costante. Chiaramente ==*MergeSort*== eredita questa caratteristica, quindi ==non e' in place==.
 
 ### Correttezza e complessita' di *Merge* 
 Studiamo la **terminazione**. I primi due cicli **for** terminano quando $i=n_1$ e $j=n_2$; il terzo ciclo **for** e' sempre vincolato tra *p* e *r*, e per ipotesi $p \lt r$. Pertanto `Merge()` termina sempre quando la chiamata rispetta l'ipotesi.
@@ -207,7 +207,7 @@ proc RandomizedQuickSort(A, p, r) {
 La scelta casuale del pivot implica che ad ogni passo tutte le partizioni sono ugualmente probabili. Questo significa che possiamo parlare della complessita' di `RandomizedQuickSort()` nel caso medio in termini di probabilita' di una determinata partizione. Guardiamo cosa succede quando effettuiamo una partizione qualsiasi. Supponiamo che, dopo aver eseguito `Partition`, la situazione sia la seguente:
 ![[RandomizedQuickSort.png]]
 
-La posizione di $P$ (il pivot) determina su quanti elementi di `QuickSort()` si richiamera'. Detta *k* la cardinalita' del lato sinistro, la cardinalita' del lato destro sara' $n-1-k$, considerando che il pivot non viene piu' toccato.
+La posizione di $P$ (il pivot) determina su quanti elementi di `QuickSort()` si richiamera'. Detta *k* la cardinalita' del lato sinistro, la cardinalita' del lato destro sara' $(n-1)-k$, considerando che il pivot non viene piu' toccato.
 
 Se tutte le partizioni sono ugualmente probabili, la probabilita' di una specifica partizione e' proprio $\frac{1}{n}$. Formalizzando, si ottiene che 
 $$

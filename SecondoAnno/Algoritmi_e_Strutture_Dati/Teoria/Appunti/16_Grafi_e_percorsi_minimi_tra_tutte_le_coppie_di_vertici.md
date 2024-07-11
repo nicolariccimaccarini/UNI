@@ -7,7 +7,8 @@ In caso di archi negativi siamo costretti ad usare `Bellman-Ford`, per una compl
 Ci domandiamo se possiamo fare meglio di cosi'.
 
 Il primo problema che dobbiamo affrontare e' quello della rappresentazione. Fino ad ora abbiamo usato la rappresentazione a **liste di adiacenza**. Ma il problema dei percorsi minimi tra tutte le coppie e sostanzialmente diverso da quello con sorgente singola, e in un certo modo richiede in maniera naturale una rappresentazione **matriciale** del grafo.
-Faremo la seguente assunzione: un grafo $G$ e' rappresentato dalla sola matrice $W$ di pesi.
+Faremo la seguente assunzione: un grafo $G$ e' rappresentato dalla sola matrice $W$
+di pesi.
 
 Cosa ci aspettiamo come risultato di un algoritmo che risolve questo problema?
 - Poiche' la rappresentazione e' matriciale, ci aspettiamo due matrici come risultato:

@@ -121,7 +121,7 @@ $T(n) = T(\frac{n}{2}) + 1$
 ### Randomized Quick Sort
 - Per minimizzare la possibilita' di avere partizioni sbilanciate
 - **complessità**: 
-	- caso medio $\rightarrow$ $O(n \cdot log_2(n)$
+	- caso medio $\rightarrow$ $O(n \cdot log_2(n))$ 
 	- caso peggiore $\rightarrow$ $\Theta(n^2)$ 
 
 ### Counting Sort

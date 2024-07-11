@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "4542e6d546b15650",
+        "id": "818801e326f95eaf",
         "type": "tabs",
         "children": [
           {
-            "id": "4adc8c722ae1601d",
+            "id": "4123a8fdfbffc299",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Riassunto Basi di Dati.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "37659353332901fc",
@@ -82,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Riassunto Basi di Dati.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Riassunto Basi di Dati.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Riassunto Basi di Dati.md"
+              }
             }
           }
         ]
@@ -139,26 +146,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4adc8c722ae1601d",
+  "active": "4123a8fdfbffc299",
   "lastOpenFiles": [
     "Esercizi SQL su Database Azienda.md",
-    "Riassunto Basi di Dati.md",
     "Domande Basi di Dati.md",
+    "lezioni/Lezione 08 - SQL.md",
+    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
+    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
+    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
     "lezioni/Lezione 04 - Modello EER.md",
+    "lezioni/Lezione 03 - Modello ER.md",
     "lezioni/Lezione 02 - Database System.md",
     "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
+    "tutorato/Pandas2.md",
+    "tutorato/Pandas1.md",
+    "Riassunto Basi di Dati.md",
     "tutorato/Tutorato 11 - SQL.md",
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
     "tutorato/Tutorato 12 - SQL.md",
     "img/Stato_DB_Azienda.png",
     "img/tutorato12.png",
     "Pasted image 20240624100101.png",
     "tutorato/Tutorato 10 - SQL.md",
     "img/tutorato11.png",
-    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
-    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
-    "lezioni/Lezione 03 - Modello ER.md",
-    "lezioni/Lezione 08 - SQL.md",
     "Pasted image 20240619101652.png",
     "img/GerarchieEReticoli.png"
   ]

@@ -1,7 +1,7 @@
 ## Alberi di copertura minimi
-Ci concentriamo sui grafi pesati indiretti connessi. Sia quindi $G = (V, E, W)$. Un grafo indiretto pesato puo' essere una buona rappresentazione di situazioni reali, come ad esempio una rete di connessioni informatiche tra computer, dove il peso di ogni arco rappresenta il costo della connessione. In una situazione come quella descritta possiamo domandarci qual'e' il costo di visitare ogni vertice, ed in particolare se c'e' una scelta di archi ottima, che minimizza il costo.
+Ci concentriamo sui ==grafi pesati indiretti connessi==. Sia quindi $G = (V, E, W)$. Un grafo indiretto pesato puo' essere una buona rappresentazione di situazioni reali, come ad esempio una rete di connessioni informatiche tra computer, dove il peso di ogni arco rappresenta il costo della connessione. In una situazione come quella descritta possiamo domandarci qual'e' il costo di visitare ogni vertice, ed in particolare se c'e' una scelta di archi ottima, che minimizza il costo.
 
-Definiamo un **alberi di copertura minimo** (o **MST**) come un sottoinsieme di archi che forma un albero, copre tutti i vertici e la cui somma dei pesi e' minima.
+Definiamo un **albero di copertura minimo** (o **MST**) come un sottoinsieme di archi che forma un albero, copre tutti i vertici e la cui somma dei pesi e' minima.
 
 > MST $\rightarrow$ **minimum spanning tree** 
 
@@ -69,7 +69,7 @@ Con un grafo sparso avremo:
 Il caso peggiore si verifica con un grafo denso e per minimizzare il danno si preferisce l'implementazione con una coda senza struttura. I grafi si considerano non densi anche quando $|E|$ cresce rispetto a $|V|$ ma non si avvicina asintoticamente a $|V|^2$; anche in questo caso, la seconda scelta e' migliore della prima.
 
 ### Alberi di copertura minimi: algoritmo di Kruskal
-Una valida alternativa a `MST-Prim` è l'algoritmo noto come algoritmo di Kruskal, che utilizza una generalizzazione del concetto di taglio e del concetto di arco sicuro per il taglio al ne di ottenere un albero di copertura minimo.
+Una valida alternativa a `MST-Prim` è l'algoritmo noto come algoritmo di Kruskal, che utilizza una generalizzazione del concetto di taglio e del concetto di arco sicuro per il taglio al fine di ottenere un albero di copertura minimo.
 
 L'idea di `MST-Kruskal` e' che possiamo ordinare gli archi in ordine crescente di peso e, analizzandoli uno a uno in questo ordine, stabilire se inserirlo come parte dell'albero di copertura minimo oppure no.
 Quale sarebbe la ragione di non farlo a un certo punto dell'esecuzione? Semplicemente, un arco $(u, v)$ **non** e' parte di nessun MST se $u$ e $v$ sono gia' connessi da qualche altro arco precedentemente scelto.

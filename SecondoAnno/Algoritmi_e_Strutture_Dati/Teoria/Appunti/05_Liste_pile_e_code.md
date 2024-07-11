@@ -3,7 +3,7 @@ Cosa possiamo dire delle strutture dati? Quali caratteristiche ci interessano?
 
 La **tassonomia** classica delle strutture dati prevede tre dimensioni originali tra loro. Una struttura dati puo' essere 
 - **statica** o **dinamica**: con dinamica intendiamo una struttura che e' pensata per aggiungere e togliere elementi durante l'esecuzione di un algoritmo (per esempio un'array e' dinamico mentre un grafo e' statico); 
-- **compatta** o **sparsa**: tipicamente le strutture dinamiche sono sparse, ovvero non possiamo fare ipotesi sulla posizione fisica degli elementi in memoria (per esempio, gli array son una struttura compatta perche', indipendentemente da dove da dove e' memorizzato, possiamo assumere che sa fatto in maniera da avere *n* posizioni)fisiche vicine tra loro);
+- **compatta** o **sparsa**: tipicamente le strutture dinamiche sono sparse, ovvero non possiamo fare ipotesi sulla posizione fisica degli elementi in memoria (per esempio, gli array sono una struttura compatta perche', indipendentemente da dove da dove e' memorizzato, possiamo assumere che sia fatto in maniera da avere $n$ posizioni fisiche vicine tra loro);
 - **basata** o **non basata sull'ordinamento** delle chiavi: se gli elementi sono disposti in maniera dipendente dal valore delle chiavi, allora sono basate sull'ordinamento, altrimenti non. 
 
 Un altro elemento fondamentale e' la differenza tra **chiave** e **dato satellite**. Cio' che associamo ad una chiave si chiama **dato satellite**, e normalmente questo e' il contenuto informativo della chiave. Quando effettuiamo un movimento di chiave, implicitamente muoviamo anche i dati satelliti, la cui dimensione e' considerata costante.
@@ -87,13 +87,13 @@ $**$ : per la cancellazione di una **chiave** (senza conoscere l'indirizzo della
 Sebbene dal confronto le due soluzioni sembrano identiche, si osservi che gli array permettono l'accesso diretto, mentre le liste no. Questa differenza gioca un ruolo fondamentale quando le strutture dati di cui abbiamo bisogno sono indicizzabili. Per esempio, un insieme di nomi e' naturalmente memorizzato in un oggetto di tipo lista, ed un nome non e' visto come un indice. Invece, un insieme (abbastanza piccolo) di numeri interi positivi puo' trovare posto in un array e il contenuto di una posizione puo' essere visto come un indice.
 
 ## Pile e code
-Le pile e le code sono entrambe due strutture dati astratte. Nella nostra tassonomie sono da ritenersi dinamiche e non basate sull'ordinamento. Possono essere implementate in maniera compatta (basate su array), o sparsa (basate su liste). La loro caratteristica distintiva e' che l'accesso agli elementi non e' libero, ma vincolato ad una **politica**. La ragione per cui puo' essere utile avere una politica di accesso e' che questa puo' fare risparmiare dei dettagli implementativi, assicurando un certo ordine di inserimento ed estrazione.
+Le pile e le code sono entrambe due strutture dati astratte. Nella nostra tassonomie sono da ritenersi ==dinamiche e non basate sull'ordinamento==. Possono essere implementate in maniera ==compatta== (basate su array), o ==sparsa== (basate su liste). La loro caratteristica distintiva e' che l'accesso agli elementi non e' libero, ma vincolato ad una **politica**. La ragione per cui puo' essere utile avere una politica di accesso e' che questa puo' fare risparmiare dei dettagli implementativi, assicurando un certo ordine di inserimento ed estrazione.
 
 ### Pile
 Una **pila** (o **stack**) e' una struttura dati astratta che implementa la politica **last in first out** (**LIFO**). Una pila si utilizza in diversi contesti, tra cui valutazione di espressioni, processi di backtracking (per ricordarci le mosse che abbiamo fatto e l'ultimo punto di scelta), eliminazione della ricorsione, e molte altre. 
 
 ### Pile su Array
-Per implementare una pila ci possiamo basare su un array; avremo quindi una implementazione compatta. L'idea e' quella di **mascherare** la struttura portate all'utente finale. Si puo' pensare come un **oggetto** con i suoi relativi **metodi**. Assumeremo quindi che $S$ sia  un array di interi, che interpretiamo come uno stack e che viene dotato con i parametri (naturali) `S.top` (inizializzato a 0) e `S.max` (che indica la massima capacita' di S). Le operazioni di inserimento ed eliminazione di un elemento nelle pile prendono il nome di *Push* e *Pop*, rispettivamente. La variabile $S$ e' un array dotato di struttura.
+Per implementare una pila ci possiamo basare su un array; avremo quindi una implementazione compatta. L'idea e' quella di **mascherare** la struttura portate all'utente finale. Si puo' pensare come un **oggetto** con i suoi relativi **metodi**. Assumeremo quindi che $S$ sia un array di interi, che interpretiamo come uno stack e che viene dotato con i parametri (naturali) `S.top` (inizializzato a $0$) e `S.max` (che indica la massima capacita' di $S$). Le operazioni di inserimento ed eliminazione di un elemento nelle pile prendono il nome di *Push* e *Pop*, rispettivamente. La variabile $S$ e' un array dotato di struttura.
 
 ``` Pseudocodice
 proc Empty(S) {
@@ -119,7 +119,7 @@ proc Pop(S) {
 ### Code su array
 Una **coda** (o **queue**) e' una struttura dati elementare che implementa una politica **first in first out** (**FIFO**). Permette di accedere ai dati attraverso inserimento ed eliminazione che prendono normalmente i nomi di `Enqueue` e `Dequeue`, rispettivamente. Anche una coda puo' avere diversi usi: in una **playlist** le canzoni si trovano in una coda (circolare), in maniera che la canzone appena ascoltata si ripetera' **il piu' tardi possibile**; oppure nei processi di visita di strutture dati piu' complesse come i grafi.
 
-Per implementare uno stack ci possiamo basare su un array. Assumendo quindi che $Q$ sia una coda (un array dotato di struttura), con parametri `Q.head`, `Q.tail` (naturali), la cui inizializzazione e' `Q.head = Q.tail = 1`. Per assicurare di essere capaci di distinguere perfettamente le due situazioni di pila vuota e di pila piena, entrambe caratterizzate da `Q.head = Q.tail`, aggiungiamo una variabile, chiamata $dim$ inizialmente a 0 (perche' la coda e' vuota).
+Per implementare uno stack ci possiamo basare su un array. Assumendo quindi che $Q$ sia una coda (un array dotato di struttura), con parametri `Q.head`, `Q.tail` (naturali), la cui inizializzazione e' `Q.head = Q.tail = 1`. Per assicurare di essere capaci di distinguere perfettamente le due situazioni di pila vuota e di pila piena, entrambe caratterizzate da `Q.head = Q.tail`, aggiungiamo una variabile, chiamata $dim$ inizialmente a $0$ (perche' la coda e' vuota).
 
 ``` Pseudocodice
 proc Enqueue(Q, x) {
@@ -147,7 +147,7 @@ proc Dequeue(Q) {
 **Correttezza**, **complessità** e **terminazione** di queste operazioni sono triviali da dimostrare.
 
 ### Pile su liste
-Pile e code possono anche essere implementate in maniera sparsa, utilizzando delle liste concatenate come supporto. Per quanto riguarda le pile, l'oeprazione di inserimento in testa di una lista e' proprio l'operazione di `Push` e l'operazione di `Pop` e' una semplificazione dell'operazione di delete. In questo caso, $S$ e' semplicemente una lista, senza campi aggiuntivi.
+Pile e code possono anche essere implementate in maniera sparsa, utilizzando delle liste concatenate come supporto. Per quanto riguarda le pile, l'operazione di inserimento in testa di una lista e' proprio l'operazione di `Push` e l'operazione di `Pop` e' una semplificazione dell'operazione di delete. In questo caso, $S$ e' semplicemente una lista, senza campi aggiuntivi.
 
 ``` Pseudocodice
 proc Empty(S) {
@@ -172,7 +172,7 @@ proc Pop(S) {
 **Correttezza**, **complessità** e **terminazione** di queste operazioni non presentano nessun problema.
 
 ### Code su liste
-Per implementare una coda attraverso una lista dobbiamo immaginare che la lista $Q$ sia dotata del campo `Q.tail` in aggiunta al campo `Q.head`. In questo modo possiamo implementare `Enqueue` semplicemente chiamando l'inserimento in una lista e `Dequeue `semplicemente chiamando l'eliminazione di un elemento in una lista.
+Per implementare una coda attraverso una lista dobbiamo immaginare che la lista $Q$ sia dotata del campo `Q.tail` in aggiunta al campo `Q.head`. In questo modo possiamo implementare `Enqueue` semplicemente chiamando l'inserimento in una lista e `Dequeue` semplicemente chiamando l'eliminazione di un elemento in una lista.
 
 ``` Pseudocodice
 proc Empty(Q) {

@@ -9,7 +9,7 @@ Dal punto di vista delle strutture dati, liste, alberi e grafi sono oggetti molt
 La struttura dati **albero** e' troppo generica e ubiqua per essere associata a uno o piu' nomi specifici.
 
 Un **albero radicato** (semplicemente **albero**) e' un grafo aciclico connesso tale che ogni coppia di vertici e' connessa da al piu' un cammino.
-- I vertici vengono chiamato **nodi**. 
+- I vertici vengono chiamati **nodi**. 
 - Un'albero e' `k-ario` se ogni nodo ha al piu' $k$ figli distinti.
 - Albero **completo**: ogni livello e' completo (tutti i nodi di uno stesso livello hanno esattamente zero o due figli);
 - **quasi completo**: ogni livello, tranne eventualmente l'ultimo, e' completo;
@@ -26,7 +26,7 @@ Quando esiste una direzione nei cammini, si individuano in maniera naturale le *
 L'**altezza** di un albero e' il massimo numero degli archi su un percorso semplice dalla radice alla foglia.
 
 ### Alberi: altezza
-Gli alberi binari quasi completi con `n` elementi hanno altezza $\Theta(log(n))$ (questo vale anche per gli alberi completi). 
+Gli alberi binari quasi completi con $n$ elementi hanno altezza $\Theta(log(n))$ (questo vale anche per gli alberi completi). 
 Quando un albero non ha nessuna proprieta' strutturale, la sua altezza e' $\Theta(n)$ nel caso peggiore e $\Theta(log(n))$ nel caso medio.
 
 ### Alberi: struttura
@@ -87,18 +87,18 @@ La complessita' di `TreeInOrderTreeWalk` e' $\Theta(n)$, in tutti i casi.
 Altre visite possibili si ottengono cambiando l'ordine delle chiamate ricorsive e ottengono risultati diversi.
 
 ``` Pseudocodice
-proc TreeInOrderTreeWalk(x) {
+proc TreePreOrderTreeWalk(x) {
 	if (x != nil) then {
 		Print(x.key)
-		TreeInOrderTreeWalk(x.left)
-		TreeInOrderTreeWalk(x.right)
+		TreePreOrderTreeWalk(x.left)
+		TreePreOrderTreeWalk(x.right)
 	}
 }
 
 proc TreePostOrderTreeWalk(x) {
 	if (x != nil) then {
-		TreeInOrderTreeWalk(x.left)
-		TreeInOrderTreeWalk(x.right)
+		TreePostOrderTreeWalk(x.left)
+		TreePostOrderTreeWalk(x.right)
 		Print(x.key)
 	}
 }
