@@ -193,7 +193,7 @@ $T(n) = T(\frac{n}{2}) + 1$
 	- max-heap $\rightarrow$ il massimo elemento si trova nella radice
 		- **Complessità** $\rightarrow$ `BuildMaxHeap` $\Theta(n)$ + `MaxHeapify` $\Theta(\log(n))$ = $\Theta(n \cdot \log(n))$
 	- min-heap $\rightarrow$ il minimo elemento si trova nella radice
-		- **Correttezza**: se i figli sono una min-heap, dopo la chiamata ricorsiva il il padre con i figli è una min-heap
+		- **Correttezza**: se i figli sono una min-heap, dopo la chiamata ricorsiva il padre con i figli è una min-heap
 		- **Complessità** min-heap $\rightarrow$ $h = \Theta(log(n))$
 		- **Caso sbilanciato** $\rightarrow$ situazione in cui uno dei sottoalberi di un nodo e' significativamente piu' grande dell'altro. 
 			- il peggior sbilanciamento possibile e' $\frac{2}{3}$. Questo caso succede quando la heap sulla quale la procedura e' chiamata tende ad essere sbilanciata, forzando piu' chiamate ricorsive. Risolvendo la ricorrenza $T(n) \le T(\frac{2}{3}n) + \Theta(1)$ (Master Theorem, caso 2) si ottiene che $T(n) = \Theta(log(n))$. 
@@ -256,7 +256,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 	- $a_1a_2a_3...a_d$ = stringa
 
 ### Tabelle Hash con Open Hashing
-- Tecnica che risolve i conflitti di una tabella hash provocando piu' posizioni finche' non se ne trova una libera o se la tabella e' piena.
+- Tecnica che risolve i conflitti di una tabella hash provando piu' posizioni finche' non se ne trova una libera o se la tabella e' piena.
 - Si ipotizza che il numero di chiavi e' minore al numero di celle della tabella
 	- $n \le m$
 - **Caratteristiche**:
@@ -630,7 +630,7 @@ Perché una funzione di hash sia buona, deve distribuire le chiavi in maniera un
 - Ci concentriamo sui grafi pesati indiretti connessi $\rightarrow$ $G = (V, E, w)$
 - **Obiettivo**: trovare un percorso che minimizzi il costo
 - **Alberi di copertura minimo** (o **MST**) $\rightarrow$ sottoinsieme di archi che forma un albero, copre tutti i vertici e la cui somma dei pesi e' minima
-- **Strategia**: algoritmi greedy $\rightarrow$fare ad ogni passo la scelta localmente migliore in modo da ottenere una soluzione globalmente migliore
+- **Strategia**: algoritmi greedy $\rightarrow$ fare ad ogni passo la scelta localmente migliore in modo da ottenere una soluzione globalmente migliore
 - **Caratteristiche alberi indiretti**: 
 	- tutti i nodi possono essere radice
 	- tutti i nodi di un solo arco insistente possono essere foglie

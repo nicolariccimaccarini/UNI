@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "67fdf5724801bd94",
+        "id": "67ec11d5270fdbfc",
         "type": "tabs",
         "children": [
           {
-            "id": "4384bcb1158406fa",
+            "id": "e55a6679ee9c09e0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,33 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "51ccdc8aad27ae60",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Riassunto.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5e5305583902ac75",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Programma per passare algoritmi.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Programma per passare algoritmi.md",
+                "file": "Appunti/17_Teoria_della_complessità.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Programma per passare algoritmi.md",
+                "file": "Appunti/17_Teoria_della_complessità.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programma per passare algoritmi.md"
+                "file": "Appunti/17_Teoria_della_complessità.md"
               }
             }
           }
@@ -171,29 +146,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5e5305583902ac75",
+  "active": "e55a6679ee9c09e0",
   "lastOpenFiles": [
     "Riassunto.md",
-    "Appunti/15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
-    "Appunti/16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
+    "Appunti/07_Tabelle_Hash.md",
     "Programma per passare algoritmi.md",
-    "Appunti/17_Teoria_della_complessità.md",
-    "Appunti/Appunti_Algoritmi_e_Strutture_Dati.md",
+    "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
+    "Appunti/02_Soluzioni_di_ricorrenze.md",
     "Appunti/13_Grafi_visita_in_profondità_e_problemi_collegati.md",
     "Appunti/12_Grafi_visita_in_ampiezza_e_problemi_collegati.md",
-    "Appunti/11_Alberi_B.md",
+    "Appunti/16_Grafi_e_percorsi_minimi_tra_tutte_le_coppie_di_vertici.md",
+    "Appunti/15_Grafi_e_percorsi_minimi_con_sorgente_singola.md",
     "Appunti/10_Alberi_Red-Black.md",
+    "Appunti/17_Teoria_della_complessità.md",
+    "Appunti/Appunti_Algoritmi_e_Strutture_Dati.md",
+    "Appunti/11_Alberi_B.md",
     "Appunti/09_Alberi_e_Alberi_binari_di_ricerca.md",
     "Appunti/08_Strutture_Dati_per_Insiemi_Disgiunti.md",
     "Appunti/05_Liste_pile_e_code.md",
     "Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
     "Appunti/04_CountingSort_e_RadixSort.md",
     "Appunti/03_MergeSort_e_QuickSort.md",
-    "Appunti/02_Soluzioni_di_ricorrenze.md",
     "Appunti/01_Correttezza_complessità_e_notazione_asintotica.md",
     "Appunti/00_Introduzione_e_Regole.md",
-    "Appunti/14_Grafi_e_Alberi_di_copertura_minima.md",
-    "Appunti/07_Tabelle_Hash.md",
     "Appunti"
   ]
 }
