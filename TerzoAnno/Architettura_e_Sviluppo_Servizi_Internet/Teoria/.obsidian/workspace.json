@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "25c0dbc8a8f906b4",
+    "id": "826333dcb4c02e25",
     "type": "split",
     "children": [
       {
-        "id": "818801e326f95eaf",
+        "id": "177cbee8914ddac1",
         "type": "tabs",
         "children": [
           {
-            "id": "4123a8fdfbffc299",
+            "id": "28b7ab9bc24a8d4f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Domande Basi di Dati.md",
+                "file": "3 - I modelli ISO-OSI e TCP-IP.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "3bdce7443f101d3e",
+    "id": "0538b359e1a878a2",
     "type": "split",
     "children": [
       {
-        "id": "294e8b841a13c07e",
+        "id": "4722e9cd5c154d3a",
         "type": "tabs",
         "children": [
           {
-            "id": "d5ae4e923bdf8724",
+            "id": "f854fe8abacac674",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "9604948cfbfde5c6",
+            "id": "240e9bee8821d06e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +58,7 @@
             }
           },
           {
-            "id": "83cce201beac5fca",
+            "id": "b049071087b4b0d9",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "37659353332901fc",
+    "id": "5857896e262d54fc",
     "type": "split",
     "children": [
       {
-        "id": "e0a3bdac57a57b17",
+        "id": "e7327390a4cb84f8",
         "type": "tabs",
         "children": [
           {
-            "id": "6b60c150374ced60",
+            "id": "402715cf61161431",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Domande Basi di Dati.md",
+                "file": "3 - I modelli ISO-OSI e TCP-IP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +97,19 @@
             }
           },
           {
-            "id": "59c2e4b49656e4b4",
+            "id": "a028fa2834bfc90a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Domande Basi di Dati.md",
+                "file": "3 - I modelli ISO-OSI e TCP-IP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "36e177d8d4d0205c",
+            "id": "134c39a61f75df3d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,16 +120,17 @@
             }
           },
           {
-            "id": "0813bca6d0bdd939",
+            "id": "9f2463f0996be436",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Domande Basi di Dati.md"
+                "file": "3 - I modelli ISO-OSI e TCP-IP.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -146,29 +147,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4123a8fdfbffc299",
+  "active": "28b7ab9bc24a8d4f",
   "lastOpenFiles": [
-    "Riassunto Basi di Dati.md",
-    "lezioni/Lezione 08 - SQL.md",
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
-    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
-    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
-    "lezioni/Lezione 04 - Modello EER.md",
-    "lezioni/Lezione 03 - Modello ER.md",
-    "lezioni/Lezione 02 - Database System.md",
-    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
-    "Domande Basi di Dati.md",
-    "Esercizi SQL su Database Azienda.md",
-    "tutorato/Pandas2.md",
-    "tutorato/Pandas1.md",
-    "tutorato/Tutorato 11 - SQL.md",
-    "tutorato/Tutorato 12 - SQL.md",
-    "img/Stato_DB_Azienda.png",
-    "img/tutorato12.png",
-    "Pasted image 20240624100101.png",
-    "tutorato/Tutorato 10 - SQL.md",
-    "img/tutorato11.png",
-    "Pasted image 20240619101652.png",
-    "img/GerarchieEReticoli.png"
+    "img/TCPVSUDP.png",
+    "3 - I modelli ISO-OSI e TCP-IP.md",
+    "img/TCPChiusuraConnessione.png",
+    "img/TCPSetupConnessione.png",
+    "img/TCPControlloCongestione2.png",
+    "img/TCPControlloCongestione.png",
+    "img/TCPConsegnaAffidabile.png",
+    "img/TCPConsegnaOrdinaria.png",
+    "img/TCPHeader.png",
+    "img/LayeringTCPIP.png",
+    "img/ISOOSIvsTCPIP.png",
+    "2 - IPC per applicazioni distribuite e Modello Client-Server.md",
+    "1 - Reti di Calcolatori.md",
+    "img",
+    "IngSoft01 - Introduzione.md"
   ]
 }

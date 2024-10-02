@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "25c0dbc8a8f906b4",
+    "id": "ef01dfabcd91d44e",
     "type": "split",
     "children": [
       {
-        "id": "818801e326f95eaf",
+        "id": "2d7c1825a344b35e",
         "type": "tabs",
         "children": [
           {
-            "id": "4123a8fdfbffc299",
+            "id": "a3d556f89ad0b964",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Domande Basi di Dati.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "3bdce7443f101d3e",
+    "id": "1fa143a78c53830d",
     "type": "split",
     "children": [
       {
-        "id": "294e8b841a13c07e",
+        "id": "2bda3cf30ac0b940",
         "type": "tabs",
         "children": [
           {
-            "id": "d5ae4e923bdf8724",
+            "id": "3d45193ce4d95618",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +39,7 @@
             }
           },
           {
-            "id": "9604948cfbfde5c6",
+            "id": "e2478bd3fc19f4b5",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "83cce201beac5fca",
+            "id": "17c22473c541a3b4",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "37659353332901fc",
+    "id": "847c81e097b26d17",
     "type": "split",
     "children": [
       {
-        "id": "e0a3bdac57a57b17",
+        "id": "05c7938ade1be424",
         "type": "tabs",
         "children": [
           {
-            "id": "6b60c150374ced60",
+            "id": "a4bba5dcb5ddfbf5",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Domande Basi di Dati.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +92,18 @@
             }
           },
           {
-            "id": "59c2e4b49656e4b4",
+            "id": "e38283d5e60d6704",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Domande Basi di Dati.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "36e177d8d4d0205c",
+            "id": "3ee97d9087e242b6",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,13 +114,11 @@
             }
           },
           {
-            "id": "0813bca6d0bdd939",
+            "id": "b89e1a4b13030c69",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Domande Basi di Dati.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,29 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4123a8fdfbffc299",
-  "lastOpenFiles": [
-    "Riassunto Basi di Dati.md",
-    "lezioni/Lezione 08 - SQL.md",
-    "lezioni/Lezione 07 - Dipendenze funzionali e normalizzazione per basi di dati relazionali.md",
-    "lezioni/Lezione 06 - Algebra e calcolo relazionale.md",
-    "lezioni/Lezione 05 - Modello dei Dati Relazionale.md",
-    "lezioni/Lezione 04 - Modello EER.md",
-    "lezioni/Lezione 03 - Modello ER.md",
-    "lezioni/Lezione 02 - Database System.md",
-    "lezioni/Lezione 01 - Introduzione e modellazione concettuale.md",
-    "Domande Basi di Dati.md",
-    "Esercizi SQL su Database Azienda.md",
-    "tutorato/Pandas2.md",
-    "tutorato/Pandas1.md",
-    "tutorato/Tutorato 11 - SQL.md",
-    "tutorato/Tutorato 12 - SQL.md",
-    "img/Stato_DB_Azienda.png",
-    "img/tutorato12.png",
-    "Pasted image 20240624100101.png",
-    "tutorato/Tutorato 10 - SQL.md",
-    "img/tutorato11.png",
-    "Pasted image 20240619101652.png",
-    "img/GerarchieEReticoli.png"
-  ]
+  "active": "a3d556f89ad0b964",
+  "lastOpenFiles": []
 }
