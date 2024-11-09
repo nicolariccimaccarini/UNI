@@ -188,3 +188,208 @@ Il modello TCP/IP viene detto " a clessidra" perche' e essenzialmente basato sul
 	- DCCP $\rightarrow$ in pratica UDP con congestion control, non molto diffuso, non funziona con middleboxes
 	- QUIC $\rightarrow$ ottica dell'ottimizzazione delle performance, innovazione "disruptive", approccio a livello applicativo, basato su UDP
 - Tuttavia, i principali protocolli rimangono TCP e UDP
+
+## TCP/IP: Il livello di rete
+- In TCP/IP il livello di rete e' implementato dal Internet Protocol (IP)
+- Due versioni di IP attualmente in uso su Internet:
+	- IPv4 $\rightarrow$ la versione attuale, che e' quella di gran lunga piu' utilizzata
+	- IPv6 $\rightarrow$ la versione futura di IP, attualmente in fase di adozione iniziale
+
+### IPv4 header
+![[IPv4Header.png]]
+
+### IPv4
+- Un indirizzo IPv4 e' composto da 32 bit e suddiviso in una parte che identifica la Local Area Network (LAN) in cui esso si trova (network ID) e in una parte di host (host ID)
+- La lunghezza del network ID e' variabile
+- Supporto al subnetting
+- Rappresentazione di indirizzi IPv4 segue la cosiddetta "dotted notation":
+	- es. 192.168.0.1/24
+- Il numero massimo teorico di indirizzi IPv4 e' di circa 4 miliardi (2^32)
+- In realta' non tutti gli indirizzi sono utilizzabili, visto che alcuni indirizzi (~18 milioni) sono riservato per l'uso in reti private:
+	- 10.0.0.0/8 (255.0.0.0)
+	- 172.16.0.0/12 (255.240.0.0)
+	- 192.168.0.0/16 (255.255.0.0)
+- In piu' altri indirizzi sono riservati per multicast
+
+## Routing in una LAN
+- All'interno di una LAN i dispositivi IP possono comunicare direttamente tra loro semplicemente usando le funzioni offerte dal protocollo di livello 2
+- Uso di Address Resolution Protocol (ARP) per scoprire quale indirizzo 2 (link) corrisponda a un dato indirizzo di livello 3 (IP)
+
+## Oltre una LAN: Internet e AS
+- Internet e' un insieme di Autonomous System, ovverosia reti di primo livello, interconnesse
+- Al loro interno gli AS hanno molte altre sottoreti
+
+## Routing al di fuori di una LAN
+- Per comunicare con nodi al di fuori di una LAN si usa il meccanismo di IP routing
+- Speciali dispositivi, detti *router*, si occupano dell'instradamento dei pacchetti
+- Ciascun router ha una *tabella di routing*, che contiene le informazioni di instradamento dei pacchetti
+- L'instradamento viene fatto a seconda dell'IP di destinazione di un pacchetto, seguendo la regola del *longest matching prefix* 
+
+### Protocolli di routing
+- La dimensione spesso enorme delle reti impedisce di configurare le informazioni di instradamento manualmente sui router
+- Necessita' di protocolli che gestiscano automaticamente le tabelle di routing
+	- BGP per routing inter-AS
+	- OSPF e RIP per routing intra-AS
+
+## Problemi di IPv4
+- IPv4 ha un numero molto limitato di indirizzi
+- Gli indirizzi IPv4 sono praticamente esauriti
+	- Quelli a disposizione di Europa e Asia sono esauriti rispettivamente nel 2012 e nel 2011
+- Necessita' di meccanismi per scoprire questa mancanza:
+	- NAT
+	- Migrazione a IPv6
+
+### Network Address Translation (NAT)
+- NAT e' una soluzione che trasforma automaticamente indirizzi privati in indirizzi globali
+	- All'attraversamento di un dispositivo NAT (tipicamente un router di confine), i pacchetti IP in uscita vengono modificati sostituendo all'indirizzo de mittente X un indirizzo pubblico Y
+	- I pacchetti IP in ingresso per l'indirizzo Y saranno manipolato in modo inverso. Ovverosia, all'indirizzo Y pubblico sara' sostituito l'indirizzo privato X.
+- Possibilita' di connettere a Internet reti con un numero elevato di indirizzi privati utilizzando un numero relativamente basso di indirizzi pubblici
+- NAT e' uno strumento molto utilizzato (praticamente obliquo)
+- Sfortunatamente il NAT e' un approccio che presenta anche numerosi svantaggi:
+	- Problemi nel caso si voglia rendere accessibili all'esterno servizi che girano nella rete con indirizzi privati
+		- Necessita' di configurazione ad hoc per server
+		- Uso di protocolli per consentire al traffico esterno di passare attraverso il NAT (STUN, TURN, ICE, ecc.)
+	- Problemi con alcuni tipi di servizi
+		- Ad esempio, per abilitare FTP attivo e' necessario un NAT stateful con uno specifico modulo di protocol translation
+	- **Nella Internet moderna, esistono molti strumenti, denominati "middleboxes", che, come NAT, manipolano il traffico per vari motivi e possono rappresentare un problema per le applicazioni**
+
+## IPv6
+- IPv6 e' la nuova versione di IP, specificatamente progettata per superare i limiti di scalabilita' di IPv4
+- IPv6 adotta indirizzi di 128 bit
+	- Questo consente di allocare (in teoria) $3,4 \cdot 10^{38}$ indirizzi (un numero di indirizzi per $m^2$ per superficie della Terra maggiore del numero di Avogardo)
+- Numerosi vantaggi rispetto a IPv4
+	- Adozione di un formato di frame piu' semplice (e quindi veloce da processare per i router)
+	- Indirizzi con diversi scope: link-local, site-local (deprecato) e global
+	- Ripensamento di alcuni protocolli in favore di soluzione piu' robuste (es. da ARP e Neighbor Discovery)
+	- Estensioni per connettere dispositivi low-power
+
+### IPv6 header
+![[IPv6Header.png]]
+
+### Indirizzi IPv6
+- Rappresentazione esadecimale
+	- FEDC:BA98:7654:3210:FEDC:BA98:7654:3210
+- Sequenza di zeri sono abbreviate con "::"
+	- 1080:0:0:0:0:0:200C:417A = 1080::200C:417A
+- Tre tipologie di indirizzo:
+	- Unicast
+	- Anycast
+	- Multicast
+- Vari scope di indirizzamento
+	- Link Local (FE80::/10)
+	- Site local (FEC0::/10) (deprecato)
+	- Global (2000::/3)
+	- Multicast (FF00::/8)
+- Indirizzi di tipo speciale:
+	- IPv4-mapped (::FFFF:0:0/96)
+	- IPv4-compatible (::/96)
+	- 6t04
+
+### Adozione di IPv6
+- Per supportare IPv6 c'e' la necessita' di modificare tutto il software (applicazioni e sistemi operativi) e il firmware (che gira in router, switch, gateway, ecc.) di rete
+	- Talvolta questo comporta notevoli problemi (es. FTP, gateway DSL)
+- La maggior parte di sistemi operativi, applicazioni e router supporta gia' IPv6
+
+## Compatibilita' IPv4 e IPv6
+- Al moment esistono fondamentalmente 3 situazioni per quanto riguarda la connettivita' IP:
+	- reti con sola connettivita' IPv4
+	- reti con sola connettivita' IPv6
+	- reti sia con connettivita' IPv4 che con connettivita' IPv6
+- **Bisogna progettare applicazioni in grado di funzionare in tutte e tre le condizioni summenzionate**
+- Servono soluzioni per far parlare le reti del primo tipo con quelle del secondo
+
+## Diffusione di IPv6
+![[diffusioneIPv6.png]]
+
+## Modello a doppia clessidra
+![[modelloDoppiaClessidra.png]]
+
+## TCP/IP e mobilita'
+- Purtroppo TCP/IP e' stato progettato per una rete fissa e non offre un buon supporto per i terminali mobili
+	- La causa fondamentale e' la duplice natura di ID e di "locator" degli indirizzi IP
+- Adozione di diversi meccanismi per fornire il supporto alla mobilita' dei nodi
+	- DHCP
+	- Mobile IP
+
+### Dynamic Host Configuration Protocol (DHCP)
+- DHCP e' il protocollo di autoconfigurazione attualmente piu' usato
+- DHCP assegna dinamicamente un indirizzo IP a un nodo
+	- Time-based leasing per riuso indirizzi
+	- Riassegnazione dello stesso indirizzo allo stesso host se possibile
+- Inoltre, DHCP configura anche gateway e DNS
+- In IPv6 il ruolo del DHCP viene tipicamente svolto dallo Stateless Address Autoconfiguration (esiste pure DHCPv6, ma e' quasi inutilizzato)
+
+### Mobile IPv6 (MIPv6)
+- Piu' performante di MIPv4
+	- Route optimization incluso nel protocollo
+	- Uso di Routing Header vs. incapsulazione
+	- Dynamic Home Address Discovery usa anycast e ritorna una singola risposta al nodo mobile
+	- Largo uso di piggybacking grazie alle Dest. Opt.
+- Piu' sicuro di MIPv4
+	- Uso obbligatorio di IPSEC
+	- Facilitato l'uso di packet filtering
+- Piu' robusto e flessibile di MIPv4:
+	- Uso di Neighbor Discovery al posto di ARP
+	- Facilitato il routing di traffico multicast
+	- Non sono piu' necessari Foreign Agent
+	- Meccanismo di movement detection bidirezionale
+	- Nuova opzione "Advertisement Interval" sul Router Advertisement
+- Cio' nonostante, nemmeno MIPv6 e' in grado di risolvere completamente i problemi di mobilita' di IP
+	- Network Mobility
+	- Administrative burden
+	- Always best connected
+
+
+## Multipath TCP
+- Versione di TCP con supporto multipath (ovverosia a connessioni che usano $N>1$ endpoint e $N$ subflow) pensata per dispositivi mobili
+- Supportato da tutti i principali sistemi operativi, soprattutto in ambito mobile 
+- Soluzione (relativamente) semplice ma molto efficace
+![[MultipathTCP.png]]
+
+## TCPIP: sotto il livello di rete
+- L'ubiquita' di IP permette all'ingegnere informatico, che si occupa di sviluppare applicazioni di rete, di non curarsi dei protocolli di livello 1 e 2
+	- Ragioniamo sempre in termini di scambio di messaggi su TCP o UDP
+	- In larga misura, si puo' anche ignorare la tecnologia di comunicazione sottostante
+- Tuttavia, si deve dare sempre molta attenzione ad alcuni aspetti molto importanti:
+	- Performance
+	- Middleboxes
+	- Supporto a IPv6
+
+## Interne - Organi di Controllo
+- Il principale organo di controllo di Internet e' la Internet Society (ISOC)
+- ISOC e' un'organizzazione internazionale (con sedi a Washington e Ginevra) non governativa per la promozione dell'utilizzo dell'accesso a Internet
+- La Internet Architecture Board (IAB) e' l'organo tecnico di ISOC
+- IAB ha diverse sotto-organizzazioni, la piu' importante delle quali e' certamene IETF
+
+### Internet Engineering Task Force
+- IETF e' l'organo che ha il compito di definire le specifiche dei protocolli di rete usati su Internet
+- Composta da ingegneri e ricercatori che contribuiscono gratuitamente con il proprio lavoro
+- Diversi comitati (working group) che lavorano su un tema specifico
+- Organizzazione democratica
+
+## RFC
+- I Request For Comments (RFC) sono i documenti fondamentali che definiscono gli standard di Internet
+
+### RFC: Processo di Pubblicazione
+![[RFC.png]]
+
+## Internet Assigned Numbers Authority (IANA)
+- IANA e' un dipartimento di ICANN con il compito di coordinare alcuni degli elementi chiave che permettono a Internet di continuare a funzionare senza intoppi
+- In particolare, IANA gestisce:
+	- Assegnazione corrispondenze tra servizi e numeri di porta
+	- Allocazione indirizzi IP agli Internet Register
+	- Root DNS
+
+## Internet Registry
+- Gli indirizzi IP (sia IPv4 che IPv6) vengono generalmente assegnai in modo gerarchico
+- Gli utenti ottengono gli indirizzi IP dal proprio Internet Service Provider (ISP)
+- Gli ISP ottengono l'assegnazione di indirizzi IP da un Local Internet Registry (LIR), da un National Internet Registry (NIR), o dal corrispondente Regional Internet Registry (RIR)
+
+### Regional Internet Registry
+- Esistono 5 RIR:
+	- AfriNIC $\rightarrow$ Africa Region
+	- APNIC $\rightarrow$ Asia/Pacific Region
+	- ARIN $\rightarrow$ North America Region
+	- LACNIC $\rightarrow$ Latin America and some Caribbean Islands
+	- RIPE NCC $\rightarrow$ Europe, Middle East and Central Asia
+- Il nostro RIR di riferimento e' ovviamente RIPE

@@ -8,15 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6e86d82ae9b60d74",
+            "id": "ec7044df9513a937",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Introduzione.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -39,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +54,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +64,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,15 +89,17 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00 - Introduzione.md",
-                "collapseAll": false,
+                "file": "3 - Git e Bitbucket.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 3 - Git e Bitbucket"
             }
           },
           {
@@ -102,10 +108,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "00 - Introduzione.md",
+                "file": "3 - Git e Bitbucket.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 3 - Git e Bitbucket"
             }
           },
           {
@@ -116,7 +124,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,11 +135,14 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00 - Introduzione.md"
-              }
+                "file": "3 - Git e Bitbucket.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 3 - Git e Bitbucket"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -146,9 +159,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6e86d82ae9b60d74",
+  "active": "ec7044df9513a937",
   "lastOpenFiles": [
-    "00 - Introduzione.md",
+    "gerarchiaHTML.png",
+    "4 - HTML.md",
+    "3 - Git e Bitbucket.md",
+    "2 - Web Server.md",
+    "img/apacheStructure.png",
+    "img/retrievePaginaDinamica.png",
+    "img/retrievePaginaStatica.png",
+    "img/WebServerComeFunziona.png",
+    "Pasted image 20241014142239.png",
+    "1 - HTTP.md",
+    "img",
+    "livelliISOOSI.png",
+    "img/esempioRisposta.png",
+    "img/esempioRichiesta.png",
     "IngSoft01 - Introduzione.md"
   ]
 }

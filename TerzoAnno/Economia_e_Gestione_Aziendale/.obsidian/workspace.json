@@ -1,0 +1,157 @@
+{
+  "main": {
+    "id": "1ce7d85026146ed5",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe0809be9a79bae7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72d0b0191af2a738",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3 - Teorie dell'impresa.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8308c60e22a8549d",
+    "type": "split",
+    "children": [
+      {
+        "id": "be05aa87cca2f52f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8ea5f3e1171b1551",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "175957ce8b9a0949",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b9a7b90f805645c4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9229d60a27f369a3",
+    "type": "split",
+    "children": [
+      {
+        "id": "518f0068cb3804fa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "47e77f1d1779348c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "3 - Teorie dell'impresa.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f56fdc00864e1c08",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "3 - Teorie dell'impresa.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9dc21b8e3803a706",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1bcba1685c417b79",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "3 - Teorie dell'impresa.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "72d0b0191af2a738",
+  "lastOpenFiles": [
+    "Pasted image 20241003160812.png",
+    "img",
+    "img/ManagementStratop.png",
+    "3 - Teorie dell'impresa.md",
+    "2 - Mercato.md"
+  ]
+}

@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5e42d89b1f39154d",
+        "id": "e97667397b283b15",
         "type": "tabs",
         "children": [
           {
-            "id": "6aa2be4b48c2a122",
+            "id": "3abe6071f3dd9bd9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IngSoft07 - UML2.md",
+                "file": "IngSoftY - OOA&D.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "IngSoftY - OOA&D"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IngSoft07 - UML2.md",
+                "file": "IngSoft05 - Ingegneria dei Requisiti.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for IngSoft05 - Ingegneria dei Requisiti"
             }
           },
           {
@@ -103,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IngSoft07 - UML2.md",
+                "file": "IngSoft05 - Ingegneria dei Requisiti.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from IngSoft05 - Ingegneria dei Requisiti"
             }
           },
           {
@@ -117,7 +129,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -126,11 +140,14 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IngSoft07 - UML2.md"
-              }
+                "file": "IngSoftY - OOA&D.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of IngSoftY - OOA&D"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -147,20 +164,31 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6aa2be4b48c2a122",
+  "active": "3abe6071f3dd9bd9",
   "lastOpenFiles": [
-    "ComponentDiagram.png",
+    "IngSoftY - OOA&D.md",
+    "IngSoft10 - Progettazione Architetturale.md",
+    "IngSoft09 - Progettazione.md",
+    "img/ripartizioneVerticale.png",
+    "Pasted image 20241106112914.png",
+    "img/fasiProgettazione.png",
+    "IngSoft04bis - Cost management.md",
+    "IngSoft04 - Management.md",
+    "IngSoft03bis - swlifecycle moderni.md",
+    "IngSoft02 - Sistemi.md",
+    "IngSoft03 - Software life cycle.md",
+    "IngSoft05 - Ingegneria dei Requisiti.md",
+    "IngSoft08 - Analisi dei Requisiti.md",
+    "img/fasiProcessoIngReq.png",
+    "img/aChiSonoRivoltiRequisiti.png",
+    "IngSoftX - Design Pattern.md",
+    "img/Composite.png",
+    "img/abstractVSfactory.png",
+    "img/UMLFactoryMethod.png",
+    "Pasted image 20241015101821.png",
+    "img/planningPoker.png",
     "IngSoft07 - UML2.md",
-    "Pasted image 20240930094934.png",
-    "img/StatoComposito.png",
-    "img/SequenceDiagramFailure.png",
-    "img/SequenceDiagramSuccess.png",
-    "Pasted image 20240930093259.png",
-    "Pasted image 20240930093242.png",
-    "img/DiagrammaStato.png",
-    "img/DiagrammaCollaborazione.png",
     "IngSoft06 - UML.md",
-    "img/EliminazioneOggetto.png",
     "IngSoft01 - Introduzione.md",
     "img"
   ]
