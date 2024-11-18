@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "5857896e262d54fc",
@@ -140,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IngSoft12 - Progettazione Interfaccia Utente.md"
+                "file": "IngSoft13 - Verifica e Validazione.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of IngSoft12 - Progettazione Interfaccia Utente"
+              "title": "Outline of IngSoft13 - Verifica e Validazione"
             }
           }
         ],
@@ -166,7 +165,13 @@
   },
   "active": "0879b6c344471c23",
   "lastOpenFiles": [
+    "Pasted image 20241113154343.png",
+    "Pasted image 20241112153440.png",
     "IngSoft13 - Verifica e Validazione.md",
+    "img/debugging.png",
+    "img/condLogCompGrafFlusso.png",
+    "Pasted image 20241112153122.png",
+    "img/grafiDiFlusso.png",
     "IngSoft12 - Progettazione Interfaccia Utente.md",
     "img/valutzioneDesign.png",
     "img/progettazioneUI.png",
@@ -182,12 +187,7 @@
     "IngSoft03 - Software life cycle.md",
     "IngSoft05 - Ingegneria dei Requisiti.md",
     "IngSoft08 - Analisi dei Requisiti.md",
-    "img/fasiProcessoIngReq.png",
-    "img/aChiSonoRivoltiRequisiti.png",
     "IngSoftX - Design Pattern.md",
-    "img/Composite.png",
-    "img/abstractVSfactory.png",
-    "img/UMLFactoryMethod.png",
     "IngSoft07 - UML2.md",
     "IngSoft06 - UML.md",
     "IngSoft01 - Introduzione.md",

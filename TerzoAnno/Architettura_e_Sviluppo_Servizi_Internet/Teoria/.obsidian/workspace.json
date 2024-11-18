@@ -11,10 +11,14 @@
             "id": "aa242d02409f7a4c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "8 - Protocolli applicativi.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "8 - Protocolli applicativi"
             }
           }
         ]
@@ -73,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "5857896e262d54fc",
@@ -161,19 +166,20 @@
   },
   "active": "aa242d02409f7a4c",
   "lastOpenFiles": [
-    "6 - Le Socket in Unix-C.md",
-    "socketDATAGRAMConnectionless.png",
-    "strutturaDatiSocket.png",
+    "tagLengthValue.png",
+    "8 - Protocolli applicativi.md",
+    "terminatedData2.png",
+    "Pasted image 20241115104717.png",
+    "terminatedData.png",
     "Pasted image 20241016114336.png",
-    "socketUNIX.png",
+    "6 - Le Socket in Unix-C.md",
+    "img/socketDATAGRAMConnectionless.png",
+    "img/strutturaDatiSocket.png",
+    "img/socketUNIX.png",
     "5 - Socket Java.md",
     "MalfunzionamentiSocket.png",
     "4 - Naming e Binding.md",
     "Pasted image 20241009114333.png",
-    "img/idProcCom.png",
-    "img/URL.png",
-    "Pasted image 20241007164948.png",
-    "img/Caching.png",
     "3 - I modelli ISO-OSI e TCP-IP.md",
     "2 - IPC per applicazioni distribuite e Modello Client-Server.md",
     "1 - Reti di Calcolatori.md",
