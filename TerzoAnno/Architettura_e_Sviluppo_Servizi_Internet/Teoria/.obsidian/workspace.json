@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "aa242d02409f7a4c",
+            "id": "9e7c636abd0e56fb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "8 - Protocolli applicativi.md",
+                "file": "9 - Remote Procedure Call (RPC).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8 - Protocolli applicativi"
+              "title": "9 - Remote Procedure Call (RPC)"
             }
           }
         ]
@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "5857896e262d54fc",
@@ -140,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "6 - Le Socket in Unix-C.md"
+                "file": "9 - Remote Procedure Call (RPC).md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 6 - Le Socket in Unix-C"
+              "title": "Outline of 9 - Remote Procedure Call (RPC)"
             }
           }
         ],
@@ -164,22 +163,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "aa242d02409f7a4c",
+  "active": "9e7c636abd0e56fb",
   "lastOpenFiles": [
-    "tagLengthValue.png",
+    "Pasted image 20241118123849.png",
+    "MalfunzionamentiRPC.png",
+    "9 - Remote Procedure Call (RPC).md",
+    "Pasted image 20241118114638.png",
+    "img/RPC2.png",
+    "img/RPC.png",
     "8 - Protocolli applicativi.md",
-    "terminatedData2.png",
+    "img/tagLengthValue.png",
+    "img/terminatedData2.png",
     "Pasted image 20241115104717.png",
-    "terminatedData.png",
+    "img/terminatedData.png",
     "Pasted image 20241016114336.png",
     "6 - Le Socket in Unix-C.md",
     "img/socketDATAGRAMConnectionless.png",
-    "img/strutturaDatiSocket.png",
-    "img/socketUNIX.png",
     "5 - Socket Java.md",
-    "MalfunzionamentiSocket.png",
     "4 - Naming e Binding.md",
-    "Pasted image 20241009114333.png",
     "3 - I modelli ISO-OSI e TCP-IP.md",
     "2 - IPC per applicazioni distribuite e Modello Client-Server.md",
     "1 - Reti di Calcolatori.md",
