@@ -173,5 +173,58 @@ Questo permette di ottenere una semantica di tipo exactly-once (esattamente una)
 
 Questa semantica rappresenta il **caso ideale**, le implementazioni di RPC solitamente presentano semantica di tipo at-most-once.
 
+### Malfunzionamenti Client e orfani
+In caso di crash dei clienti, si deve trattare i caso degli **orfani**, con diverse strategie:
+- **sterminio** $\rightarrow$ ogni orfano risultato di un crash viene distrutto
+- **terminazione a tempo** $\rightarrow$ ogni calcolo ha una scadenza, oltre la quale e' automaticamente abortito
+- **reincarnazione** $\rightarrow$ il tempo viene diviso in epoche; tutto quello che e' relativo a un'epoca precedente e' considerato obsoleto
 
-FARE DA SLIDE 10 A FINE
+## Eterogeneita' e Conversione rappresentazione dati
+Eterogeneita' Internet (macchine e reti). Il Client e il Server possono eseguire su architetture diverse che usano differenti rappresentazione dei dati:
+- caratteri (ASCII, ISO8859-$*$, Unicode UTF-$*$, ...)
+- interi (dimensione, completamento a 1 o 2)
+- lunghezza (interi di 2 o 4 byte)
+- reali (lunghezza exp e mantissa, formato, ...)
+- ordine byte all'interno di una parola (little endian Vs. big endian)
+
+Per comunicare tra nodi eterogenei due soluzioni:
+1. ogni nodo converte dati per il destinatario (presentazioni)
+2. concordare un formato comune di rappresentazione dei dati (flessibilita')
+
+Importanza degli standard:
+**XDR** (Sun Microsystem)
+ASN.1/X.680 (ITU-T/OSI)
+XML (W3C)
+
+### eXternal Data Representation (XDR)
+![[XDR.png]]
+
+XDR fornisce un insieme di procedure di conversione per trasformare la rappresentazione **nativa** dei dati in una **rappresentazione esterna XDR** e viceversa.
+XDR fa uso di uno **stream**, un buffer che permette di creare un messaggio con i dati in forma XDR.
+I dati vengono inseriti/estratti nello/dallo stream XDR uno alla volta, operazioni di **serializzazione/deserializzazione**
+
+Esempio (serializzazione):
+``` C
+...
+XDR *xdrs;
+char buf[BUFSIZE];
+...
+xdrmem_create(xdrs, buf, BUFSIZE, XDR_ENCODE);
+...
+i=260;
+xdr_int(xdrs, &i);
+```
+
+La **deserializzazione** avviene nello stesso modo, con le **stesse routine**, usate in verso opposto, si specifica flag `XDR_DECODE` in `xdrmem_create()`.
+
+Funzioni bult-in di conversione:
+![[XDRBuilt-in.png]]
+
+Funzioni per tipi composti:
+![[XDRTipiComposti.png]]
+
+Attenzione: nel caso di informazioni strutturate, XDR ne esegue la serializzazione con **pointer chasing** e **flattening**.
+
+## RPC e livelli OSI
+![[RPCLivelliOSI.png]]
+
