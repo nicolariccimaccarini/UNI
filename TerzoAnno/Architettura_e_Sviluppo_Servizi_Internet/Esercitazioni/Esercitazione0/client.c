@@ -1,4 +1,4 @@
-#define _POSIX_C_SOURCE 200112L
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +7,8 @@
 
 
 int main(int argc, char **argv) {
-    int sd, err;
+    int sd, err, nread;
+    uint8_t buffer[4096];
     struct addrinfo hints, *res, *ptr;
 
     if (argc != 4) {
@@ -40,7 +41,35 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    write(sd, argv[3], strlen(argv[3]));
+    freeaddrinfo(res);
+
+    // scrivo nome file in formato UTF-8
+    err = write_all(sd, argv[3], strlen(argv[3]));
+    if (err < 0) {
+        fputs("Errore write!", stderr);
+        exit(EXIT_FAILURE);
+    }
+
+    err = write(sd, "\n", 1);
+    if (err < 0) {
+        fputs("Errore write!", stderr);
+        exit(EXIT_FAILURE);
+    }
+
+    while((nread = read(sd, buffer, sizeof(buffer))) > 0) {
+        err = write_all(STDOUT_FILENO, buffer, nread);
+        if (err < 0) {
+            fputs("Error write", stderr);
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    if (nread < 0) {
+        fputs("Errore read!", stderr);
+        exit(EXIT_FAILURE);
+    }
+
+    close(sd);
 
     return 0;
 }
