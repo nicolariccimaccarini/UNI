@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a1325b6051885914",
+            "id": "0e7f4bc5aaef2121",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10 - Java Remote Method Invocation (RMI).md",
+                "file": "12 - Web.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10 - Java Remote Method Invocation (RMI)"
+              "title": "12 - Web"
             }
           }
         ]
@@ -140,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10 - Java Remote Method Invocation (RMI).md"
+                "file": "12 - Web.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 10 - Java Remote Method Invocation (RMI)"
+              "title": "Outline of 12 - Web"
             }
           }
         ],
@@ -163,21 +163,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a1325b6051885914",
+  "active": "0e7f4bc5aaef2121",
   "lastOpenFiles": [
-    "Untitled.md",
+    "ArchitetturaWWW.png",
+    "12 - Web.md",
+    "11 - Servizi Internet.md",
+    "img/NTP.png",
+    "img/ProtocolloApplicativoSMTP.png",
+    "Pasted image 20241130110052.png",
+    "img/ArchitetturaPostaElettronica.png",
+    "img/FTPPassivo.png",
+    "img/FTPAttivo.png",
+    "Pasted image 20241128154831.png",
+    "img/ImplementazioneFTP.png",
+    "img/ImplementazioneRlogin.png",
     "10 - Java Remote Method Invocation (RMI).md",
-    "img/ArchitetturaRMI.png",
     "9 - Remote Procedure Call (RPC).md",
-    "img/RPCLivelliOSI.png",
-    "img/XDRTipiComposti.png",
-    "img/XDRBuilt-in.png",
-    "img/XDR.png",
-    "Pasted image 20241118123849.png",
-    "img/MalfunzionamentiRPC.png",
-    "Pasted image 20241118114638.png",
-    "img/RPC2.png",
-    "img/RPC.png",
     "8 - Protocolli applicativi.md",
     "6 - Le Socket in Unix-C.md",
     "5 - Socket Java.md",

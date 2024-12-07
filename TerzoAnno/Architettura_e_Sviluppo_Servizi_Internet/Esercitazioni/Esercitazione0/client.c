@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM
+    hints.ai_socktype = SOCK_STREAM;
 
     err = getaddrinfo(argv[1], argv[2], &hints, &res);
     if (err != 0) {
