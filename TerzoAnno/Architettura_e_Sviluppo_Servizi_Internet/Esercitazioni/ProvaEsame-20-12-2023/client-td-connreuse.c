@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
             exit(EXIT_FAILURE); 
         }
 
-        // Leggo la response_lin
+        // Leggo la response_line
         for (;;) {
             char response_line[1024];
             size_t response_line_len;
