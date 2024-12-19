@@ -1,0 +1,34 @@
+JAVA_SOURCES := $(wildcard *.java)
+JAVA_TARGETS := $(patsubst %.java,%.class,$(JAVA_SOURCES))
+C_SOURCES    := $(wildcard *.[ch])
+C_TARGETS    := regali_last_minute server-concurrent-td-connreuse 
+TODAY        := $(shell date +%Y%m%d)
+ARCHIVE      := soluzione_compito_20230110_v$(TODAY).zip
+
+CFLAGS  := -std=c17 -O2 -g3 -Wall -Werror -pedantic -fsanitize=address,undefined -Wformat -Werror=format-security -Werror=array-bounds
+LDFLAGS := -fsanitize=address,undefined -fpie -Wl,-pie
+
+ifeq ($(USE_LIBUNISTRING),yes)
+  CFLAGS += -DUSE_LIBUNISTRING=1
+  LDFLAGS += -lunistring
+endif
+
+.PHONY: clean
+
+all: $(C_TARGETS) $(JAVA_TARGETS)
+
+# dependencies
+
+regali_last_minute: regali_last_minute.o rxb.o utils.o
+regali_last_minute.o: regali_last_minute.c rxb.h utils.h
+server-concurrent-td-connreuse: server-concurrent-td-connreuse.o rxb.o utils.o
+server-concurrent-td-connreuse.o: server-concurrent-td-connreuse.c rxb.h utils.h
+
+%.class: %.java
+	javac $<
+
+clean:
+	@rm -rf $(C_TARGETS) $(JAVA_TARGETS) *.zip *.o *.dSYM *~
+
+dist:
+	@zip $(ARCHIVE) $(C_SOURCES) $(JAVA_SOURCES) Compito* Makefile
