@@ -4,21 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "27dcc2f52851c5fb",
+        "id": "90251072616de66a",
         "type": "tabs",
         "children": [
           {
-            "id": "45f45f9c4d756724",
+            "id": "f9d36b6e5891cdd8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Domande esame.md",
+                "file": "Riassunto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Domande esame"
+              "title": "Riassunto"
+            }
+          },
+          {
+            "id": "2a421c550d201f28",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "8 - Protocolli applicativi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "8 - Protocolli applicativi"
             }
           }
         ]
@@ -40,7 +54,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -77,8 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "5857896e262d54fc",
@@ -164,14 +178,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "45f45f9c4d756724",
+  "active": "f9d36b6e5891cdd8",
   "lastOpenFiles": [
-    "Untitled 1.md",
     "Domande esame.md",
-    "Untitled.md",
+    "Riassunto.md",
+    "8 - Protocolli applicativi.md",
     "12 - Web.md",
-    "img/ArchitetturaWWW.png",
     "11 - Servizi Internet.md",
+    "10 - Java Remote Method Invocation (RMI).md",
+    "9 - Remote Procedure Call (RPC).md",
+    "5 - Socket Java.md",
+    "4 - Naming e Binding.md",
+    "3 - I modelli ISO-OSI e TCP-IP.md",
+    "2 - IPC per applicazioni distribuite e Modello Client-Server.md",
+    "1 - Reti di Calcolatori.md",
+    "Untitled 1.md",
+    "img/ArchitetturaWWW.png",
     "img/NTP.png",
     "img/ProtocolloApplicativoSMTP.png",
     "Pasted image 20241130110052.png",
@@ -181,15 +203,7 @@
     "Pasted image 20241128154831.png",
     "img/ImplementazioneFTP.png",
     "img/ImplementazioneRlogin.png",
-    "10 - Java Remote Method Invocation (RMI).md",
-    "9 - Remote Procedure Call (RPC).md",
-    "8 - Protocolli applicativi.md",
     "6 - Le Socket in Unix-C.md",
-    "5 - Socket Java.md",
-    "4 - Naming e Binding.md",
-    "3 - I modelli ISO-OSI e TCP-IP.md",
-    "2 - IPC per applicazioni distribuite e Modello Client-Server.md",
-    "1 - Reti di Calcolatori.md",
     "img",
     "IngSoft01 - Introduzione.md"
   ]

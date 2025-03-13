@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Riassunto.md",
+                "file": "Domande.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Riassunto"
+              "title": "Domande"
             }
           },
           {
@@ -178,8 +178,8 @@
   },
   "active": "baf4f22a0d65ec84",
   "lastOpenFiles": [
-    "Domande.md",
     "Riassunto.md",
+    "Domande.md",
     "IngSoft01 - Introduzione.md",
     "IngSoft07 - UML2.md",
     "IngSoft06 - UML.md",

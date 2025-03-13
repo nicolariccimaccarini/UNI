@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ec7044df9513a937",
+            "id": "e69a870e94f95878",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6 - HCI Foundations.md",
+                "file": "Domande Esame.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6 - HCI Foundations"
+              "title": "Domande Esame"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -163,9 +164,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f854fe8abacac674",
+  "active": "e69a870e94f95878",
   "lastOpenFiles": [
     "6 - HCI Foundations.md",
+    "Domande Esame.md",
     "img/significatoColori.png",
     "img/ScalaDelTempo.png",
     "gerarchiaHTML.png",
