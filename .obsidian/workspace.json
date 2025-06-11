@@ -1,38 +1,24 @@
 {
   "main": {
-    "id": "826333dcb4c02e25",
+    "id": "2dbd30e00bfc9b30",
     "type": "split",
     "children": [
       {
-        "id": "e97667397b283b15",
+        "id": "8100b96bbce66915",
         "type": "tabs",
         "children": [
           {
-            "id": "baf4f22a0d65ec84",
+            "id": "7b3fcdb0c5b69b30",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Domande.md",
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Domande"
-            }
-          },
-          {
-            "id": "4430b547d4370ec7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Domande.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Domande"
+              "title": "Risposte_Domande_Italiano"
             }
           }
         ]
@@ -41,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "0538b359e1a878a2",
+    "id": "6281b59c6332dcc7",
     "type": "split",
     "children": [
       {
-        "id": "4722e9cd5c154d3a",
+        "id": "77d91736f027b08e",
         "type": "tabs",
         "children": [
           {
-            "id": "f854fe8abacac674",
+            "id": "5d1cdb617cb32614",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -62,7 +48,7 @@
             }
           },
           {
-            "id": "240e9bee8821d06e",
+            "id": "1d3c3604d510086d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -79,7 +65,7 @@
             }
           },
           {
-            "id": "b049071087b4b0d9",
+            "id": "24a3f3ecf382dfe6",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -92,23 +78,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "5857896e262d54fc",
+    "id": "21a92a9dec5825c5",
     "type": "split",
     "children": [
       {
-        "id": "e7327390a4cb84f8",
+        "id": "e766601680ca732f",
         "type": "tabs",
         "children": [
           {
-            "id": "402715cf61161431",
+            "id": "077be422d879fdd9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Domande.md",
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,46 +105,51 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Domande"
+              "title": "Backlinks for Risposte_Domande_Italiano"
             }
           },
           {
-            "id": "a028fa2834bfc90a",
+            "id": "065fc3b81902264f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IngSoft05 - Ingegneria dei Requisiti.md",
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from IngSoft05 - Ingegneria dei Requisiti"
+              "title": "Outgoing links from Risposte_Domande_Italiano"
             }
           },
           {
-            "id": "134c39a61f75df3d",
+            "id": "83b6b900603a0902",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "9f2463f0996be436",
+            "id": "6cb8d05b983b816c",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md"
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of Risposte_Domande_Italiano"
             }
           }
         ]
@@ -177,36 +169,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "baf4f22a0d65ec84",
+  "active": "7b3fcdb0c5b69b30",
   "lastOpenFiles": [
-    "Riassunto.md",
-    "Domande.md",
-    "IngSoft01 - Introduzione.md",
-    "IngSoft07 - UML2.md",
-    "IngSoft06 - UML.md",
-    "IngSoft14 - Affidabilità.md",
-    "IngSoftX - Design Pattern.md",
-    "IngSoft13 - Verifica e Validazione.md",
-    "Pasted image 20241113154343.png",
-    "Pasted image 20241112153440.png",
-    "img/debugging.png",
-    "img/condLogCompGrafFlusso.png",
-    "Pasted image 20241112153122.png",
-    "img/grafiDiFlusso.png",
-    "IngSoft12 - Progettazione Interfaccia Utente.md",
-    "img/valutzioneDesign.png",
-    "img/progettazioneUI.png",
-    "IngSoft10 - Progettazione Architetturale.md",
-    "IngSoft09 - Progettazione.md",
-    "img/ripartizioneVerticale.png",
-    "Pasted image 20241106112914.png",
-    "IngSoft04bis - Cost management.md",
-    "IngSoft04 - Management.md",
-    "IngSoft03bis - swlifecycle moderni.md",
-    "IngSoft02 - Sistemi.md",
-    "IngSoft03 - Software life cycle.md",
-    "IngSoft05 - Ingegneria dei Requisiti.md",
-    "IngSoft08 - Analisi dei Requisiti.md",
-    "img"
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Inglese.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/12-security.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/11-networking.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/10-the-filesystem.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/8-access-control-and-rootly-powers.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/hash-table.svg",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/iptables-hooks.png",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/iptables-overview.png",
+    "Untitled 1",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/6-booting-and-system-management-daemons.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/3-python-basic-stuff-lab.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/2-python-basic-stuff-pt2.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/1-python-basic-stuff-pt1.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/4-python-advanced-stuff.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/5-python-advanced-stuff-lab.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/7-booting-and-system-management-daemons-lab.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/9-process-control.md"
   ]
 }

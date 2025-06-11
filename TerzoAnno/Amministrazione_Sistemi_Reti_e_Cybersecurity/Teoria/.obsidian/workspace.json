@@ -1,38 +1,20 @@
 {
   "main": {
-    "id": "826333dcb4c02e25",
+    "id": "f4dee5a13210be46",
     "type": "split",
     "children": [
       {
-        "id": "e97667397b283b15",
+        "id": "daab3d8321140f9c",
         "type": "tabs",
         "children": [
           {
-            "id": "baf4f22a0d65ec84",
+            "id": "8fac3a9fb1e0cccc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Domande.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Domande"
-            }
-          },
-          {
-            "id": "4430b547d4370ec7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Domande.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Domande"
+              "title": "New tab"
             }
           }
         ]
@@ -41,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "0538b359e1a878a2",
+    "id": "1c2e7b34b09dd4cd",
     "type": "split",
     "children": [
       {
-        "id": "4722e9cd5c154d3a",
+        "id": "cd62dd1b57233264",
         "type": "tabs",
         "children": [
           {
-            "id": "f854fe8abacac674",
+            "id": "33665360835d1e71",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -62,7 +44,7 @@
             }
           },
           {
-            "id": "240e9bee8821d06e",
+            "id": "4881aa0f66b9b271",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -79,7 +61,7 @@
             }
           },
           {
-            "id": "b049071087b4b0d9",
+            "id": "007303b73ec1fc28",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -95,20 +77,19 @@
     "width": 300
   },
   "right": {
-    "id": "5857896e262d54fc",
+    "id": "55c55374559c4feb",
     "type": "split",
     "children": [
       {
-        "id": "e7327390a4cb84f8",
+        "id": "8fae4d4ae0062347",
         "type": "tabs",
         "children": [
           {
-            "id": "402715cf61161431",
+            "id": "1b6bc6602187b16d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Domande.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,46 +99,49 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Domande"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "a028fa2834bfc90a",
+            "id": "8acbcaee7f30497c",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IngSoft05 - Ingegneria dei Requisiti.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from IngSoft05 - Ingegneria dei Requisiti"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "134c39a61f75df3d",
+            "id": "14a251908a76cd04",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "9f2463f0996be436",
+            "id": "65005e19d68965e3",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline"
             }
           }
         ]
@@ -177,36 +161,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "baf4f22a0d65ec84",
-  "lastOpenFiles": [
-    "Riassunto.md",
-    "Domande.md",
-    "IngSoft01 - Introduzione.md",
-    "IngSoft07 - UML2.md",
-    "IngSoft06 - UML.md",
-    "IngSoft14 - Affidabilità.md",
-    "IngSoftX - Design Pattern.md",
-    "IngSoft13 - Verifica e Validazione.md",
-    "Pasted image 20241113154343.png",
-    "Pasted image 20241112153440.png",
-    "img/debugging.png",
-    "img/condLogCompGrafFlusso.png",
-    "Pasted image 20241112153122.png",
-    "img/grafiDiFlusso.png",
-    "IngSoft12 - Progettazione Interfaccia Utente.md",
-    "img/valutzioneDesign.png",
-    "img/progettazioneUI.png",
-    "IngSoft10 - Progettazione Architetturale.md",
-    "IngSoft09 - Progettazione.md",
-    "img/ripartizioneVerticale.png",
-    "Pasted image 20241106112914.png",
-    "IngSoft04bis - Cost management.md",
-    "IngSoft04 - Management.md",
-    "IngSoft03bis - swlifecycle moderni.md",
-    "IngSoft02 - Sistemi.md",
-    "IngSoft03 - Software life cycle.md",
-    "IngSoft05 - Ingegneria dei Requisiti.md",
-    "IngSoft08 - Analisi dei Requisiti.md",
-    "img"
-  ]
+  "active": "8fac3a9fb1e0cccc",
+  "lastOpenFiles": []
 }
