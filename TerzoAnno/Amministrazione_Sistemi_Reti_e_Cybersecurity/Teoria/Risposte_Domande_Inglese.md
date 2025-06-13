@@ -1,59 +1,70 @@
 ### [Access Control and rootly powers](8-access-control-and-rootly-powers.md)
 
 - ==What core rules govern the traditional UNIX permission model?==
-	- The standard UNIX access control model as remained largely unchanged for decades. This model follows a few basic rules.
-		  1. Access control decisions depend on which user (or, in some cases, the user's membership in a group) is attempting to perform an operation.
-		  2. Object have owners. Files and processes are examples of objects. Owners have broad, but not necessarily unrestricted, control over their objects.
-		  3. You own the objects you create.
-		  4. The special user account `root` can act as the owner of any object
-		  5. Only `root` can perform certain sensitive administrative operations.
+    - The standard UNIX access control model has remained largely unchanged for decades. This model follows a few basic rules:
+          1. Access control decisions depend on which user (or, in some cases, the user's membership in a group) is attempting to perform an operation.
+          2. Objects have owners. Files and processes are examples of objects. Owners have broad, but not necessarily unrestricted, control over their objects.
+          3. You own the objects you create.
+          4. The special user account `root` can act as the owner of any object
+          5. Only `root` can perform certain sensitive administrative operations.
 
 - ==Which operations can only the file owner (or `root`) perform, and what permission bits can be set on a file?==
-	- The owner can set the permission of the file. There are 4 types of permission bits.
-		- `-` $\rightarrow$ the file is a regular file
-		- `rw-` $\rightarrow$ the owner can read (`r`) and write (`w`)
-		- `rw-` $\rightarrow$ the group can read (`r`) and write (`w`)
-		- `r--` $\rightarrow$ the others can read (`r`)
+    - Only the file owner (or `root`) can set the permissions of the file. The permission bits that can be set are:
+        - **Read (`r`)**: Permission to read the file content
+        - **Write (`w`)**: Permission to modify or delete the file
+        - **Execute (`x`)**: Permission to execute the file (for executables) or enter the directory
+        - **Set-UID**: Run executable with owner's permissions
+        - **Set-GID**: Run executable with group owner's permissions  
+        - **Sticky bit**: (For directories) Only file owner, directory owner, or `root` can delete files
 
 - ==Which operations can only the process owner (or `root`) perform, and what identities are associated with a process?==
-	- The owner of a process can send process signals and reduce process scheduling priority.
-	- There are multiple identities associated with a process:
-		- real UID and GID (who we really are) $\rightarrow$ are taken from `/etc/passwd` on login and do not typically change during a login session (`root` could do it)
-		- Effective UID, effective GID and supplementary GIDs (used for file access permission checks) $\rightarrow$ determine the actual file access permissions
-		- Saved IDs (used to enter and leave privileged mode) $\rightarrow$ saved set-UID contains a copy of the effective UID and a saved set-GID contains a copy of the effective GID
+    - The owner of a process can:
+        - Send process signals to the process
+        - Reduce process scheduling priority (increase niceness)
+    - There are multiple identities associated with a process:
+        - **Real UID and GID**: Who we really are - taken from `/etc/passwd` on login and do not typically change during a login session (`root` could change them)
+        - **Effective UID, effective GID and supplementary GIDs**: Used for file access permission checks - determine the actual file access permissions
+        - **Saved IDs**: Used to enter and leave privileged mode - saved set-UID contains a copy of the effective UID and saved set-GID contains a copy of the effective GID
 
 - ==What is set-UID execution, why does `passwd` need it, and what happens when a regular user runs `passwd`?==
-	- Some programs may require to run with privileges that the user who run them does not have. An example is `passwd`, the program that let users change their password (?)
+    - **Set-UID execution**: When the kernel runs an executable file with the set-UID bit set, it changes the effective UID of the process to the owner of the file instead of the UID of the user who ran the command.
+    - **Why `passwd` needs it**: The `passwd` command needs to modify `/etc/shadow` (which is only writable by `root`) to change user passwords. Regular users don't have permission to write to this file.
+    - **What happens when a regular user runs `passwd`**:
+        1. User `ubuntu` runs `passwd` (which is owned by `root` and has set-UID bit set)
+        2. The process runs with effective UID = 0 (`root`) instead of 1000 (`ubuntu`)
+        3. The process can now read and write `/etc/shadow` with `root` privileges
+        4. User can change their password without having direct access to the shadow file
 
 - ==Why is `sudo` generally preferred to direct `root` login or `su` for obtaining `root` privileges, and what are its main advantages and drawbacks?==
-	- The `sudo` command takes as its argument a command line to be executed as `root` (or another restricted user)
-		1. `sudo` looks into `/etc/sudoers`, which is lists the people who are authorized to use `sudo` and the commands they are allowed to run on each host.
-		2. if the command is permitted, `sudo` prompts for the user's password
-		3. if the password is correct `sudo` executes the command
-	- Pros and cons:
+    - **How `sudo` works**:
+        1. `sudo` looks into `/etc/sudoers`, which lists the people who are authorized to use `sudo` and the commands they are allowed to run on each host.
+        2. If the command is permitted, `sudo` prompts for the **user's password** (not root password)
+        3. If the password is correct, `sudo` executes the command
+    - **Advantages and disadvantages**:
 
 | Pro                                                                                          | Con                                                                                             |
 | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Command logging                                                                              | Command logging can be easily subverted (`sudo su`, although `sudo su`would at least be logged) |
+| Command logging                                                                              | Command logging can be easily subverted (`sudo su`, although `sudo su` would at least be logged) |
 | Users can do stuff that requires root privileges without having unlimited root privileges    |                                                                                                 |
 | Users do not have to know the `root` password because `sudo` prompts for the user's password | Any breach in the security of a sudoer's personal account can be equivalent to breaching `root` |
-| Faster of both `su` and `root` login                                                         |                                                                                                 |
-| Privileges can be revoked without changing the `root`password                                |                                                                                                 |
+| Faster than both `su` and `root` login                                                         |                                                                                                 |
+| Privileges can be revoked without changing the `root` password                                |                                                                                                 |
 | A list of all users with `root` privileges is maintained                                     |                                                                                                 |
 | Lower chance of a `root` shell left unattended                                               |                                                                                                 |
 | A single file can control access for an entire network                                       |                                                                                                 |
+
 ### [The filesystem](10-the-filesystem.md)
 
 - ==Which file types does UNIX support, and how do the nine permission bits (`rwx` for user, group, and other) govern the allowed operations on each type?== 
-	- UNIX support this type of file:
-		- Regular file $\rightarrow$ Symbol `-`
-		- Directory $\rightarrow$ Symbol `d`
-		- Symbolic Link $\rightarrow$ Symbol `l`
-		- Character device file $\rightarrow$ Symbol `c`
-		- Block device file $\rightarrow$ Symbol `b`
-		- Named pipe $\rightarrow$ Symbol `p`
-		- Local domain socket $\rightarrow$ Symbol `s`
-	- Nine permission bits determine what operations can be performed on a file and by whom. Three triplets of permission bits define access for the owner (aka user) of the file, the group owners, and everyone else. Each triplet has three bits: a read bit (`r`), a write bit (`w`), and an execute bit (`x`)
+    - **UNIX file types**:
+        - Regular file → Symbol `-`
+        - Directory → Symbol `d`
+        - Symbolic Link → Symbol `l`
+        - Character device file → Symbol `c`
+        - Block device file → Symbol `b`
+        - Named pipe → Symbol `p`
+        - Local domain socket → Symbol `s`
+    - **Nine permission bits**: Three triplets of permission bits define access for the owner (user), group owners, and everyone else. Each triplet has read (`r`), write (`w`), and execute (`x`) bits:
 
 | File type | `r`               | `w`                                                                   | `x`     |
 | --------- | ----------------- | --------------------------------------------------------------------- | ------- |
@@ -66,107 +77,98 @@
 | `s`       | Read              | Connect and write                                                     | n/a     |
   
 - ==Why is a lazy unmount (`umount -l`) considered unsafe, which command lets you identify the processes that still hold references to the busy filesystem, and how can you perform a clean unmount instead?==
-	- The lazy unmount option removes a filesystem from the naming hierarchy but does not truly unmount it until all existing file references have been closed. 
-	- It's consider unsafe for this two reasons:
-		- there is no guarantee that existing references will ever close on their own
-		- Lazy unmounted filesystem present inconsistent semantics to the programs that are using them. 
+    - **Why lazy unmount is unsafe**: 
+        - There is no guarantee that existing references will ever close on their own
+        - Lazy unmounted filesystems present inconsistent semantics to the programs that are using them
+    - **Command to identify processes**: `fuser -v -m /path/to/filesystem` shows which processes are using the mounted filesystem
+    - **Clean unmount**: First identify and stop processes using the filesystem, then use regular `umount /path/to/filesystem`
   
 - ==What are the purposes of the set-UID, set-GID, and sticky bits, to which regular files or directories does each apply, and how do they alter permission checks?==
-	- set-UID is only apply on the regular file $\rightarrow$ Run an executable file with the owner's permissions.
-	- set-GID
-		- for regular file $\rightarrow$ Run an executable file with the group owner's permissions
-		- for directories $\rightarrow$ Newly created files take on the group ownership of the directory rather than the default group of the user that created the file
-	- The sticky bit applies to directories only. If the sticky bit is set on a directory, a file can only be deleted or renamed by the owner of the directory, the owner of the file, or `root`
+    - **Set-UID bit**:
+        - Applies to: Regular files only
+        - Purpose: Run an executable file with the owner's permissions instead of the user who executed it
+    - **Set-GID bit**:
+        - For regular files: Run an executable file with the group owner's permissions
+        - For directories: Newly created files take on the group ownership of the directory rather than the default group of the user that created the file
+    - **Sticky bit**:
+        - Applies to: Directories only
+        - Purpose: If set on a directory, a file can only be deleted or renamed by the owner of the directory, the owner of the file, or `root`
   
-- ==Who may change a file’s permission bits, which command can they use, and how is that command invoked?==
-	- The `chmod` command is to change the permissions on a file. Only the owner and `root` can do it. The first argument of `chmod` is a specification of the permissions to be assigned, and the following arguments are names of files on which such permissions apply.
+- ==Who may change a file's permission bits, which command can they use, and how is that command invoked?==
+    - **Who can change**: Only the file owner and `root` can change file permissions
+    - **Command**: `chmod` (change mode)
+    - **Invocation**: The first argument specifies the permissions (octal or mnemonic syntax), followed by the file names
+        - Octal example: `chmod 755 filename` 
+        - Mnemonic example: `chmod u+x,g-w filename`
   
-- ==Who may change a file’s (group) ownership, what rules must be satisfied, and which command performs the operation?==
-	- The `chown` command is to change the ownership of a file. The first argument sets owner and/or group owner (`user:group`), and the following arguments are the files on which the ownership change applies to
-	- Must be the owner of the file and belong to the target group to change group ownership (or just be `root`)
+- ==Who may change a file's (group) ownership, what rules must be satisfied, and which command performs the operation?==
+    - **Who can change**: Only `root` can change file ownership. Regular users can only change group ownership under specific conditions.
+    - **Rules for group ownership change**: 
+        - Must be the owner of the file AND belong to the target group (or be `root`)
+        - Cannot give away ownership of files (except `root`)
+    - **Command**: `chown user:group filename` to change both owner and group, or `chown :group filename` to change only group
 
 ### [Networking](11-networking.md)
 
 - ==What is ARP spoofing, which weaknesses in the ARP protocol does it exploit, and how does a MITM attack unfold in practice?==
-	- When an IP packet is sento from one computer to another, the destination IP address must be resolved to a MAC address.
-	- ARP come to play when:
-		- someone does not know the MAC address of the destination IP broadcast an ARP request to the local network
-		- `10.1.1.1` says its own MAC address in an ARP reply
-		- upon receiving the ARP reply, `10.1.1.1` updates its cache of known neighbors
-	- ARP is a stateless protocol and there is no authentication in it.
-	- Anyone can send an unsolicited ARP reply that rewrites a victim's cache with false information.
+    - **ARP spoofing**: An attack where the attacker sends spoofed ARP replies to associate their MAC address with the IP address of another host (typically the gateway).
+    - **ARP protocol weaknesses**:
+        - ARP is a stateless protocol - ARP replies are automatically cached regardless of whether they follow an ARP request
+        - There is no authentication in ARP
+        - Anyone can send unsolicited ARP replies that rewrite a victim's cache with false information
+    - **MITM attack process**:
+        1. Attacker sends malicious ARP reply to victim: "I am 10.1.1.1 (gateway) at attacker_MAC"
+        2. Victim updates ARP cache, now thinking attacker's MAC is the gateway
+        3. Attacker sends ARP reply to gateway: "I am 10.1.1.10 (victim) at attacker_MAC"  
+        4. All traffic between victim and gateway now flows through attacker
+        5. Attacker can intercept, modify, or analyze all communications
   
-- How can an attacker mount a MITM attack with ICMP redirect messages, and which weaknesses in the ICMP protocol make this possible?
-  
+- ==How can an attacker mount a MITM attack with ICMP redirect messages, and which weaknesses in the ICMP protocol make this possible?==
+    - **ICMP redirect MITM attack**:
+        - Attacker sends malicious ICMP redirect message to victim claiming to come from an external host
+        - The redirect message tells victim: "you should send packets for host X to me instead of the current gateway"
+        - Victim's system automatically adjusts its routing table accordingly
+        - Future traffic gets routed through the attacker, allowing interception
+    - **ICMP protocol weaknesses**:
+        - **Lack of Authentication**: ICMP redirects contain no authentication information - no way to verify the message comes from a legitimate router
+        - **Automatic Processing**: When a host receives an ICMP redirect, it automatically adjusts its routing table without additional verification
+
 - ==What is IP forwarding, and why is it usually unsafe to leave it enabled on hosts that are not intended to act as routers?==
-	- A host that has IP forwarding can act as a router. This means that can accept third party packets on one network interface, match them into a gateway or destination host on another network interface, and retransmits the packets.
-	- Hosts that forward packets can sometimes be coerced into compromising security by making external packets appear to have come from inside the network, this evading network scanners and packet filters.
+    - **IP forwarding**: A host with IP forwarding enabled can act as a router - it can accept third-party packets on one network interface, match them to a gateway or destination host on another network interface, and retransmit the packets.
+    - **Why it's unsafe**: 
+        - Hosts that forward packets can be coerced into compromising security by making external packets appear to have come from inside the network
+        - This can evade network scanners and packet filters
+        - Can be exploited through ARP spoofing and ICMP redirects to redirect traffic through compromised hosts
+        - Unless the system is intended to function as a router, IP forwarding should be disabled
   
 - ==What is IP spoofing, and what defenses can be used against it?==
-	- The source address on an IP packet is normally filled in by the kernel's TCP/IP implementation and the IP address of the host from which the packet was sent. However, if the software that creates the packet uses raw sockets, it can fill in any source address it likes.
-	- The defenses that can be used against it are:
-		- Block outgoing packets whose source address is not within your address space.
-		- Protect against attackers forging the source address on external packets to fool your firewall into thinking that they originated on your internal network. In this regard, an heuristic that helps is uRPF.
+    - **IP spoofing**: The practice of creating IP packets with a false source IP address. Normally the kernel fills in the source address, but with raw sockets, software can specify any source address.
+    - **Defenses**:
+        - **Egress filtering**: Block outgoing packets whose source address is not within your address space
+        - **Ingress filtering**: Protect against attackers forging external packets to appear internal
+        - **uRPF (Unicast Reverse Path Forwarding)**: Heuristic that helps verify packet source addresses by checking if the source is reachable via the interface it arrived on
   
 - ==What is IPv4 source routing, and how can an attacker exploit it?==
-	- IPv4 source routing provides a mechanism to specify an explicit series of gateways for packet to transit on the way to its destination.
-	- Source routing bypasses the next-hop routing algorithm that runs at each gateway to determine how a packet should be forwarded. Someone could cleverly route a packet to make it appear to have originated within your network instead of the Internet, thus slipping through the firewall
+    - **IPv4 source routing**: A mechanism to specify an explicit series of gateways for a packet to transit on the way to its destination, bypassing normal next-hop routing algorithms.
+    - **Attacker exploitation**:
+        - Attacker can cleverly route a packet to make it appear to have originated within your internal network instead of the Internet
+        - This allows the packet to slip through firewalls that block external traffic
+        - Can be used to bypass security measures by making external attacks appear as internal traffic
+        - Most systems drop source-routed packets by default as a security measure
 
 ### [Security](12-security.md)
 
 - ==What does the CIA triad stand for in information security, and what does each principle mean?==
-	- Confidentiality (C) $\rightarrow$ Access to information should be limited to those who are authorized to have it (privacy data)
-	- Integrity (I) $\rightarrow$ Information is valid and has not been altered in unauthorized ways (authenticity and trustworthiness of information)
-	- Availability (A) $\rightarrow$ Information must be accessible to authorized users when they need it; otherwise, the data has no value. Outages not caused by intruders also fall into the category of availability problems.
+    - **Confidentiality (C)**: Access to information should be limited to those who are authorized to have it (privacy of data)
+    - **Integrity (I)**: Information is valid and has not been altered in unauthorized ways (authenticity and trustworthiness of information)
+    - **Availability (A)**: Information must be accessible to authorized users when they need it; otherwise, the data has no value. Outages not caused by intruders also fall into the category of availability problems.
   
 - ==What is social engineering, why is it particularly difficult to defend against, and what is one common form of this attack?==
-	- Social engineering is the use of psychological influence to persuade people to take actions or reveal information. Social engineering exploits human factors rather than software vulnerabilities. The goal is information gathering, fraud, or system access.
-	- It's particularly difficult to defend because human users (and administrators) of a computer system are the weakest links in the chain of the security and no amount of technology can protect against the user element.
-	- One common form of this attack is Phishing, where attackers deceive people into executing malicious code or revealing sensitive information.
+    - **Social engineering**: The use of psychological influence to persuade people to take actions or reveal information. It exploits human factors rather than software vulnerabilities with goals of information gathering, fraud, or system access.
+    - **Why difficult to defend**: Human users (and administrators) are the weakest links in the security chain and no amount of technology can protect against the human element.
+    - **Common form**: **Phishing** - attackers deceive people into executing malicious code or revealing sensitive information through deceptive communications (emails, websites, etc.).
   
 - ==What is a software vulnerability, what is a specific example of such a vulnerability, and how can open-source code review practices help in reducing these vulnerabilities?== 
-	- A vulnerability is a flaw or weakness in a system's design, implementation, or management that can be exploited by an attack to compromise its security. 
-	- Buffer overflows are an example of a software bug with complex security implications.
-	- Open-source code is thought to lead to better security. This why the more people who can scrutinize the code, the greater the chance that someone will spot a security weakness.
-  
-- ==What is the difference between a DoS attack and a DDoS attack, and how do these attacks typically impact the targeted systems?==
-	- A DoS attack come from a single source and aim to overwhelm a system, making unavailable to users. A DDoS attack aims to make a system unavailable to its intended users by temporarily or indefinitely disrupting the victim's availability.
-	- To conduct a DDoS attack, attackers typically plant malicious code on unprotected devices outside the victim's network. This code lets the attackers remotely command and control these intermediary systems, which form a so called "botnet"
-  
-- ==What is insider abuse, and why is it often harder to detect than external attacks?==
-	- Employees, contractors, and consultants are trusted agents of an organization and are granted special privileges. Sometimes these privileges are abused. Insiders can steal or reveal data, disrupt systems for financial gain, or create havoc for political reasons
-	- This type of attack is often the hardest of all to detect. As most security measures guard against external threats, such measures are not effective against users who have been granted access
-  
-- ==What is a backup in the context of computer security, and what are the key recommendations for effectively managing backups?==
-	- A backup is a copy of computer data and stored elsewhere so that it may be used to restore the original after a data loss event. Regular, tested system backups are an essential part of any site security plan. Backup fall into the "availability" bucket of the CIA triad.
-	- Key recommendations are:
-		- all filesystems are replicated
-		- some backups are stored off-site
-  
-- ==What are computer viruses and worms, and what are the key differences between these two types of malware?==
-	- A virus is a type of malware that, when executed, replicates itself by modifying computer programs and inserting its own code into those programs.
-	- A whore is standalone malware that replicate itself to spread to other computers. Worms does not require host programs.
-  
-- ==What is a rootkit, how does it typically function, and why can it be particularly challenging to detect and remove?==
-	- A rootkit is software, typically malicious, designed to enable access to a computer or an area of its software that is not otherwise allowed and often marks it existence or the existence of other software.
-	- The most advanced rootkits are aware of common removal programs and make attempts to subvert them.
-  
-- ==What are the best practices and recommendations for creating secure passwords, managing passwords effectively, and implementing MFA?==
-	- Technically speaking, the most secure password of a given length consists of a random sequence of letters, punctuation, and digits
-	- A password vault is a piece of software (or a combination of software and hardware) that encrypts the passwords it stores. A user can then access the passwords stored in the vault with a single master password, which becomes the only password to remember
-	- An MFA systems validate your identity both through something you know (a password or passphrase) and something you have (a physical device, fingerprint, etc.)
-  
-- ==What is symmetric key cryptography, how does it work, and what are its primary advantages and disadvantages?==
-	- $A$ and $B$ share a secret key ($K_{AB}$) that they use to encrypt and decrypt messages. They must find a way to exchange the shared secret privately. Once they both know the key, they can reuse it as long as they wish. $C$ can only inspect (or interfere with) messages if he also has the key
-	- Symmetric keys are relatively efficient in terms of CPU usage and the size of the encrypted payloads. As a result, symmetric cryptography is often used in applications where efficient encryption and decryption are necessary
-  
-- ==What is public key cryptography, how does it work, and what are its primary advantages and disadvantages?==
-	- Public key ciphers rely on the mathematical concept of trapdoor functions, in which a value is easy to compute, and yet it is difficult to derive the steps that produced that value. The performance characteristics of asymmetric ciphers generally render them impractical for encrypting large quantities of data
-  
-- What is a digital signature, what is its purpose, and how can it be created using public key cryptography?
-  
-- What is a digital certificate, what purpose does it serve, and how is it typically obtained?
-  
-- What is a hash function, and what specific properties define a cryptographic hash function?
-  
-- What is a firewall, how does a two-stage firewall filtering scheme work, and what role does a DMZ play?
+    - **Software vulnerability**: A flaw or weakness in a system's design, implementation, or management that can be exploited by an attacker to compromise its security.
+    - **Specific example**: **Buffer overflows** - when a program writes more data to a memory buffer than it can hold, potentially allowing attackers to execute arbitrary code.
+    - **Open-source code review**: Open-source code leads to better security because the more people who can scrutinize the code, the greater the chance that someone will spot a security weakness ("many eyes make all bugs
