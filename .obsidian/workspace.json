@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "eb940e0eca90367a",
+        "id": "6abc57c217705f0f",
         "type": "tabs",
         "children": [
           {
-            "id": "b357526a8f413f0c",
+            "id": "9e45d2178515e7b4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Inglese.md",
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Risposte_Domande_Inglese"
-            }
-          },
-          {
-            "id": "13a0ce0931bf9938",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Risposte_Domande_Italiano"
+              "title": "14-cheat-sheet"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -109,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+                "file": "TerzoAnno/Ingegneria_del_Sfotware/Teoria/domande-risposte.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Risposte_Domande_Italiano"
+              "title": "Backlinks for domande-risposte"
             }
           },
           {
@@ -128,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+                "file": "TerzoAnno/Ingegneria_del_Sfotware/Teoria/domande-risposte.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Risposte_Domande_Italiano"
+              "title": "Outgoing links from domande-risposte"
             }
           },
           {
@@ -157,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+                "file": "TerzoAnno/Ingegneria_del_Sfotware/Teoria/domande-risposte.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Risposte_Domande_Italiano"
+              "title": "Outline of domande-risposte"
             }
           }
         ]
@@ -183,19 +168,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "13a0ce0931bf9938",
+  "active": "9e45d2178515e7b4",
   "lastOpenFiles": [
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Inglese.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet2.md",
+    "Proposta di ricerca.md",
+    "Untitled 1.md",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/domande-risposte.md",
+    "Untitled",
+    "SecondoAnno/Algoritmi_e_Strutture_Dati/Teoria/Appunti/07_Tabelle_Hash.md",
+    "SecondoAnno/Algoritmi_e_Strutture_Dati/Teoria/Appunti/02_Soluzioni_di_ricorrenze.md",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-27 alle 23.09.57.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 16.13.48.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 16.15.10.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 16.28.50.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 16.41.23.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 16.55.42.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 17.54.35.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 18.04.49.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 18.31.09.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs/Screenshot 2025-06-25 alle 18.45.22.png",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/imgs",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/iptables/iptables_22_02_2024.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/iptables/iptables_4_07_2023.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/iptables/iptables_12_01_2023.md",
+    "iptables_22_02_2024",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/file-archive.timer",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/file-archive.service",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/app.py",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami",
+    "TerzoAnno/Ingegneria_del_Sfotware/Teoria/Scaletta_Inge_Software.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Inglese.md",
     "TerzoAnno/Ingegneria_del_Sfotware/Teoria/Domande.md",
     "TerzoAnno/Ingegneria_del_Sfotware/Teoria/Riassunto.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/11-networking.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/12-security.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/10-the-filesystem.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/8-access-control-and-rootly-powers.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/hash-table.svg",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/iptables-hooks.png",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images/iptables-overview.png",
     "Untitled 1",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/images",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/6-booting-and-system-management-daemons.md",
@@ -204,7 +215,6 @@
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/1-python-basic-stuff-pt1.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/4-python-advanced-stuff.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/5-python-advanced-stuff-lab.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/7-booting-and-system-management-daemons-lab.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/9-process-control.md"
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/7-booting-and-system-management-daemons-lab.md"
   ]
 }

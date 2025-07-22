@@ -3,6 +3,7 @@
 #
 # path: $HOME/file-cleaner/app.py
 
+
 import argparse
 import os
 import sys
@@ -21,24 +22,24 @@ def walk(basepath, extension):
 
 def main():
     parser = argparse.ArgumentParser(description="file cleaner")
-    parser.add_argument("--path", type=str, required=True, help="directory to clean")
-    parser.add_argument("--extension", type=str, required=True, help="file extension to remove")
+    parser.add_argument("--path", type=str, required=True, help="absolute path of the directory to clean")
+    parser.add_argument("--extension", type=str, required=True, help="file extensio to remuve, must begin with a dot")
     args = parser.parse_args()
 
     if not os.path.isabs(args.path):
-        print(f"error: {args.path} must be absolute", file=sys.stderr)
+        print(f"error: {args.path} is not an absolute path")
         sys.exit(1)
 
     if not os.path.exists(args.path):
-        print(f"error: {args.path} does not exists", file=sys.stderr)
+        print(f"error: {args.path} does not exist")
         sys.exit(1)
 
     if not os.path.isdir(args.path):
-        print(f"error: {args.path} is not a directory", file=sys.stderr)
+        print(f"error: {args.path} is not a directory")
         sys.exit(1)
 
     if not args.extension.startwith("."):
-        print(f"error: {args.extension} must start with a dot", file=sys.stderr)
+        print(f"error: {args.extension} does not start with a dot (.)")
         sys.exit(1)
 
     walk(args.path, args.extension)

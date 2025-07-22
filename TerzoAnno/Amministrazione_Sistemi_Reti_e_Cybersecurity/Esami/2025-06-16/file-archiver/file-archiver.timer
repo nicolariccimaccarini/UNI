@@ -1,0 +1,17 @@
+# first and last name: Nicola Ricci Maccarini
+# serial number: 185792
+#
+# path: ~/.config/systemd/user/file-archiver.service
+#
+# comando per abilitare il timer: --user enable file-archiver.timer
+# comando per avviare il timer: --user start file-archiver.timer
+
+[Unit]
+Description=file archive timer
+
+[Timer]
+Unit=file-archive.service
+OnCalendar=Sat,Sun *-*-* 04:00
+
+[Install]
+WantedBy=timers.target

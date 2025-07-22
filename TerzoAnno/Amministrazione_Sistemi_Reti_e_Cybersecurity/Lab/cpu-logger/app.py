@@ -2,6 +2,7 @@ import argparse
 import psutil
 import time
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--interval", type=int, default=1, help="Interval between logs in seconds")

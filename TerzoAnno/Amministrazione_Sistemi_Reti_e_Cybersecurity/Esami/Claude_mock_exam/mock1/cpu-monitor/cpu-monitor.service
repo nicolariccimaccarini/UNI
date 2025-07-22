@@ -1,0 +1,18 @@
+# nome e cognome: Nicola Ricci Maccarini 
+# matricola: 185792
+#
+# path: ~/.config/sytemd/users/cpu-monitor.service
+# 
+# comando per abilitare il servizio: --user enable cpu-monitor.service
+# comando per avviare il servizio: --user start cpu-monitor.service
+
+[Unit]
+Description=cpu monitor service 
+
+[Service]
+Environment=PYTHONUNBUFFERED
+WorkingDirectory=%h/cpu-monitor
+ExecStart = %h/cpu-monitor/app.py --threshold 90 --count 5 --interval 10 --logfile %h/cpu-monitor.log
+
+[Install]
+WantedBy=default.target

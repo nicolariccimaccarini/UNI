@@ -1,0 +1,16 @@
+# nome e cognome: Nicola Ricci Maccarini
+# matricola: 185792
+# 
+# path: ~/.config/systemd/user/backup-tool.service
+
+[Unit]
+Description=backup tool service 
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=%h/backup-tool 
+ExecStart=/usr/bin/python3 app.py --source %h/projects --destination %h/backups --format gztar
+Restart=on-failure
+
+[install]
+WantedBy=default.target

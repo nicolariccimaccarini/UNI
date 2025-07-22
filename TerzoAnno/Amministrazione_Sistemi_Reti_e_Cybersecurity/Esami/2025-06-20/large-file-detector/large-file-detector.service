@@ -1,0 +1,20 @@
+# nome e cognome: Nicola Ricci Maccarini
+# matricola: 185792
+#
+# path: ~/.config/systemd/user/large-file-detector.service
+# 
+# comando per abilitare il servizio: --user enable large-file-detector.service
+# comando per avviare il servizio: --user start large-file-detector.service
+
+[Unit]
+Description=large file detectror system
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=%h/large-file-detector
+ExecStart=/usr/bin/python3 app.py --target %h/docs --size 100 --interval 300 --log %h
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

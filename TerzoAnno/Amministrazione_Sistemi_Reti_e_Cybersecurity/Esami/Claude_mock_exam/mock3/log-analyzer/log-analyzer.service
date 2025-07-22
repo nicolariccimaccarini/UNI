@@ -1,0 +1,19 @@
+# nome e cognome: Nicola Ricci Maccarini
+# matricola: 185792
+#
+# path: ~/.config/systemd/user/log-analyzer.service
+# 
+# comando per abilitare il servizio: --user enable log-analyzer.service
+# comando per avviare il servizio: --user start log-analyzer.service
+
+[Unit]
+Description=log analyzer service 
+
+[Service]
+WorkingDirectory=%h/log-analyzer
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/usr/python3 app.py --logfile %h/application.log --pattern "WARNING" --output %h/warnings-stats.txt --inerval 300
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
