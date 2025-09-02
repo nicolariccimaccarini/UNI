@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet.md",
+                "file": "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "14-cheat-sheet"
+              "title": "Risposte_Domande_Italiano"
             }
           }
         ]
@@ -170,6 +170,8 @@
   },
   "active": "9e45d2178515e7b4",
   "lastOpenFiles": [
+    "SecondoAnno/Algoritmi_e_Strutture_Dati/Teoria/Appunti/06_Heaps_heapsort_e_code_di_priorità.md",
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet2.md",
     "Proposta di ricerca.md",
     "Untitled 1.md",
@@ -193,7 +195,6 @@
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/iptables/iptables_12_01_2023.md",
     "iptables_22_02_2024",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/Risposte_Domande_Italiano.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/14-cheat-sheet.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/file-archive.timer",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/file-archive.service",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Esami/2025-06-16/app.py",
@@ -214,7 +215,6 @@
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/2-python-basic-stuff-pt2.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/1-python-basic-stuff-pt1.md",
     "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/4-python-advanced-stuff.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/5-python-advanced-stuff-lab.md",
-    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/7-booting-and-system-management-daemons-lab.md"
+    "TerzoAnno/Amministrazione_Sistemi_Reti_e_Cybersecurity/Teoria/5-python-advanced-stuff-lab.md"
   ]
 }
