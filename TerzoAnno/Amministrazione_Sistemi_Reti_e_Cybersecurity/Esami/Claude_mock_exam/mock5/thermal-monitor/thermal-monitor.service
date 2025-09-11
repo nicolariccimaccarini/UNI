@@ -1,0 +1,16 @@
+# nome e cognome:
+# matricola:
+#
+# path: ~/.config/systemd/user/thermal-monitor.service
+# 
+# comando per abilitare il servizio: --systemctl --user enable thermal-monitor.service
+# comando per avviare il servizio: --systemctl --user start thermal-monitor.service
+
+[Unit]
+Description=thermal monitor service
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=%h/thermal-monitor
+ExecStart=/bin/usr/python3 app.py --warning-temp 75 --critical-temp 90 --interval 60
+Restart=on-failure

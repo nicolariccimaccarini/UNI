@@ -1,0 +1,31 @@
+### Elimina tutte le regole esistenti (filter, nat):
+`iptables -F`
+`iptables -t nat -F`
+
+### Scarta tutto a meno che non sia esplicitamente permesso (INPUT, FORWARD):
+`iptables -P INPUT DROP`
+`iptables -P FORWARD DROP`
+
+### Consenti pacchetti ICMP ricevuti su eth0 e eth1 (INPUT):
+`iptables -A INPUT -i eth1 -p icmp -j ACCEPT`
+`iptables -A INPUT -i eth0 -p icmp -j ACCEPT`
+
+### Consenti pacchetti SSH (tcp/22) ricevuti su eth1 (INPUT):
+`iptables -A INPUT -i eth1 -p tcp --dport 22 -j ACCEPT`
+
+### Consenti tutti i pacchetti ricevuti su eth0 e diretti su eth1 (FORWARD):
+`iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT`
+
+### Consenti pacchetti con stato ESTABLISHED,RELATED (FORWARD):
+`iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT`
+
+### MASQUERADE pacchetti in uscita su eth0 (POSTROUTING):
+`iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+
+### DNAT per pacchetti SMTP (tcp/25) ricevuti su eth0 verso 172.16.10.80:25 (PREROUTING):
+`iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 25 -j DNAT --to-destination 172.16.10.80:25`
+`iptables -A FORWARD -i eth0 -p tcp --dport 24 -d 172.16.10.80 -j ACCEPT`
+
+### DNAT per pacchetti POP3 (tcp/110) ricevuti su eth0 verso 172.16.10.90:110 (PREROUTING)
+`iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 110 -j DNAT --to-destination 172.16.10.90:110`
+`iptables -A FORWARD -i eth0 -p tcp --dport 110 -d 172.16.10.90 -j ACCEPT`

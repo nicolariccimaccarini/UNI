@@ -1,0 +1,14 @@
+# nome e cognome: 
+# matricola: 
+#
+# path: ~/.config/systemd/user/process-killer.timer
+#
+# comando per abilitare il timer: systemctl --user enable process-killer.timer
+# comando per avviare il timer: systemctl --user start process-killer.timer
+
+[Unit]
+Description=process killer timer
+
+[Timer]
+Unit=process-killer.service
+OnCalendar=*:0/5

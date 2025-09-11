@@ -1,0 +1,13 @@
+# nome e cognome: 
+# matricola: 
+#
+# path: ~/.config/systemd/user/process-killer.service
+
+[Unit]
+Description=process killer service
+
+[Service]
+Type=oneshot
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=%h/process-killer
+ExecStart=/usr/bin/python3 app.py --cpu-threshold 95 --exclude systemd --log %h/process-killer.log
